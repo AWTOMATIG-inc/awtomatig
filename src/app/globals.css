@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* color list */
+  --color-dark: #1f1f1f;
+  --color-blue-light: #44b6e9;
+  --color-dark-white: #d9d9d9;
+  /* font list */
+  --font-press-start: var(--font-press-start-2p);
+  --font-manrope: var(--font-manrope);
+}
+@utility container {
+  @apply mx-auto max-w-none 2xl:max-w-[1800px] px-4 md:!px-10 lg:px-8;
+}
+
+@layer components {
+  .custom-shadow {
+    @apply shadow-[0px_4px_40px_0px_#00000014] hover:shadow-xl;
+  }
+  .bg-home-banner {
+    @apply bg-[url('/images/banners/home-banner.webp')] bg-top bg-cover;
+  }
+}
+@layer base {
+  button {
+    @apply hover:cursor-pointer;
+  }
+}
+@custom-variant hover (&:hover);
