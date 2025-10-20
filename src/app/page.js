@@ -1,10 +1,11 @@
+import playBanner from "@/assets/home/animated-banner.jpg";
 import card_bg from "@/assets/home/card-bg.webp";
 import glove_card from "@/assets/home/glove-card.webp";
 import worldGlove from "@/assets/home/glove.webp";
-import playBanner from "@/assets/home/play-banner.gif";
 import sora_ai from "@/assets/home/sora-ai.png";
 import awtomatig_logo from "@/assets/logo/awtomatig-logo.png";
 import Accordion from "@/components/Accordion";
+import { capabilities } from "@/contants/capabilities";
 import { ourProcessData } from "@/contants/ourProcess";
 import { servicesData } from "@/contants/services";
 import { Icon } from "@iconify/react";
@@ -262,12 +263,17 @@ export default function Home() {
               <Icon icon="humbleicons:arrow-right-up" width="24" height="24" />
             </button>
           </div>
+
           <div className="my-8">
-            <Accordion />
-            <Accordion />
-            <Accordion />
-            <Accordion />
-            <Accordion />
+            {capabilities.map((capability) => (
+              <Accordion
+                key={capability.id}
+                title={capability.title}
+                serial={"0" + capability.id}
+              >
+                <p>{capability.description}</p>
+              </Accordion>
+            ))}
           </div>
         </div>
       </section>
