@@ -1,6 +1,10 @@
+import card_bg from "@/assets/home/card-bg.webp";
+import glove_card from "@/assets/home/glove-card.webp";
 import worldGlove from "@/assets/home/glove.webp";
+import playBanner from "@/assets/home/play-banner.gif";
 import sora_ai from "@/assets/home/sora-ai.png";
 import awtomatig_logo from "@/assets/logo/awtomatig-logo.png";
+import Accordion from "@/components/Accordion";
 import { ourProcessData } from "@/contants/ourProcess";
 import { servicesData } from "@/contants/services";
 import { Icon } from "@iconify/react";
@@ -133,7 +137,7 @@ export default function Home() {
               1-2-3
             </span>
           </div>
-          <div className="relative">
+          <div className="relative ">
             <span className="absolute right-[-40%] -bottom-[70%] size-[1145px] inline-block bg-[linear-gradient(215.67deg,rgba(2,213,232,0.55)_18.02%,rgba(3,50,103,0.55)_94.4%)] blur-[173.4px] rounded-full"></span>
             <div className="space-y-16">
               {ourProcessData.map((process) => (
@@ -156,6 +160,114 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="container mt-40 z-1 relative">
+        <div className="flex gap-5 max-w-[1341px] mx-auto">
+          <div className="relative w-fit text-black rounded-2xl overflow-hidden">
+            <Image
+              src={card_bg}
+              width={659}
+              height={471}
+              alt="card"
+              className="w-[659px] h-[471px] object-cover"
+            />
+
+            <p className="absolute top-0 font-silkscreen px-10 pt-14 text-3xl">
+              Build, compare, and <br />
+              ship <br />
+              Generation apps in <br />
+              minutes
+            </p>
+
+            <div className="absolute bottom-8 right-10 font-silkscreen ">
+              <h1 className="text-8xl font-bold">20k</h1>
+              <p className="font-bold text-right">happy customer</p>
+            </div>
+          </div>
+
+          <div className="bg-[linear-gradient(149.96deg,_#FFFFFF_3.15%,_#02D5E8_99.07%)] text-black rounded-2xl p-8 w-[360px] relative ">
+            <h4 className="text-3xl font-silkscreen">
+              Explore <br /> Scale <br />
+              Spellbook
+            </h4>
+            <p className="mt-4">
+              Triggerfish bluntnose knifefish <br /> upside-down catfish kfish
+              convict.
+            </p>
+            <Image
+              src={glove_card}
+              width={177}
+              height={181}
+              alt="card"
+              className="w-[177px] h-[181px] object-cover absolute bottom-0 right-0"
+            />
+          </div>
+          <div className="bg-black px-8 py-12 rounded-2xl w-[279px] border border-gray-400">
+            <p className="font-bold font-press-start text-center text-[0.6rem]">
+              Welcome to the future, brought to you by the past.
+            </p>
+            <div className="bg-stone-500 h-25 w-full border border-teal mt-10 rounded-lg"></div>
+            <div className="bg-stone-500 h-25 w-full border border-teal mt-8 rounded-lg"></div>
+          </div>
+        </div>
+      </section>
+      <section className="container">
+        <div className="bg-[conic-gradient(from_133.87deg_at_50%_48.06%,_#333333_0deg,_#A2F5FF_176.54deg,_#000000_360deg)] flex items-center  gap-8 max-w-[1341px] mx-auto text-black px-20 py-9 rounded-xl mt-8 min-h-[296px]">
+          <h1 className="text-xl font-press-start max-w-[454px]">
+            Keep flying with <br /> your favorite service
+          </h1>
+          <div className="flex justify-between w-full">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <Image
+                key={index}
+                src={awtomatig_logo}
+                width={66}
+                height={92}
+                alt="logo"
+                className="w-full max-w-[50px] md:max-w-[66px] max-h-[92px] h-auto"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="container mt-20">
+        <div className="relative">
+          <Image
+            src={playBanner}
+            width={1887}
+            height={604}
+            alt="banner"
+            className="rounded-xl"
+          />
+          <div className="absolute  w-full left-1/2 top-1/2 -translate-1/2 max-w-[1341px] h-full flex justify-between items-center px-20">
+            <h1 className="text-8xl font-sora">
+              Future is here. <br /> Meet changes!
+            </h1>
+            <button className="text-3xl border size-[200px] rounded-full capitalize">
+              play video
+            </button>
+          </div>
+        </div>
+      </section>
+      <section className="container mt-20">
+        <div className="max-w-[1341px] mx-auto">
+          <div className="flex justify-between items-center">
+            <h1 className="font-sora text-6xl font-bold text-teal">
+              Our capabilities
+            </h1>
+            <button className="flex gap-x-1 border px-6 py-1 rounded-lg">
+              <span>Work</span>
+              <Icon icon="humbleicons:arrow-right-up" width="24" height="24" />
+            </button>
+          </div>
+          <div className="my-8">
+            <Accordion />
+            <Accordion />
+            <Accordion />
+            <Accordion />
+            <Accordion />
           </div>
         </div>
       </section>

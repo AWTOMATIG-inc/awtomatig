@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import { Manrope, Press_Start_2P, Sora } from "next/font/google";
+import { Manrope, Press_Start_2P, Silkscreen, Sora } from "next/font/google";
 import "./globals.css";
 
 const pressStart2P = Press_Start_2P({
@@ -10,6 +10,11 @@ const pressStart2P = Press_Start_2P({
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
+});
+const silkscreen = Silkscreen({
+  variable: "--font-silkscreen",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 const sora = Sora({
   variable: "--font-sora",
@@ -25,7 +30,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${pressStart2P.variable} ${manrope.variable} ${sora.variable} font-manrope bg-black  text-white antialiased`}
+        className={`${pressStart2P.variable} ${manrope.variable} ${sora.variable} ${silkscreen.variable} font-manrope bg-black overflow-x-hidden  text-white antialiased`}
       >
         <Header />
         {children}
