@@ -47,3 +47,20 @@ export function LinkDownArrowIcon({ className }) {
     </svg>
   );
 }
+export function RightTopArrowIcon({ className }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="29"
+      height="29"
+      fill="none"
+      viewBox="0 0 29 29"
+      className={className}
+    >
+      <path
+        fill="#fff"
+        d="M.28 27.306a1 1 0 1 0 1.44 1.388L1 28zM28 .981a1 1 0 0 0-1.019-.98L17.983.17a1 1 0 1 0 .037 2l7.999-.151.151 7.998a1 1 0 0 0 2-.037zM1 28l.72.694 26-27L27 1l-.72-.694-26 27z"
+      ></path>
+    </svg>
+  );
+}

@@ -6,7 +6,7 @@ export default function Accordion({ children, title, serial }) {
     <div className=" border-t">
       <button
         onClick={() => setShowAccordion((prev) => !prev)}
-        className="flex justify-between w-full py-2.5 font-medium"
+        className="flex justify-between w-full py-3 font-medium text-lg"
       >
         <span>{title}</span>
         <span>/{serial}</span>

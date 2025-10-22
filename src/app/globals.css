@@ -7,6 +7,7 @@
   --color-blue-light: #44b6e9;
   --color-teal: #02d5e8;
   --color-dark-white: #d9d9d9;
+  --color-purple: #b66dd2c9;
   /* font list */
   --font-press-start: var(--font-press-start-2p);
   --font-manrope: var(--font-manrope);
@@ -21,8 +22,8 @@
   .custom-shadow {
     @apply shadow-[0px_4px_40px_0px_#00000014] hover:shadow-xl;
   }
-  .bg-home-banner {
-    @apply bg-[url('/images/banners/home-banner.webp')] bg-top bg-cover;
+  .hoverEffect {
+    @apply transition-colors duration-300 ease-in-out;
   }
 }
 @layer base {
