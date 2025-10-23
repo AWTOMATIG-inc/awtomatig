@@ -3,13 +3,14 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 export default function Footer() {
   return (
-    <footer className="container relative">
+    <footer className="container relative overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-8 py-12 relative z-10">
         <div>
           <Image
             src={awtomatig_logo}
             width={238}
             height={80}
+            className="w-[210px] md:w-full max-w-[238px] h-auto"
             alt="Awtomatig Logo"
           />
           <div className="flex items-center gap-x-8 mt-8">
@@ -37,7 +38,7 @@ export default function Footer() {
           <p>+ 800 350 84 31</p>
         </div>
       </div>
-      <div className="border-t max-w-[1343px] mx-auto mt-10 pt-6 text-center text-sm font-medium relative z-10">
+      <div className="border-t max-w-[1343px] mx-auto mt-10 py-6 text-center text-sm font-medium relative z-10">
         <p>Copyright @ AWTOMATIG 2025. All Rights Reserved.</p>
       </div>
 

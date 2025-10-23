@@ -15,16 +15,16 @@ import Image from "next/image";
 import Marquee from "react-fast-marquee";
 export default function Home() {
   return (
-    <main className="bg-home-banners">
+    <main className="bg-home-banners overflow-hidden">
       <Image
         src={"/images/banners/home-banner.webp"}
         alt="aside_image"
         width={2500}
         height={772}
-        className="absolute left-0 w-full h-full"
+        className="absolute left-0 w-full h-full "
       />
-      <section className="container min-h-screen  relative">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.8fr] items-center justify-center h-[60vh] md:h-[90vh]">
+      <section className="container min-h-[70vh] sm:min-h-screen relative ">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.8fr] items-center justify-center h-[70vh] md:h-[90vh]">
           <div></div>
           <div className="absolute -left-50 top-1/2 -translate-y-1/2 hidden md:block">
             <Image
@@ -36,7 +36,7 @@ export default function Home() {
             />
           </div>
           <div className="max-w-[850px] text-center md:text-left">
-            <h1 className="text-3xl lg:text-4xl xl:text-5xl font-press-start leading-[149%]">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-press-start leading-[149%]">
               Artificial Intelligence <br />
               in nowadays life
             </h1>
@@ -61,7 +61,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="max-w-[1341px] mx-auto border rounded-lg  px-8 md:px-14 py-4 md:py-8 overflow-hidden">
+        <div className="max-w-[1341px] mx-auto border rounded-lg  px-8 md:px-14 py-4 md:py-8 overflow-hidden ">
           <Marquee speed={50} gradient={false} autoFill={true}>
             {Array.from({ length: 3 }).map((_, index) => (
               <Image
@@ -76,8 +76,8 @@ export default function Home() {
           </Marquee>
         </div>
       </section>
-      <section className="container min-h-screen">
-        <div className="mt-20 mb-14 max-w-[1341px] mx-auto text-center sm:text-left">
+      <section className="container min-h-screen mt-20 relative z-99">
+        <div className="md:mt-20 mb-14 max-w-[1341px] mx-auto text-center sm:text-left">
           <h5>[ Why Us ]</h5>
           <h1 className="font-press-start text-xl lg:text-3xl mt-8">
             Unique, ownable <br />
@@ -141,7 +141,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="container mt-40">
+      <section className="container sm:mt-20 md:mt-40">
         <div className="max-w-[1341px] mx-auto grid lg:grid-cols-[230px_1fr] xl:grid-cols-[300px_1fr]">
           <div className="text-center lg:text-left">
             <h5 className="text-3xl font-sora font-bold">
@@ -175,7 +175,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="container mt-40 z-1 relative">
+      <section className="container mt-20 md:mt-40 z-1 relative">
         <div className="text-center sm:text-left mb-8">
           <h5>[ Why Us ]</h5>
           <h1 className="font-press-start text-2xl lg:text-3xl mt-8 ">
@@ -345,7 +345,7 @@ export default function Home() {
         </div>
       </section>
       <section className="container relative">
-        <div className="py-20 mx-auto max-w-[1341px]">
+        <div className="pt-14 md:py-20 mx-auto max-w-[1341px]">
           <div className="flex flex-col md:flex-row gap-y-8 md:gap-y-0 text-center md:text-left items-center justify-between relative z-10">
             <div>
               <h5>[ blog ]</h5>
@@ -371,14 +371,14 @@ export default function Home() {
             ></span>
           </div>
         </div>
-        <div className="max-w-[1114px] ml-auto mt-20">
+        <div className="max-w-[1114px] ml-auto mt-10 md:mt-20">
           <ArticleBar />
           <ArticleBar />
           <ArticleBar />
           <ArticleBar />
         </div>
-        <div className="max-w-[1341px] mx-auto flex justify-between items-center px-5 sm:px-10 md:px-14 lg:px-20 py-20 relative z-10">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-sora">
+        <div className="max-w-[1341px] mx-auto flex justify-between items-center px-5 sm:px-10 md:px-14 lg:px-20 py-20 relative z-10 gap-3">
+          <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-6xl font-sora">
             Artificial Intellegance
             <br /> create digital future.
           </h1>
