@@ -25,6 +25,9 @@
   .hoverEffect {
     @apply transition-colors duration-300 ease-in-out;
   }
+  .wrapper {
+    @apply max-w-[1341px] mx-auto;
+  }
 }
 @layer base {
   button {

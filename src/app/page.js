@@ -61,23 +61,33 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="max-w-[1341px] mx-auto border rounded-lg  px-8 md:px-14 py-4 md:py-8 overflow-hidden ">
-          <Marquee speed={50} gradient={false} autoFill={true}>
-            {Array.from({ length: 3 }).map((_, index) => (
-              <Image
-                key={index}
-                src={awtomatig_logo}
-                width={66}
-                height={92}
-                alt="logo"
-                className="w-full max-w-[50px] md:max-w-[66px] max-h-[92px] h-auto mr-10"
-              />
-            ))}
-          </Marquee>
+        <div className="wrapper hidden sm:flex justify-between border rounded-lg  px-8 md:px-14 py-4 md:py-8 overflow-x-hidden ">
+          {Array.from({ length: 9 }).map((_, index) => (
+            <Image
+              key={index}
+              src={awtomatig_logo}
+              width={66}
+              height={92}
+              alt="logo"
+              className="w-full max-w-[50px] md:max-w-[66px] max-h-[92px] h-auto"
+            />
+          ))}
+        </div>
+        <div className=" sm:hidden wrapper flex justify-between border rounded-lg  px-8 md:px-14 py-4 md:py-8 overflow-x-hidden w-full">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Image
+              key={index}
+              src={awtomatig_logo}
+              width={66}
+              height={92}
+              alt="logo"
+              className="w-full max-w-[50px] md:max-w-[66px] max-h-[92px] h-auto "
+            />
+          ))}
         </div>
       </section>
-      <section className="container min-h-screen mt-20 relative z-99">
-        <div className="md:mt-20 mb-14 max-w-[1341px] mx-auto text-center sm:text-left">
+      <section className="container  mt-20 relative z-99">
+        <div className="wrapper md:mt-20 mb-14 text-center sm:text-left">
           <h5>[ Why Us ]</h5>
           <h1 className="font-press-start text-xl lg:text-3xl mt-8">
             Unique, ownable <br />
@@ -85,7 +95,7 @@ export default function Home() {
           </h1>
         </div>
 
-        <div className="bg-dark-1 px-5 lg:px-9 py-9 rounded-lg">
+        <div className="wrapper bg-dark-1 px-5 lg:px-9 py-9 rounded-lg ">
           <div className="flex justify-between mb-4 font-press-start">
             <div className="max-w-[761px] w-full ">
               <h4 className="text-xl lg:text-4xl">Digital products</h4>
@@ -115,7 +125,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="container">
+
+      <section className="container mt-20">
         <div>
           <Marquee speed={50} gradient={false} autoFill={true}>
             <h1 className="font-sora text-5xl lg:text-7xl bg-gradient-to-l from-blue-light to-dark-white bg-clip-text text-transparent text-center overflow-hidden py-4">
@@ -123,7 +134,8 @@ export default function Home() {
             </h1>
           </Marquee>
         </div>
-        <div className="mt-20 mb-14 max-w-[1341px] mx-auto text-center sm:text-left relative z-10">
+
+        <div className="wrapper mt-20 mb-14  text-center sm:text-left relative z-10">
           <div>
             <h5>[ Why Us ]</h5>
             <h1 className="font-press-start text-2xl lg:text-3xl mt-8 ">
@@ -142,7 +154,7 @@ export default function Home() {
         </div>
       </section>
       <section className="container sm:mt-20 md:mt-40">
-        <div className="max-w-[1341px] mx-auto grid lg:grid-cols-[230px_1fr] xl:grid-cols-[300px_1fr]">
+        <div className="wrapper grid lg:grid-cols-[230px_1fr] xl:grid-cols-[300px_1fr]">
           <div className="text-center lg:text-left">
             <h5 className="text-3xl font-sora font-bold">
               Our process is <br />
@@ -176,14 +188,14 @@ export default function Home() {
         </div>
       </section>
       <section className="container mt-20 md:mt-40 z-1 relative">
-        <div className="text-center sm:text-left mb-8">
+        <div className=" sm:hidden text-center sm:text-left mb-8">
           <h5>[ Why Us ]</h5>
           <h1 className="font-press-start text-2xl lg:text-3xl mt-8 ">
             Unique, ownable <br />
             intelligence
           </h1>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[1fr_400px_279px] gap-5 max-w-[1341px] mx-auto text-center sm:text-left">
+        <div className="wrapper grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[1fr_400px_279px] gap-5 text-center sm:text-left">
           <div className="relative w-fit text-black rounded-2xl overflow-hidden ">
             <Image
               src={card_bg}
@@ -237,7 +249,7 @@ export default function Home() {
         </div>
       </section>
       <section className="container">
-        <div className="bg-[conic-gradient(from_133.87deg_at_50%_48.06%,_#333333_0deg,_#A2F5FF_176.54deg,_#000000_360deg)] flex flex-col lg:flex-row items-center  gap-8 max-w-[1341px] mx-auto text-black px-12 lg:px-20 py-9 rounded-xl mt-8 min-h-[296px]">
+        <div className="wrapper bg-[conic-gradient(from_133.87deg_at_50%_48.06%,_#333333_0deg,_#A2F5FF_176.54deg,_#000000_360deg)] flex flex-col lg:flex-row items-center  gap-8 text-black px-12 lg:px-20 py-9 rounded-xl mt-8 min-h-[296px]">
           <h1 className="text-xl font-press-start max-w-[454px] text-center lg:text-left">
             Keep flying with <br /> your favorite service
           </h1>
@@ -258,7 +270,7 @@ export default function Home() {
         </div>
       </section>
       <section className="container mt-20">
-        <div className="relative">
+        <div className="relative wrapper">
           <Image
             src={playBanner}
             width={1887}
@@ -266,8 +278,8 @@ export default function Home() {
             alt="banner"
             className="rounded-xl"
           />
-          <div className="absolute  w-full left-1/2 top-1/2 -translate-1/2 max-w-[1341px] h-full flex justify-between items-center px-5 md:px-14 lg:px-20">
-            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-8xl font-sora">
+          <div className="absolute  w-full left-1/2 top-1/2 -translate-1/2 max-w-[1341px] h-full flex justify-between items-center px-4 md:px-8 lg:px-10">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-sora leading-[150%] lg:leading-[110%] ">
               Future is here. <br /> Meet changes!
             </h1>
             <button className="text-xs sm:text-sm md:text-xl lg:text-3xl border size-[80px] sm:size-[100px] md:size-[150px] lg:size-[200px] rounded-full capitalize hover:border-teal hover:text-teal hoverEffect">
@@ -277,7 +289,7 @@ export default function Home() {
         </div>
       </section>
       <section className="container mt-20">
-        <div className="max-w-[1341px] mx-auto">
+        <div className="wrapper">
           <div className="flex justify-between items-center">
             <h1 className="font-sora text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-teal">
               Our capabilities
@@ -302,7 +314,7 @@ export default function Home() {
         </div>
       </section>
       <section className="container mt-20">
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="wrapper grid md:grid-cols-2 gap-8">
           <div>
             <Image
               src={rainbow_bg}
@@ -315,12 +327,12 @@ export default function Home() {
           <div>
             <div className="max-w-[690px] text-center md:text-left">
               <h5>[ Testimonials ]</h5>
-              <h1 className="font-sora text-2xl sm:text-3xl md:text-4xl lg:text-6xl mt-8 md:leading-[70px]">
-                Awesome thouths
+              <h1 className="font-sora text-2xl sm:text-3xl md:text-4xl lg:text-6xl mt-6 lg:mt-8 leading-[55px] lg:leading-[70px]">
+                Awesome Thouths
                 <br className="hidden md:block" />
-                about Artificial <br /> Intelligence
+                About Artificial <br /> Intelligence
               </h1>
-              <p className="mt-20">
+              <p className="mt-6 sm:mt-10 lg:mt-20">
                 Halosaur duckbilled barracudina, goosefish gar pleco, chum
                 salmon armoured catfish gudgeon sawfish whitefish orbicular
                 batfish mummichog paradise fish! Pacific hake false trevally
@@ -329,12 +341,12 @@ export default function Home() {
                 pacific hake false trevally queen parrotfish black prickleback
                 moss revally
               </p>
-              <div className="flex flex-col md:flex-row justify-between items-center mt-13">
+              <div className="flex flex-col lg:flex-row justify-between items-center mt-13 md:text-center">
                 <div>
                   <h5 className="font-bold text-xl">Adrian Mitchel</h5>
                   <p className="text-sm font-bold mt-1">SolarInc</p>
                 </div>
-                <div className="flex items-center gap-8 mt-5 md:mt-0">
+                <div className="flex items-center gap-8 mt-5 lg:mt-0">
                   <span className="w-20 h-2 bg-white block"></span>
                   <span className="w-20 h-1 bg-white block"></span>
                   <span className="w-20 h-1 bg-white block"></span>
@@ -345,46 +357,47 @@ export default function Home() {
         </div>
       </section>
       <section className="container relative">
-        <div className="pt-14 md:py-20 mx-auto max-w-[1341px]">
-          <div className="flex flex-col md:flex-row gap-y-8 md:gap-y-0 text-center md:text-left items-center justify-between relative z-10">
-            <div>
-              <h5>[ blog ]</h5>
-              <h1 className="font-sora text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-8">
-                Useful articles
-                <br />
-                from our company
-              </h1>
+        <div className="wrapper">
+          <div className="pt-14 md:py-20">
+            <div className="flex flex-col md:flex-row gap-y-8 md:gap-y-0 text-center md:text-left items-center justify-between relative z-10">
+              <div>
+                <h5>[ blog ]</h5>
+                <h1 className="font-sora text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-8">
+                  Useful articles
+                  <br />
+                  from our company
+                </h1>
+              </div>
+              <button className="border px-4 py-3 rounded-lg border-teal  hover:bg-teal/80 hoverEffect">
+                Get started
+              </button>
             </div>
-            <button className="border px-4 py-3 rounded-lg border-teal  hover:bg-teal/80 hoverEffect">
-              Get started
+            <div className="hidden md:block">
+              <div className="w-[1060px] h-[470px] hidden md:block absolute left-[-15%] top-0 rounded-[50%] bg-[linear-gradient(215.67deg,_rgba(2,213,232,0.55)_18.02%,_rgba(3,50,103,0.55)_94.4%)] blur-[200px] ">
+                <div className="relative h-full w-full">
+                  <span className="bg-purple w-[600px] h-[300px] block rounded-[100%]  absolute left-1/2 top-1/2 -translate-1/2"></span>
+                </div>
+              </div>
+              <span className="w-[1060px] h-[470px] block absolute right-[-15%] top-0 rounded-[50%] bg-[linear-gradient(215.67deg,_rgba(2,213,232,0.55)_18.02%,_rgba(3,50,103,0.55)_94.4%)] blur-[200px]"></span>
+            </div>
+          </div>
+          <div>
+            <div className="max-w-[1114px] ml-auto mt-10 md:mt-20">
+              <ArticleBar />
+              <ArticleBar />
+              <ArticleBar />
+              <ArticleBar />
+            </div>
+          </div>
+          <div className="flex justify-between items-center px-5  py-20 relative z-10 gap-3">
+            <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-6xl font-sora">
+              Artificial Intellegance
+              <br /> create digital future.
+            </h1>
+            <button className="text-xs md:text-lg lg:text-xl border size-[100px] md:size-[130px] lg:size-[173px] rounded-full capitalize px-2 hover:border-teal hover:text-teal hoverEffect">
+              Get in touch
             </button>
           </div>
-          <div className="hidden md:block">
-            <div className="w-[1060px] h-[470px] hidden md:block absolute left-[-15%] top-0 rounded-[50%] bg-[linear-gradient(215.67deg,_rgba(2,213,232,0.55)_18.02%,_rgba(3,50,103,0.55)_94.4%)] blur-[200px] ">
-              <div className="relative h-full w-full">
-                <span className="bg-purple w-[600px] h-[300px] block rounded-[100%]  absolute left-1/2 top-1/2 -translate-1/2"></span>
-              </div>
-            </div>
-            <span
-              className="w-[1060px] h-[470px] block absolute right-[-15%] top-0 rounded-[50%] bg-[linear-gradient(215.67deg,_rgba(2,213,232,0.55)_18.02%,_rgba(3,50,103,0.55)_94.4%)] ;
-] blur-[200px]"
-            ></span>
-          </div>
-        </div>
-        <div className="max-w-[1114px] ml-auto mt-10 md:mt-20">
-          <ArticleBar />
-          <ArticleBar />
-          <ArticleBar />
-          <ArticleBar />
-        </div>
-        <div className="max-w-[1341px] mx-auto flex justify-between items-center px-5 sm:px-10 md:px-14 lg:px-20 py-20 relative z-10 gap-3">
-          <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-6xl font-sora">
-            Artificial Intellegance
-            <br /> create digital future.
-          </h1>
-          <button className="text-xs md:text-lg lg:text-xl border size-[100px] md:size-[130px] lg:size-[173px] rounded-full capitalize px-2 hover:border-teal hover:text-teal hoverEffect">
-            Get in touch
-          </button>
         </div>
       </section>
     </main>
