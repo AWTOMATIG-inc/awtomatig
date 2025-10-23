@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 export default function Footer() {
   return (
-    <footer className="container relative overflow-hidden">
+    <footer className="container relative">
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-8 py-12 relative z-10">
         <div>
           <Image
@@ -42,7 +42,7 @@ export default function Footer() {
         <p>Copyright @ AWTOMATIG 2025. All Rights Reserved.</p>
       </div>
 
-      <div>
+      <div className="hidden md:block">
         <div className="w-[900px] h-[570px] block absolute left-[-10%] bottom-[-10%] rounded-t-full bg-[linear-gradient(215.67deg,_rgba(2,213,232,0.55)_18.02%,_rgba(3,50,103,0.55)_60.4%)] blur-[160px]">
           <div className="relative h-full w-full">
             <span className="bg-purple size-[320px] block rounded-[100%] absolute left-[10%] top-[40%] "></span>

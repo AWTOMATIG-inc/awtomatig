@@ -123,7 +123,7 @@ export default function Home() {
             </h1>
           </Marquee>
         </div>
-        <div className="mt-20 mb-14 max-w-[1341px] mx-auto text-center sm:text-left">
+        <div className="mt-20 mb-14 max-w-[1341px] mx-auto text-center sm:text-left relative z-10">
           <div>
             <h5>[ Why Us ]</h5>
             <h1 className="font-press-start text-2xl lg:text-3xl mt-8 ">
@@ -153,8 +153,8 @@ export default function Home() {
             </span>
           </div>
           <div className="relative ">
-            <span className="absolute right-[-40%] -bottom-[70%] size-[1145px] inline-block bg-[linear-gradient(215.67deg,rgba(2,213,232,0.55)_18.02%,rgba(3,50,103,0.55)_94.4%)] blur-[173.4px] rounded-full"></span>
-            <div className="space-y-16 mt-20">
+            <span className="absolute right-[-40%] -bottom-[70%] size-[1145px]  bg-[linear-gradient(215.67deg,rgba(2,213,232,0.55)_18.02%,rgba(3,50,103,0.55)_94.4%)] blur-[173.4px] rounded-full hidden sm:inline-block"></span>
+            <div className="space-y-16 mt-20 ">
               {ourProcessData.map((process) => (
                 <div
                   key={process.id}
@@ -359,8 +359,8 @@ export default function Home() {
               Get started
             </button>
           </div>
-          <div>
-            <div className="w-[1060px] h-[470px] block absolute left-[-15%] top-0 rounded-[50%] bg-[linear-gradient(215.67deg,_rgba(2,213,232,0.55)_18.02%,_rgba(3,50,103,0.55)_94.4%)] blur-[200px]">
+          <div className="hidden md:block">
+            <div className="w-[1060px] h-[470px] hidden md:block absolute left-[-15%] top-0 rounded-[50%] bg-[linear-gradient(215.67deg,_rgba(2,213,232,0.55)_18.02%,_rgba(3,50,103,0.55)_94.4%)] blur-[200px] ">
               <div className="relative h-full w-full">
                 <span className="bg-purple w-[600px] h-[300px] block rounded-[100%]  absolute left-1/2 top-1/2 -translate-1/2"></span>
               </div>
