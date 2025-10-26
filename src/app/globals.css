@@ -28,6 +28,14 @@
   .wrapper {
     @apply max-w-[1341px] mx-auto;
   }
+  .hero-banner {
+    @apply bg-[url('/images/banners/hero-banner.webp')] bg-no-repeat bg-cover bg-center;
+  }
+}
+@layer utilities {
+  .text-border {
+    -webkit-text-stroke: 2px white;
+  }
 }
 @layer base {
   button {
