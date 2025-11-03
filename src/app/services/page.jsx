@@ -1,7 +1,10 @@
+import awtomatigBanner from "@/assets/services/awtomatig-banner.webp";
+import Accordion from "@/components/Accordion";
 import InputBox from "@/components/InputBox";
 import TextBox from "@/components/TextBox";
+import { capabilities } from "@/contants/capabilities";
 import { Icon } from "@iconify/react";
-
+import Image from "next/image";
 export default function Services() {
   return (
     <main>
@@ -69,8 +72,82 @@ export default function Services() {
           </div>
         </div>
       </section>
+      <section className="container mt-20">
+        <div className="wrapper service-awtomatig-banner h-[354px] flex flex-col justify-center items-center text-center px-20 py-10 rounded-sm">
+          <h1 className="text-5xl font-bold">AI Strategy and Consulting</h1>
+          <p className="font-bold text-3xl mt-10">
+            Provide expert guidance on <br /> developing an AI strategy
+          </p>
+        </div>
+      </section>
+      <section className="container mt-20">
+        <div className="wrapper">
+          <p className="text-[22px] text-center leading-[40px] tracking-[3px]">
+            In today's fast-paced and data-driven world, businesses are
+            constantly seeking innovative ways to <br /> gain a competitive
+            edge, make <br />
+            smarter decisions, and deliver exceptional customer experiences. One
+            technology that is <br /> transforming industries across the globe
+            is <br />
+            neural networks. Harnessing the power of artificial intelligence,
+            neural networks have the ability to <br /> analyze vast amounts of
+            data, <br />
+            identify complex patterns, and make accurate predictions, enabling
+            businesses to unlock new <br /> opportunities and drive growth.
+          </p>
+          <ul className="text-[22px] space-y-4 mt-14 ml-8">
+            <li className="flex gap-3 items-center">
+              <Icon icon="humbleicons:arrow-right-up" width="26" height="26" />
+              <span>Pacific hake false trevally queen parrotfish black</span>
+            </li>
+            <li className="flex gap-3 items-center">
+              <Icon icon="humbleicons:arrow-right-up" width="26" height="26" />
+              <span>Prickleback moss revally queen parrotfish black</span>
+            </li>
+            <li className="flex gap-3 items-center">
+              <Icon icon="humbleicons:arrow-right-up" width="26" height="26" />
+              <span>Queen parrotfish black prickleback moss pacific</span>
+            </li>
+            <li className="flex gap-3 items-center">
+              <Icon icon="humbleicons:arrow-right-up" width="26" height="26" />
+              <span>Hake false trevally queen</span>
+            </li>
+          </ul>
+          <div className="w-full object-cover h-auto mt-14">
+            <Image
+              src={awtomatigBanner}
+              width={1334}
+              height={1145}
+              alt="awtomatig-banner"
+            />
+          </div>
+        </div>
+      </section>
+      <section className="container mt-20">
+        <div className="wrapper">
+          <div className="">
+            <p>[ FAQ ]</p>
+            <h1 className="font-press-start text-2xl sm:text-3xl md:text-4xl  font-bold  leading-[135%] mt-10">
+              Open questions <br />
+              from our customers
+            </h1>
+          </div>
+
+          <div className="mt-14">
+            {capabilities.map((capability) => (
+              <Accordion
+                key={capability.id}
+                title={capability.title}
+                serial={"0" + capability.id}
+              >
+                <p>{capability.description}</p>
+              </Accordion>
+            ))}
+          </div>
+        </div>
+      </section>
       <section>
-        <div className="container  font-sora pt-32">
+        <div className="container  font-sora py-32">
           <div className="wrapper">
             <div className="grid grid-cols-2 gap-20 max-w-[1430px] mx-auto">
               <div>
