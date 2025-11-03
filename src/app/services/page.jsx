@@ -21,7 +21,14 @@ export default function Services() {
           <p className="absolute bottom-5 left-5 font-bold">Home / services</p>
         </div>
       </section>
-      <section className="container">
+      <section className="container relative">
+        <span
+          style={{
+            background:
+              "linear-gradient(215.67deg, rgba(2, 213, 232, 0.55) 18.02%, rgba(3, 50, 103, 0.55) 94.4%)",
+          }}
+          className=" inline-block absolute size-[1145px]  -left-40 top-1/2 -translate-y-1/2 rounded-full blur-[320px] -z-1"
+        ></span>
         <div className="wrapper">
           <div className="text-center mt-20">
             <h1 className="text-[48px] font-bold">
@@ -80,7 +87,14 @@ export default function Services() {
           </p>
         </div>
       </section>
-      <section className="container mt-20">
+      <section className="container mt-20 relative">
+        <span
+          style={{
+            background:
+              "linear-gradient(215.67deg, rgba(2, 213, 232, 0.55) 18.02%, rgba(3, 50, 103, 0.55) 94.4%)",
+          }}
+          className=" inline-block absolute size-[1145px]  -left-40 top-1/2 -translate-y-1/2 rounded-full blur-[320px] -z-1"
+        ></span>
         <div className="wrapper">
           <p className="text-[22px] text-center leading-[40px] tracking-[3px]">
             In today's fast-paced and data-driven world, businesses are
@@ -123,7 +137,14 @@ export default function Services() {
           </div>
         </div>
       </section>
-      <section className="container mt-20">
+      <section className="container mt-20 relative">
+        <span
+          style={{
+            background:
+              "linear-gradient(215.67deg, rgba(2, 213, 232, 0.55) 18.02%, rgba(3, 50, 103, 0.55) 94.4%)",
+          }}
+          className=" inline-block absolute size-[800px]  -left-40 -bottom-10 rounded-full blur-[320px] -z-1"
+        ></span>
         <div className="wrapper">
           <div className="">
             <p>[ FAQ ]</p>

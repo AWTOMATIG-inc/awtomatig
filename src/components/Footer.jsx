@@ -38,7 +38,7 @@ export default function Footer() {
             <Icon icon="humbleicons:arrow-right-up" width="24" height="24" />
           </button>
         </div>
-        <hr className="my-8" />
+        <hr className="mt-20 mb-16" />
         <div className="grid grid-cols-[4fr_1fr]">
           <div>
             <div>
@@ -64,7 +64,10 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-            <Image src={sinceText} width={695} height={106} alt="text-logo" />
+            <div className="mt-10">
+              <Image src={sinceText} width={695} height={106} alt="text-logo" />
+            </div>
+
             {/* <h1 className="relative text-[80px] font-extrabold text-white uppercase gradient-border">
               since 2022
             </h1> */}
