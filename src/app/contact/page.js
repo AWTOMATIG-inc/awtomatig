@@ -8,12 +8,12 @@ export default function Contact() {
       <section className="hero-banner min-h-[823px] relative">
         <div className="container">
           <div className="flex flex-col justify-center items-center min-h-screen text-center gap-4">
-            <h1 className="font-bold text-7xl uppercase">/Contacts/</h1>
+            <h1 className="font-bold text-7xl uppercase">/Contact/</h1>
           </div>
           <h5 className="text-8xl text-border text-transparent uppercase absolute -right-30 top-1/2 -translate-y-1/2 opacity-80 -rotate-90 select-none pointer-events-none tracking-[30%] font-sora">
             Contacts
           </h5>
-          <p className="absolute bottom-5 left-5 font-bold">Home / contacts</p>
+          <p className="absolute bottom-5 left-5 font-bold">Home / contact</p>
         </div>
       </section>
       <section>

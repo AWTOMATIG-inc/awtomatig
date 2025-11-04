@@ -1,7 +1,7 @@
 import awtomatig_logo from "@/assets/logo/awtomatig-full-logo.png";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-export default function Footer() {
+export default function Footer2() {
   return (
     <footer className="container relative">
       <div className="wrapper">

@@ -1,5 +1,6 @@
 "use client";
 import awtomatig_logo from "@/assets/logo/awtomatig-logo.png";
+import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -12,11 +13,7 @@ const links = [
     pathname: "Home",
     path: "/",
   },
-  {
-    id: 2,
-    pathname: "Pages",
-    path: "/pages",
-  },
+
   {
     id: 3,
     pathname: "Services",
@@ -24,17 +21,17 @@ const links = [
   },
   {
     id: 4,
-    pathname: "Shop",
-    path: "/shop",
+    pathname: "Process",
+    path: "/process",
   },
   {
     id: 5,
-    pathname: "blog",
-    path: "/blog",
+    pathname: "About us",
+    path: "/about-us",
   },
   {
     id: 6,
-    pathname: "Contacts",
+    pathname: "Contact",
     path: "/contact",
   },
 ];
@@ -88,6 +85,19 @@ export default function Header() {
                 ))}
               </ul>
 
+              <a
+                href="https://awlabs.online/"
+                target="_blank"
+                className="hidden lg:flex justify-center items-center gap-5 border px-5 py-2 bg-gradient-to-r from-blue-light to-pink-400 text-black rounded-lg font-bold hover:bg-gradient-to-l"
+              >
+                Awlabs
+                <Icon
+                  icon="meteor-icons:arrow-up-right"
+                  width="21"
+                  height="21"
+                />
+              </a>
+
               <button
                 onClick={() => setIsShowNav((prev) => !prev)}
                 className="cursor-pointer lg:hidden"
@@ -114,6 +124,18 @@ export default function Header() {
                     </li>
                   ))}
                 </ul>
+                <a
+                  href="https://awlabs.online/"
+                  target="_blank"
+                  className="flex justify-center items-center gap-5 border px-5 py-2 bg-gradient-to-r from-blue-light to-pink-400 hover:bg-gradient-to-l text-black rounded-lg font-bold w-fit mx-auto"
+                >
+                  Awlabs
+                  <Icon
+                    icon="meteor-icons:arrow-up-right"
+                    width="21"
+                    height="21"
+                  />
+                </a>
               </div>
             </div>
           </nav>
