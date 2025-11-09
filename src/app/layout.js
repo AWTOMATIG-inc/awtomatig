@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+import Footer from "@/components/footer/Footer";
 import Header from "@/components/Header";
 import { Manrope, Press_Start_2P, Silkscreen, Sora } from "next/font/google";
 import "./globals.css";

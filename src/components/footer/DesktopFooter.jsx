@@ -3,10 +3,10 @@ import sinceText from "@/assets/logo/since-text.png";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
-export default function Footer() {
+export default function DesktopFooter() {
   return (
     <footer
-      className="container relative bg-[#201F1F78]  min-h-[668px] shadow-[0px_4px_18.5px_0px_rgba(2,_213,_232,_1)]
+      className="hidden sm:block container relative bg-[#201F1F78]  min-h-[668px] shadow-[0px_4px_18.5px_0px_rgba(2,_213,_232,_1)]
  rounded-[45px] py-16 mb-6 overflow-hidden"
     >
       <div>

@@ -1,12 +1,12 @@
 import awtomatig_logo from "@/assets/logo/awtomatig-full-logo.png";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
-export default function Footer2() {
+export default function MobileFooter() {
   return (
-    <footer className="container relative">
+    <footer className="container relative sm:hidden">
       <div className="wrapper">
-        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-8 py-12 relative z-10">
-          <div>
+        <div className="grid  md:grid-cols-[2fr_1fr_1fr] justify-center gap-8 py-12 relative z-10 text-center">
+          <div className="w-fit mx-auto mb-12">
             <Image
               src={awtomatig_logo}
               width={238}

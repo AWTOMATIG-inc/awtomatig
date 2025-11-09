@@ -1,12 +1,15 @@
+"use client";
 import playBanner from "@/assets/home/animated-banner.jpg";
 import card_bg from "@/assets/home/card-bg.webp";
 import glove_card from "@/assets/home/glove-card.webp";
 import worldGlove from "@/assets/home/glove.webp";
 import rainbow_bg from "@/assets/home/rainbow-bg.webp";
-import sora_ai from "@/assets/home/sora-ai.png";
 import awtomatig_logo from "@/assets/logo/awtomatig-logo.png";
 import Accordion from "@/components/Accordion";
+import FadeInSection from "@/components/animation/FadeEffect";
+import GsapScrollEffect from "@/components/animation/GsapScrollEffect";
 import ArticleBar from "@/components/ArticleBar";
+import WhyUs from "@/components/home/WhyUs";
 import { capabilities } from "@/contants/capabilities";
 import { ourProcessData } from "@/contants/ourProcess";
 import { servicesData } from "@/contants/services";
@@ -23,108 +26,72 @@ export default function Home() {
         height={772}
         className="absolute left-0 w-full h-full "
       />
-      <section className="container min-h-[70vh] sm:min-h-screen relative ">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.8fr] items-center justify-center h-[70vh] md:h-[90vh]">
-          <div></div>
-          <div className="absolute -left-50 top-1/2 -translate-y-1/2 hidden md:block">
-            <Image
-              src={worldGlove}
-              alt="aside_image"
-              width={772}
-              height={772}
-              className="md:w-[75%] lg:w-[90%] xl:w-full max-w-[650px] h-auto"
-            />
-          </div>
-          <div className="max-w-[850px] text-center md:text-left">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-press-start leading-[149%]">
-              Artificial Intelligence <br />
-              in nowadays life
-            </h1>
-            <p className="my-[30px] text-base xl:text-lg">
-              Mummichog paradise fish! Triggerfish bango guppy opah sunfish
-              bluntnose knifefish upside-down catfish cobia spookfish convict
-              cichlid.
-            </p>
-            <div className="flex gap-8 justify-center md:justify-start">
-              <button className="flex justify-center items-center gap-8 border px-5 py-2 bg-gradient-to-l from-blue-light to-dark-white text-black rounded-lg">
-                Discover
-                <Icon
-                  icon="meteor-icons:arrow-up-right"
-                  width="21"
-                  height="21"
-                />
-              </button>
-              <button className="flex justify-center items-center gap-2 px-4 py-1 border border-transparent hover:border-blue-light rounded-lg">
-                <Icon icon="ep:video-play" width="25" height="25" />
-                Watch Video
-              </button>
+      <FadeInSection>
+        <section className="container min-h-[70vh] sm:min-h-screen relative ">
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.8fr] items-center justify-center h-[70vh] md:h-[90vh]">
+            <div></div>
+            <div className="absolute -left-50 top-1/2 -translate-y-1/2 hidden md:block">
+              <Image
+                src={worldGlove}
+                alt="aside_image"
+                width={772}
+                height={772}
+                className="md:w-[75%] lg:w-[90%] xl:w-full max-w-[650px] h-auto"
+              />
             </div>
-          </div>
-        </div>
-        <div className="wrapper hidden sm:flex justify-between border rounded-lg  px-8 md:px-14 py-4 md:py-8 overflow-x-hidden ">
-          {Array.from({ length: 9 }).map((_, index) => (
-            <Image
-              key={index}
-              src={awtomatig_logo}
-              width={66}
-              height={92}
-              alt="logo"
-              className="w-full max-w-[50px] md:max-w-[66px] max-h-[92px] h-auto"
-            />
-          ))}
-        </div>
-        <div className=" sm:hidden wrapper flex justify-between border rounded-lg  px-8 md:px-14 py-4 md:py-8 overflow-x-hidden w-full">
-          {Array.from({ length: 4 }).map((_, index) => (
-            <Image
-              key={index}
-              src={awtomatig_logo}
-              width={66}
-              height={92}
-              alt="logo"
-              className="w-full max-w-[50px] md:max-w-[66px] max-h-[92px] h-auto "
-            />
-          ))}
-        </div>
-      </section>
-      <section className="container  mt-20 relative z-99">
-        <div className="wrapper md:mt-20 mb-14 text-center sm:text-left">
-          <h5>[ Why Us ]</h5>
-          <h1 className="font-press-start text-xl lg:text-3xl mt-8">
-            Unique, ownable <br />
-            intelligence
-          </h1>
-        </div>
-
-        <div className="wrapper bg-dark-1 px-5 lg:px-9 py-9 rounded-lg ">
-          <div className="flex justify-between mb-4 font-press-start">
-            <div className="max-w-[761px] w-full ">
-              <h4 className="text-xl lg:text-4xl">Digital products</h4>
-              <p className="mt-4 text-xs">
-                We create visually compelling designs that enhance user
-                experience. We make sure your brand&apos;s visuals resonate with
-                your audience.
+            <div className="max-w-[850px] text-center md:text-left">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-press-start leading-[149%]">
+                Artificial Intelligence <br />
+                in nowadays life
+              </h1>
+              <p className="my-[30px] text-base xl:text-lg">
+                Mummichog paradise fish! Triggerfish bango guppy opah sunfish
+                bluntnose knifefish upside-down catfish cobia spookfish convict
+                cichlid.
               </p>
+              <div className="flex gap-8 justify-center md:justify-start">
+                <button className="flex justify-center items-center gap-8 border px-5 py-2 bg-gradient-to-l from-blue-light to-dark-white text-black rounded-lg">
+                  Discover
+                  <Icon
+                    icon="meteor-icons:arrow-up-right"
+                    width="21"
+                    height="21"
+                  />
+                </button>
+                <button className="flex justify-center items-center gap-2 px-4 py-1 border border-transparent hover:border-blue-light rounded-lg">
+                  <Icon icon="ep:video-play" width="25" height="25" />
+                  Watch Video
+                </button>
+              </div>
             </div>
-            <p className="text-right text-2xl lg:text-5xl">/01</p>
           </div>
-          <div className="grid lg:grid-cols-2 gap-8 ">
-            <Image
-              src={sora_ai}
-              width={871}
-              height={428}
-              alt="slider_item"
-              className="w-full h-full max-w-[871px] max-h-[428px] rounded-lg"
-            />
-            <Image
-              src={sora_ai}
-              width={871}
-              height={428}
-              alt="slider_item"
-              className="w-full h-full max-w-[871px] max-h-[428px] rounded-lg"
-            />
+          <div className="wrapper hidden sm:flex justify-between border rounded-lg  px-8 md:px-14 py-4 md:py-8 overflow-x-hidden ">
+            {Array.from({ length: 9 }).map((_, index) => (
+              <Image
+                key={index}
+                src={awtomatig_logo}
+                width={66}
+                height={92}
+                alt="logo"
+                className="w-full max-w-[50px] md:max-w-[66px] max-h-[92px] h-auto"
+              />
+            ))}
           </div>
-        </div>
-      </section>
+          <div className=" sm:hidden wrapper flex justify-between border rounded-lg  px-8 md:px-14 py-4 md:py-8 overflow-x-hidden w-full">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <Image
+                key={index}
+                src={awtomatig_logo}
+                width={66}
+                height={92}
+                alt="logo"
+                className="w-full max-w-[50px] md:max-w-[66px] max-h-[92px] h-auto "
+              />
+            ))}
+          </div>
+        </section>
+      </FadeInSection>
+      <WhyUs />
 
       <section className="container mt-20">
         <div>
@@ -168,20 +135,29 @@ export default function Home() {
             <span className="absolute right-[-40%] -bottom-[70%] size-[1145px]  bg-[linear-gradient(215.67deg,rgba(2,213,232,0.55)_18.02%,rgba(3,50,103,0.55)_94.4%)] blur-[173.4px] rounded-full hidden sm:inline-block"></span>
             <div className="space-y-16 mt-20 ">
               {ourProcessData.map((process) => (
-                <div
+                <GsapScrollEffect
+                  initial={{ opacity: 0, x: process.id % 2 === 0 ? -200 : 200 }}
+                  scrollTop={{ opacity: 1, x: 0 }}
+                  scrollBottom={{
+                    opacity: 0,
+                    x: process.id % 2 === 0 ? -200 : 200,
+                  }}
                   key={process.id}
-                  className={`bg-white text-black px-5 py-7 md:py-10 rounded-xl lg:max-w-[500px] xl:max-w-[700px] 2xl:max-w-[723px] relative ${process.className}`}
                 >
-                  <div className="max-w-[440px] mx-auto">
-                    <h1 className="font-press-start text-lg lg:text-xl">
-                      {process.title}
-                    </h1>
-                    <p className="font-sora mt-7">{process.desc}</p>
+                  <div
+                    className={`bg-white text-black px-5 py-7 md:py-10 rounded-xl lg:max-w-[500px] xl:max-w-[700px] 2xl:max-w-[723px] relative ${process.className}`}
+                  >
+                    <div className="max-w-[440px] mx-auto">
+                      <h1 className="font-press-start text-lg lg:text-xl">
+                        {process.title}
+                      </h1>
+                      <p className="font-sora mt-7">{process.desc}</p>
+                    </div>
+                    <span className="bg-teal font-sora block absolute -top-4 -left-3 p-1 rounded-sm text-sm">
+                      0{process.id}
+                    </span>
                   </div>
-                  <span className="bg-teal font-sora block absolute -top-4 -left-3 p-1 rounded-sm text-sm">
-                    0{process.id}
-                  </span>
-                </div>
+                </GsapScrollEffect>
               ))}
             </div>
           </div>
@@ -347,9 +323,9 @@ export default function Home() {
                   <p className="text-sm font-bold mt-1">SolarInc</p>
                 </div>
                 <div className="flex items-center gap-8 mt-5 lg:mt-0">
-                  <span className="w-20 h-2 bg-white block"></span>
-                  <span className="w-20 h-1 bg-white block"></span>
-                  <span className="w-20 h-1 bg-white block"></span>
+                  <span className="w-10 md:w-20 h-2 bg-white block"></span>
+                  <span className="w-10 md:w-20 h-1 bg-white block"></span>
+                  <span className="w-10 md:w-20 h-1 bg-white block"></span>
                 </div>
               </div>
             </div>
@@ -389,7 +365,7 @@ export default function Home() {
               <ArticleBar />
             </div>
           </div>
-          <div className="flex justify-between items-center px-5  py-20 relative z-10 gap-3">
+          <div className="flex flex-col sm:flex-row justify-between items-center px-5 py-10 md:py-20 relative z-10 gap-3 gap-y-8">
             <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-6xl font-sora">
               Artificial Intellegance
               <br /> create digital future.
