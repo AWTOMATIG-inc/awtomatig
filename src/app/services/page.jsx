@@ -1,5 +1,6 @@
 import awtomatigBanner from "@/assets/services/awtomatig-banner.webp";
 import Accordion from "@/components/Accordion";
+import FadeInSection from "@/components/animation/FadeEffect";
 import InputBox from "@/components/InputBox";
 import TextBox from "@/components/TextBox";
 import { capabilities } from "@/contants/capabilities";
@@ -10,11 +11,18 @@ export default function Services() {
     <main>
       <section className="hero-banner min-h-[823px] relative">
         <div className="container">
-          <div className="flex flex-col justify-center items-center min-h-screen text-center gap-4">
-            <h1 className="font-bold text-7xl uppercase">
-              /Artificial Intelligence (AI) <br /> systems/
-            </h1>
-          </div>
+          <FadeInSection
+            initial={{ opacity: 0, x: -150 }}
+            scrollTop={{ opacity: 1, x: 0 }}
+            scrollBottom={{ opacity: 0, x: -150 }}
+            margin="40px 0px -40px 0px"
+          >
+            <div className="flex flex-col justify-center items-center min-h-screen text-center gap-4">
+              <h1 className="font-bold text-7xl uppercase">
+                /Artificial Intelligence (AI) <br /> systems/
+              </h1>
+            </div>
+          </FadeInSection>
           <h5 className="text-8xl text-border text-transparent uppercase absolute -right-30 top-1/2 -translate-y-1/2 opacity-80 -rotate-90 select-none pointer-events-none tracking-[30%] font-sora">
             Services
           </h5>
@@ -54,37 +62,58 @@ export default function Services() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-8">
-            <div className="service-white-card h-[400px] mt-20 rounded-3xl text-black flex flex-col justify-center items-center px-20 py-10 text-center">
+            <FadeInSection
+              initial={{ opacity: 0, x: -150 }}
+              scrollTop={{ opacity: 1, x: 0 }}
+              scrollBottom={{ opacity: 0, x: -150 }}
+              margin="40px 0px -40px 0px"
+              className="service-white-card h-[400px] mt-20 rounded-3xl text-black flex flex-col justify-center items-center px-20 py-10 text-center"
+            >
               <h1 className="max-w-[405px] text-3xl font-bold  leading-[62px] text-center">
                 Network Integration Deep learning solution Transfer learning
                 Model evaluation Real-time prediction
               </h1>
-            </div>
-            <div className="service-blue-card h-[400px] mt-20 rounded-3xl text-black   px-40 py-10  text-center flex flex-col justify-center items-center gap-6">
-              <div className="max-w-[236px]">
-                <h5 className="font-bold text-2xl">/ download /</h5>
-                <h1 className="text-4xl font-bold my-8 tracking-[10px]">
-                  Services brochure{" "}
-                </h1>
-                <button className="flex gap-2 mt-6 px-10 py-2 border border-black rounded-2xl font-bold w-full justify-center items-center hover:bg-black hover:text-white transition">
-                  <span>Download</span>
-                  <Icon
-                    icon="humbleicons:arrow-right-up"
-                    width="24"
-                    height="24"
-                  />
-                </button>
+            </FadeInSection>
+            <FadeInSection
+              initial={{ opacity: 0, x: 150 }}
+              scrollTop={{ opacity: 1, x: 0 }}
+              scrollBottom={{ opacity: 0, x: 150 }}
+              margin="40px 0px -40px 0px"
+              className="service-blue-card h-[400px] mt-20 rounded-3xl text-black   px-40 py-10  text-center flex flex-col justify-center items-center gap-6"
+            >
+              <div>
+                <div className="max-w-[236px]">
+                  <h5 className="font-bold text-2xl">/ download /</h5>
+                  <h1 className="text-4xl font-bold my-8 tracking-[10px]">
+                    Services brochure{" "}
+                  </h1>
+                  <button className="flex gap-2 mt-6 px-10 py-2 border border-black rounded-2xl font-bold w-full justify-center items-center hover:bg-black hover:text-white transition">
+                    <span>Download</span>
+                    <Icon
+                      icon="humbleicons:arrow-right-up"
+                      width="24"
+                      height="24"
+                    />
+                  </button>
+                </div>
               </div>
-            </div>
+            </FadeInSection>
           </div>
         </div>
       </section>
       <section className="container mt-20">
         <div className="wrapper service-awtomatig-banner h-[354px] flex flex-col justify-center items-center text-center px-20 py-10 rounded-sm">
-          <h1 className="text-5xl font-bold">AI Strategy and Consulting</h1>
-          <p className="font-bold text-3xl mt-10">
-            Provide expert guidance on <br /> developing an AI strategy
-          </p>
+          <FadeInSection
+            initial={{ opacity: 0, y: -150 }}
+            scrollTop={{ opacity: 1, y: 0 }}
+            scrollBottom={{ opacity: 0, y: -150 }}
+            margin="40px 0px -40px 0px"
+          >
+            <h1 className="text-5xl font-bold">AI Strategy and Consulting</h1>
+            <p className="font-bold text-3xl mt-10">
+              Provide expert guidance on <br /> developing an AI strategy
+            </p>
+          </FadeInSection>
         </div>
       </section>
       <section className="container mt-20 relative">
@@ -127,14 +156,20 @@ export default function Services() {
               <span>Hake false trevally queen</span>
             </li>
           </ul>
-          <div className="w-full object-cover h-auto mt-14">
+          <FadeInSection
+            initial={{ opacity: 0, x: -150 }}
+            scrollTop={{ opacity: 1, x: 0 }}
+            scrollBottom={{ opacity: 0, x: -150 }}
+            margin="40px 0px -40px 0px"
+            className="w-full object-cover h-auto mt-14"
+          >
             <Image
               src={awtomatigBanner}
               width={1334}
               height={1145}
               alt="awtomatig-banner"
             />
-          </div>
+          </FadeInSection>
         </div>
       </section>
       <section className="container mt-20 relative">
@@ -145,7 +180,13 @@ export default function Services() {
           }}
           className=" inline-block absolute size-[800px]  -left-40 -bottom-10 rounded-full blur-[320px] -z-1"
         ></span>
-        <div className="wrapper">
+        <FadeInSection
+          initial={{ opacity: 0, y: -150 }}
+          scrollTop={{ opacity: 1, y: 0 }}
+          scrollBottom={{ opacity: 0, y: -150 }}
+          margin="40px 0px -40px 0px"
+          className="wrapper"
+        >
           <div className="">
             <p>[ FAQ ]</p>
             <h1 className="font-press-start text-2xl sm:text-3xl md:text-4xl  font-bold  leading-[135%] mt-10">
@@ -165,13 +206,18 @@ export default function Services() {
               </Accordion>
             ))}
           </div>
-        </div>
+        </FadeInSection>
       </section>
       <section>
         <div className="container  font-sora py-32">
           <div className="wrapper">
             <div className="grid grid-cols-2 gap-20 max-w-[1430px] mx-auto">
-              <div>
+              <FadeInSection
+                initial={{ opacity: 0, x: -150 }}
+                scrollTop={{ opacity: 1, x: 0 }}
+                scrollBottom={{ opacity: 0, x: -150 }}
+                margin="40px 0px -40px 0px"
+              >
                 <div>
                   <h1>[ get in touch ]</h1>
                   <h5 className="text-5xl leading-[70px] mt-4">
@@ -223,8 +269,13 @@ export default function Services() {
                     </div>
                   </div>
                 </div>
-              </div>
-              <div>
+              </FadeInSection>
+              <FadeInSection
+                initial={{ opacity: 0, x: 150 }}
+                scrollTop={{ opacity: 1, x: 0 }}
+                scrollBottom={{ opacity: 0, x: 150 }}
+                margin="40px 0px -40px 0px"
+              >
                 <form
                   action="#"
                   className="rounded-xl shadow-lg shadow-teal p-8 bg-[#201F1F78] max-w-[605px] mx-auto"
@@ -242,7 +293,7 @@ export default function Services() {
                     send message
                   </button>
                 </form>
-              </div>
+              </FadeInSection>
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+import FadeInSection from "@/components/animation/FadeEffect";
 import InputBox from "@/components/InputBox";
 import TextBox from "@/components/TextBox";
 import { Icon } from "@iconify/react";
@@ -7,9 +8,16 @@ export default function Contact() {
     <main>
       <section className="hero-banner min-h-[823px] relative">
         <div className="container">
-          <div className="flex flex-col justify-center items-center min-h-screen text-center gap-4">
-            <h1 className="font-bold text-7xl uppercase">/Contact/</h1>
-          </div>
+          <FadeInSection
+            initial={{ opacity: 0, x: -150 }}
+            scrollTop={{ opacity: 1, x: 0 }}
+            scrollBottom={{ opacity: 0, x: -150 }}
+            margin="40px 0px -40px 0px"
+          >
+            <div className="flex flex-col justify-center items-center min-h-screen text-center gap-4">
+              <h1 className="font-bold text-7xl uppercase">/Contact/</h1>
+            </div>
+          </FadeInSection>
           <h5 className="text-8xl text-border text-transparent uppercase absolute -right-30 top-1/2 -translate-y-1/2 opacity-80 -rotate-90 select-none pointer-events-none tracking-[30%] font-sora">
             Contacts
           </h5>
@@ -19,7 +27,12 @@ export default function Contact() {
       <section>
         <div className="container  font-sora pt-32">
           <div className="grid grid-cols-2 gap-20 max-w-[1430px] mx-auto">
-            <div>
+            <FadeInSection
+              initial={{ opacity: 0, x: -150 }}
+              scrollTop={{ opacity: 1, x: 0 }}
+              scrollBottom={{ opacity: 0, x: -150 }}
+              margin="40px 0px -40px 0px"
+            >
               <div>
                 <h1>[ get in touch ]</h1>
                 <h5 className="text-5xl leading-[70px] mt-4">
@@ -71,8 +84,13 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-            </div>
-            <div>
+            </FadeInSection>
+            <FadeInSection
+              initial={{ opacity: 0, x: 150 }}
+              scrollTop={{ opacity: 1, x: 0 }}
+              scrollBottom={{ opacity: 0, x: 150 }}
+              margin="40px 0px -40px 0px"
+            >
               <form
                 action="#"
                 className="rounded-xl shadow-lg shadow-teal p-8 bg-[#201F1F78] max-w-[605px] mx-auto"
@@ -90,21 +108,28 @@ export default function Contact() {
                   send message
                 </button>
               </form>
-            </div>
+            </FadeInSection>
           </div>
         </div>
       </section>
       <section className="my-20">
-        <div className="mx-auto w-fit">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9298502729616!2d90.41534198641035!3d23.749880833814974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9e38ce56fbd%3A0x1df25537514931fe!2sawtomatig!5e0!3m2!1sen!2sbd!4v1761484151939!5m2!1sen!2sbd"
-            width="1430"
-            height="711"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            className="rounded-2xl overflow-hidden"
-          ></iframe>
-        </div>
+        <FadeInSection
+          initial={{ opacity: 0, y: -150 }}
+          scrollTop={{ opacity: 1, y: 0 }}
+          scrollBottom={{ opacity: 0, y: -150 }}
+          margin="40px 0px -40px 0px"
+        >
+          <div className="mx-auto w-fit">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9298502729616!2d90.41534198641035!3d23.749880833814974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b9e38ce56fbd%3A0x1df25537514931fe!2sawtomatig!5e0!3m2!1sen!2sbd!4v1761484151939!5m2!1sen!2sbd"
+              width="1430"
+              height="711"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="rounded-2xl overflow-hidden"
+            ></iframe>
+          </div>
+        </FadeInSection>
       </section>
     </main>
   );

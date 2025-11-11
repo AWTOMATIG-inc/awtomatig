@@ -58,7 +58,7 @@ export default function WhyUs() {
 
     // Slide both panels horizontally
     tl.to(panels, {
-      xPercent: -130 * (panels.length - 1),
+      xPercent: -135 * (panels.length - 1),
       ease: "none",
     });
 
@@ -80,7 +80,7 @@ export default function WhyUs() {
       <div ref={sectionRef} className="relative w-full  overflow-hidden ">
         <div
           style={{ width: 100 * homeWhyUsData.length + "%" }}
-          className="flex"
+          className="flex gap-x-8 sm:gap-x-10"
         >
           {/* Panel 1 */}
           {homeWhyUsData.map((data, index) => (

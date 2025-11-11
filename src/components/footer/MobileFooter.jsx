@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 export default function MobileFooter() {
   return (
-    <footer className="container relative sm:hidden">
+    <footer className="container relative md:hidden">
       <div className="wrapper">
         <div className="grid  md:grid-cols-[2fr_1fr_1fr] justify-center gap-8 py-12 relative z-10 text-center">
           <div className="w-fit mx-auto mb-12">
