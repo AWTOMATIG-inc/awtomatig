@@ -1,15 +1,18 @@
-import awtomatigBanner from "@/assets/services/awtomatig-banner.webp";
 import Accordion from "@/components/Accordion";
 import FadeInSection from "@/components/animation/FadeEffect";
+import GridAnimatedBg from "@/components/animation/GridAnimatedBg";
+
 import InputBox from "@/components/InputBox";
+import Benifits from "@/components/services/Benifits";
+import OurServices from "@/components/services/OurServices";
+import Testimonials from "@/components/services/Testimonials";
 import TextBox from "@/components/TextBox";
 import { capabilities } from "@/contants/capabilities";
 import { Icon } from "@iconify/react";
-import Image from "next/image";
 export default function Services() {
   return (
     <main>
-      <section className="hero-banner min-h-[823px] relative">
+      <GridAnimatedBg>
         <div className="container">
           <FadeInSection
             initial={{ opacity: 0, x: -150 }}
@@ -28,8 +31,28 @@ export default function Services() {
           </h5>
           <p className="absolute bottom-5 left-5 font-bold">Home / services</p>
         </div>
-      </section>
-      <section className="container relative">
+      </GridAnimatedBg>
+      {/* <section className="hero-banner min-h-[823px] relative">
+        <div className="container">
+          <FadeInSection
+            initial={{ opacity: 0, x: -150 }}
+            scrollTop={{ opacity: 1, x: 0 }}
+            scrollBottom={{ opacity: 0, x: -150 }}
+            margin="40px 0px -40px 0px"
+          >
+            <div className="flex flex-col justify-center items-center min-h-screen text-center gap-4">
+              <h1 className="font-bold text-7xl uppercase">
+                /Artificial Intelligence (AI) <br /> systems/
+              </h1>
+            </div>
+          </FadeInSection>
+          <h5 className="text-8xl text-border text-transparent uppercase absolute -right-30 top-1/2 -translate-y-1/2 opacity-80 -rotate-90 select-none pointer-events-none tracking-[30%] font-sora">
+            Services
+          </h5>
+          <p className="absolute bottom-5 left-5 font-bold">Home / services</p>
+        </div>
+      </section> */}
+      {/* <section className="container relative">
         <span
           style={{
             background:
@@ -100,8 +123,11 @@ export default function Services() {
             </FadeInSection>
           </div>
         </div>
-      </section>
-      <section className="container mt-20">
+      </section> */}
+      <OurServices />
+      <Benifits />
+      <Testimonials />
+      {/* <section className="container mt-20">
         <div className="wrapper service-awtomatig-banner h-[354px] flex flex-col justify-center items-center text-center px-20 py-10 rounded-sm">
           <FadeInSection
             initial={{ opacity: 0, y: -150 }}
@@ -115,8 +141,8 @@ export default function Services() {
             </p>
           </FadeInSection>
         </div>
-      </section>
-      <section className="container mt-20 relative">
+      </section> */}
+      {/* <section className="container mt-20 relative">
         <span
           style={{
             background:
@@ -171,7 +197,7 @@ export default function Services() {
             />
           </FadeInSection>
         </div>
-      </section>
+      </section> */}
       <section className="container mt-20 relative">
         <span
           style={{
