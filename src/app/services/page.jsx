@@ -11,8 +11,16 @@ import { Icon } from "@iconify/react";
 export default function Services() {
   return (
     <main>
-      <section className="hero-banner min-h-[823px] relative">
-        <div className="container">
+      <section className="min-h-[823px] relative">
+        <video
+          src="/motion-video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full absolute top-0 left-0 object-cover"
+        />
+        <div className="container relative z-10">
           <FadeInSection
             initial={{ opacity: 0, x: -150 }}
             scrollTop={{ opacity: 1, x: 0 }}

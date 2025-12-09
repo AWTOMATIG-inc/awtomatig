@@ -2,12 +2,11 @@ import FadeInSection from "@/components/animation/FadeEffect";
 import InputBox from "@/components/InputBox";
 import TextBox from "@/components/TextBox";
 import { Icon } from "@iconify/react";
-
 export default function Contact() {
   return (
     <main>
-      <section className="hero-banner min-h-[823px] relative">
-        <div className="container">
+      <section className="hero-banner min-h-[823px] relative overflow-y-hidden">
+        <div className="container relative z-10">
           <FadeInSection
             initial={{ opacity: 0, x: -150 }}
             scrollTop={{ opacity: 1, x: 0 }}
