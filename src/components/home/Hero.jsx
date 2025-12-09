@@ -6,7 +6,7 @@ import Image from "next/image";
 import FadeInSection from "../animation/FadeEffect";
 export default function Hero() {
   return (
-    <section className="container min-h-[70vh] sm:min-h-screen relative ">
+    <section className="container min-h-[70vh] sm:min-h-screen relative  ">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_1.8fr] items-center justify-center h-[70vh] md:h-[90vh]">
         <div></div>
 

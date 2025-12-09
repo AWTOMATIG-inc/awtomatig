@@ -1,6 +1,5 @@
 import Accordion from "@/components/Accordion";
 import FadeInSection from "@/components/animation/FadeEffect";
-import GridAnimatedBg from "@/components/animation/GridAnimatedBg";
 
 import InputBox from "@/components/InputBox";
 import Benifits from "@/components/services/Benifits";
@@ -12,7 +11,7 @@ import { Icon } from "@iconify/react";
 export default function Services() {
   return (
     <main>
-      <GridAnimatedBg>
+      <section className="hero-banner min-h-[823px] relative">
         <div className="container">
           <FadeInSection
             initial={{ opacity: 0, x: -150 }}
@@ -31,7 +30,7 @@ export default function Services() {
           </h5>
           <p className="absolute bottom-5 left-5 font-bold">Home / services</p>
         </div>
-      </GridAnimatedBg>
+      </section>
       {/* <section className="hero-banner min-h-[823px] relative">
         <div className="container">
           <FadeInSection

@@ -43,6 +43,19 @@
   .service-awtomatig-banner {
     @apply bg-[linear-gradient(rgba(0,0,0,0.75)),url('/images/banners/blue-abstract.webp')] bg-no-repeat bg-cover bg-center;
   }
+  .earphone-card {
+    @apply w-[20%] h-[499px] cursor-pointer;
+  }
+  .earphone-card .earphone {
+    @apply w-[80px] h-[80px];
+  }
+
+  .active-earphone.earphone-card {
+    @apply w-[40%] h-[499px] transition-all duration-300;
+  }
+  .active-earphone.earphone-card .earphone {
+    @apply w-[150px] h-[150px];
+  }
 }
 @layer utilities {
   .text-border {

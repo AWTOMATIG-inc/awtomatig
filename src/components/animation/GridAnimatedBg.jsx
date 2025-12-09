@@ -67,10 +67,11 @@ export default function GridAnimatedBg({ children }) {
 
   return (
     <section className="relative h-fit w-full">
-      <div className="relative min-h-screen w-full bg-black flex items-center justify-center overflow-hidden">
+      <div className="relative min-h-screen w-full bg-black flex items-center justify-center overflow-hidden ">
         <div className="grid-plane" ref={planeRef}></div>
       </div>
-      <div className="absolute w-full top-0 z-10">{children}</div>
+      <div className="absolute w-full h-full bottom-0  bg-gradient-to-b  to-black from-20% to-60% z-[101]"></div>
+      <div className="absolute w-full top-0 z-[102]">{children}</div>
     </section>
   );
 }

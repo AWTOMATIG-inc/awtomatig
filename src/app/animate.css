@@ -36,6 +36,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='noStitch' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' /%3E%3C/svg%3E");
   mix-blend-mode: soft-light;
   pointer-events: none;
+  z-index: 0 !important;
 }
 
 /* Single grid plane element */
@@ -47,7 +48,12 @@ body {
   height: 280%;
   transform-origin: center top;
 
-  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px),
+  background-image: linear-gradient(
+      90deg,
+      var(--grid-color) 1px,
+      transparent 1px
+    ),
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
   background-size: var(--grid-size) var(--grid-size),
     var(--grid-size) var(--grid-size);
