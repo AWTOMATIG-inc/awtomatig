@@ -1,8 +1,8 @@
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/Header";
 import { Manrope, Press_Start_2P, Silkscreen, Sora } from "next/font/google";
+import "swiper/css";
 import "./globals.css";
-
 const pressStart2P = Press_Start_2P({
   variable: "--font-press-start-2p",
   subsets: ["latin"],

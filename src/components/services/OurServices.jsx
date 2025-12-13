@@ -9,6 +9,15 @@ export default function OurService() {
   const sectionRef = useRef(null);
   const sidebarRef = useRef(null);
   const boxesRef = useRef(null);
+  const handleClick = (value) => {
+    const section = document.getElementById(value);
+    if (!section) return;
+
+    section.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  };
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -49,7 +58,7 @@ export default function OurService() {
     const section = sectionRef.current;
     const sidebar = sidebarRef.current;
     const handleResize = (e) => {
-      if (window.scrollY > section.offsetHeight + 200) {
+      if (window.scrollY > section.offsetHeight + 300) {
         sidebar.classList.add("hidden");
       } else {
         sidebar.classList.remove("hidden");
@@ -70,49 +79,49 @@ export default function OurService() {
             for Your Long-Term Business Succes
           </h1>
         </div>
-        <div className="grid grid-cols-[300px_1fr] gap-20 mt-20">
+        <div className="grid grid-cols-[300px_1fr] gap-20 mt-20 ">
           <aside ref={sidebarRef} className="relative">
-            <span className="absolute top-0 size-[400px]  bg-[linear-gradient(215.67deg,rgba(2,213,232,0.55)_18.02%,rgba(3,50,103,0.55)_94.4%)] rounded-full block z-99 blur-[150px]"></span>
-            <ul className="font-bold space-y-3 mt-12 transition-all duration-500">
+            <span className="absolute top-0 size-[400px]  bg-[linear-gradient(215.67deg,rgba(2,213,232,0.55)_18.02%,rgba(3,50,103,0.55)_94.4%)] rounded-full block  blur-[150px]"></span>
+            <ul className="font-bold space-y-3 mt-12 transition-all duration-500 relative z-10">
               <li>
-                <a
-                  href="#chatbot-1"
-                  className="py-3 border-b w-full inline-block"
+                <button
+                  className="py-3 border-b w-full text-left"
+                  onClick={() => handleClick("chatbot-1")}
                 >
                   Custom AI Chatbots
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#chatbot-2"
-                  className="py-3 border-b w-full inline-block"
+                <button
+                  onClick={() => handleClick("chatbot-2")}
+                  className="py-3 border-b w-full text-left"
                 >
                   Smart Analytics Dashboard
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#chatbot-3"
-                  className="py-3 border-b w-full inline-block"
+                <button
+                  onClick={() => handleClick("chatbot-3")}
+                  className="py-3 border-b w-full text-left"
                 >
                   Workflow Automation
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#chatbot-4"
-                  className="py-3 border-b w-full inline-block"
+                <button
+                  onClick={() => handleClick("chatbot-4")}
+                  className="py-3 border-b w-full text-left"
                 >
                   Smart Analytics Dashboard
-                </a>
+                </button>
               </li>
               <li>
-                <a
-                  href="#chatbot-5"
-                  className="py-3 border-b w-full inline-block"
+                <button
+                  onClick={() => handleClick("chatbot-5")}
+                  className="py-3 border-b w-full text-left"
                 >
                   Workflow Automation
-                </a>
+                </button>
               </li>
             </ul>
           </aside>
