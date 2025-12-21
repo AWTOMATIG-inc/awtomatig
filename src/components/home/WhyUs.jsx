@@ -1,5 +1,4 @@
 "use client";
-import sora_ai from "@/assets/home/sora-ai.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -8,31 +7,68 @@ gsap.registerPlugin(ScrollTrigger);
 const homeWhyUsData = [
   {
     id: 1,
-    title: "Digital products",
-    desc: "We create visually compelling designs that enhance user experience. We make sure your brand's visuals resonate with your audience.",
-    image: sora_ai,
-    color: "bg-dark-1",
+    title: "Operations & Back-Office Management",
+    subtitle: "Run your business without operational friction",
+    features: [
+      "Admin & virtual assistance",
+      "CRM setup, cleanup & daily management",
+      "Order, listing & workflow management",
+      "Reporting, documentation & SOPs",
+    ],
+    bestFor: "Founders who want execution handled reliably",
+    image: "/images/services/office-management.gif",
   },
   {
     id: 2,
-    title: "Corporate website",
-    desc: "We create visually compelling designs that enhance user experience. We make sure your brand's visuals resonate with your audience.",
-    image: sora_ai,
-    color: "bg-[#6AF989]",
+    title: "Automation & AI Workflows",
+    subtitle: "Replace manual work with smart systems",
+    features: [
+      "Workflow automation (n8n, Zapier, Make)",
+      "CRM → email → dashboard integrations",
+      "AI agents & process automation",
+      "Custom internal tools & logic",
+    ],
+    bestFor: "Teams scaling fast or drowning in repetitive work",
+    image: "/images/services/automation.gif",
   },
   {
     id: 3,
-    title: "eCommerce",
-    desc: "We create visually compelling designs that enhance user experience. We make sure your brand's visuals resonate with your audience.",
-    image: sora_ai,
-    color: "bg-[#5C5E5C]",
+    title: "Web & Platform Development",
+    subtitle: "Modern, scalable digital foundations",
+    features: [
+      "Business websites & landing pages",
+      "Custom platforms (Node.js, Next.js)",
+      "Shopify & e-commerce builds",
+      "Performance, security & deployment",
+    ],
+    bestFor: "Companies that need more than templates",
+    image: "/images/services/web.gif",
   },
   {
     id: 4,
-    title: "Brand identity",
-    desc: "We create visually compelling designs that enhance user experience. We make sure your brand's visuals resonate with your audience.",
-    image: sora_ai,
-    color: "bg-[#7C6B59]",
+    title: "Data, QA & System Support",
+    subtitle: "Accuracy, reliability, and continuity",
+    features: [
+      "Data processing & annotation",
+      "QA testing & audits",
+      "System monitoring & maintenance",
+      "Ongoing tech and ops support",
+    ],
+    bestFor: "Businesses that value precision and uptime",
+    image: "/images/services/system-support.gif",
+  },
+  {
+    id: 5,
+    title: "Growth & Digital Enablement",
+    subtitle: "Build systems that support growth",
+    features: [
+      "Email systems & deliverability (SendGrid, Mailchimp)",
+      "CRM-driven outreach & lead pipelines",
+      "Analytics & operational dashboards",
+      "Tool stack consulting & optimisation",
+    ],
+    bestFor: "Teams preparing for their next growth stage.",
+    image: "/images/services/growth.gif",
   },
 ];
 export default function WhyUs() {
@@ -69,7 +105,7 @@ export default function WhyUs() {
   }, []);
 
   return (
-    <section className="container  mt-20 relative z-99">
+    <section className="container  mt-32 relative z-99">
       <div className="wrapper md:mt-20 mb-14 text-center sm:text-left">
         <h5>[ Why Us ]</h5>
         <h1 className="font-press-start text-xl lg:text-3xl mt-8">
@@ -77,7 +113,10 @@ export default function WhyUs() {
           intelligence
         </h1>
       </div>
-      <div ref={sectionRef} className="relative w-full  overflow-hidden ">
+      <div
+        ref={sectionRef}
+        className="relative w-full h-full  overflow-hidden "
+      >
         <div
           style={{ width: 100 * homeWhyUsData.length + "%" }}
           className="flex gap-x-8 sm:gap-x-10"
@@ -87,34 +126,41 @@ export default function WhyUs() {
             <div
               key={data.id}
               ref={(el) => (panelsRef.current[index] = el)}
-              className={`wrapper  px-5 lg:px-9 py-9 rounded-lg ${
-                data.color === "bg-dark-1"
-                  ? `${data.color} text-white`
-                  : `${data.color} text-black`
-              } `}
+              className={`wrapper  px-12 lg:px-14 py-14 rounded-[70px] bg-[#B3B3B3] 2xl:min-w-[1331px] `}
             >
-              <div className="flex justify-between mb-4 font-press-start">
-                <div className="max-w-[761px] w-full ">
-                  <h4 className="text-xl lg:text-4xl">{data.title}</h4>
-                  <p className="mt-4 text-xs">{data.desc}</p>
+              <div className="flex justify-between mb-6  ">
+                <div className="max-w-[761px] w-full text-black">
+                  <h4 className="text-xl md:text-3xl lg:text-5xl font-russo-one">
+                    {data.title}
+                  </h4>
+                  <h5 className="mt-4 text-2xl font-medium font-inter">
+                    {data.subtitle}
+                  </h5>
                 </div>
-                <p className="text-right text-2xl lg:text-5xl">{`/0${data.id}`}</p>
+                <p className="text-right text-2xl lg:text-5xl font-sora font-bold text-[#03aab9] text-shadow-[0px_5px_4.6px_0px_#00000047]">
+                  {`/0${data.id}`}
+                </p>
               </div>
               <div className="grid lg:grid-cols-2 gap-8 ">
-                <Image
-                  src={sora_ai}
-                  width={871}
-                  height={428}
-                  alt="slider_item"
-                  className="w-full h-full max-w-[871px] max-h-[428px] rounded-lg"
-                />
-                <Image
-                  src={sora_ai}
-                  width={871}
-                  height={428}
-                  alt="slider_item"
-                  className="w-full h-full max-w-[871px] max-h-[428px] rounded-lg"
-                />
+                <div className="bg-[#E3F9F9] text-black p-10 rounded-4xl font-inter flex flex-col ">
+                  <ul className="space-y-4 text-lg">
+                    {data.features.map((feature, idx) => (
+                      <li key={idx}>{feature}</li>
+                    ))}
+                  </ul>
+                  <p className="justify-self-end   text-lg mt-10">
+                    <strong>Best for:</strong> {data.bestFor}
+                  </p>
+                </div>
+                <div>
+                  <Image
+                    src={data.image}
+                    width={471}
+                    height={328}
+                    alt="slider_item"
+                    className="w-full h-full max-w-[300px] max-h-[300px] rounded-lg object-cover mx-auto"
+                  />
+                </div>
               </div>
             </div>
           ))}

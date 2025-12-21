@@ -67,7 +67,7 @@ export default function Hero() {
         scrollBottom={{ opacity: 0, x: 100 }}
         margin="40px 0px -40px 0px"
       >
-        <div className="wrapper hidden sm:flex justify-between border rounded-lg  px-8 md:px-14 py-4 md:py-8 overflow-x-hidden ">
+        <div className="wrapper hidden sm:flex justify-between border rounded-lg  px-8 md:px-14 py-4 md:py-10 overflow-x-hidden ">
           {Array.from({ length: 9 }).map((_, index) => (
             <Image
               key={index}
@@ -79,7 +79,7 @@ export default function Hero() {
             />
           ))}
         </div>
-        <div className=" sm:hidden wrapper flex justify-between border rounded-lg  px-8 md:px-14 py-4 md:py-8 overflow-x-hidden w-full">
+        <div className=" sm:hidden wrapper flex justify-between border rounded-lg  px-8 md:px-14 py-4 md:py-8 overflow-x-hidden w-full ">
           {Array.from({ length: 4 }).map((_, index) => (
             <Image
               key={index}
