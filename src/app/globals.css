@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* color list */
+  --color-dark: #1f1f1f;
+  --color-dark-1: #171717;
+  --color-dark-2: #676767;
+  --color-dark-3: #898484;
+  --color-blue-light: #44b6e9;
+  --color-teal: #02d5e8;
+  --color-awgrid: #02d5e8;
+  --color-dark-white: #d9d9d9;
+  --color-purple: #b66dd2c9;
+  /* font list */
+  --font-press-start: var(--font-press-start-2p);
+  --font-manrope: var(--font-manrope);
+  --font-sora: var(--font-sora);
+  --font-russo-one: var(--font-russo-one);
+  --font-inter: var(--font-inter);
+  --font-silkscreen: var(--font-silkscreen);
+  --font-montserrat: var(--font-montserrat);
+  --animate-spin-slow: "spin 2.5s linear infinite";
+}
+@utility container {
+  @apply mx-auto max-w-none 2xl:max-w-[1800px] px-4 md:!px-10 lg:px-8;
+}
+
+@layer components {
+  .custom-shadow {
+    @apply shadow-[0px_4px_40px_0px_#00000014] hover:shadow-xl;
+  }
+  .hoverEffect {
+    @apply transition-colors duration-300 ease-in-out;
+  }
+  .wrapper {
+    @apply max-w-[1341px] mx-auto;
+  }
+  .hero-banner {
+    @apply bg-[url('/images/banners/hero-banner.webp')] bg-no-repeat bg-cover bg-center;
+  }
+  .service-white-card {
+    @apply bg-[url('/images/card/white-card-bg.webp')] bg-no-repeat bg-cover bg-center;
+  }
+  .service-blue-card {
+    @apply bg-[linear-gradient(rgba(2,213,232,0.8),rgba(2,213,232,0.8)),url('/images/card/blue-card-bg.webp')] bg-no-repeat bg-cover bg-center;
+  }
+  .service-awtomatig-banner {
+    @apply bg-[linear-gradient(rgba(0,0,0,0.75)),url('/images/banners/blue-abstract.webp')] bg-no-repeat bg-cover bg-center;
+  }
+  .earphone-card {
+    @apply w-[20%] h-[499px] cursor-pointer transition-all duration-300;
+  }
+  .earphone-card .earphone {
+    @apply w-[80px] h-[80px] transition-all duration-300;
+  }
+
+  .active-earphone.earphone-card {
+    @apply w-[40%] h-[499px];
+  }
+  .active-earphone.earphone-card .earphone {
+    @apply w-[150px] h-[150px];
+  }
+}
+@layer utilities {
+  .text-border {
+    -webkit-text-stroke: 2px white;
+  }
+}
+@layer base {
+  button {
+    @apply hover:cursor-pointer;
+  }
+}
+@custom-variant hover (&:hover);
+
+.gradient-border {
+  position: relative;
+  display: inline-block;
+  color: white; /* Text fill color */
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+/* Gradient border effect */
+.gradient-border::before {
+  content: attr(data-text);
+  content: "since 2022"; /* optional if you prefer hardcoded */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-text-stroke: 2px transparent;
+  background: linear-gradient(90deg, #00ffff, #0077ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-stroke-color: transparent;
+  filter: drop-shadow(0 0 1px #00ffff);
+}
+
+/* Alternate way (works more simply) */
+.gradient-border {
+  color: white;
+  -webkit-text-stroke: 1px;
+  -webkit-text-stroke-color: transparent;
+  background: linear-gradient(90deg, #00ffff, #0077ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: black;
+  border: none;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+html body {
+  scroll-behavior: smooth;
+}

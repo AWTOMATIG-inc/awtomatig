@@ -1,0 +1,292 @@
+/* button */
+.glow-button {
+  text-decoration: none;
+  cursor: pointer;
+  height: 56px;
+  padding: 0px 28px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 500;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+
+  border-radius: 999px;
+  position: relative;
+  z-index: 1;
+}
+
+/* hover animation */
+.glow-button:hover {
+  animation: animate 8s linear infinite;
+}
+
+/* glow effect */
+.glow-button::before {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  z-index: -1;
+
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+
+  border-radius: 999px;
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.glow-button:hover::before {
+  opacity: 1;
+  animation: animate 8s linear infinite;
+}
+
+/* keyboard focus */
+.glow-button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+
+/* animation */
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 90deg;
+  inherits: false;
+}
+
+:root {
+  --clr-card: #1f2937;
+  --clr-1: #22289a;
+  --clr-2: #57969c;
+  --clr-3: #602bba;
+  --clr-4: #840303;
+  --clr-5: #2d2e83;
+  --clr-6: #ff20c7;
+  --clr-7: #36d1f4;
+}
+.animated-border-red {
+  position: relative;
+  cursor: pointer;
+  background-color: var(--clr-card);
+  max-height: 77px;
+}
+
+.animated-border-red::after,
+.animated-border-red::before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  inset: -3px;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-5),
+    var(--clr-6),
+    var(--clr-7),
+    var(--clr-6),
+    var(--clr-5)
+  );
+  border-radius: inherit;
+}
+.animated-border-red::after,
+.animated-border-red::before {
+  animation: rotate 2.5s linear infinite;
+}
+
+/* button 2 */
+.animated-border-button {
+  position: relative;
+  cursor: pointer;
+  background-color: var(--clr-card);
+  max-height: 77px;
+}
+
+.animated-border-button::after,
+.animated-border-button::before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  inset: -3px;
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-1),
+    var(--clr-2),
+    var(--clr-3),
+    var(--clr-2),
+    var(--clr-1)
+  );
+  border-radius: inherit;
+}
+.animated-border-button:hover::after,
+.animated-border-button:hover::before {
+  animation: rotate 2.5s linear infinite;
+}
+
+.animated-border-button::after {
+  filter: blur(5px);
+}
+
+.animated-border-button:hover .icon {
+  animation: moveUp 0.5s ease-in 1;
+}
+
+@keyframes rotate {
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+.animate-border::before,
+.animate-border::after {
+  animation: rotate 2.5s linear infinite;
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(35px, -60px);
+  }
+}
+
+/* background */
+.background-container {
+  background: linear-gradient(132deg, #fc415a, #44b6e9, #212335);
+  background-size: 400% 400%;
+  animation: Gradient 15s ease infinite;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0px;
+}
+.background-container .cube {
+  position: absolute;
+  top: 80vh;
+  left: 45vw;
+  width: 10px;
+  height: 10px;
+  border: solid 1px #d7d4e4;
+  transform-origin: top left;
+  transform: scale(0) rotate(0deg) translate(-50%, -50%);
+  animation: cube 12s ease-in forwards infinite;
+}
+.background-container .cube:nth-child(2n) {
+  border-color: #fff;
+}
+.background-container .cube:nth-child(2) {
+  animation-delay: 2s;
+  left: 25vw;
+  top: 40vh;
+}
+.background-container .cube:nth-child(3) {
+  animation-delay: 4s;
+  left: 75vw;
+  top: 50vh;
+}
+.background-container .cube:nth-child(4) {
+  animation-delay: 6s;
+  left: 90vw;
+  top: 10vh;
+}
+.background-container .cube:nth-child(5) {
+  animation-delay: 8s;
+  left: 10vw;
+  top: 85vh;
+}
+.background-container .cube:nth-child(6) {
+  animation-delay: 10s;
+  left: 50vw;
+  top: 10vh;
+}
+
+/* Animate Background*/
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes cube {
+  from {
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    opacity: 1;
+  }
+  to {
+    transform: scale(20) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+/* button animation */
+/* button.css */
+.magic-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 999px;
+  background: transparent;
+  border: 1.5px solid #111;
+  color: #111;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+/* sliding background */
+.magic-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #111;
+  transform: translateX(-100%);
+  transition: transform 0.35s ease;
+  z-index: 0;
+}
+
+.magic-btn:hover::before {
+  transform: translateX(0);
+}
+
+.magic-btn:hover {
+  color: #fff;
+}
+
+/* content above animation */
+.magic-btn .text,
+.magic-btn .icon {
+  position: relative;
+  z-index: 1;
+}
+
+/* arrow animation */
+.magic-btn .icon {
+  transition: transform 0.3s ease;
+}
+
+.magic-btn:hover .icon {
+  transform: translateX(4px) translateY(-2px);
+}
