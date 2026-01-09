@@ -13,7 +13,7 @@ export default function OurCapabilities() {
         className="wrapper"
       >
         <div className="flex justify-between items-center">
-          <h1 className="font-sora text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-teal">
+          <h1 className="font-russo-one text-2xl sm:text-3xl md:text-4xl lg:text-6xl  text-teal">
             Our capabilities
           </h1>
 
@@ -27,7 +27,7 @@ export default function OurCapabilities() {
               title={capability.title}
               serial={"0" + capability.id}
             >
-              <p>{capability.description}</p>
+              <p className="font-montserrat">{capability.description}</p>
             </Accordion>
           ))}
         </div>

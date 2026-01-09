@@ -25,23 +25,6 @@ export default function Hero() {
               moves revenue.
             </p>
             <div className="flex gap-8 justify-center mt-16">
-              {/* <button className="flex justify-center items-center gap-8 border px-5 py-2 bg-linear-to-l from-blue-light to-dark-white text-black rounded-lg text-sm sm:text-base xl:text-lg">
-                Discover
-                <Icon
-                  icon="meteor-icons:arrow-up-right"
-                  width="21"
-                  height="21"
-                />
-              </button>
-              <button className="flex justify-center items-center gap-8 border px-5 py-2 bg-linear-to-l from-blue-light to-dark-white text-black rounded-lg text-sm sm:text-base xl:text-lg">
-                Book a call
-                <Icon
-                  icon="meteor-icons:arrow-up-right"
-                  width="21"
-                  height="21"
-                />
-              </button> */}
-
               <AnimatedButton name="Know more" icon={true} />
               <AnimatedButton name="Book a call" icon={true} />
             </div>

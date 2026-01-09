@@ -10,7 +10,7 @@ export default function Accordion({ children, title, serial }) {
     >
       <button
         onClick={() => setShowAccordion((prev) => !prev)}
-        className={`flex justify-between w-full py-5 font-medium text-xl sm:text-2xl md:text-3xl lg:text-4xl transition-colors duration-300  group-hover:text-white ${
+        className={`flex justify-between w-full py-5 font-medium text-xl sm:text-2xl md:text-3xl lg:text-4xl transition-colors duration-300  group-hover:text-white font-inter ${
           showAccordion ? "text-white" : "text-gray-300"
         }`}
       >

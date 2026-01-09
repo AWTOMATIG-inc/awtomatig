@@ -6,11 +6,11 @@ export default function OurProccess() {
     <section className="container sm:mt-20 md:mt-40">
       <div className="wrapper grid lg:grid-cols-[230px_1fr] xl:grid-cols-[300px_1fr]">
         <div className="text-center lg:text-left">
-          <h5 className="text-3xl font-sora font-bold">
+          <h5 className="text-[40px] font-inter font-extrabold leading-[135%]">
             Our process is <br />
             as easy as
           </h5>
-          <span className="bg-white inline-block text-black font-bold font-sora text-3xl px-5 py-2 rounded-lg -rotate-5 mt-6">
+          <span className="bg-white inline-block text-black font-extrabold font-sora text-[40px] px-5 py-1.5 rounded-lg -rotate-5 mt-6">
             1-2-3
           </span>
         </div>

@@ -14,7 +14,7 @@ export default function FutureChanges() {
               scrollBottom={{ opacity: 0, x: -150 }}
               margin="40px 0px -40px 0px"
             >
-              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-sora leading-[150%] lg:leading-[110%] ">
+              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-russo-one leading-[150%] lg:leading-[110px] ">
                 Future is here. <br /> Meet changes!
               </h1>
             </FadeInSection>

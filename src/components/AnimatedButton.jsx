@@ -70,7 +70,7 @@ export default function AnimatedButton({
   };
 
   return (
-    <div className={`animated-border-button rounded-full ${height}`}>
+    <div className={`animated-border-button rounded-full font-inter ${height}`}>
       <motion.div
         initial="initial"
         whileHover="hover"

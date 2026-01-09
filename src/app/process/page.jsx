@@ -1,5 +1,6 @@
 "use client";
 import awtomatig_logo from "@/assets/logo/awtomatig-logo.png";
+import AnimatedButton from "@/components/AnimatedButton";
 import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import GlowBall from "@/components/GlowBall";
@@ -135,9 +136,9 @@ export default function Process() {
                   The point of using Lorem Ipsum is that it has a more-or-less
                   normal distribution
                 </p>
-                <button className="bg-white px-8 text-black font-medium py-1 rounded-4xl mt-10">
-                  Start Project
-                </button>
+                <div className="w-fit mx-auto mt-12">
+                  <AnimatedButton name="Start Project" width="w-[190px]" />
+                </div>
               </div>
             </div>
           </div>

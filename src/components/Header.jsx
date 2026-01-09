@@ -95,7 +95,7 @@ export default function Header() {
                   <a
                     href="https://awlabs.online/"
                     target="_blank"
-                    className="glow-button"
+                    className="glow-button font-inter"
                   >
                     Awlabs
                     <Icon
@@ -212,7 +212,7 @@ export default function Header() {
                     <a
                       href="https://awlabs.online/"
                       target="_blank"
-                      className="glow-button h-14"
+                      className="glow-button h-14 font-inter"
                     >
                       Awlabs
                       <Icon

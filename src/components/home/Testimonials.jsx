@@ -43,13 +43,13 @@ export default function Testimonials() {
                   key={id}
                   className="w-full max-w-[650px] text-center md:text-left  md:pr-8"
                 >
-                  <h5>[ Testimonials ]</h5>
-                  <h1 className="font-sora text-2xl sm:text-3xl md:text-4xl lg:text-6xl mt-6 lg:mt-8 leading-[55px] lg:leading-[70px]">
+                  <h5 className="font-montserrat">[ Testimonials ]</h5>
+                  <h1 className="font-russo-one text-2xl sm:text-3xl md:text-4xl lg:text-6xl mt-6 lg:mt-8 leading-[55px] lg:leading-[70px]">
                     Awesome Thouths
                     <br className="hidden md:block" />
                     About Artificial <br /> Intelligence
                   </h1>
-                  <p className="mt-6 sm:mt-10 lg:mt-20">
+                  <p className="mt-6 sm:mt-10 lg:mt-20 font-inter">
                     Halosaur duckbilled barracudina, goosefish gar pleco, chum
                     salmon armoured catfish gudgeon sawfish whitefish orbicular
                     batfish mummichog paradise fish! Pacific hake false trevally
@@ -60,8 +60,12 @@ export default function Testimonials() {
                   </p>
                   <div className="flex flex-col lg:flex-row justify-between items-center mt-13 md:text-center">
                     <div>
-                      <h5 className="font-bold text-xl">Adrian Mitchel</h5>
-                      <p className="text-sm font-bold mt-1">SolarInc</p>
+                      <h5 className=" text-xl font-russo-one">
+                        Adrian Mitchel
+                      </h5>
+                      <p className="text-sm font-bold mt-1 font-montserrat">
+                        SolarInc
+                      </p>
                     </div>
                     {/* Custom Indicator Buttons */}
                     <div className="flex justify-center items-end gap-3 mt-4">

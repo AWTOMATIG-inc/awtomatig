@@ -107,10 +107,9 @@ export default function WhyUs() {
   return (
     <section className="container  mt-32 relative z-99">
       <div className="wrapper md:mt-20 mb-14 text-center sm:text-left">
-        <h5>[ Why Us ]</h5>
-        <h1 className="font-press-start text-xl lg:text-3xl mt-8">
-          Unique, ownable <br />
-          intelligence
+        <h5 className="font-montserrat">[ Capabilities ]</h5>
+        <h1 className="font-russo-one text-xl lg:text-5xl mt-8">
+          Unique, ownable intelligence
         </h1>
       </div>
       <div

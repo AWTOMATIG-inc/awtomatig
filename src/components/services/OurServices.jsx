@@ -73,8 +73,8 @@ export default function OurService() {
     <section className="container mt-20" ref={sectionRef}>
       <div className="wrapper mt-20 mb-14  text-center sm:text-left relative z-10">
         <div>
-          <h5>[ OUR SERVICES ]</h5>
-          <h1 className="font-manrope text-2xl lg:text-3xl xl:text-4xl font-bold mt-8 leading-[48px]">
+          <h5 className="font-inter">[ OUR SERVICES ]</h5>
+          <h1 className="font-russo-one text-2xl lg:text-3xl xl:text-4xl  mt-8 leading-[48px]">
             Powerful AI Features and Advanced Tools Built <br />
             for Your Long-Term Business Succes
           </h1>
@@ -133,7 +133,7 @@ export default function OurService() {
                 className="mb-20"
                 id={"chatbot-" + (Number(index) + 1)}
               >
-                <div>
+                {/* <div>
                   <h1 className="font-extrabold text-2xl">
                     Custom AI Chatbots
                   </h1>
@@ -142,55 +142,51 @@ export default function OurService() {
                     context, learn from interactions, and provide personalized
                     responses to enhance customer experience and support.
                   </p>
-                </div>
+                </div> */}
                 <div>
                   <div
-                    className="bg-teal rounded-2xl p-4 lg:p-10 mt-10 shadow-[-4px_10px_33.9px_0px_#FFFFFF87] ]
+                    className="bg-linear-90 from-teal to-white rounded-2xl p-1.5  mt-10 shadow-[-4px_10px_33.9px_0px_#FFFFFF87] ]
 "
                   >
-                    <div className="bg-white text-black p-4 lg:p-6 rounded-xl">
-                      <h1 className="font-bold pb-4">AI chatbot settings</h1>
-                      <div className="grid grid-cols-3 gap-2">
-                        <div className="border border-dark-3 p-4 rounded-xl group hover:bg-dark-2/30 hover:border-transparent group-active:bg-dark-3 transition-colors duration-300 cursor-pointer">
-                          {" "}
-                          <span className="border border-dark-3 size-6 inline-block rounded-full group-hover:bg-dark-3"></span>
-                          <h2 className="font-bold text-sm lg:text-lg mt-4">
+                    <div className="bg-white text-black px-4 pt-4 pb-8  rounded-xl">
+                      <h1 className="font-russo-one text-xl pb-4">
+                        A2 chatbot settings
+                      </h1>
+                      <div className="grid grid-cols-3 gap-4">
+                        <div className="border border-dark-3 p-4 rounded-xl group hover:bg-dark-2/30 hover:border-transparent group-active:bg-dark-3 transition-colors duration-300 cursor-pointer h-[286px]">
+                          <h2 className="font-bold font-inter mt-2">
                             Natural Language
                           </h2>
-                          <p className="my-4 text-sm lg:text-base">
+                          <p className="mt-2 text-sm  font-montserrat ">
                             Send funds at a regular frequency.
                           </p>
                         </div>
-                        <div className="border  p-4 rounded-xl group bg-dark-2/30 border-transparent transition-colors duration-300 cursor-pointer">
-                          {" "}
-                          <span className="border border-dark-3 size-6 inline-block rounded-full bg-dark-3"></span>
-                          <h2 className="font-bold text-sm lg:text-lg mt-4">
+                        <div className="border  p-4 rounded-xl group bg-dark-2/30 border-transparent transition-colors duration-300 cursor-pointer h-[286px]">
+                          <h2 className="font-bold font-inter mt-2">
                             Smart Learning
                           </h2>
-                          <p className="my-4 text-sm lg:text-base">
+                          <p className="mt-2 text-sm  font-montserrat ">
                             Providing personalized experiences
                           </p>
                         </div>
-                        <div className="border border-dark-3 p-4 rounded-xl group hover:bg-dark-2/30 hover:border-transparent transition-colors duration-300 cursor-pointer">
-                          {" "}
-                          <span className="border border-dark-3 size-6 inline-block rounded-full group-hover:bg-dark-3"></span>
-                          <h2 className="font-bold text-sm lg:text-lg mt-4">
+                        <div className="border border-dark-3 p-4 rounded-xl group hover:bg-dark-2/30 hover:border-transparent transition-colors duration-300 cursor-pointer h-[286px]">
+                          <h2 className="font-bold font-inter mt-2">
                             Seamless Human Handoff
                           </h2>
-                          <p className="my-4 text-sm lg:text-base">
+                          <p className="mt-2 text-sm  font-montserrat ">
                             Easily connect with a human when needed.
                           </p>
                         </div>
                       </div>
 
-                      <div className="flex justify-between gap-6 mt-8">
+                      {/* <div className="flex justify-between gap-6 mt-8">
                         <button className="border w-full rounded-lg py-2 font-semibold capitalize">
                           close
                         </button>
                         <button className="border w-full rounded-lg py-2 font-semibold capitalize bg-dark-2 text-white">
                           submit
                         </button>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 import Accordion from "@/components/Accordion";
 import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
+import MarqueHighlightText from "@/components/MarqueHighlightText";
 
 import Benifits from "@/components/services/Benifits";
 import GetInTouch from "@/components/services/GetInTouch";
@@ -137,6 +138,7 @@ export default function Services() {
         </div>
       </section> */}
       <OurServices />
+      <MarqueHighlightText text="/ Changing the game for Artificial Intelligence" />
       <Benifits />
       <Testimonials />
       {/* <section className="container mt-20">
@@ -226,10 +228,9 @@ export default function Services() {
           className="wrapper"
         >
           <div className="">
-            <p>[ FAQ ]</p>
-            <h1 className="font-press-start text-2xl sm:text-3xl md:text-4xl  font-bold  leading-[135%] mt-10">
-              Open questions <br />
-              from our customers
+            <p className="font-inter">[ FAQ ]</p>
+            <h1 className="font-russo-one text-2xl sm:text-3xl md:text-4xl  leading-[135%] mt-5">
+              Open questions from our customers
             </h1>
           </div>
 

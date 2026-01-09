@@ -26,7 +26,7 @@ export default function CookiePopup() {
           className="lg:absolute left-50 transform lg:-translate-x-1/2 -top-10 md:-top-16 mx-auto"
         />
         <div className="flex flex-col md:flex-row justify-center items-center gap-8 mt-5">
-          <p>Our website uses cookirs to enhance your browsing experience.</p>
+          <p>Our website uses cookie to enhance your browsing experience.</p>
           <button
             onClick={() =>
               localStorage.setItem("cookieAccepted", "true") ||
