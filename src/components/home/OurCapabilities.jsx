@@ -13,20 +13,26 @@ export default function OurCapabilities() {
         className="wrapper"
       >
         <div className="flex justify-between items-center">
-          <h1 className="font-russo-one text-2xl sm:text-3xl md:text-4xl lg:text-6xl  text-teal">
-            Our capabilities
-          </h1>
+          <div>
+            <h5 className="font-montserrat">[ What we operate ]</h5>
+            <h1 className="font-russo-one text-2xl sm:text-3xl md:text-4xl lg:text-6xl  text-teal mt-6">
+              Our operational capabilities
+            </h1>
+          </div>
 
           <AnimatedButton name="Work" icon={true} width="w-[140px]" />
         </div>
 
-        <div className="my-8">
+        <div className="my-10">
           {capabilities.map((capability) => (
             <Accordion
               key={capability.id}
               title={capability.title}
-              serial={"0" + capability.id}
+              serial={capability.id < 10 ? "0" + capability.id : capability.id}
             >
+              <p className="font-montserrat font-medium mb-1">
+                {capability.heading}
+              </p>
               <p className="font-montserrat">{capability.description}</p>
             </Accordion>
           ))}

@@ -8,67 +8,56 @@ const homeWhyUsData = [
   {
     id: 1,
     title: "Back-Office Management",
-    subtitle: "Run your business without operational friction",
-    features: [
-      "Admin & virtual assistance",
-      "CRM setup, cleanup & daily management",
-      "Order, listing & workflow management",
-      "Reporting, documentation & SOPs",
-    ],
+    subtitle: "When execution becomes invisible",
+    desc: "At some point, founders stop building and start chasing.Chasing follow-ups. Chasing updates. Chasing tasks that should already be done.This is where structure replaces noise. This is where structure replaces noise.Reclaim your time and focus on what matters.",
+    features: [],
     bestFor: "Founders who want execution handled reliably",
     image: "/images/services/office-management.gif",
   },
   {
     id: 2,
     title: "Automation & AI Workflows",
-    subtitle: "Replace manual work with smart systems",
-    features: [
-      "Workflow automation (n8n, Zapier, Make)",
-      "CRM → email → dashboard integrations",
-      "AI agents & process automation",
-      "Custom internal tools & logic",
-    ],
+    subtitle: "When manual work becomes the bottleneck",
+    desc: "Repetition is the silent tax on growing teams.The same steps. The same data. The same decisions — made again and again. Instead of adding more people, we redesign the flow. Work moves automatically. Information reaches the right place. Humans focus on what actually needs thinking.",
+    features: [],
     bestFor: "Teams scaling fast or drowning in repetitive work",
     image: "/images/services/automation.gif",
   },
   {
     id: 3,
     title: "Web & Platform Development",
-    subtitle: "Modern, scalable digital foundations",
-    features: [
-      "Business websites & landing pages",
-      "Custom platforms (Node.js, Next.js)",
-      "Shopify & e-commerce builds",
-      "Performance, security & deployment",
-    ],
+    subtitle: "When your technology needs to grow up",
+    desc: "Early tools are built to launch fast — not to scale cleanly.Over time, performance slows, changes get risky, and small updates take too long. We rebuild the foundation underneath the product — so your platform supports growth instead of resisting it.",
+    features: [],
     bestFor: "Companies that need more than templates",
     image: "/images/services/web.gif",
   },
   {
     id: 4,
-    title: "Data, QA & System Support",
-    subtitle: "Accuracy, reliability, and continuity",
-    features: [
-      "Data processing & annotation",
-      "QA testing & audits",
-      "System monitoring & maintenance",
-      "Ongoing tech and ops support",
-    ],
-    bestFor: "Businesses that value precision and uptime",
+    title: "ERPNext Implementation",
+    subtitle: "When your business needs one source of truth",
+    desc: "As companies grow, tools multiply.Accounting lives in one place. Inventory in another. HR in spreadsheets. Decisions are made with partial information. This is where fragmentation becomes risk. We implement and adapt ERPNext to bring operations back into one system.",
+    features: [],
+    bestFor: "Businesses that value precision and up-time.",
     image: "/images/services/system-support.gif",
   },
   {
     id: 5,
     title: "Growth & Digital Enablement",
-    subtitle: "Build systems that support growth",
-    features: [
-      "Email systems & deliverability (SendGrid, Mailchimp)",
-      "CRM-driven outreach & lead pipelines",
-      "Analytics & operational dashboards",
-      "Tool stack consulting & optimisation",
-    ],
+    subtitle: "When growth needs structure — not chaos",
+    desc: "Growth without systems feels exciting — until it breaks. Leads get lost. Campaigns underperform. Decisions rely on guesswork.We design the invisible engine behind growth —so momentum is measurable, repeatable, and sustainable. Turn your chaos into a scalable machine.",
+    features: [],
     bestFor: "Teams preparing for their next growth stage.",
     image: "/images/services/growth.gif",
+  },
+  {
+    id: 6,
+    title: "Data, QA & System Support",
+    subtitle: "Accuracy, reliability, and continuity",
+    desc: "As systems grow, small errors stop being small.Data inconsistencies multiply. Bugs slip through. Downtime becomes expensive.This layer exists to protect everything else —ensuring accuracy, continuity, and confidence in the systems you rely on.",
+    features: [],
+    bestFor: "Businesses that value precision and uptime",
+    image: "/images/services/system-support.gif",
   },
 ];
 export default function WhyUs() {
@@ -142,10 +131,12 @@ export default function WhyUs() {
               </div>
               <div className="grid lg:grid-cols-2 gap-8 ">
                 <div className="bg-[#64F4FC] text-black p-6 sm:p-8 lg:p-10 rounded-3xl md:rounded-4xl font-inter flex flex-col ">
+                  <p className="text-base sm:text-lg">{data.desc}</p>
                   <ul className="space-y-2 lg:space-y-4 text-base sm:text-lg">
-                    {data.features.map((feature, idx) => (
-                      <li key={idx}>{feature}</li>
-                    ))}
+                    {data.features.length > 0 &&
+                      data.features.map((feature, idx) => (
+                        <li key={idx}>{feature}</li>
+                      ))}
                   </ul>
                   <p className="justify-self-end   text-base sm:text-lg mt-10">
                     <strong>Best for:</strong> {data.bestFor}

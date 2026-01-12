@@ -10,7 +10,7 @@ const sponsorLogos = [
 ];
 export default function Testimonials() {
   return (
-    <section className="container mt-20">
+    <section className=" mt-20">
       <div className="text-center">
         <h5>[ Testimonials ]</h5>
         <h1 className="font-manrope text-2xl lg:text-3xl xl:text-4xl font-bold mt-8 leading-[48px]">

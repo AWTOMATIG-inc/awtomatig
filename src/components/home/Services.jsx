@@ -1,16 +1,18 @@
 import { servicesData } from "@/contants/services";
-import Marquee from "react-fast-marquee";
 import FadeInSection from "../animation/FadeEffect";
+import MarqueHighlightText from "../MarqueHighlightText";
 
 export default function Services() {
   return (
     <section className=" mt-20">
       <div>
-        <Marquee speed={50} gradient={false} autoFill={true}>
-          <p className="font-sora text-5xl lg:text-7xl xl:text-8xl bg-linear-to-l from-blue-light to-dark-white bg-clip-text text-transparent text-center overflow-hidden py-20">
-            / Changing the game for Artificial Intelligence
-          </p>
-        </Marquee>
+        <MarqueHighlightText
+          marqueeText={[
+            "/From growth pressure to structured momentum",
+            "/From execution overload to scalable systems",
+            "/From manual effort to intelligent flow",
+          ]}
+        />
       </div>
       <div className="container">
         <FadeInSection
@@ -21,12 +23,12 @@ export default function Services() {
         >
           <div className="wrapper mt-20 mb-14  text-center sm:text-left relative z-10">
             <div>
-              <h5 className="font-montserrat">[ Why Us ]</h5>
+              <h5 className="font-montserrat">[ Why teams stay ]</h5>
               <h1 className="font-russo-one text-2xl lg:text-3xl xl:text-5xl mt-8 ">
-                Unique, ownable intelligence
+                Because the work feels different
               </h1>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-14  mt-25">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12  mt-25">
               {servicesData.map((service) => (
                 <div key={service.id} className="text-center sm:text-left">
                   <h1 className="font-semibold font-inter">{service.title}</h1>

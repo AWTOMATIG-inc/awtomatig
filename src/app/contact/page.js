@@ -1,6 +1,7 @@
 import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
-import GetInTouch from "@/components/services/GetInTouch";
+import GetInTouch from "@/components/contact/GetInTouch";
+
 export default function Contact() {
   return (
     <main>
@@ -15,13 +16,16 @@ export default function Contact() {
             scrollBottom={{ opacity: 0, x: -150 }}
             margin="40px 0px -40px 0px"
           >
-            <div className="flex flex-col justify-center items-center min-h-screen text-center gap-4">
+            <div className="wrapper flex flex-col justify-center items-center min-h-screen text-center gap-4">
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl uppercase font-russo-one tracking-wider">
-                We look forward to <br /> hearing from you.
+                Let’s Start a Conversation
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl xl:text-2xl mt-4 sm:mt-6 lg:mt-8">
-                Schedule a demo, inquire. or reach out here. For job
-                opportunities at lori Corporation. explore our careers page
+              <p className="font-inter text-base sm:text-lg lg:text-xl xl:text-3xl mt-4 sm:mt-6 lg:mt-8">
+                Schedule a call, ask a question, or tell us what you’re
+                building. We’ll respond with <br /> clarity, not sales pressure.
+              </p>
+              <p className="font-inter text-base sm:text-base lg:text-xl mt-3 sm:mt-5">
+                Trusted by startups, operators, and growing teams since 2022.
               </p>
             </div>
           </FadeInSection>

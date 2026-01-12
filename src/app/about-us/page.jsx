@@ -1,6 +1,4 @@
 import group_meeting from "@/assets/about/group-meeting.webp";
-import man_working from "@/assets/about/man-working.png";
-import team_meeting from "@/assets/about/team-meeting.png";
 import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import Image from "next/image";
@@ -18,45 +16,27 @@ export default function AboutUs() {
             scrollBottom={{ opacity: 0, x: -150 }}
             margin="40px 0px -40px 0px"
           >
-            <div className="flex flex-col justify-center items-center min-h-screen text-center gap-4">
+            <div className="wrapper flex flex-col justify-center items-center min-h-screen text-center gap-4">
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl uppercase font-russo-one tracking-wider">
-                ABout US
+                About AWTOMATIG
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl xl:text-2xl mt-4 sm:mt-6 lg:mt-8">
-                Empower your team with AI systems that learn, adapt and improve
-                over time. Together,
+              <p className="font-montserrat text-base sm:text-lg lg:text-2xl xl:text-3xl mt-4 sm:mt-6 lg:mt-8 uppercase">
+                We help businesses scale operations, technology, and execution—{" "}
+                <br />
+                without the chaos of building everything in-house.
               </p>
             </div>
           </FadeInSection>
-
-          <p className="absolute bottom-5 left-5 font-bold">Home / services</p>
         </div>
       </section>
       <section className="container my-20">
         <div className="wrapper">
-          <div className="grid grid-cols-2 gap-5">
-            <div>
-              <h5 className="font-montserrat">[ Our Story ]</h5>
-              <h1 className="font-russo-one text-2xl lg:text-3xl xl:text-4xl font-bold mt-4 leading-[70px]">
-                Your Vision Our Expertise Your <br /> Success Get Noticed
-                Generate <br />
-                <span className="text-[#3BEBFF]">Lead Dominate.</span>
-              </h1>
-            </div>
-            <div className="grid grid-cols-2 gap-2.5">
-              <Image
-                src={man_working}
-                alt="man-working"
-                width={330}
-                height={229}
-              />
-              <Image
-                src={team_meeting}
-                alt="man-working"
-                width={330}
-                height={229}
-              />
-            </div>
+          <div>
+            <h5 className="font-montserrat">[ Our Story ]</h5>
+            <h1 className="font-russo-one text-2xl lg:text-3xl xl:text-4xl font-bold mt-4 leading-[70px]">
+              Building systems that turn growth into
+              <span className="text-[#3BEBFF]"> legacy.</span>
+            </h1>
           </div>
         </div>
       </section>
@@ -68,29 +48,45 @@ export default function AboutUs() {
               alt="group-working"
               height={556}
               width={675}
+              className="max-w-2xl"
             />
-            <div className="pl-20">
-              <p className="text-2xl font-montserrat  uppercase leading-8">
+            <div className="pl-16">
+              <p className="text-2xl font-russo-one  uppercase text-justify leading-9 ">
                 Empower your team with AI systems that learn, adapt and improve
-                over time. Together,
-                <br /> we’ll pioneer the next generation.
+                over time. Together, we’ll pioneer the next generation.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-10">
                 <div>
-                  <h5 className="font-extrabold font-sora text-4xl">10k +</h5>
-                  <p className="text-2xl mt-2">Complated Projects</p>
+                  <h5 className="font-extrabold font-sora text-2xl">
+                    4+ Years
+                  </h5>
+                  <p className="font-inter  mt-2">
+                    Operational experience since 2022
+                  </p>
                 </div>
                 <div>
-                  <h5 className="font-extrabold font-sora text-4xl">10k +</h5>
-                  <p className="text-2xl mt-2">Complated Projects</p>
+                  <h5 className="font-extrabold font-sora text-2xl">
+                    10+ Active Clients
+                  </h5>
+                  <p className="font-inter  mt-2">
+                    Across eCommerce, SaaS, and service businesses
+                  </p>
                 </div>
                 <div>
-                  <h5 className="font-extrabold font-sora text-4xl">10k +</h5>
-                  <p className="text-2xl mt-2">Complated Projects</p>
+                  <h5 className="font-extrabold font-sora text-2xl">
+                    95%+ Retention Rate
+                  </h5>
+                  <p className="font-inter  mt-2">
+                    Long-term partnerships, not one-off gigs
+                  </p>
                 </div>
                 <div>
-                  <h5 className="font-extrabold font-sora text-4xl">10k +</h5>
-                  <p className="text-2xl mt-2">Complated Projects</p>
+                  <h5 className="font-extrabold font-sora text-2xl">
+                    50k+ Tasks Managed
+                  </h5>
+                  <p className="font-inter  mt-2">
+                    Across ops, support, design, and development
+                  </p>
                 </div>
               </div>
             </div>

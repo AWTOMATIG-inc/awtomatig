@@ -7,7 +7,7 @@ import Benifits from "@/components/services/Benifits";
 import GetInTouch from "@/components/services/GetInTouch";
 import OurServices from "@/components/services/OurServices";
 import Testimonials from "@/components/services/Testimonials";
-import { capabilities } from "@/contants/capabilities";
+import { FAQ } from "@/contants/capabilities";
 export default function Services() {
   return (
     <main>
@@ -30,19 +30,18 @@ export default function Services() {
             scrollBottom={{ opacity: 0, x: -150 }}
             margin="40px 0px -40px 0px"
           >
-            <div className="flex flex-col justify-center items-center min-h-screen text-center gap-4">
+            <div className="wrapper flex flex-col justify-center items-center min-h-screen text-center gap-4">
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl uppercase font-russo-one tracking-wider">
-                Intelligence That Evolves
+                Better business through smarter technology.
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl xl:text-2xl mt-4 sm:mt-6 lg:mt-8">
-                Empower your team with AI systems that learn, adapt and improve
-                over time. Together, <br /> we’ll pioneer the next generation of
-                intelligent solutions, turning complexity into clarity.
+              <p className="font-montserrat text-base sm:text-lg lg:text-2xl xl:text-3xl mt-4 sm:mt-6 lg:mt-8 uppercase">
+                We bridge the gap between outsourcing and digital
+                transformation. Using automation and human expertise, we
+                optimize complex processes to deliver superior, data-driven
+                results.
               </p>
             </div>
           </FadeInSection>
-
-          <p className="absolute bottom-5 left-5 font-bold">Home / services</p>
         </div>
       </section>
       {/* <section className="hero-banner min-h-[823px] relative">
@@ -138,7 +137,13 @@ export default function Services() {
         </div>
       </section> */}
       <OurServices />
-      <MarqueHighlightText text="/ Changing the game for Artificial Intelligence" />
+      <MarqueHighlightText
+        marqueeText={[
+          "/From growth pressure to structured momentum",
+          "/From execution overload to scalable systems",
+          "/From manual effort to intelligent flow",
+        ]}
+      />
       <Benifits />
       <Testimonials />
       {/* <section className="container mt-20">
@@ -230,18 +235,18 @@ export default function Services() {
           <div className="">
             <p className="font-inter">[ FAQ ]</p>
             <h1 className="font-russo-one text-2xl sm:text-3xl md:text-4xl  leading-[135%] mt-5">
-              Open questions from our customers
+              Common questions from our clients
             </h1>
           </div>
 
           <div className="mt-14">
-            {capabilities.map((capability) => (
+            {FAQ.map((capability) => (
               <Accordion
                 key={capability.id}
                 title={capability.title}
                 serial={"0" + capability.id}
               >
-                <p>{capability.description}</p>
+                <p className="font-montserrat">{capability.description}</p>
               </Accordion>
             ))}
           </div>

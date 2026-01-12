@@ -9,32 +9,32 @@ const steps = [
   {
     id: 1,
     title: "connect",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    desc: "We map your workflow, tools, and data sources. Whether it’s Shopify, Google Sheets, Notion, HubSpot, WhatsApp, or custom back office systems—we plug in cleanly and safely.",
   },
   {
     id: 2,
     title: "Align",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    desc: "We confirm goals, timelines, and success metrics. You get a clear scope, responsibilities, and a simple delivery plan—so the project never drifts.",
   },
   {
     id: 3,
     title: "Assign",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    desc: "We build your execution pod (VA / Ops / Design / Dev / QA) and set trackers. You’ll know who’s doing what, by when, and where updates live.",
   },
   {
     id: 4,
     title: "Execute",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    desc: "Work begins in structured sprints with daily/weekly check-ins (based on your preference). We prioritize speed without sacrificing quality—so progress stays visible.",
   },
   {
     id: 5,
     title: "Deliver",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    desc: "You receive completed deliverables in organized batches, with documentation where needed. Nothing lands messy—handover is clean, tested, and ready to use.",
   },
   {
     id: 6,
     title: "Support",
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    desc: "After delivery, we stay close for fixes, improvements, and scaling. Need more volume, more tools, or more automation? We expand without breaking your system.",
   },
 ];
 export default function Process() {
@@ -51,29 +51,31 @@ export default function Process() {
             scrollBottom={{ opacity: 0, x: -150 }}
             margin="40px 0px -40px 0px"
           >
-            <div className="flex flex-col justify-center items-center min-h-screen text-center gap-4">
+            <div className="wrapper flex flex-col justify-center items-center min-h-screen text-center gap-4">
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl uppercase font-russo-one tracking-wider">
-                Process of Starting the Project
+                A Structured Process Built for Speed
               </h1>
-              <p className="text-base sm:text-lg lg:text-xl xl:text-2xl mt-4 sm:mt-6 lg:mt-8">
-                At AWTOMATIG, we value transparency. and delivering exceptional
-                results.
+              <p className="font-inter text-base sm:text-lg lg:text-xl xl:text-3xl mt-4 sm:mt-6 lg:mt-8">
+                A clear, predictable workflow built for speed, transparency, and
+                measurable outcomes.
+              </p>
+              <p className="font-inter text-base sm:text-base lg:text-xl mt-3 sm:mt-5">
+                From first message → delivery → ongoing support, you always know
+                what’s happening next.
               </p>
             </div>
           </FadeInSection>
-
-          <p className="absolute bottom-5 left-5 font-bold">Home / services</p>
         </div>
       </section>
       <section className="container my-20">
         <div className="wrapper">
           <div className="  font-montserrat pt-5 max-w-[1226px]">
-            <h4>[ At Awtomatig ]</h4>
+            <h4>[ The AWTOMATIG Workflow ]</h4>
             <p className="mb-16 mt-12 capitalize text-3xl font-medium font-inter">
-              we combine scalable teams, sharp strategy, and efficient tools to
-              handle your business processes end-to-end. From first contact to
-              final delivery, our approach is built for clarity, speed, and real
-              results.{" "}
+              We combine scalable teams, sharp strategy, and efficient tools to
+              run your operations end-to-end. From first contact to final
+              delivery, our process is designed to remove confusion, keep
+              momentum high,and deliver real results—not “busy work.
             </p>
 
             {/* <button className=" p-[3px] rounded-xl animated-border-button">
@@ -137,7 +139,11 @@ export default function Process() {
                   normal distribution
                 </p>
                 <div className="w-fit mx-auto mt-12">
-                  <AnimatedButton name="Start Project" width="w-[190px]" />
+                  <AnimatedButton
+                    name="Start Project"
+                    width="w-[220px]"
+                    icon={true}
+                  />
                 </div>
               </div>
             </div>

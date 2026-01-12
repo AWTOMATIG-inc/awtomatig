@@ -13,11 +13,11 @@ export default function BlogTimeline() {
               scrollBottom={{ opacity: 0, x: -150 }}
               margin="40px 0px -40px 0px"
             >
-              <h5>[ blog ]</h5>
+              <h5>[ Insights ]</h5>
               <h1 className="font-sora text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-8">
-                Useful articles
+                Practical insights from real systems,
                 <br />
-                from our company
+                explore Ideas
               </h1>
             </FadeInSection>
             <FadeInSection
@@ -26,7 +26,11 @@ export default function BlogTimeline() {
               scrollBottom={{ opacity: 0, x: 150 }}
               margin="40px 0px -40px 0px"
             >
-              <AnimatedButton name="Get started" width="w-[180px]" />
+              <AnimatedButton
+                name="Read Insights"
+                width="w-[210px]"
+                icon={true}
+              />
             </FadeInSection>
           </div>
           <div className="hidden md:block">

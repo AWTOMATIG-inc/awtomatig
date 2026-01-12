@@ -17,12 +17,13 @@ export default function GetInTouch() {
           <div>
             <h1>[ get in touch ]</h1>
             <h5 className="font-russo-one text-3xl sm:text-4xl lg:text-7xl  mt-6">
-              We are always ready to help you and answer your questions
+              We’re here to help before, during, and after your project.
             </h5>
             <p className="text-inter text-base sm:text-lg lg:text-2xl mt-6 ">
-              Have a question, a project in mind, or need clarity before moving
-              forward? Share a few details and our team will get back to you
-              with a clear, helpful response—no pressure, no noise.
+              Whether you’re exploring a new idea, fixing operational
+              bottlenecks, or scaling an existing system, our team is ready to
+              guide you. Share your goals, and we’ll suggest the most efficient
+              way forward.
             </p>
           </div>
           <div className="mt-11">

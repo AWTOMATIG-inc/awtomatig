@@ -35,8 +35,8 @@ export default function Footer() {
         <div className="wrapper relative z-9">
           <div className="flex justify-between items-center">
             <h1 className="font-russo-one text-2xl sm:text-3xl md:text-4xl lg:text-6xl  bg-[linear-gradient(90deg,#FFFFFF_0%,#02D5E8_100%)] text-transparent bg-clip-text leading-[61px]">
-              It’s blow your mind! <br />
-              Meet Neural Networks
+              Systems that work. <br />
+              Results that last.
             </h1>
             <div className="hidden md:block">
               <AnimatedButton name="Get a quote" icon={true} />
@@ -83,7 +83,7 @@ export default function Footer() {
               since 2022
             </h1> */}
             </div>
-            <div className="flex justify-between ">
+            <div className="flex justify-between mt-10">
               <div className="text-right">
                 <h1 className=" text-xl mb-2 font-russo-one">USEFUL LIKS</h1>
                 <div className="flex flex-col gap-y-5 text-sm mt-6 font-inter">

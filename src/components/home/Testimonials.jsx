@@ -50,21 +50,15 @@ export default function Testimonials() {
                     About Artificial <br /> Intelligence
                   </h1>
                   <p className="mt-6 sm:mt-10 lg:mt-20 font-inter">
-                    Halosaur duckbilled barracudina, goosefish gar pleco, chum
-                    salmon armoured catfish gudgeon sawfish whitefish orbicular
-                    batfish mummichog paradise fish! Pacific hake false trevally
-                    queen parrotfish black prickleback moss revally queen
-                    parrotfish black prickleback moss. Queen parrotfish black
-                    prickleback moss pacific hake false trevally queen
-                    parrotfish black prickleback moss revally
+                    AWTOMATIG is highly professional, competent, and efficient,
+                    demonstrating remarkable attention to detail and fostering
+                    long-term partnerships.
                   </p>
-                  <div className="flex flex-col lg:flex-row justify-between items-center mt-13 md:text-center">
+                  <div className="flex flex-col lg:flex-row justify-between items-center mt-20 ">
                     <div>
-                      <h5 className=" text-xl font-russo-one">
-                        Adrian Mitchel
-                      </h5>
+                      <h5 className=" text-xl font-russo-one">JUMAR WILSON</h5>
                       <p className="text-sm font-bold mt-1 font-montserrat">
-                        SolarInc
+                        REALTYREELSMEDIA, SOLAR STARS
                       </p>
                     </div>
                     {/* Custom Indicator Buttons */}
@@ -73,7 +67,7 @@ export default function Testimonials() {
                         <button
                           key={index}
                           onClick={() => swiperRef.current.slideTo(index)}
-                          className={`w-10 md:w-20  bg-white block ${
+                          className={`w-10 md:w-16  bg-white block ${
                             activeIndex === index ? "h-2" : "h-1"
                           }
             `}
