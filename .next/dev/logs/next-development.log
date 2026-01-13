@@ -1,0 +1,89 @@
+[00:00:02.292] Server  LOG      ✓ Ready in 1526ms
+[00:00:07.459] Server  LOG      ○ Compiling / ...
+[00:00:10.744] Browser WARN    Image with src "/_next/static/media/cookie.24c4f3be.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:00:16.438] Browser WARN    Image with src "/_next/static/media/card-bg.e876330e.webp" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:17.813] Browser LOG     undefined
+[00:00:22.099] Browser WARN    Image with src "/_next/static/media/awtomatig-full-logo.19936bec.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:22.099] Browser WARN    Image with src "/_next/static/media/since-text.86ca9cee.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:34.176] Server  LOG      ✓ Compiled in 75ms
+[00:00:43.919] Browser WARN    Image with src "/_next/static/media/cookie.24c4f3be.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:00:44.104] Browser WARN    Image with src "/_next/static/media/awtomatig-full-logo.19936bec.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:44.104] Browser WARN    Image with src "/_next/static/media/since-text.86ca9cee.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:44.104] Browser WARN    Image with src "/_next/static/media/card-bg.e876330e.webp" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:44.104] Browser WARN    Image with src "/_next/static/media/card-bg.e876330e.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:00:44.607] Browser LOG     undefined
+[00:00:44.607] Browser LOG     undefined
+[00:00:44.607] Browser LOG     undefined
+[00:00:44.607] Browser LOG     undefined
+[00:00:44.607] Browser LOG     undefined
+[00:01:02.143] Server  LOG      ✓ Compiled in 62ms
+[00:01:12.033] Server  LOG      ✓ Compiled in 55ms
+[00:01:15.620] Server  LOG      ✓ Compiled in 54ms
+[00:01:18.803] Server  LOG      ✓ Compiled in 69ms
+[00:01:33.454] Server  LOG      ✓ Compiled in 60ms
+[00:01:39.570] Server  LOG      ✓ Compiled in 111ms
+[00:01:48.270] Browser WARN    Image with src "/_next/static/media/cookie.24c4f3be.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:01:48.631] Browser WARN    Image with src "/_next/static/media/awtomatig-full-logo.19936bec.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:48.631] Browser WARN    Image with src "/_next/static/media/since-text.86ca9cee.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:48.631] Browser WARN    Image with src "/_next/static/media/card-bg.e876330e.webp" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:48.631] Browser WARN    Image with src "/_next/static/media/card-bg.e876330e.webp" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:01:48.631] Browser LOG     undefined
+[00:01:48.631] Browser LOG     undefined
+[00:01:48.631] Browser LOG     undefined
+[00:01:48.631] Browser LOG     undefined
+[00:01:48.631] Browser LOG     undefined
+[00:01:48.631] Browser LOG     undefined
+[00:01:48.631] Browser LOG     undefined
+[00:01:48.631] Browser LOG     undefined
+[00:01:48.631] Browser LOG     undefined
+[00:01:48.631] Browser LOG     undefined
+[00:01:49.005] Browser LOG     undefined
+[00:01:49.005] Browser LOG     undefined
+[00:01:49.005] Browser LOG     undefined
+[00:01:49.005] Browser LOG     undefined
+[00:01:49.005] Browser LOG     undefined
+[00:01:59.026] Server  LOG      ✓ Compiled in 51ms
+[00:05:38.814] Browser LOG     undefined
+[00:05:38.814] Browser LOG     undefined
+[00:05:38.814] Browser LOG     undefined
+[00:05:38.814] Browser LOG     undefined
+[00:05:38.814] Browser LOG     undefined
+[00:05:38.814] Browser LOG     undefined
+[00:05:38.814] Browser LOG     undefined
+[00:05:38.814] Browser LOG     undefined
+[00:05:38.814] Browser LOG     undefined
+[00:05:38.814] Browser LOG     undefined
+[00:05:38.984] Browser LOG     undefined
+[00:05:38.984] Browser LOG     undefined
+[00:05:38.984] Browser LOG     undefined
+[00:05:38.984] Browser LOG     undefined
+[00:05:38.984] Browser LOG     undefined
+[00:05:45.221] Browser LOG     undefined
+[00:05:45.221] Browser LOG     undefined
+[00:05:45.221] Browser LOG     undefined
+[00:05:45.221] Browser LOG     undefined
+[00:05:45.221] Browser LOG     undefined
+[00:05:58.075] Browser LOG     undefined
+[00:05:58.075] Browser LOG     undefined
+[00:05:58.075] Browser LOG     undefined
+[00:05:58.075] Browser LOG     undefined
+[00:05:58.075] Browser LOG     undefined

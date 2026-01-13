@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import CommonHeading from "../CommonHeading";
 const sponsorLogos = [
   "/images/sponsor/sponsor1.png",
   "/images/sponsor/sponsor2.png",
@@ -10,18 +11,14 @@ const sponsorLogos = [
 ];
 export default function Sponsor() {
   return (
-    <div>
-      <div className="text-center">
-        <h5 className="font-montserrat uppercase">[ Testimonials ]</h5>
-        <h1 className="font-manrope text-2xl lg:text-3xl xl:text-4xl font-bold mt-8 leading-12">
-          Trusted By Leading Companies
-        </h1>
-        <p className="mt-8 text-lg">
-          Join innovative global businesses offering industry-leading <br />{" "}
-          employee benefits with Nexros.
-        </p>
+    <div className="pt-10">
+      <div className="wrapper">
+        <CommonHeading
+          title="Testimonials"
+          heading="Trusted By Leading Companies"
+        />
       </div>
-      <div className=" py-8">
+      <div className="py-8 mt-14">
         <Marquee speed={50} gradient={false} autoFill={true}>
           {sponsorLogos.map((logo, index) => (
             <div

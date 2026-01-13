@@ -247,7 +247,7 @@ export default function OurService() {
                           <h2 className="font-bold font-inter mt-2">
                             {cardData.box2.heading}
                           </h2>
-                          <p className="mt-2 text-sm  font-montserrat ">
+                          <p className="mt-2 text-sm  font-montserrat text-justify">
                             {cardData.box2.desc}
                           </p>
                         </div>
