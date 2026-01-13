@@ -17,7 +17,7 @@ export default function Contact() {
             margin="40px 0px -40px 0px"
           >
             <div className="wrapper flex flex-col justify-center items-center min-h-screen text-center gap-4">
-              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl uppercase font-russo-one tracking-wider">
+              <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl uppercase font-russo-one tracking-wider leading-24">
                 Let’s Start a Conversation
               </h1>
               <p className="font-inter text-base sm:text-lg lg:text-xl xl:text-3xl mt-4 sm:mt-6 lg:mt-8">
@@ -32,7 +32,6 @@ export default function Contact() {
           {/* <h5 className="text-8xl text-border text-transparent uppercase absolute -right-30 top-1/2 -translate-y-1/2 opacity-80 -rotate-90 select-none pointer-events-none tracking-[30%] font-sora">
             Contacts
           </h5> */}
-          <p className="absolute bottom-5 left-5 font-bold">Home / contact</p>
         </div>
       </section>
       <section className="my-30">

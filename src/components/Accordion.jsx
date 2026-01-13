@@ -4,7 +4,7 @@ export default function Accordion({ children, title, serial }) {
   const [showAccordion, setShowAccordion] = useState(false);
   return (
     <div
-      className={`border-t transition-colors duration-300  group hover:border-gray-100 ${
+      className={`odd:border-t border-b transition-colors duration-300  group hover:border-gray-100 ${
         showAccordion ? "border-white" : "border-gray-400"
       }`}
     >

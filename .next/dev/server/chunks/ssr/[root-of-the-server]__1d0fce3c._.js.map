@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 22, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Shipon%20Islam/Desktop/Next-Project/awtomatig/src/app/about-us/page.jsx"],"sourcesContent":["export default function AboutUs() {\r\n  return (\r\n    <main>\r\n      <section>\r\n        <div className=\"absolute top-0 left-0 h-full w-full\">\r\n          <BackgroundAnimation className=\"min-h-screen\" />\r\n        </div>\r\n      </section>\r\n    </main>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,8OAAC;kBACC,cAAA,8OAAC;sBACC,cAAA,8OAAC;gBAAI,WAAU;0BACb,cAAA,8OAAC;oBAAoB,WAAU;;;;;;;;;;;;;;;;;;;;;AAKzC"}}]
-}

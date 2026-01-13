@@ -1,4 +1,4 @@
-import group_meeting from "@/assets/about/group-meeting.webp";
+import group_meeting from "@/assets/about/man-working.gif";
 import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import Image from "next/image";
@@ -32,7 +32,7 @@ export default function AboutUs() {
       <section className="container my-20">
         <div className="wrapper">
           <div>
-            <h5 className="font-montserrat">[ Our Story ]</h5>
+            <h5 className="font-montserrat uppercase">[ Our Story ]</h5>
             <h1 className="font-russo-one text-2xl lg:text-3xl xl:text-4xl font-bold mt-4 leading-[70px]">
               Building systems that turn growth into
               <span className="text-[#3BEBFF]"> legacy.</span>
@@ -48,7 +48,7 @@ export default function AboutUs() {
               alt="group-working"
               height={556}
               width={675}
-              className="max-w-2xl"
+              className="max-w-2xl object-cover max-h-[500px]"
             />
             <div className="pl-16">
               <p className="text-2xl font-russo-one  uppercase text-justify leading-9 ">

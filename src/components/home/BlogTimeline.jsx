@@ -13,7 +13,7 @@ export default function BlogTimeline() {
               scrollBottom={{ opacity: 0, x: -150 }}
               margin="40px 0px -40px 0px"
             >
-              <h5>[ Insights ]</h5>
+              <h5 className="font-montserrat uppercase">[ Insights ]</h5>
               <h1 className="font-sora text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-8">
                 Practical insights from real systems,
                 <br />

@@ -14,7 +14,7 @@ export default function OurCapabilities() {
       >
         <div className="flex justify-between items-center">
           <div>
-            <h5 className="font-montserrat">[ What we operate ]</h5>
+            <h5 className="font-montserrat uppercase">[ What we operate ]</h5>
             <h1 className="font-russo-one text-2xl sm:text-3xl md:text-4xl lg:text-6xl  text-teal mt-6">
               Our operational capabilities
             </h1>
@@ -30,10 +30,12 @@ export default function OurCapabilities() {
               title={capability.title}
               serial={capability.id < 10 ? "0" + capability.id : capability.id}
             >
-              <p className="font-montserrat font-medium mb-1">
+              <p className="font-montserrat font-medium mb-1 ">
                 {capability.heading}
               </p>
-              <p className="font-montserrat">{capability.description}</p>
+              <p className="font-montserrat text-justify">
+                {capability.description}
+              </p>
             </Accordion>
           ))}
         </div>

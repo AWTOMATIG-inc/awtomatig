@@ -6,7 +6,7 @@ export default function OurProccess() {
     <section className="container sm:mt-20 md:mt-40">
       <div className="wrapper grid lg:grid-cols-[230px_1fr] xl:grid-cols-[470px_1fr]">
         <div className="text-center lg:text-left">
-          <h5 className="font-montserrat">[ Getting started ]</h5>
+          <h5 className="font-montserrat uppercase">[ Getting started ]</h5>
           <h5 className="text-[40px] font-inter font-extrabold leading-[135%] mt-6">
             A clear beginning <br />— no pressure attached
           </h5>
@@ -36,7 +36,9 @@ export default function OurProccess() {
                     <h1 className="font-inter font-medium text-lg lg:text-xl  capitalize mt-3 text-[#050505]">
                       {process.subtitle}
                     </h1>
-                    <p className="font-montserrat mt-7">{process.desc}</p>
+                    <p className="font-montserrat mt-7 text-justify">
+                      {process.desc}
+                    </p>
                   </div>
                   <span className="bg-teal font-sora block absolute -top-4 -left-3 p-1 rounded-sm text-sm">
                     0{process.id}

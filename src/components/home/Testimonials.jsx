@@ -54,10 +54,10 @@ export default function Testimonials() {
                     demonstrating remarkable attention to detail and fostering
                     long-term partnerships.
                   </p>
-                  <div className="flex flex-col lg:flex-row justify-between items-center mt-20 ">
+                  <div className="flex flex-col lg:flex-row justify-between items-end mt-20 ">
                     <div>
-                      <h5 className=" text-xl font-russo-one">JUMAR WILSON</h5>
-                      <p className="text-sm font-bold mt-1 font-montserrat">
+                      <h5 className="font-russo-one">JUMAR WILSON</h5>
+                      <p className="text-xs font-bold mt-1 font-montserrat">
                         REALTYREELSMEDIA, SOLAR STARS
                       </p>
                     </div>

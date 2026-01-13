@@ -6,7 +6,7 @@ import MarqueHighlightText from "@/components/MarqueHighlightText";
 import Benifits from "@/components/services/Benifits";
 import GetInTouch from "@/components/services/GetInTouch";
 import OurServices from "@/components/services/OurServices";
-import Testimonials from "@/components/services/Testimonials";
+import Sponsor from "@/components/services/Sponsor";
 import { FAQ } from "@/contants/capabilities";
 export default function Services() {
   return (
@@ -145,7 +145,10 @@ export default function Services() {
         ]}
       />
       <Benifits />
-      <Testimonials />
+      <section className="mt-20">
+        <Sponsor />
+      </section>
+
       {/* <section className="container mt-20">
         <div className="wrapper service-awtomatig-banner h-[354px] flex flex-col justify-center items-center text-center px-20 py-10 rounded-sm">
           <FadeInSection

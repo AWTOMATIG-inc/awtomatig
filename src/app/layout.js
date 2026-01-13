@@ -50,6 +50,9 @@ const montserrat = Montserrat({
 export const metadata = {
   title: "AWTOMATIG",
   description: "Developed by Shipon islam",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }) {

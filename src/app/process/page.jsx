@@ -70,8 +70,10 @@ export default function Process() {
       <section className="container my-20">
         <div className="wrapper">
           <div className="  font-montserrat pt-5 max-w-[1226px]">
-            <h4>[ The AWTOMATIG Workflow ]</h4>
-            <p className="mb-16 mt-12 capitalize text-3xl font-medium font-inter">
+            <h4 className="font-montserrat uppercase">
+              [ The AWTOMATIG Workflow ]
+            </h4>
+            <p className="mb-16 mt-12 capitalize text-3xl font-medium font-inter ">
               We combine scalable teams, sharp strategy, and efficient tools to
               run your operations end-to-end. From first contact to final
               delivery, our process is designed to remove confusion, keep
@@ -106,7 +108,7 @@ export default function Process() {
                 </h5>
               </div>
 
-              <p className="font-montserrat mt-5 text-xl font-semibold">
+              <p className="font-montserrat mt-5 text-xl font-semibold text-justify">
                 {step.desc}
               </p>
             </div>

@@ -23,7 +23,7 @@ export default function Services() {
         >
           <div className="wrapper mt-20 mb-14  text-center sm:text-left relative z-10">
             <div>
-              <h5 className="font-montserrat">[ Why teams stay ]</h5>
+              <h5 className="font-montserrat uppercase">[ Why teams stay ]</h5>
               <h1 className="font-russo-one text-2xl lg:text-3xl xl:text-5xl mt-8 ">
                 Because the work feels different
               </h1>
@@ -32,7 +32,7 @@ export default function Services() {
               {servicesData.map((service) => (
                 <div key={service.id} className="text-center sm:text-left">
                   <h1 className="font-semibold font-inter">{service.title}</h1>
-                  <p className="mt-5 md:mt-8 font-montserrat font-light text-sm">
+                  <p className="mt-5 md:mt-8 font-montserrat font-light text-sm text-justify">
                     {service.desc}
                   </p>
                 </div>

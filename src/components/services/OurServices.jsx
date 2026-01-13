@@ -154,7 +154,7 @@ export default function OurService() {
     <section className="container mt-20" ref={sectionRef}>
       <div className="wrapper mt-20 mb-14  text-center sm:text-left relative z-10">
         <div>
-          <h5 className="font-inter">[ OUR SERVICES ]</h5>
+          <h5 className="font-montserrat uppercase">[ OUR SERVICES ]</h5>
           <h1 className="font-russo-one text-2xl lg:text-3xl xl:text-4xl  mt-8 leading-[48px]">
             Transform your operational DNA with tech-enabled BPO services.{" "}
             <br />

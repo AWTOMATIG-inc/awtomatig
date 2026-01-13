@@ -96,7 +96,7 @@ export default function WhyUs() {
   return (
     <section className="container  mt-32 relative z-99">
       <div className="wrapper md:mt-20 mb-14 text-center sm:text-left">
-        <h5 className="font-montserrat">[ Capabilities ]</h5>
+        <h5 className="font-montserrat uppercase">[ Capabilities ]</h5>
         <h1 className="font-russo-one text-xl lg:text-5xl mt-8">
           Unique, ownable intelligence
         </h1>
@@ -131,7 +131,9 @@ export default function WhyUs() {
               </div>
               <div className="grid lg:grid-cols-2 gap-8 ">
                 <div className="bg-[#64F4FC] text-black p-6 sm:p-8 lg:p-10 rounded-3xl md:rounded-4xl font-inter flex flex-col ">
-                  <p className="text-base sm:text-lg">{data.desc}</p>
+                  <p className="text-base sm:text-lg text-justify">
+                    {data.desc}
+                  </p>
                   <ul className="space-y-2 lg:space-y-4 text-base sm:text-lg">
                     {data.features.length > 0 &&
                       data.features.map((feature, idx) => (

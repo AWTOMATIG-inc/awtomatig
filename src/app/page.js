@@ -10,6 +10,7 @@ import OurProccess from "@/components/home/OurProccess";
 import Services from "@/components/home/Services";
 import Testimonials from "@/components/home/Testimonials";
 import WhyUs from "@/components/home/WhyUs";
+import Sponsor from "@/components/services/Sponsor";
 
 export default function Home() {
   return (
@@ -27,6 +28,9 @@ export default function Home() {
       <OurCapabilities />
       <Testimonials />
       <BlogTimeline />
+      <section className="my-20">
+        <Sponsor />
+      </section>
     </main>
   );
 }
