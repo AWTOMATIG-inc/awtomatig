@@ -158,8 +158,7 @@ const mm = gsap.matchMedia();
     <div className="container" ref={sectionRef}>
       <div className="wrapper mb-14  text-center sm:text-left relative z-10">
         <CommonHeading title="OUR SERVICES">
-          Transform your operational DNA with tech-enabled BPO services. <br />
-          Scale your operations with confidence and precision.
+          Transform your operational DNA with tech-enabled BPO services.
         </CommonHeading>
 
         <div className="grid lg:grid-cols-[280px_1fr] lg:gap-8 xl:grid-cols-[300px_1fr  xl:gap-20 mt-0 xl:mt-20 overflow-hidden">

@@ -1,5 +1,6 @@
 import Accordion from "@/components/Accordion";
 import { capabilities } from "@/contants/capabilities";
+import Link from "next/link";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
 import CommonHeading from "../CommonHeading";
@@ -13,11 +14,13 @@ export default function OurCapabilities() {
         margin="40px 0px -40px 0px"
         className="wrapper"
       >
-        <div className="flex justify-between items-center">          
+        <div className="flex justify-between items-center">
           <CommonHeading title="What we operate" color="text-teal">
             Our operational capabilities
           </CommonHeading>
-          <AnimatedButton name="Work" icon={true} width="w-[140px]" />
+          <Link href="/services">
+            <AnimatedButton name="Work" icon={true} width="w-[140px]" />
+          </Link>
         </div>
 
         <div className="my-10">

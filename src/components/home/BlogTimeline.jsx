@@ -2,6 +2,53 @@ import ArticleBar from "@/components/ArticleBar";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
 import CommonHeading from "../CommonHeading";
+const blogData=[
+  {
+    id:1,
+    date:{
+      month:"January",
+      day:"5",
+      year:"26"
+     }
+      ,
+    theme:"AI",
+    name:"What 1 Million Queries Actually Cost",
+    link:"https://www.linkedin.com/feed/update/urn:li:activity:7413912290384646144"
+  },
+  {
+    id:2,
+    date:{
+      month:"December",
+      day:"22",
+      year:"25"
+     },
+    theme:"AI",
+    name:"The Myth of Cheap AI",
+    link:"https://www.linkedin.com/feed/update/urn:li:activity:7408823743042531328"
+  },
+  {
+    id:3,
+    date:{
+      month:"December",
+      day:"8",
+      year:"25"
+     },
+    theme:"Market Insight",
+    name:"RAM Reckoninh 2025",
+    link:"https://www.linkedin.com/feed/update/urn:li:activity:7403750197694296064"
+  },
+  {
+    id:4,
+    date:{
+      month:"November",
+      day:"24",
+      year:"25"
+     },
+    theme:"AI",
+    name:"Beyond Multimodal: Gemini 3",
+    link:"https://www.linkedin.com/feed/update/urn:li:activity:7398676850530533376"
+  }
+]
 export default function BlogTimeline() {
   return (
     <div className="container relative">
@@ -15,10 +62,8 @@ export default function BlogTimeline() {
               margin="40px 0px -40px 0px"
             >
               <CommonHeading title="Insights">
-                Practical insights from <br /> real systems,              
-                explore Ideas
+                Practical insights from <br /> real systems, explore Ideas
               </CommonHeading>
-             
             </FadeInSection>
             <FadeInSection
               initial={{ opacity: 0, x: 150 }}
@@ -26,11 +71,16 @@ export default function BlogTimeline() {
               scrollBottom={{ opacity: 0, x: 150 }}
               margin="40px 0px -40px 0px"
             >
-              <AnimatedButton
-                name="Read Insights"
-                width="w-[210px]"
-                icon={true}
-              />
+              <a
+                href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7362829025410519043"
+                target="_blank"
+              >
+                <AnimatedButton
+                  name="Read Insights"
+                  width="w-[210px]"
+                  icon={true}
+                />
+              </a>
             </FadeInSection>
           </div>
           <div className="hidden md:block">
@@ -49,11 +99,10 @@ export default function BlogTimeline() {
           scrollBottom={{ opacity: 0, x: 150 }}
           margin="40px 0px -40px 0px"
         >
-          <div className="max-w-[1114px] ml-auto mt-10 md:mt-20">
-            <ArticleBar />
-            <ArticleBar />
-            <ArticleBar />
-            <ArticleBar />
+          <div className="max-w-[1114px] ml-auto mt-10 md:mt-20 relative z-10">
+            {blogData.map(blog=><ArticleBar key={blog.id} blog={blog}/>)}
+            
+           
           </div>
         </FadeInSection>
 

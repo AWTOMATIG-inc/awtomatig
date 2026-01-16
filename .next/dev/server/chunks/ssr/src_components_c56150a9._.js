@@ -84,7 +84,7 @@ function CommonHeading({ title, color = "text-white", children }) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                className: `font-russo-one text-2xl sm:text-3xl md:text-4xl lg:text-6xl   mt-6 ${color}`,
+                className: `font-russo-one text-2xl sm:text-3xl md:text-4xl lg:text-5xl   mt-6 ${color}`,
                 children: children
             }, void 0, false, {
                 fileName: "[project]/src/components/CommonHeading.jsx",
@@ -268,16 +268,8 @@ function OurService() {
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$CommonHeading$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                     title: "OUR SERVICES",
-                    children: [
-                        "Transform your operational DNA with tech-enabled BPO services. ",
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
-                            fileName: "[project]/src/components/services/OurServices.jsx",
-                            lineNumber: 161,
-                            columnNumber: 74
-                        }, this),
-                        "Scale your operations with confidence and precision."
-                    ]
-                }, void 0, true, {
+                    children: "Transform your operational DNA with tech-enabled BPO services."
+                }, void 0, false, {
                     fileName: "[project]/src/components/services/OurServices.jsx",
                     lineNumber: 160,
                     columnNumber: 9
@@ -293,7 +285,7 @@ function OurService() {
                                     className: "absolute top-0 size-[400px]  bg-[linear-gradient(215.67deg,rgba(2,213,232,0.55)_18.02%,rgba(3,50,103,0.55)_94.4%)] rounded-full block  blur-[150px]"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/services/OurServices.jsx",
-                                    lineNumber: 167,
+                                    lineNumber: 166,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -306,12 +298,12 @@ function OurService() {
                                                 children: "Back-Office Operational Excellence"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/services/OurServices.jsx",
-                                                lineNumber: 170,
+                                                lineNumber: 169,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/services/OurServices.jsx",
-                                            lineNumber: 169,
+                                            lineNumber: 168,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -321,12 +313,12 @@ function OurService() {
                                                 children: "CRM & Workflow Management"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/services/OurServices.jsx",
-                                                lineNumber: 178,
+                                                lineNumber: 177,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/services/OurServices.jsx",
-                                            lineNumber: 177,
+                                            lineNumber: 176,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -336,12 +328,12 @@ function OurService() {
                                                 children: "Automation & AI Workflows"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/services/OurServices.jsx",
-                                                lineNumber: 186,
+                                                lineNumber: 185,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/services/OurServices.jsx",
-                                            lineNumber: 185,
+                                            lineNumber: 184,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -351,12 +343,12 @@ function OurService() {
                                                 children: "Custom ERPNext Implementation"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/services/OurServices.jsx",
-                                                lineNumber: 194,
+                                                lineNumber: 193,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/services/OurServices.jsx",
-                                            lineNumber: 193,
+                                            lineNumber: 192,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -366,24 +358,24 @@ function OurService() {
                                                 children: "Growth & Digital Enablement"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/services/OurServices.jsx",
-                                                lineNumber: 202,
+                                                lineNumber: 201,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/services/OurServices.jsx",
-                                            lineNumber: 201,
+                                            lineNumber: 200,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/services/OurServices.jsx",
-                                    lineNumber: 168,
+                                    lineNumber: 167,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/services/OurServices.jsx",
-                            lineNumber: 166,
+                            lineNumber: 165,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -402,7 +394,7 @@ function OurService() {
                                                         children: cardData.headding
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/services/OurServices.jsx",
-                                                        lineNumber: 235,
+                                                        lineNumber: 234,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -416,7 +408,7 @@ function OurService() {
                                                                         children: cardData.box1.heading
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/services/OurServices.jsx",
-                                                                        lineNumber: 240,
+                                                                        lineNumber: 239,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -424,13 +416,13 @@ function OurService() {
                                                                         children: cardData.box1.desc
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/services/OurServices.jsx",
-                                                                        lineNumber: 243,
+                                                                        lineNumber: 242,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/services/OurServices.jsx",
-                                                                lineNumber: 239,
+                                                                lineNumber: 238,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -441,7 +433,7 @@ function OurService() {
                                                                         children: cardData.box2.heading
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/services/OurServices.jsx",
-                                                                        lineNumber: 248,
+                                                                        lineNumber: 247,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -449,13 +441,13 @@ function OurService() {
                                                                         children: cardData.box2.desc
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/services/OurServices.jsx",
-                                                                        lineNumber: 251,
+                                                                        lineNumber: 250,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/services/OurServices.jsx",
-                                                                lineNumber: 247,
+                                                                lineNumber: 246,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -466,7 +458,7 @@ function OurService() {
                                                                         children: cardData.box3.heading
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/services/OurServices.jsx",
-                                                                        lineNumber: 256,
+                                                                        lineNumber: 255,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -474,51 +466,51 @@ function OurService() {
                                                                         children: cardData.box3.desc
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/services/OurServices.jsx",
-                                                                        lineNumber: 259,
+                                                                        lineNumber: 258,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/services/OurServices.jsx",
-                                                                lineNumber: 255,
+                                                                lineNumber: 254,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/components/services/OurServices.jsx",
-                                                        lineNumber: 238,
+                                                        lineNumber: 237,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/services/OurServices.jsx",
-                                                lineNumber: 234,
+                                                lineNumber: 233,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/services/OurServices.jsx",
-                                            lineNumber: 230,
+                                            lineNumber: 229,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/services/OurServices.jsx",
-                                        lineNumber: 229,
+                                        lineNumber: 228,
                                         columnNumber: 17
                                     }, this)
                                 }, cardData.id, false, {
                                     fileName: "[project]/src/components/services/OurServices.jsx",
-                                    lineNumber: 214,
+                                    lineNumber: 213,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/components/services/OurServices.jsx",
-                            lineNumber: 212,
+                            lineNumber: 211,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/services/OurServices.jsx",
-                    lineNumber: 165,
+                    lineNumber: 164,
                     columnNumber: 9
                 }, this)
             ]

@@ -1,0 +1,3 @@
+module.exports=[3283,a=>{"use strict";var b=a.i(87924);function c({title:a,color:c="text-white",children:d}){return(0,b.jsxs)("div",{children:[(0,b.jsxs)("h5",{className:"font-montserrat uppercase",children:["[ ",a," ]"]}),(0,b.jsx)("h1",{className:`font-russo-one text-2xl sm:text-3xl md:text-4xl lg:text-5xl   mt-6 ${c}`,children:d})]})}a.s(["default",()=>c])},5400,a=>{a.v("/_next/static/media/rainbow-bg.242174b1.webp")}];
+
+//# sourceMappingURL=src_44ec7b8d._.js.map

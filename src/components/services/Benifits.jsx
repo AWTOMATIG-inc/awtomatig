@@ -6,10 +6,7 @@ export default function Benifits() {
     <div className="container">
       <div className="wrapper mb-14  text-center sm:text-left relative z-10">
         <CommonHeading title="BENEFITS">
-          Experience The Competitive Advantages That Our A1 Technology <br />
-            Brings To Your Business, From Cost Savings To Enhanced Productivity{" "}
-            <br />
-            And Growth Acceleration
+          Experience The Competitive Advantages That Our A1 Technology Brings. 
         </CommonHeading>
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-3  gap-14 font-sora mt-18">

@@ -38,9 +38,9 @@ export default function Footer() {
               Systems that work. <br />
               Results that last.
             </h1>
-           
+            <Link href="/contact">
               <AnimatedButton name="Get a quote" icon={true} />
-            
+            </Link>
           </div>
           <hr className="my-10 md:my-16 " />
           <div className="grid grid-cols-1 md:grid-cols-[4fr_3fr] lg:grid-cols-[4fr_2.5fr] xl:grid-cols-[4fr_1.5fr] justify-center lg:gap-x-10">
@@ -54,17 +54,17 @@ export default function Footer() {
                   alt="Awtomatig Logo"
                 />
                 <div className="flex items-center justify-center md:justify-start gap-x-12.5 mt-8">
-                  <a href="">
+                  <a href="https://www.linkedin.com/company/awtomatig/" target="_blank">
                     <Icon icon="mdi:linkedin" width="25" height="25" />
                   </a>
-                  <a href="">
+                  <a href="https://x.com/awtomatig86939" target="_blank">
                     <Icon icon="prime:twitter" width="19" height="19" />
                   </a>
 
-                  <a href="">
+                  <a href="https://medium.com/@awtomatig" target="_blank">
                     <Icon icon="mingcute:medium-fill" width="26" height="26" />
                   </a>
-                  <a href="">
+                  <a href="https://www.instagram.com/awtomatig/" target="_blank">
                     <Icon icon="lets-icons:insta" width="25" height="25" />
                   </a>
                 </div>
@@ -109,7 +109,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="font-manrope mt-10 text-center text-sm font-medium relative z-10">
-            <p>Copyright @ AWTOMATIG 2025. All Rights Reserved.</p>
+            <p>Copyright @ AWTOMATIG 2026. All Rights Reserved.</p>
           </div>
         </div>
       </FadeInSection>

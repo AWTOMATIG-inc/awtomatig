@@ -14,7 +14,7 @@ export default function Sponsor() {
     <div>
       <div className="container ">
         <div className="wrapper">
-          <CommonHeading title="Testimonials">
+          <CommonHeading title="Partners">
             Trusted By Leading Companies
           </CommonHeading>
         </div>
@@ -24,7 +24,7 @@ export default function Sponsor() {
           {sponsorLogos.map((logo, index) => (
             <div
               key={index}
-              className="w-[200px] h-[130px] sm:w-[250px] sm:h-[150px] lg:w-[250px] lg:h-[250px] max-w-[293px] max-h-[293px] bg-white/10 backdrop-blur-[215.4px]
+              className="w-[200px] h-[130px] sm:w-[250px] sm:h-[180px] lg:w-[250px] lg:h-[250px] max-w-[293px] max-h-[293px] bg-white/10 backdrop-blur-[215.4px]
 shadow-[15px_19px_44.5px_-27px_#8A38F5_inset,-15px_-19px_44.5px_-27px_#FFFFFF40_inset,-2px_0px_8.4px_0px_#02D5E8]  rounded-4xl mr-8 my-5 grid place-items-center"
             >
               <Image

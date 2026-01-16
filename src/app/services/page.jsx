@@ -3,7 +3,6 @@ import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import CommonHeading from "@/components/CommonHeading";
 import MarqueHighlightText from "@/components/MarqueHighlightText";
-
 import Benifits from "@/components/services/Benifits";
 import GetInTouch from "@/components/services/GetInTouch";
 import OurServices from "@/components/services/OurServices";
@@ -27,20 +26,24 @@ export default function Services() {
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl uppercase font-russo-one tracking-wider">
                 Better business through smarter technology.
               </h1>
-              <p className="font-montserrat text-base sm:text-lg lg:text-2xl xl:text-3xl mt-4 sm:mt-6 lg:mt-8 uppercase">
-                We bridge the gap between outsourcing and digital
-                transformation. Using automation and human expertise, we
+              <p className="font-inter text-base sm:text-lg lg:text-xl xl:text-3xl mt-4 sm:mt-6 lg:mt-8">
+                Using automation and human expertise, we
                 optimize complex processes to deliver superior, data-driven
                 results.
               </p>
+              <p className="font-inter text-base sm:text-base lg:text-xl mt-3 sm:mt-5">
+                We bridge the gap between outsourcing and digital
+                transformation.
+              </p>
             </div>
+            
           </FadeInSection>
         </div>
       </section>
-      <section className="mt-20">
+      <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <OurServices />
       </section>
-      <section className="mt-20">
+      <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <MarqueHighlightText
         marqueeText={[
           "/From growth pressure to structured momentum",
@@ -49,13 +52,13 @@ export default function Services() {
         ]}
       />
       </section>
-      <section className="mt-20">
+      <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <Benifits />
       </section>      
-      <section className="mt-20">
+      <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <Sponsor />
       </section>
-      <section className="container mt-20 relative ">
+      <section className="container relative mt-14 sm:mt-16 md:mt-20 lg:mt-32 ">
         <span
           style={{
             background:
@@ -88,7 +91,7 @@ export default function Services() {
           </div>
         </FadeInSection>
       </section>
-      <section className="my-20">
+      <section className="my-14 sm:my-16 md:my-20 lg:my-32">
         <GetInTouch />
       </section>
     </main>

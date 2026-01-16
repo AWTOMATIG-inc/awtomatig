@@ -68,7 +68,7 @@ export default function Process() {
           </FadeInSection>
         </div>
       </section>
-      <section className="container my-20">
+      <section className="container mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <div className="wrapper">
           <div className="  font-montserrat pt-5 max-w-[1226px]">
             <CommonHeading title="The AWTOMATIG Workflow">
@@ -80,37 +80,37 @@ export default function Process() {
             
 
             <button className=" p-[3px] rounded-xl animated-border-red mt-20">
-              <span className="block bg-black text-white px-6 py-2 rounded-xl font-inter text-2xl">
+              <span className="block bg-black text-white px-6 py-2 rounded-xl font-inter text-base sm:text-lg md:text-xl lg:text-2xl">
                 Here’s an overview of our typical process:
               </span>
             </button>
           </div>
         </div>
       </section>
-      <section className="my-20 container">
-        <div className="wrapper   text-white  grid grid-cols-2 gap-40">
+      <section className=" container mt-14 sm:mt-16 md:mt-20 lg:mt-32">
+        <div className="wrapper   text-white  grid grid-cols-2 gap-8 xl:gap-40">
           {steps.map((step) => (
             <div key={step.id} className="font-inter">
-              <div className="flex items-end gap-6 font-inter">
-                <span className="font-bold text-9xl bg-[linear-gradient(180deg,_#FFFFFF_0%,_#02D5E8_100%)] bg-clip-text text-transparent">
+              <div className="flex items-end gap-4 lg:gap-6 font-inter">
+                <span className="font-bold text-3xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-9xl bg-[linear-gradient(180deg,#FFFFFF_0%,#02D5E8_100%)] bg-clip-text text-transparent">
                   0{step.id}
                 </span>
 
-                <h5 className="border-gray-400 border-b w-full capitalize text-2xl pb-1 text-[#02D5E8]">
+                <h5 className="border-gray-400 border-b w-full capitalize text-base sm:text-lg md:text-xl lg:text-2xl pb-1 text-[#02D5E8]">
                   {step.title}
                 </h5>
               </div>
 
-              <p className="font-montserrat mt-5 text-xl font-semibold text-justify">
+              <p className="font-montserrat mt-5 text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-justify">
                 {step.desc}
               </p>
             </div>
           ))}
         </div>
       </section>
-      <section className="container my-27">
+      <section className="container my-14 sm:my-16 md:my-20 lg:my-32">
         <div className="wrapper">
-          <div className="bg-[linear-gradient(-130deg,#910F11_0%,#02D5E8_49.29%,#0701BF_98.13%)] p-[5px] rounded-xl h-[605px] my-10 overflow-hidden">
+          <div className="bg-[linear-gradient(-130deg,#910F11_0%,#02D5E8_49.29%,#0701BF_98.13%)] p-[5px] rounded-xl h-[500px] sm:h-[550px] lg:h-[605px] my-10 overflow-hidden">
             <div className="bg-black rounded-lg p-6 flex justify-center items-center text-center  h-full w-full relative">
               <GlowBall size={1000} duration={18} delay={0} />
               <GlowBall size={1000} duration={26} delay={-8} />
@@ -124,21 +124,21 @@ export default function Process() {
                   alt="logo"
                   className="w-full max-w-[50px] md:max-w-[66px] max-h-[92px] h-auto mx-auto mb-8"
                 />
-                <h2 className="font-bold text-4xl">
+                <h2 className="font-bold text-xl sm:text-3xl lg:text-4xl">
                   Thank you for your Interest in AWTOMATIG
                 </h2>
-                <p className="text-lg mt-8 max-w-[1095px]">
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution
+                <p className="text-base sm:text-lg mt-8 max-w-[1095px]">
+                  We are dedicated to helping businesses scale operations, technology, and execution without the chaos of building everything in-house.
                 </p>
                 <div className="w-fit mx-auto mt-12">
+                  <a href="https://calendly.com/nahidr-awtomatig/30min?month=2026-01" target="_blank">
                   <AnimatedButton
                     name="Start Project"
                     width="w-[220px]"
                     icon={true}
                   />
+                  </a>
+                  
                 </div>
               </div>
             </div>

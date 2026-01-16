@@ -55,10 +55,11 @@ export function RightTopArrowIcon({ className }) {
       height="29"
       fill="none"
       viewBox="0 0 29 29"
-      className={className}
+      className={`size-7 ${className}`}
+      
     >
       <path
-        fill="#fff"
+        fill="currentColor"
         d="M.28 27.306a1 1 0 1 0 1.44 1.388L1 28zM28 .981a1 1 0 0 0-1.019-.98L17.983.17a1 1 0 1 0 .037 2l7.999-.151.151 7.998a1 1 0 0 0 2-.037zM1 28l.72.694 26-27L27 1l-.72-.694-26 27z"
       ></path>
     </svg>

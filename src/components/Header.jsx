@@ -138,6 +138,7 @@ export default function Header() {
                       <li key={link.id}>
                         <Link
                           href={link.path}
+                          onClick={()=>setIsShowNav(prev=>!prev)}
                           className={`hover:text-blue-400 text-lg md:text-xl transition-colors duration-300 uppercase font-bold ${
                             path == link.path && "text-gold"
                           }`}
@@ -152,6 +153,7 @@ export default function Header() {
                       href="https://awlabs.online/"
                       target="_blank"
                       className="glow-button"
+                      onClick={()=>setIsShowNav(prev=>!prev)}
                     >
                       Awlabs
                       <Icon

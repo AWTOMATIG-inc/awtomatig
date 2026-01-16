@@ -1,7 +1,6 @@
 "use client";
 import GridAnimatedBg from "@/components/animation/GridAnimatedBg";
 import BlogTimeline from "@/components/home/BlogTimeline";
-import EarphoneShowcase from "@/components/home/EarPhoneShowcase";
 import FutureChanges from "@/components/home/FutureChanges";
 import Hero from "@/components/home/Hero";
 import KeepFlyingMarquee from "@/components/home/KeepFlyingMarquee";
@@ -40,9 +39,9 @@ export default function Home() {
       <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <OurProccess />
       </section>
-      <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
+      {/* <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <EarphoneShowcase />
-      </section>
+      </section> */}
       <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <KeepFlyingMarquee />
       </section>

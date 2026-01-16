@@ -418,13 +418,13 @@ function RightTopArrowIcon({ className }) {
         height: "29",
         fill: "none",
         viewBox: "0 0 29 29",
-        className: className,
+        className: `size-7 ${className}`,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-            fill: "#fff",
+            fill: "currentColor",
             d: "M.28 27.306a1 1 0 1 0 1.44 1.388L1 28zM28 .981a1 1 0 0 0-1.019-.98L17.983.17a1 1 0 1 0 .037 2l7.999-.151.151 7.998a1 1 0 0 0 2-.037zM1 28l.72.694 26-27L27 1l-.72-.694-26 27z"
         }, void 0, false, {
             fileName: "[project]/src/components/SvgIcons.jsx",
-            lineNumber: 60,
+            lineNumber: 61,
             columnNumber: 7
         }, this)
     }, void 0, false, {
@@ -637,6 +637,7 @@ function Header() {
                                                 children: links.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                                             href: link.path,
+                                                            onClick: ()=>setIsShowNav((prev)=>!prev),
                                                             className: `hover:text-blue-400 text-lg md:text-xl transition-colors duration-300 uppercase font-bold ${path == link.path && "text-gold"}`,
                                                             children: link.pathname
                                                         }, void 0, false, {
@@ -660,6 +661,7 @@ function Header() {
                                                     href: "https://awlabs.online/",
                                                     target: "_blank",
                                                     className: "glow-button",
+                                                    onClick: ()=>setIsShowNav((prev)=>!prev),
                                                     children: [
                                                         "Awlabs",
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$iconify$2f$react$2f$dist$2f$iconify$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Icon"], {
@@ -668,18 +670,18 @@ function Header() {
                                                             height: "21"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/Header.jsx",
-                                                            lineNumber: 157,
+                                                            lineNumber: 159,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/Header.jsx",
-                                                    lineNumber: 151,
+                                                    lineNumber: 152,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Header.jsx",
-                                                lineNumber: 150,
+                                                lineNumber: 151,
                                                 columnNumber: 19
                                             }, this)
                                         ]
@@ -749,17 +751,17 @@ function Header() {
                                                 className: "object-cover w-[55px] lg:w-full lg:h-full max-w-[81px] max-h-[112px]"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Header.jsx",
-                                                lineNumber: 187,
+                                                lineNumber: 189,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/Header.jsx",
-                                            lineNumber: 186,
+                                            lineNumber: 188,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Header.jsx",
-                                        lineNumber: 185,
+                                        lineNumber: 187,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -776,30 +778,30 @@ function Header() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/Header.jsx",
-                                                            lineNumber: 205,
+                                                            lineNumber: 207,
                                                             columnNumber: 27
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SvgIcons$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["LinkDownArrowIcon"], {
                                                             className: "relative bottom-1 "
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/Header.jsx",
-                                                            lineNumber: 206,
+                                                            lineNumber: 208,
                                                             columnNumber: 27
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/Header.jsx",
-                                                    lineNumber: 199,
+                                                    lineNumber: 201,
                                                     columnNumber: 25
                                                 }, this)
                                             }, link.id, false, {
                                                 fileName: "[project]/src/components/Header.jsx",
-                                                lineNumber: 198,
+                                                lineNumber: 200,
                                                 columnNumber: 23
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Header.jsx",
-                                        lineNumber: 196,
+                                        lineNumber: 198,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -816,18 +818,18 @@ function Header() {
                                                     height: "26"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/Header.jsx",
-                                                    lineNumber: 218,
+                                                    lineNumber: 220,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/Header.jsx",
-                                            lineNumber: 212,
+                                            lineNumber: 214,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Header.jsx",
-                                        lineNumber: 211,
+                                        lineNumber: 213,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -835,12 +837,12 @@ function Header() {
                                         className: "cursor-pointer lg:hidden",
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$SvgIcons$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["HambargerIcon"], {}, void 0, false, {
                                             fileName: "[project]/src/components/Header.jsx",
-                                            lineNumber: 230,
+                                            lineNumber: 232,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/Header.jsx",
-                                        lineNumber: 226,
+                                        lineNumber: 228,
                                         columnNumber: 19
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -855,17 +857,17 @@ function Header() {
                                                             children: link.pathname
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/Header.jsx",
-                                                            lineNumber: 243,
+                                                            lineNumber: 245,
                                                             columnNumber: 27
                                                         }, this)
                                                     }, link.id, false, {
                                                         fileName: "[project]/src/components/Header.jsx",
-                                                        lineNumber: 242,
+                                                        lineNumber: 244,
                                                         columnNumber: 25
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Header.jsx",
-                                                lineNumber: 240,
+                                                lineNumber: 242,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -882,50 +884,50 @@ function Header() {
                                                             height: "21"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/Header.jsx",
-                                                            lineNumber: 261,
+                                                            lineNumber: 263,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/Header.jsx",
-                                                    lineNumber: 255,
+                                                    lineNumber: 257,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/Header.jsx",
-                                                lineNumber: 254,
+                                                lineNumber: 256,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/Header.jsx",
-                                        lineNumber: 233,
+                                        lineNumber: 235,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/Header.jsx",
-                                lineNumber: 184,
+                                lineNumber: 186,
                                 columnNumber: 17
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/Header.jsx",
-                            lineNumber: 183,
+                            lineNumber: 185,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/Header.jsx",
-                        lineNumber: 177,
+                        lineNumber: 179,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/Header.jsx",
-                    lineNumber: 172,
+                    lineNumber: 174,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Header.jsx",
-                lineNumber: 171,
+                lineNumber: 173,
                 columnNumber: 9
             }, this)
         ]
