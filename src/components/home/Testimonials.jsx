@@ -5,12 +5,13 @@ import { useRef, useState } from "react";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import FadeInSection from "../animation/FadeEffect";
+import CommonHeading from "../CommonHeading";
 export default function Testimonials() {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const slides = ["Slide 1", "Slide 2", "Slide 3", "Slide 4"];
   return (
-    <section className="mt-20">
+    <div>
       <div className="grid grid-cols-1 md:grid-cols-2 items-end gap-2  mx-auto w-[95%] md:w-full">
         <FadeInSection
           initial={{ opacity: 0, x: -150 }}
@@ -43,18 +44,18 @@ export default function Testimonials() {
                   key={id}
                   className="w-full max-w-[650px] text-center md:text-left  md:pr-8"
                 >
-                  <h5 className="font-montserrat">[ Testimonials ]</h5>
-                  <h1 className="font-russo-one text-2xl sm:text-3xl md:text-4xl lg:text-6xl mt-6 lg:mt-8 leading-[55px] lg:leading-[70px]">
+                  <CommonHeading title="Testimonials">
                     Awesome Thouths
                     <br className="hidden md:block" />
                     About Artificial <br /> Intelligence
-                  </h1>
+                  </CommonHeading>
+
                   <p className="mt-6 sm:mt-10 lg:mt-20 font-inter">
                     AWTOMATIG is highly professional, competent, and efficient,
                     demonstrating remarkable attention to detail and fostering
                     long-term partnerships.
                   </p>
-                  <div className="flex flex-col lg:flex-row justify-between items-end mt-20 ">
+                  <div className="flex flex-col lg:flex-row justify-between lg:items-end mt-20 ">
                     <div>
                       <h5 className="font-russo-one">JUMAR WILSON</h5>
                       <p className="text-xs font-bold mt-1 font-montserrat">
@@ -81,6 +82,6 @@ export default function Testimonials() {
           </Swiper>
         </FadeInSection>
       </div>
-    </section>
+    </div>
   );
 }

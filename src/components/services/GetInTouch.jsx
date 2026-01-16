@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
+import CommonHeading from "../CommonHeading";
 import InputBox from "../InputBox";
 import TextBox from "../TextBox";
 
@@ -15,17 +16,17 @@ export default function GetInTouch() {
           margin="40px 0px -40px 0px"
         >
           <div>
-            <h1 className="font-montserrat uppercase">[ get in touch ]</h1>
-            <h5 className="font-russo-one text-3xl sm:text-4xl lg:text-6xl  mt-6 leading-18">
+            <CommonHeading title="get in touch">
               We are always ready to help you and answer your questions
-            </h5>
+            </CommonHeading>
+
             <p className="text-inter text-base sm:text-lg lg:text-2xl mt-8 text-justify">
               Have a question, a project in mind, or need clarity before moving
               forward? Share a few details and our team will get back to you
               with a clear, helpful response—no pressure, no noise.
             </p>
           </div>
-          <div className="mt-8">
+          <div className="mt-16">
             <div className="space-y-6">
               <div className="grid grid-cols-[1fr_2fr] items-center">
                 <h1>Call Center</h1>

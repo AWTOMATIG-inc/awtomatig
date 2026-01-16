@@ -6,7 +6,7 @@ export default function MarqueHighlightText({ marqueeText }) {
     <div>
       <Marquee speed={50} gradient={false} autoFill={true}>
         {textArray.map((text) => (
-          <p className="font-sora text-5xl lg:text-7xl xl:text-8xl bg-linear-to-l from-blue-light to-dark-white bg-clip-text text-transparent text-center overflow-hidden py-20 mr-8">
+          <p className="font-sora text-3xl sm:text-5xl lg:text-7xl xl:text-8xl bg-linear-to-l from-blue-light to-dark-white bg-clip-text text-transparent text-center overflow-hidden  mr-8">
             {text}
           </p>
         ))}

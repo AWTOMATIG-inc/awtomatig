@@ -2,6 +2,7 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
+import CommonHeading from "../CommonHeading";
 const servicesCard = [
   {
     id: 1,
@@ -151,17 +152,14 @@ export default function OurService() {
     };
   }, []);
   return (
-    <section className="container mt-20" ref={sectionRef}>
-      <div className="wrapper mt-20 mb-14  text-center sm:text-left relative z-10">
-        <div>
-          <h5 className="font-montserrat uppercase">[ OUR SERVICES ]</h5>
-          <h1 className="font-russo-one text-2xl lg:text-3xl xl:text-4xl  mt-8 leading-[48px]">
-            Transform your operational DNA with tech-enabled BPO services.{" "}
-            <br />
-            Scale your operations with confidence and precision.
-          </h1>
-        </div>
-        <div className="grid md:grid-cols-[300px_1fr] gap-20 mt-20 ">
+    <div className="container" ref={sectionRef}>
+      <div className="wrapper mb-14  text-center sm:text-left relative z-10">
+        <CommonHeading title="OUR SERVICES">
+          Transform your operational DNA with tech-enabled BPO services. <br />
+          Scale your operations with confidence and precision.
+        </CommonHeading>
+
+        <div className="grid md:grid-cols-[300px_1fr] gap-20 mt-20 overflow-hidden">
           <aside ref={sidebarRef} className="relative">
             <span className="absolute top-0 size-[400px]  bg-[linear-gradient(215.67deg,rgba(2,213,232,0.55)_18.02%,rgba(3,50,103,0.55)_94.4%)] rounded-full block  blur-[150px]"></span>
             <ul className="font-bold space-y-3 mt-12 transition-all duration-500 relative z-10">
@@ -234,12 +232,12 @@ export default function OurService() {
                       <h1 className="font-russo-one text-xl pb-4">
                         {cardData.headding}
                       </h1>
-                      <div className="grid grid-cols-3 gap-4">
+                      <div className="grid md:grid-cols-3 gap-4">
                         <div className="border border-dark-3 p-4 rounded-xl group hover:bg-dark-2/30 hover:border-transparent group-active:bg-dark-3 transition-colors duration-300 cursor-pointer h-[286px]">
                           <h2 className="font-bold font-inter mt-2">
                             {cardData.box1.heading}
                           </h2>
-                          <p className="mt-2 text-sm  font-montserrat ">
+                          <p className="mt-2 text-sm  font-montserrat text-justify">
                             {cardData.box1.desc}
                           </p>
                         </div>
@@ -255,7 +253,7 @@ export default function OurService() {
                           <h2 className="font-bold font-inter mt-2">
                             {cardData.box3.heading}
                           </h2>
-                          <p className="mt-2 text-sm  font-montserrat ">
+                          <p className="mt-2 text-sm  font-montserrat text-justify">
                             {cardData.box3.desc}
                           </p>
                         </div>
@@ -277,6 +275,6 @@ export default function OurService() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

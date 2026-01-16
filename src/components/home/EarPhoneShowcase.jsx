@@ -18,8 +18,8 @@ export default function EarphoneShowcase() {
     e.currentTarget.classList.add("active-earphone");
   };
   return (
-    <section className="container mt-20 md:mt-52 z-1 relative">
-      <div className=" sm:hidden text-center sm:text-left mb-8">
+    <div className="container z-1 relative">
+      <div className="sm:hidden text-center sm:text-left mb-8">
         <h5 className="text-montserrat uppercase">[ Why Us ]</h5>
         <h1 className="font-press-start text-2xl lg:text-3xl mt-8 ">
           Unique, ownable <br />
@@ -113,6 +113,6 @@ rounded-2xl p-8 relative bg-black earphone-card "
           />
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -3,8 +3,8 @@ import GsapScrollEffect from "../animation/GsapScrollEffect";
 
 export default function OurProccess() {
   return (
-    <section className="container sm:mt-20 md:mt-40">
-      <div className="wrapper grid lg:grid-cols-[230px_1fr] xl:grid-cols-[470px_1fr]">
+    <div className="container">
+      <div className="wrapper grid lg:grid-cols-[230px_1fr] xl:grid-cols-[470px_1fr]">        
         <div className="text-center lg:text-left">
           <h5 className="font-montserrat uppercase">[ Getting started ]</h5>
           <h5 className="text-[40px] font-inter font-extrabold leading-[135%] mt-6">
@@ -17,7 +17,7 @@ export default function OurProccess() {
           <div className="space-y-20 mt-32 ">
             {ourProcessData.map((process) => (
               <GsapScrollEffect
-                initial={{ opacity: 0, x: process.id % 2 === 0 ? -400 : 400 }}
+                initial={{ opacity: 0, x: process.id % 2 === 0 ? -200 : 200 }}
                 scrollTop={{ opacity: 1, x: 0 }}
                 scrollBottom={{
                   opacity: 0,
@@ -27,7 +27,7 @@ export default function OurProccess() {
                 delay={process.id == 2 ? "0.6" : "0.5"}
               >
                 <div
-                  className={`bg-white text-black px-5 py-7 md:py-10 rounded-xl lg:max-w-[500px] xl:max-w-[700px] 2xl:max-w-[723px] relative ${process.className}`}
+                  className={`bg-white text-black px-5 py-7 md:py-10 w-[96%] rounded-xl lg:max-w-[500px] xl:max-w-[700px] 2xl:max-w-[723px] relative mx-auto lg:mx-0  ${process.className}`}
                 >
                   <div className="max-w-[530px] mx-auto">
                     <h1 className="font-russo-one  text-lg lg:text-2xl  capitalize">
@@ -49,6 +49,6 @@ export default function OurProccess() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

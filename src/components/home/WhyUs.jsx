@@ -94,8 +94,8 @@ export default function WhyUs() {
   }, []);
 
   return (
-    <section className="container  mt-32 relative z-99">
-      <div className="wrapper md:mt-20 mb-14 text-center sm:text-left">
+    <section className="container   relative z-99">
+      <div className="wrapper mb-14 text-center sm:text-left">
         <h5 className="font-montserrat uppercase">[ Capabilities ]</h5>
         <h1 className="font-russo-one text-xl lg:text-5xl mt-8">
           Unique, ownable intelligence
@@ -118,6 +118,15 @@ export default function WhyUs() {
             >
               <div className="flex justify-between gap-x-2 mb-6  ">
                 <div className="max-w-[761px] w-full text-black">
+                  <div className="lg:hidden">
+                  <Image
+                    src={data.image}
+                    width={471}
+                    height={328}
+                    alt="slider_item"
+                    className={` rounded-lg object-cover mx-auto w-full h-[150px] sm:h-[200px] md:h-[250px] lg:w-[300px] lg:h-[300px] `}
+                  />
+                </div>
                   <h4 className="text-xl md:text-3xl lg:text-5xl font-russo-one">
                     {data.title}
                   </h4>
@@ -144,7 +153,7 @@ export default function WhyUs() {
                     <strong>Best for:</strong> {data.bestFor}
                   </p>
                 </div>
-                <div>
+                <div className="hidden lg:block">
                   <Image
                     src={data.image}
                     width={471}

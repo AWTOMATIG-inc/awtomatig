@@ -33,27 +33,27 @@ export default function Footer() {
         </div> */}
 
         <div className="wrapper relative z-9">
-          <div className="flex justify-between items-center">
-            <h1 className="font-russo-one text-2xl sm:text-3xl md:text-4xl lg:text-6xl  bg-[linear-gradient(90deg,#FFFFFF_0%,#02D5E8_100%)] text-transparent bg-clip-text leading-[61px]">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <h1 className="font-russo-one text-3xl text-center md:text-left mb-8 md:mb-0 sm:text-4xl  lg:text-6xl  bg-[linear-gradient(90deg,#FFFFFF_0%,#02D5E8_100%)] text-transparent bg-clip-text leading-10 sm:leading-12 lg:leading-[61px]">
               Systems that work. <br />
               Results that last.
             </h1>
-            <div className="hidden md:block">
+           
               <AnimatedButton name="Get a quote" icon={true} />
-            </div>
+            
           </div>
-          <hr className="my-16 " />
-          <div className="grid grid-cols-[4fr_1.5fr]">
+          <hr className="my-10 md:my-16 " />
+          <div className="grid grid-cols-1 md:grid-cols-[4fr_3fr] lg:grid-cols-[4fr_2.5fr] xl:grid-cols-[4fr_1.5fr] justify-center lg:gap-x-10">
             <div>
               <div>
                 <Image
                   src={awtomatig_logo}
                   width={238}
                   height={80}
-                  className="w-[210px] md:w-full max-w-[238px] h-auto"
+                  className="w-[210px] md:w-full max-w-[238px] h-auto mx-auto  md:mx-0"
                   alt="Awtomatig Logo"
                 />
-                <div className="flex items-center gap-x-12.5 mt-8">
+                <div className="flex items-center justify-center md:justify-start gap-x-12.5 mt-8">
                   <a href="">
                     <Icon icon="mdi:linkedin" width="25" height="25" />
                   </a>
@@ -74,7 +74,7 @@ export default function Footer() {
                   src={sinceText}
                   width={506}
                   height={77}
-                  className="max-w-[506px] lg:w-full w-[77px]"
+                  className="max-w-[506px] lg:w-full w-[300px] sm:w-[400px] mx-auto my-2 sm:my-6 md:my-0 md:mx-0"
                   alt="text-logo"
                 />
               </div>
@@ -83,10 +83,10 @@ export default function Footer() {
               since 2022
             </h1> */}
             </div>
-            <div className="flex justify-between mt-10">
-              <div className="text-right">
-                <h1 className=" text-xl mb-2 font-russo-one">USEFUL LIKS</h1>
-                <div className="flex flex-col gap-y-5 text-sm mt-6 font-inter">
+            <div className="flex justify-center gap-x-16 sm:gap-x-36 md:gap-x-0 md:justify-between mt-10">
+              <div className="text-center md:text-right">
+                <h1 className=" md:text-xl mb-2 font-russo-one">USEFUL LIKS</h1>
+                <div className="flex flex-col gap-y-5 text-sm mt-6 font-inter ">
                   <Link href="/services">Services</Link>
                   <Link href="/process">Process</Link>
                   <Link href="/contact">Contacts</Link>
@@ -94,11 +94,11 @@ export default function Footer() {
                   <Link href="/about-us">About Us</Link>
                 </div>
               </div>
-              <div className="text-right">
-                <h1 className="font-russo-one text-xl mb-2 uppercase">
+              <div className="text-center md:text-right">
+                <h1 className="font-russo-one  md:text-xl mb-2 uppercase">
                   Industries
                 </h1>
-                <div className="flex flex-col gap-y-5 text-sm mt-6 font-inter">
+                <div className="flex flex-col gap-y-5 text-sm mt-6 font-inter ">
                   <Link href="/about">Retail & eCommerce</Link>
                   <Link href="/about">Travel & Tourism</Link>
                   <Link href="/about">Food on Demand</Link>

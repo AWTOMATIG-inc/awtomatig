@@ -1,11 +1,12 @@
 import ArticleBar from "@/components/ArticleBar";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
+import CommonHeading from "../CommonHeading";
 export default function BlogTimeline() {
   return (
-    <section className="container relative mb-32">
+    <div className="container relative">
       <div className="wrapper">
-        <div className="pt-14 md:py-20">
+        <div className="">
           <div className="flex flex-col md:flex-row gap-y-8 md:gap-y-0 text-center md:text-left items-center justify-between relative z-10">
             <FadeInSection
               initial={{ opacity: 0, x: -150 }}
@@ -13,12 +14,11 @@ export default function BlogTimeline() {
               scrollBottom={{ opacity: 0, x: -150 }}
               margin="40px 0px -40px 0px"
             >
-              <h5 className="font-montserrat uppercase">[ Insights ]</h5>
-              <h1 className="font-sora text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-8">
-                Practical insights from real systems,
-                <br />
+              <CommonHeading title="Insights">
+                Practical insights from <br /> real systems,              
                 explore Ideas
-              </h1>
+              </CommonHeading>
+             
             </FadeInSection>
             <FadeInSection
               initial={{ opacity: 0, x: 150 }}
@@ -81,6 +81,6 @@ export default function BlogTimeline() {
           </FadeInSection>
         </div> */}
       </div>
-    </section>
+    </div>
   );
 }

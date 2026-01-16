@@ -1,19 +1,11 @@
 import { servicesData } from "@/contants/services";
 import FadeInSection from "../animation/FadeEffect";
-import MarqueHighlightText from "../MarqueHighlightText";
+import CommonHeading from "../CommonHeading";
 
 export default function Services() {
   return (
-    <section className=" mt-20">
-      <div>
-        <MarqueHighlightText
-          marqueeText={[
-            "/From growth pressure to structured momentum",
-            "/From execution overload to scalable systems",
-            "/From manual effort to intelligent flow",
-          ]}
-        />
-      </div>
+  
+      
       <div className="container">
         <FadeInSection
           initial={{ opacity: 0, x: 100 }}
@@ -22,12 +14,10 @@ export default function Services() {
           margin="40px 0px -40px 0px"
         >
           <div className="wrapper mt-20 mb-14  text-center sm:text-left relative z-10">
-            <div>
-              <h5 className="font-montserrat uppercase">[ Why teams stay ]</h5>
-              <h1 className="font-russo-one text-2xl lg:text-3xl xl:text-5xl mt-8 ">
-                Because the work feels different
-              </h1>
-            </div>
+            <CommonHeading title="Why teams stay">
+              Because the work feels different
+            </CommonHeading>
+            
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12  mt-25">
               {servicesData.map((service) => (
                 <div key={service.id} className="text-center sm:text-left">
@@ -41,6 +31,6 @@ export default function Services() {
           </div>
         </FadeInSection>
       </div>
-    </section>
+  
   );
 }

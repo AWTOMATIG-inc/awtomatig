@@ -2,9 +2,10 @@ import Accordion from "@/components/Accordion";
 import { capabilities } from "@/contants/capabilities";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
+import CommonHeading from "../CommonHeading";
 export default function OurCapabilities() {
   return (
-    <section className="container mt-32">
+    <div className="container">
       <FadeInSection
         initial={{ opacity: 0, y: -150 }}
         scrollTop={{ opacity: 1, y: 0 }}
@@ -12,14 +13,10 @@ export default function OurCapabilities() {
         margin="40px 0px -40px 0px"
         className="wrapper"
       >
-        <div className="flex justify-between items-center">
-          <div>
-            <h5 className="font-montserrat uppercase">[ What we operate ]</h5>
-            <h1 className="font-russo-one text-2xl sm:text-3xl md:text-4xl lg:text-6xl  text-teal mt-6">
-              Our operational capabilities
-            </h1>
-          </div>
-
+        <div className="flex justify-between items-center">          
+          <CommonHeading title="What we operate" color="text-teal">
+            Our operational capabilities
+          </CommonHeading>
           <AnimatedButton name="Work" icon={true} width="w-[140px]" />
         </div>
 
@@ -40,6 +37,6 @@ export default function OurCapabilities() {
           ))}
         </div>
       </FadeInSection>
-    </section>
+    </div>
   );
 }

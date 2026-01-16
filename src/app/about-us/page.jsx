@@ -1,6 +1,7 @@
 import group_meeting from "@/assets/about/man-working.gif";
 import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
+import CommonHeading from "@/components/CommonHeading";
 import Image from "next/image";
 export default function AboutUs() {
   return (
@@ -31,13 +32,11 @@ export default function AboutUs() {
       </section>
       <section className="container my-20">
         <div className="wrapper">
-          <div>
-            <h5 className="font-montserrat uppercase">[ Our Story ]</h5>
-            <h1 className="font-russo-one text-2xl lg:text-3xl xl:text-4xl font-bold mt-4 leading-[70px]">
-              Building systems that turn growth into
-              <span className="text-[#3BEBFF]"> legacy.</span>
-            </h1>
-          </div>
+          <CommonHeading title="Our Story">
+            Building systems that turn growth into
+            <span className="text-[#3BEBFF]"> legacy.</span>
+          </CommonHeading>
+         
         </div>
       </section>
       <section className="container mb-20">

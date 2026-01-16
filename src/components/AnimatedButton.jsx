@@ -7,7 +7,7 @@ export default function AnimatedButton({
   icon,
   className = "",
   width = "w-[200px]",
-  height = "h-14",
+  height = "lg:h-14",
   textSize = "text-lg",
   iconSize,
 }) {
@@ -70,15 +70,15 @@ export default function AnimatedButton({
   };
 
   return (
-    <div className={`animated-border-button rounded-full font-inter ${height}`}>
+    <div className={`animated-border-button rounded-full font-inter h-13 ${height} ${width}`}>
       <motion.div
         initial="initial"
         whileHover="hover"
-        className={`relative inline-flex items-center justify-center cursor-pointer overflow-hidden ${width} ${height} ${className}`}
+        className={`relative inline-flex items-center justify-center cursor-pointer overflow-hidden h-13 ${width} ${height} ${className}`}
       >
         {/* DEFAULT TEXT */}
         <motion.div className="flex items-center gap-2 absolute">
-          <div className={`text-lg flex gap-0.5 font-medium ${textSize}`}>
+          <div className={`text-base lg:text-lg flex md:gap-0.5 font-medium ${textSize}`}>
             {letters.map((char, i) => (
               <motion.span key={i} variants={hideText} custom={i}>
                 {char === " " ? "\u00A0" : char}
@@ -91,7 +91,7 @@ export default function AnimatedButton({
                 icon="meteor-icons:arrow-up-right"
                 width="26"
                 height="26"
-                className={iconSize}
+                className={`size-6 md:size-6.5 ${iconSize}`}
               />
             </motion.span>
           )}
@@ -99,7 +99,7 @@ export default function AnimatedButton({
 
         {/* HOVER TEXT */}
         <motion.div className="flex items-center gap-2 absolute">
-          <div className={`text-lg flex gap-0.5 font-medium ${textSize}`}>
+          <div className={`text-base lg:text-lg flex md:gap-0.5 font-medium ${textSize}`}>
             {letters.map((char, i) => (
               <motion.span key={i} variants={showText} custom={i}>
                 {char === " " ? "\u00A0" : char}
@@ -112,7 +112,7 @@ export default function AnimatedButton({
                 icon="meteor-icons:arrow-up-right"
                 width="26"
                 height="26"
-                className={iconSize}
+                className={`size-6 md:size-6.5 ${iconSize}`}
               />
             </motion.span>
           )}
