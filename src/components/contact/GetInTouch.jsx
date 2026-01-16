@@ -7,7 +7,7 @@ import TextBox from "../TextBox";
 
 export default function GetInTouch() {
   return (
-    <div className="container font-sora ">
+    <div className="container font-sora overflow-hidden">
       <div className="grid md:grid-cols-[1.3fr_1fr] gap-16 wrapper">
         <FadeInSection
           initial={{ opacity: 0, x: -150 }}

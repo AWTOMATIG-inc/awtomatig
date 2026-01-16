@@ -7,7 +7,7 @@ import TextBox from "../TextBox";
 
 export default function GetInTouch() {
   return (
-    <div className="container font-sora ">
+    <div className="container font-sora overflow-hidden">
       <div className="grid md:grid-cols-[1.3fr_1fr] gap-16 wrapper">
         <FadeInSection
           initial={{ opacity: 0, x: -150 }}
@@ -69,7 +69,7 @@ export default function GetInTouch() {
         >
           <form
             action="#"
-            className="rounded-xl shadow-lg shadow-teal px-8 py-11 bg-[#201F1F78] max-w-[605px] ml-auto"
+            className="rounded-xl shadow-lg shadow-teal px-8 py-11 bg-[#201F1F78] max-w-[605px] ml-auto "
           >
             <h1 className="text-right font-bold text-3xl capitalize mb-8">
               Get in Touch

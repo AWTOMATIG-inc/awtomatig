@@ -55,13 +55,13 @@ export default function Services() {
       <section className="mt-20">
         <Sponsor />
       </section>
-      <section className="container mt-20 relative overflow-x-hidden">
+      <section className="container mt-20 relative ">
         <span
           style={{
             background:
               "linear-gradient(215.67deg, rgba(2, 213, 232, 0.55) 18.02%, rgba(3, 50, 103, 0.55) 94.4%)",
           }}
-          className=" inline-block absolute size-[800px]  -left-40 -bottom-10 rounded-full blur-[320px] -z-1"
+          className="hidden lg:inline-block absolute size-[800px]  -left-40 -bottom-10 rounded-full blur-[320px] -z-1"
         ></span>
         <FadeInSection
           initial={{ opacity: 0, y: -150 }}

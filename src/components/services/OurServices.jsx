@@ -105,14 +105,14 @@ export default function OurService() {
     const section = sectionRef.current;
     const sidebar = sidebarRef.current;
     const boxes = boxesRef.current;
-
+const mm = gsap.matchMedia();
     // Correct end value
     const endValue = boxes.scrollHeight - section.offsetHeight;
 
     // Fix: Prevent negative values (if boxes shorter than section)
     const finalEnd = Math.max(endValue, 0);
 
-    // PIN SIDEBAR
+ mm.add("(min-width: 1024px)", () => {
     ScrollTrigger.create({
       trigger: section,
       start: "top top",
@@ -121,7 +121,7 @@ export default function OurService() {
       pinSpacing: false,
       scrub: true,
     });
-
+  });
     // SCROLLING CONTENT
     gsap.to(boxes, {
       y: -finalEnd,
@@ -135,7 +135,10 @@ export default function OurService() {
     });
 
     ScrollTrigger.refresh();
+    return () => mm.revert();
   }, []);
+
+ 
   useEffect(() => {
     const section = sectionRef.current;
     const sidebar = sidebarRef.current;
@@ -159,7 +162,7 @@ export default function OurService() {
           Scale your operations with confidence and precision.
         </CommonHeading>
 
-        <div className="grid md:grid-cols-[300px_1fr] gap-20 mt-20 overflow-hidden">
+        <div className="grid lg:grid-cols-[280px_1fr] lg:gap-8 xl:grid-cols-[300px_1fr  xl:gap-20 mt-0 xl:mt-20 overflow-hidden">
           <aside ref={sidebarRef} className="relative">
             <span className="absolute top-0 size-[400px]  bg-[linear-gradient(215.67deg,rgba(2,213,232,0.55)_18.02%,rgba(3,50,103,0.55)_94.4%)] rounded-full block  blur-[150px]"></span>
             <ul className="font-bold space-y-3 mt-12 transition-all duration-500 relative z-10">
@@ -232,7 +235,7 @@ export default function OurService() {
                       <h1 className="font-russo-one text-xl pb-4">
                         {cardData.headding}
                       </h1>
-                      <div className="grid md:grid-cols-3 gap-4">
+                      <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
                         <div className="border border-dark-3 p-4 rounded-xl group hover:bg-dark-2/30 hover:border-transparent group-active:bg-dark-3 transition-colors duration-300 cursor-pointer h-[286px]">
                           <h2 className="font-bold font-inter mt-2">
                             {cardData.box1.heading}
