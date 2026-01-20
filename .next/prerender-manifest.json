@@ -77,6 +77,31 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/case-studies": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/case-studies",
+      "dataRoute": "/case-studies.rsc",
+      "prefetchDataRoute": null,
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/contact": {
       "experimentalBypassFor": [
         {
@@ -181,8 +206,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "f90b5da0b2c81a7420a86e97a009c772",
-    "previewModeSigningKey": "74ec8055468aa9d16d5fbad20ab729d9f999b9149c2ab6d2cf0929bb8b439596",
-    "previewModeEncryptionKey": "d2ad48752dd426c4576c9f9010cea92e67622f1e96ea0f24e3be7358e6024802"
+    "previewModeId": "0ae0e574e74841a9f13a21b89714bcc7",
+    "previewModeSigningKey": "7160991873b28d27425ddd41dc71743e5ff638b30f7aa9434350bf77f78386f3",
+    "previewModeEncryptionKey": "113ba13997ba7605396222d743edddc568438d1e84b858e68b1d2c6f7c255290"
   }
 }

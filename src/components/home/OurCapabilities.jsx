@@ -11,7 +11,7 @@ export default function OurCapabilities() {
         initial={{ opacity: 0, y: -150 }}
         scrollTop={{ opacity: 1, y: 0 }}
         scrollBottom={{ opacity: 0, y: -150 }}
-        margin="40px 0px -40px 0px"
+        margin="40px 0px 0px 0px"
         className="wrapper"
       >
         <div className="flex justify-between items-center">

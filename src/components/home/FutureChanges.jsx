@@ -1,3 +1,4 @@
+import Link from "next/link";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
 import ParticleBackground from "../ParticleBackground";
@@ -26,7 +27,9 @@ export default function FutureChanges() {
               scrollBottom={{ opacity: 0, x: 150 }}
               margin="40px 0px -40px 0px"
             >
-              <AnimatedButton name="Case Studies" icon={true} />
+              <Link href="/case-studies">
+                <AnimatedButton name="Case Studies" icon={true} />
+              </Link>
             </FadeInSection>
           </div>
         </div>
