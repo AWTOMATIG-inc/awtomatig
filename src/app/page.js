@@ -18,9 +18,7 @@ export default function Home() {
       <GridAnimatedBg>
         <Hero />
       </GridAnimatedBg>
-      {/* <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
-        <CardScroll />
-      </section> */}
+      
       <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <WhyUs />
       </section>
@@ -40,7 +38,7 @@ export default function Home() {
         <OurProccess />
       </section>
       {/* <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
-        <EarphoneShowcase />
+        <Impact />
       </section> */}
       <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <KeepFlyingMarquee />

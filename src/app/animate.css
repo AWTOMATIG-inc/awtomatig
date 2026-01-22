@@ -5,7 +5,11 @@
    - Continuous top-to-bottom flow
    - Transform handled via React + DOM (for interaction)
 */
-
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 90deg;
+  inherits: false;
+}
 :root {
   --grid-color: #02d5e8;
   --grid-size: 22px;
@@ -48,16 +52,16 @@ body {
   height: 280%;
   transform-origin: center top;
 
-  background-image: linear-gradient(
-      90deg,
-      var(--grid-color) 1px,
-      transparent 1px
-    ),
+  background-image:
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
     linear-gradient(var(--grid-color) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size),
+  background-size:
+    var(--grid-size) var(--grid-size),
     var(--grid-size) var(--grid-size);
-  background-position: 0 0, 0 0;
+  background-position:
+    0 0,
+    0 0;
 
   opacity: 0.9;
 
@@ -69,10 +73,13 @@ body {
    We use multiples of --grid-size so the loop is seamless. */
 @keyframes gridFlow {
   0% {
-    background-position: 0 0, 0 0;
+    background-position:
+      0 0,
+      0 0;
   }
   100% {
-    background-position: 0 calc(var(--grid-size) * 4),
+    background-position:
+      0 calc(var(--grid-size) * 4),
       0 calc(var(--grid-size) * 4);
   }
 }
@@ -122,5 +129,25 @@ body {
   }
   100% {
     transform: translate3d(0%, 51%, 0) rotate(360deg);
+  }
+}
+
+.impact-card {
+  background: conic-gradient(
+    from var(--gradient-angle),
+    #910f11,
+    #02d5e8,
+    #0701bf,
+    #910f11
+  );
+
+  animation: rotate 5s linear infinite;
+}
+/* .impact-card:hover {
+  animation: border-animate 5s linear infinite;
+} */
+@keyframes rotate {
+  to {
+    --gradient-angle: 360deg;
   }
 }

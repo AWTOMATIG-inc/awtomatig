@@ -103,7 +103,7 @@ export default function WhyUs() {
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      ScrollTrigger.getAll().forEach((st) => st.kill(true));
     };
   }, []);
 

@@ -26,11 +26,11 @@ export default function CaseStudies() {
           <Link href="/case-studies/churassco">
             <Image src={churassco_laptop} alt="churassco" className="rounded-sm" />
           </Link>
-          <Link href="/case-studies">
+          <Link href="/case-studies/royal-safari">
             <Image src={royal_safari_laptop} alt="royal_safari" className="rounded-sm" />
           </Link>
         </div>
-        <Link href="/case-studies" className="mx-auto block w-fit mt-6 md:mt-10">
+        <Link href="/case-studies/fabusiness" className="mx-auto block w-fit mt-6 md:mt-10">
           <Image src={fabusiness_laptop} alt="fabusiness" className="rounded-sm sm:w-[400px] md:w-[600px] lg:w-[879px]" />
         </Link>
         </div>
