@@ -64,7 +64,7 @@ export default function WhyUs() {
   const panelsRef = useRef([]);
   useEffect(() => {
     panelsRef.current.forEach((panel, index) => {
-      // Fade + scale effectg
+      // Fade + scale effect
       gsap.fromTo(
         panel,
         { scale: 1, opacity: 1 },
@@ -87,12 +87,12 @@ export default function WhyUs() {
         pin: true,
         pinSpacing: false,
         anticipatePin: 1,
-
+        
         onLeave: () => {
           // after pin (scroll down)
           gsap.to(panel, {
             opacity: index === panelsRef.current.length - 1 ? 1 : 0,
-            duration: 0,
+            duration:0,
           });
         },
         onEnterBack: () => {
@@ -124,7 +124,7 @@ export default function WhyUs() {
             ref={(el) => (panelsRef.current[index] = el)}
             className="px-6 sm:px-12 lg:px-14 py-10
             rounded-[30px] md:rounded-[70px]
-            bg-[#A3FAFE] min-h-[60vh]  overflow-hidden"
+            bg-[#A3FAFE] min-h-[60vh]  overflow-hidden shadow-[0px_4px_15px_0px_#00000040]"
           >
             <div className="flex justify-between mb-6  ">
               <div className="max-w-[761px] w-full text-black">

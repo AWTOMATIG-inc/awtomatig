@@ -1,0 +1,115 @@
+[00:00:01.991] Server  LOG      ✓ Ready in 1323ms
+[00:00:14.306] Server  LOG      ○ Compiling / ...
+[00:00:17.571] Server  WARN     ⚠ The requested resource "/images/services/office-management.gif" is an animated image so it will not be optimized. Consider adding the "unoptimized" property to the <Image>.
+[00:00:17.808] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:17.852] Server  WARN     ⚠ The requested resource "/images/services/automation.gif" is an animated image so it will not be optimized. Consider adding the "unoptimized" property to the <Image>.
+[00:00:17.972] Browser WARN    Image with src "/_next/static/media/cookie.24c4f3be.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:00:17.998] Browser WARN    Image with src "/_next/static/media/cookie.24c4f3be.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:00:18.018] Server  WARN     ⚠ The requested resource "/images/services/growth.gif" is an animated image so it will not be optimized. Consider adding the "unoptimized" property to the <Image>.
+[00:00:18.127] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:18.278] Server  WARN     ⚠ The requested resource "/images/services/system-support.gif" is an animated image so it will not be optimized. Consider adding the "unoptimized" property to the <Image>.
+[00:00:18.342] Server  WARN     ⚠ The requested resource "/images/services/web.gif" is an animated image so it will not be optimized. Consider adding the "unoptimized" property to the <Image>.
+[00:00:18.427] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.js">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="en">
+                          <body
+                            className="press_start_2p_be3f08f4-module__zwc53q__variable manrope_28d67df5-module__ci92q..."
+-                           data-new-gr-c-s-check-loaded="14.1270.0"
+-                           data-gr-ext-installed=""
+                          >
+                  ...
+
+[00:00:18.770] Browser WARN    Image with src "/_next/static/media/since-text.86ca9cee.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:18.770] Browser WARN    Image with src "/_next/static/media/awtomatig-full-logo.19936bec.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:19.214] Browser WARN    Image with src "/_next/static/media/awtomatig-full-logo.19936bec.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:00:19.214] Browser WARN    Image with src "/_next/static/media/since-text.86ca9cee.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:01:52.331] Server  LOG      ✓ Compiled in 79ms
+[00:02:21.332] Server  LOG      ✓ Compiled in 56ms
+[00:03:14.322] Server  LOG      ✓ Compiled in 64ms
+[00:03:28.596] Server  LOG      ✓ Compiled in 54ms
+[00:03:36.890] Server  LOG      ✓ Compiled in 51ms
+[00:06:25.532] Server  LOG      ✓ Compiled in 111ms
+[00:06:31.801] Server  LOG      ✓ Compiled in 89ms
+[00:06:34.660] Server  LOG      ✓ Compiled in 83ms
+[00:06:37.082] Server  LOG      ✓ Compiled in 79ms
+[00:08:22.202] Server  LOG      ✓ Compiled in 48ms
+[00:09:20.038] Browser WARN    Image with src "/_next/static/media/awtomatig-full-logo.19936bec.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:09:20.038] Browser WARN    Image with src "/_next/static/media/since-text.86ca9cee.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
+[00:10:32.318] Server  LOG      ✓ Compiled in 56ms
+[00:10:36.703] Browser WARN    Image with src "/images/services/system-support.gif" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:10:52.002] Server  LOG      ✓ Compiled in 63ms
+[00:10:55.132] Browser WARN    Image with src "/images/services/growth.gif" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:11:07.140] Server  LOG      ✓ Compiled in 57ms
+[00:11:21.506] Server  LOG      ✓ Compiled in 55ms
+[00:11:31.319] Server  LOG      ✓ Compiled in 57ms
+[00:11:50.463] Server  LOG      ✓ Compiled in 56ms
+[00:11:53.756] Server  LOG      ✓ Compiled in 57ms
+[00:12:07.621] Server  LOG      ✓ Compiled in 52ms
+[00:12:30.644] Browser WARN    Image with src "/images/services/office-management.gif" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:12:50.197] Server  LOG      ✓ Compiled in 68ms
+[00:13:13.887] Server  LOG      ✓ Compiled in 63ms
+[00:13:38.361] Server  LOG      ✓ Compiled in 61ms
+[00:13:38.622] Browser ERROR   ./src/components/home/WhyUs.jsx:94:9
+Parsing ecmascript source code failed
+  92 |           gsap.to(panel, { opacity: 1, duration: 0 });
+  93 |         }
+> 94 |         onLeave: () => {
+     |         ^^^^^^^
+  95 |           // after pin (scroll down)
+  96 |           gsap.to(panel, {
+  97 |             opacity: index === panelsRef.current.length - 1 ? 1 : 0,
+
+Expected ',', got 'onLeave'
+
+Import traces:
+  Client Component Browser:
+    ./src/components/home/WhyUs.jsx [Client Component Browser]
+    ./src/app/page.js [Client Component Browser]
+    ./src/app/page.js [Server Component]
+
+  Client Component SSR:
+    ./src/components/home/WhyUs.jsx [Client Component SSR]
+    ./src/app/page.js [Client Component SSR]
+    ./src/app/page.js [Server Component]
+[00:14:12.111] Server  LOG      ✓ Compiled in 61ms
+[00:14:15.991] Browser WARN    Image with src "/images/services/system-support.gif" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:14:26.179] Server  LOG      ✓ Compiled in 49ms
+[00:14:37.714] Server  LOG      ✓ Compiled in 60ms
+[00:14:46.168] Server  LOG      ✓ Compiled in 51ms
+[00:15:02.658] Server  LOG      ✓ Compiled in 103ms
+[00:16:32.272] Server  LOG      ✓ Compiled in 92ms
+[00:18:39.267] Server  LOG      ✓ Compiled in 51ms

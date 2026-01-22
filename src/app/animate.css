@@ -7,7 +7,7 @@
 */
 @property --gradient-angle {
   syntax: "<angle>";
-  initial-value: 90deg;
+  initial-value: 0deg;
   inherits: false;
 }
 :root {
@@ -140,12 +140,15 @@ body {
     #0701bf,
     #910f11
   );
-
+}
+.impact-card:hover .impact-bottom-glow,
+.impact-card:hover .impact-top-glow {
+  animation: glowLoop 7s linear infinite;
+}
+.impact-card:hover {
   animation: rotate 5s linear infinite;
 }
-/* .impact-card:hover {
-  animation: border-animate 5s linear infinite;
-} */
+
 @keyframes rotate {
   to {
     --gradient-angle: 360deg;

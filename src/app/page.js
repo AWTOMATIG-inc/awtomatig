@@ -3,6 +3,7 @@ import GridAnimatedBg from "@/components/animation/GridAnimatedBg";
 import BlogTimeline from "@/components/home/BlogTimeline";
 import FutureChanges from "@/components/home/FutureChanges";
 import Hero from "@/components/home/Hero";
+import Impact from "@/components/home/Impact";
 import KeepFlyingMarquee from "@/components/home/KeepFlyingMarquee";
 import OurCapabilities from "@/components/home/OurCapabilities";
 import OurProccess from "@/components/home/OurProccess";
@@ -37,9 +38,9 @@ export default function Home() {
       <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <OurProccess />
       </section>
-      {/* <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
+      <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <Impact />
-      </section> */}
+      </section>
       <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <KeepFlyingMarquee />
       </section>
