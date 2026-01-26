@@ -9,6 +9,7 @@ const sponsorLogos = [
   "/images/sponsor/sponsor5.png",
   "/images/sponsor/sponsor6.png",
   "/images/sponsor/sponsor7.png",
+  "/images/sponsor/sponsor4.png",
 ];
 export default function Sponsor() {
   return (

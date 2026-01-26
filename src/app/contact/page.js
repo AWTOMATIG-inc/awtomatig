@@ -34,7 +34,7 @@ export default function Contact() {
           </h5> */}
         </div>
       </section>
-      <section id="get-in-touch"></section>
+      <section id="get-in-touch" className="pt-2"></section>
       <section className="my-30">
         <GetInTouch />
       </section>
