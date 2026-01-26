@@ -2,15 +2,14 @@ import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import CommonHeading from "../CommonHeading";
 const sponsorLogos = [
+  "/images/sponsor/sponsor.png",
   "/images/sponsor/sponsor1.png",
   "/images/sponsor/sponsor2.png",
   "/images/sponsor/sponsor3.png",
   "/images/sponsor/sponsor4.png",
-  "/images/sponsor/sponsor7.png",
   "/images/sponsor/sponsor5.png",
-  "/images/sponsor/sponsor6.png",
-  "/images/sponsor/sponsor3.png",  
-  "/images/sponsor/sponsor4.png",
+  "/images/sponsor/sponsor6.png",  ,
+  
 ];
 export default function Sponsor() {
   return (
