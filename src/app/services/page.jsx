@@ -1,3 +1,4 @@
+"use client"
 import Accordion from "@/components/Accordion";
 import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
@@ -8,9 +9,15 @@ import GetInTouch from "@/components/services/GetInTouch";
 import OurServices from "@/components/services/OurServices";
 import Sponsor from "@/components/services/Sponsor";
 import { FAQ } from "@/contants/capabilities";
+import { useEffect, useRef } from "react";
 export default function Services() {
+  const servicesRef=useRef(null);
+  useEffect(()=>{
+     const el = servicesRef.current;
+      el?.scrollIntoView({ behavior: "smooth" });
+  },[])
   return (
-    <main>
+    <main ref={servicesRef}>
       <section className="min-h-[823px] relative">        
         <div className="absolute top-0 left-0 h-full w-full">
           <BackgroundAnimation className="min-h-screen" />

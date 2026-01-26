@@ -19,7 +19,7 @@ export default function GetInTouch() {
             <CommonHeading title="get in touch">
               We’re here to help before, during, and after your project.
             </CommonHeading>
-            
+
             <p className="text-inter text-base sm:text-lg lg:text-2xl mt-5 sm:mt-8 lg:mt-10 ">
               Whether you’re exploring a new idea, fixing operational
               bottlenecks, or scaling an existing system, our team is ready to
@@ -39,8 +39,11 @@ export default function GetInTouch() {
               </div>
               <div className="grid grid-cols-[1fr_2fr] items-center">
                 <h1>Social network</h1>
-               <div className="flex items-center gap-x-10 ">
-                  <a href="https://www.linkedin.com/company/awtomatig/" target="_blank">
+                <div className="flex items-center gap-x-10 ">
+                  <a
+                    href="https://www.linkedin.com/company/awtomatig/"
+                    target="_blank"
+                  >
                     <Icon icon="mdi:linkedin" width="25" height="25" />
                   </a>
                   <a href="https://x.com/awtomatig86939" target="_blank">
@@ -50,7 +53,10 @@ export default function GetInTouch() {
                   <a href="https://medium.com/@awtomatig" target="_blank">
                     <Icon icon="mingcute:medium-fill" width="26" height="26" />
                   </a>
-                  <a href="https://www.instagram.com/awtomatig/" target="_blank">
+                  <a
+                    href="https://www.instagram.com/awtomatig/"
+                    target="_blank"
+                  >
                     <Icon icon="lets-icons:insta" width="25" height="25" />
                   </a>
                 </div>

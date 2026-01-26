@@ -64,7 +64,7 @@ export default function Header() {
           >
             <nav className="container py-2">
               <div className="flex justify-between items-center   text-white">
-                <div>
+                <div className="relative z-99">
                   <Link href="/" className="hover:text-gray-400">
                     <Image
                       src={awtomatig_logo}
@@ -184,7 +184,7 @@ export default function Header() {
             >
               <nav className="container py-2">
                 <div className="flex justify-between items-center   text-white">
-                  <div>
+                  <div className="relative z-99">
                     <Link href="/" className="hover:text-gray-400">
                       <Image
                         src={awtomatig_logo}

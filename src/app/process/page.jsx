@@ -92,7 +92,7 @@ export default function Process() {
           {steps.map((step) => (
             <div key={step.id} className="font-inter">
               <div className="flex items-end gap-4 lg:gap-6 font-inter">
-                <span className="font-bold text-3xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-9xl bg-[linear-gradient(180deg,#FFFFFF_0%,#02D5E8_100%)] bg-clip-text text-transparent">
+                <span className="font-bold text-3xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-9xl bg-[linear-gradient(180deg,#FFFFFF_0%,#02D5E8_100%)] bg-clip-text text-transparent leading-24">
                   0{step.id}
                 </span>
 

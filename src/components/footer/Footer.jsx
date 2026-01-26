@@ -38,7 +38,7 @@ export default function Footer() {
               Systems that work. <br />
               Results that last.
             </h1>
-            <Link href="/contact">
+            <Link href="/contact#get-in-touch">
               <AnimatedButton name="Get a quote" icon={true} />
             </Link>
           </div>

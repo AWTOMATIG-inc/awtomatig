@@ -34,6 +34,7 @@ export default function Contact() {
           </h5> */}
         </div>
       </section>
+      <section id="get-in-touch"></section>
       <section className="my-30">
         <GetInTouch />
       </section>
@@ -43,7 +44,7 @@ export default function Contact() {
           initial={{ opacity: 0, y: -150 }}
           scrollTop={{ opacity: 1, y: 0 }}
           scrollBottom={{ opacity: 0, y: -150 }}
-          margin="40px 0px -40px 0px"
+          margin="40px 0px 0px 0px"
         >
           <div className=" wrapper">
             <iframe
