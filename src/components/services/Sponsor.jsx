@@ -2,14 +2,13 @@ import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import CommonHeading from "../CommonHeading";
 const sponsorLogos = [
-  "/images/sponsor/sponsor.png",
-  "/images/sponsor/sponsor1.png",
-  "/images/sponsor/sponsor2.png",
-  "/images/sponsor/sponsor3.png",
-  "/images/sponsor/sponsor4.png",
-  "/images/sponsor/sponsor5.png",
-  "/images/sponsor/sponsor6.png",
-  
+  "/images/sponsor/partner-1.png",
+  "/images/sponsor/partner-2.png",
+  "/images/sponsor/partner-3.png",
+  "/images/sponsor/partner-4.png",
+  "/images/sponsor/partner-5.png",
+  "/images/sponsor/partner-6.png",
+  "/images/sponsor/partner-7.png",  
 ];
 export default function Sponsor() {
   return (
@@ -33,7 +32,7 @@ export default function Sponsor() {
                 alt="sponsor"
                 width={200}
                 height={200}
-                className={`h-auto p-8 object-contain ${index==5?"w-[70%] lg:w-[80%] xl:w-[90%]":"w-full"}`}
+                className={`h-auto p-8 object-contain ${index==4?"w-[70%] lg:w-[80%] xl:w-[90%]":"w-full"}`}
               />
             </div>
           ))}
