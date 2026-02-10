@@ -1,7 +1,7 @@
 "use client";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import CommonHeading from "../CommonHeading";
 const servicesCard = [
   {
@@ -91,6 +91,7 @@ export default function OurService() {
   const sectionRef = useRef(null);
   const sidebarRef = useRef(null);
   const boxesRef = useRef(null);
+
   const handleClick = (value) => {
     const section = document.getElementById(value);
     if (!section) return;
@@ -101,59 +102,61 @@ export default function OurService() {
     });
   };
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const sidebar = sidebarRef.current;
-    const boxes = boxesRef.current;
-const mm = gsap.matchMedia();
-    // Correct end value
-    const endValue = boxes.scrollHeight - section.offsetHeight;
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const section = sectionRef.current;
+      const sidebar = sidebarRef.current;
+      const boxes = boxesRef.current;
 
-    // Fix: Prevent negative values (if boxes shorter than section)
-    const finalEnd = Math.max(endValue, 0);
+      if (!section || !sidebar || !boxes) return;
 
- mm.add("(min-width: 1024px)", () => {
-    ScrollTrigger.create({
-      trigger: section,
-      start: "top top",
-      end: finalEnd,
-      pin: sidebar,
-      pinSpacing: false,
-      scrub: true,
-    });
-  });
-    // SCROLLING CONTENT
-    gsap.to(boxes, {
-      y: -finalEnd,
-      ease: "none",
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: finalEnd,
-        scrub: true,
-      },
-    });
+      const mm = gsap.matchMedia();
 
-    ScrollTrigger.refresh();
-    return () => mm.revert();
+      const getFinalEnd = () => {
+        const endValue = boxes.scrollHeight - section.offsetHeight;
+        return Math.max(endValue, 0);
+      };
+
+      mm.add("(min-width: 1024px)", () => {
+        const finalEnd = getFinalEnd();
+
+        // PIN SIDEBAR
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top top",
+          end: finalEnd,
+          pin: sidebar,
+          pinSpacing: false,
+          scrub: true,
+
+          onUpdate: (self) => {
+            if (self.scroll() > section.offsetHeight + 300) {
+              sidebar.classList.add("hidden");
+            } else {
+              sidebar.classList.remove("hidden");
+            }
+          },
+        });
+
+        // SCROLL CONTENT
+        gsap.to(boxes, {
+          y: -finalEnd,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: finalEnd,
+            scrub: true,
+          },
+        });
+      });
+
+      return () => mm.revert();
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
- 
-  useEffect(() => {
-    const section = sectionRef.current;
-    const sidebar = sidebarRef.current;
-    const handleResize = (e) => {
-      if (window.scrollY > section.offsetHeight + 300) {
-        sidebar.classList.add("hidden");
-      } else {
-        sidebar.classList.remove("hidden");
-      }
-    };
-    window.addEventListener("scroll", handleResize);
-    return () => {
-      window.removeEventListener("scroll", handleResize);
-    };
-  }, []);
   return (
     <div className="container" ref={sectionRef}>
       <div className="wrapper mb-14  text-center sm:text-left relative z-10">

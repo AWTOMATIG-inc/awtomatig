@@ -2,48 +2,45 @@
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function GsapScrollEffect({
   children,
-  initial = { opacity: 0, y: 40 },
-  scrollTop = { opacity: 1, y: 0 },
-  scrollBottom = { opacity: 0, y: 80 },
-  margin = "400px 0px -100px 0px",
+  initial = { y: 40 },
+  scrollTop = { y: 0 },
   delay = 0,
 }) {
   const ref = useRef(null);
+  const initialRef = useRef(initial);
+  const scrollTopRef = useRef(scrollTop);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const el = ref.current;
+      if (!el) return;
 
-    // Set initial state
-    gsap.set(el, initial);
+      gsap.set(el, {
+        ...initialRef.current,
+        willChange: "transform",
+      });
 
-    // Create ScrollTrigger animation
-    const anim = gsap.to(el, {
-      ...scrollTop,
-      scrollTrigger: {
-        trigger: el,
-        start: "top bottom", // when element top hits bottom of viewport
-        end: "bottom top", // when element bottom hits top of viewport
-        scrub: true, // smooth link with scroll
-        markers: false, // set to true to debug
-        toggleActions: "play reverse play reverse",
-      },
-      duration: 0.5,
-      delay,
-      ease: "power2.out",
-    });
+      gsap.to(el, {
+        ...scrollTopRef.current,
+        scrollTrigger: {
+          trigger: el,
+          start: "top bottom",
+          end: "center center",
+          scrub: true,
+        },
+        delay,
+        ease: "none",
+      });
+    }, ref);
 
-    return () => {
-      anim.scrollTrigger?.kill();
-      anim.kill();
-    };
-  }, [initial, scrollTop, scrollBottom, delay]);
+    return () => ctx.revert();
+  }, [delay]);
 
   return <div ref={ref}>{children}</div>;
 }

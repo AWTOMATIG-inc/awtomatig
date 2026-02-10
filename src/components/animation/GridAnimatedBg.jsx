@@ -1,13 +1,13 @@
 "use client";
 import "@/app/animate.css";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 export default function GridAnimatedBg({ children }) {
   const planeRef = useRef(null);
   const targetRef = useRef({ rotateZ: 0, offsetY: 0 });
   const currentRef = useRef({ rotateZ: 0, offsetY: 0 });
   const rafRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     function handleMove(evt) {
       const w = window.innerWidth || 1;
       const h = window.innerHeight || 1;
@@ -18,10 +18,11 @@ export default function GridAnimatedBg({ children }) {
       const rotateZ = (x - 0.5) * 0.8; // approx -0.4deg .. 0.4deg
       const offsetY = (y - 0.5) * 1.2; // approx -0.6px .. 0.6px
 
-      targetRef.current = { rotateZ, offsetY };
+      targetRef.current.rotateZ = rotateZ;
+      targetRef.current.offsetY = offsetY;
     }
 
-    window.addEventListener("mousemove", handleMove);
+    window.addEventListener("mousemove", handleMove, { passive: true });
 
     function animate() {
       const plane = planeRef.current;

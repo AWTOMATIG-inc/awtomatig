@@ -2,7 +2,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 gsap.registerPlugin(ScrollTrigger);
 const homeWhyUsData = [
   {
@@ -62,51 +62,35 @@ const homeWhyUsData = [
 ];
 export default function WhyUs() {
   const panelsRef = useRef([]);
-  useEffect(() => {
+  useLayoutEffect(() => {
+  const ctx = gsap.context(() => {
     panelsRef.current.forEach((panel, index) => {
-      // Fade + scale effect
-      gsap.fromTo(
-        panel,
-        { scale: 1, opacity: 1 },
-        {
-          scale: 1,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: panel,
-            start: "center center",
-            end: "center center",
-            scrub: true,
-          },
-        },
-      );
-      // Pin each card step-by-step
       ScrollTrigger.create({
         trigger: panel,
         start: "center center",
-        end: index === panelsRef.current.length - 1 ? "top center" : "+=100%",
+        end:
+          index === panelsRef.current.length - 1
+            ? "top center"
+            : "+=100%",
         pin: true,
         pinSpacing: false,
-        anticipatePin: 1,
-        
+        anticipatePin: 1.2,
+
         onLeave: () => {
-          // after pin (scroll down)
-          gsap.to(panel, {
-            opacity: index === panelsRef.current.length - 1 ? 1 : 0,
-            duration:0,
-          });
+          if (index !== panelsRef.current.length - 1) {
+            gsap.set(panel, { opacity: 0 });
+          }
         },
+
         onEnterBack: () => {
-          // when coming back to pin
-          gsap.to(panel, { opacity: 1, duration: 0 });
+          gsap.set(panel, { opacity: 1 });
         },
       });
     });
+  });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill(true));
-    };
-  }, []);
-
+  return () => ctx.revert();
+}, []);
   return (
     <section className="container relative z-99 pt-20 pb-10">
       <div className="wrapper mb-14 text-center sm:text-left">
