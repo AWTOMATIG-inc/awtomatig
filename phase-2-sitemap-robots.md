@@ -1,7 +1,7 @@
 # Phase 2: Sitemap & Robots.txt for Next.js App Router
 
 ## Context
-This is a Next.js 15 App Router project with no backend and no CMS.
+This is a Next.js 15 App Router project with no backend and no CMS
 All routes are static including a case studies section which uses
 hardcoded `generateStaticParams`. There is no existing sitemap.xml
 or robots.txt — building from zero.
