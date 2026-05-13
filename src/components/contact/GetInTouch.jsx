@@ -1,11 +1,45 @@
+"use client";
+
 import { Icon } from "@iconify/react";
+import { useState } from "react";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
 import CommonHeading from "../CommonHeading";
 import InputBox from "../InputBox";
 import TextBox from "../TextBox";
+import { pushEvent } from "@/lib/gtm";
 
 export default function GetInTouch() {
+  const [form, setForm] = useState({
+    fullname: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+
+  function handleChange(e) {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error();
+      setStatus("success");
+      pushEvent({ event: "contact_form_success", form_location: "contact_page" });
+      setForm({ fullname: "", email: "", subject: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
+  }
+
   return (
     <div className="container font-sora overflow-hidden lg:overflow-visible">
       <div className="grid lg:grid-cols-[1.3fr_1fr] gap-16 md:gap-20 lg:gap-30 wrapper">
@@ -17,13 +51,13 @@ export default function GetInTouch() {
         >
           <div>
             <CommonHeading title="get in touch">
-              We’re here to help before, during, and after your project.
+              We're here to help before, during, and after your project.
             </CommonHeading>
 
             <p className="text-inter text-base sm:text-lg lg:text-2xl mt-5 sm:mt-8 lg:mt-10 ">
-              Whether you’re exploring a new idea, fixing operational
+              Whether you're exploring a new idea, fixing operational
               bottlenecks, or scaling an existing system, our team is ready to
-              guide you. Share your goals, and we’ll suggest the most efficient
+              guide you. Share your goals, and we'll suggest the most efficient
               way forward.
             </p>
           </div>
@@ -31,7 +65,7 @@ export default function GetInTouch() {
             <div className="space-y-6 text-sm md:text-base">
               <div className="grid grid-cols-[1fr_2fr] items-center">
                 <h1>Call Center</h1>
-                <a href="tel:+8801753-538760">+880 1753-538760</a>
+                <a href="tel:+8801753-538760" onClick={() => pushEvent({ event: "phone_click", phone_number: "+8801753-538760" })}>+880 1753-538760</a>
               </div>
               <div className="grid grid-cols-[1fr_2fr] items-center">
                 <h1>E-mail</h1>
@@ -74,23 +108,76 @@ export default function GetInTouch() {
           scrollBottom={{ opacity: 0, x: 150 }}
           margin="40px 0px -40px 0px"
         >
-          <form
-            action="#"
-            className="rounded-xl shadow-lg shadow-teal px-8 py-11 bg-[#201F1F78] w-full xl:max-w-[605px] mx-auto  lg:ml-auto mb-6 lg:mb-0"
-          >
-            <h1 className="text-right font-bold text-3xl capitalize mb-8">
-              Get in Touch
-            </h1>
-            <div className=" rounded-md space-y-7 w-[80%] ml-auto">
-              <InputBox name="fullname" placeholder="FullName" />
-              <InputBox name="email" placeholder="Email" />
-              <InputBox name="subject" placeholder="Subject" />
-              <TextBox name="message" placeholder="Message" />
+          {status === "success" ? (
+            <div className="rounded-xl shadow-lg shadow-teal px-8 py-11 bg-[#201F1F78] w-full xl:max-w-[605px] mx-auto lg:ml-auto mb-6 lg:mb-0 flex flex-col items-center justify-center min-h-[400px] text-center gap-6">
+              <Icon icon="mdi:check-circle-outline" width="64" height="64" className="text-teal-400" />
+              <h2 className="font-bold text-2xl capitalize">Message Sent!</h2>
+              <p className="text-base opacity-75">
+                Thank you for reaching out. We'll get back to you shortly.
+              </p>
+              <button
+                onClick={() => setStatus("idle")}
+                className="mt-4 text-sm underline opacity-60 hover:opacity-100 transition-opacity"
+              >
+                Send another message
+              </button>
             </div>
-            <button className="block ml-auto mt-8">
-              <AnimatedButton name="Send Message" width="w-[210px]" />
-            </button>
-          </form>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="rounded-xl shadow-lg shadow-teal px-8 py-11 bg-[#201F1F78] w-full xl:max-w-[605px] mx-auto lg:ml-auto mb-6 lg:mb-0"
+            >
+              <h1 className="text-right font-bold text-3xl capitalize mb-8">
+                Get in Touch
+              </h1>
+              <div className="rounded-md space-y-7 w-[80%] ml-auto">
+                <InputBox
+                  name="fullname"
+                  placeholder="FullName"
+                  value={form.fullname}
+                  onChange={handleChange}
+                  required
+                />
+                <InputBox
+                  name="email"
+                  placeholder="Email"
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                />
+                <InputBox
+                  name="subject"
+                  placeholder="Subject"
+                  value={form.subject}
+                  onChange={handleChange}
+                  required
+                />
+                <TextBox
+                  name="message"
+                  placeholder="Message"
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              {status === "error" && (
+                <p className="text-red-400 text-sm mt-4 text-right">
+                  Something went wrong. Please try again.
+                </p>
+              )}
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="block ml-auto mt-8 disabled:opacity-60"
+              >
+                <AnimatedButton
+                  name={status === "loading" ? "Sending..." : "Send Message"}
+                  width="w-[210px]"
+                />
+              </button>
+            </form>
+          )}
         </FadeInSection>
       </div>
     </div>

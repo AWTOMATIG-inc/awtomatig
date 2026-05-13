@@ -14,7 +14,7 @@
 /coverage
 
 # next.js
-# /.next/
+/.next/
 /out/
 
 # production
@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.local
 
 # vercel
 .vercel
@@ -39,3 +40,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# graphify
+graphify-out/
+.graphify_python
+.graphify_detect.json
+.graphify_uncached.txt
+.graphify_cached.json
+.graphify_chunk_*.json
+.graphify_ast.json
+.graphify_incremental.json
+.graphify_old.json
+.claude/

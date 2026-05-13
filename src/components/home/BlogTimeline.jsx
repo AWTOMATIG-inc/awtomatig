@@ -1,7 +1,9 @@
+"use client";
 import ArticleBar from "@/components/ArticleBar";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
 import CommonHeading from "../CommonHeading";
+import { pushEvent } from "@/lib/gtm";
 const blogData=[
   {
     id:1,
@@ -74,6 +76,7 @@ export default function BlogTimeline() {
               <a
                 href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7362829025410519043"
                 target="_blank"
+                onClick={() => pushEvent({ event: "cta_click", cta_label: "Read Insights" })}
               >
                 <AnimatedButton
                   name="Read Insights"

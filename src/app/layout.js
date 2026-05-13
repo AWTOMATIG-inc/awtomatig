@@ -1,6 +1,8 @@
 import Footer from "@/components/footer/Footer";
+import GTMProvider from "@/components/GTMProvider";
 import Header from "@/components/Header";
 import CookiePopup from "@/components/home/CookiePopup";
+import { GoogleTagManager } from "@next/third-parties/google";
 import {
   Inter,
   Manrope,
@@ -58,9 +60,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       <body
         className={`${pressStart2P.variable} ${manrope.variable} ${sora.variable} ${silkscreen.variable} ${russoOne.variable} ${inter.variable} ${montserrat.variable} font-manrope bg-black overflow-x-hidden  text-white antialiased`}
       >
+        <GTMProvider />
         <CookiePopup />
         <Header />
         {children}

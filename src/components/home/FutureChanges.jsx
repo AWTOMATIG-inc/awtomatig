@@ -1,7 +1,9 @@
+"use client";
 import Link from "next/link";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
 import ParticleBackground from "../ParticleBackground";
+import { pushEvent } from "@/lib/gtm";
 export default function FutureChanges() {
   return (
     <div className="relative">
@@ -27,7 +29,7 @@ export default function FutureChanges() {
               scrollBottom={{ opacity: 0, x: 150 }}
               margin="40px 0px -40px 0px"
             >
-              <Link href="/case-studies">
+              <Link href="/case-studies" onClick={() => pushEvent({ event: "cta_click", cta_label: "Case Studies" })}>
                 <AnimatedButton name="Case Studies" icon={true} />
               </Link>
             </FadeInSection>

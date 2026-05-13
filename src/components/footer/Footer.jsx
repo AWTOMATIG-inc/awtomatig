@@ -1,3 +1,4 @@
+"use client";
 import awtomatig_logo from "@/assets/logo/awtomatig-full-logo.png";
 import sinceText from "@/assets/logo/since-text.png";
 import { Icon } from "@iconify/react";
@@ -5,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
+import { pushEvent } from "@/lib/gtm";
 export default function Footer() {
   return (
     <footer className="container relative py-10">
@@ -38,7 +40,7 @@ export default function Footer() {
               Systems that work. <br />
               Results that last.
             </h1>
-            <Link href="/contact#get-in-touch">
+            <Link href="/contact#get-in-touch" onClick={() => pushEvent({ event: "cta_click", cta_label: "Get a quote" })}>
               <AnimatedButton name="Get a quote" icon={true} />
             </Link>
           </div>
