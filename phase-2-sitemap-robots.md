@@ -92,4 +92,4 @@ After implementation, confirm:
 - [ ] `https://awtomatig.com/robots.txt` returns correct rules
 - [ ] No hardcoded localhost or staging URLs
 - [ ] Case study slugs all appear in sitemap
-- [ ] `priority` and `changeFrequency` values are set on all entries
+- [ ] `priority` and `changeFrequency` values are set on all entries.
