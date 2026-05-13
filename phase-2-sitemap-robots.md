@@ -61,7 +61,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 ## Step 3: Create `robots.ts`
 
 Create `app/robots.ts` using the Next.js built-in `MetadataRoute.Robots`
-type.
+type
 
 Rules:
 - Allow all crawlers on all public pages
