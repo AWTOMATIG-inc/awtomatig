@@ -51,7 +51,7 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: "AWTOMATIG",
-  description: "Developed by Shipon islam",
+  description: "Operational infrastructure for growing businesses — back-office execution, automation, ERPNext, and high-performance websites. Founder-led, since 2022.",
   icons: {
     icon: "/favicon.png",
   },
