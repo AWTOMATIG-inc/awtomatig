@@ -1,9 +1,11 @@
+"use client";
 import { Icon } from "@iconify/react";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
 import CommonHeading from "../CommonHeading";
 import InputBox from "../InputBox";
 import TextBox from "../TextBox";
+import { pushEvent } from "@/lib/gtm";
 
 export default function GetInTouch() {
   return (
@@ -30,7 +32,7 @@ export default function GetInTouch() {
             <div className="space-y-6 text-sm md:text-base">
               <div className="grid grid-cols-[1fr_2fr] items-center">
                 <h1>Call Center</h1>
-                <a href="tel:+8801753-538760">+880 1753-538760</a>
+                <a href="tel:+8801753-538760" onClick={() => pushEvent({ event: "phone_click", phone_number: "+8801753-538760" })}>+880 1753-538760</a>
               </div>
               <div className=" grid grid-cols-[1fr_2fr] items-center">
                 <h1>E-mail</h1>

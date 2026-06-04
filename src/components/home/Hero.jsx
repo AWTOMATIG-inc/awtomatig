@@ -2,6 +2,7 @@
 import Link from "next/link";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
+import { pushEvent } from "@/lib/gtm";
 export default function Hero() {
   const hello = "hello";
   return (
@@ -26,13 +27,20 @@ export default function Hero() {
               moves revenue.
             </p> */}
             <div className="flex flex-col sm:flex-row gap-8 items-center justify-center mt-10 md:mt-12 lg:mt-16">
-              <Link href="/services">
+              <Link href="/services" onClick={() => pushEvent({ event: "cta_click", cta_label: "Know more" })}>
               <AnimatedButton name="Know more"   icon={true} />
               </Link>
-              <a href="https://calendly.com/nahidr-awtomatig/30min?month=2025-04" target="_blank">
+              <a
+                href="https://calendly.com/nahidr-awtomatig/30min?month=2025-04"
+                target="_blank"
+                onClick={() => {
+                  pushEvent({ event: "cta_click", cta_label: "Book a call" });
+                  pushEvent({ event: "book_call_click", destination: "calendly" });
+                }}
+              >
                 <AnimatedButton name="Book a call"    icon={true} />
               </a>
-              
+
             </div>
           </FadeInSection>
         </div>

@@ -6,6 +6,7 @@ import BackgroundAnimation from "@/components/BackgroundAnimation";
 import CommonHeading from "@/components/CommonHeading";
 import GlowBall from "@/components/GlowBall";
 import Image from "next/image";
+import { pushEvent } from "@/lib/gtm";
 const steps = [
   {
     id: 1,
@@ -131,7 +132,14 @@ export default function Process() {
                   We are dedicated to helping businesses scale operations, technology, and execution without the chaos of building everything in-house.
                 </p>
                 <div className="w-fit mx-auto mt-12">
-                  <a href="https://calendly.com/nahidr-awtomatig/30min?month=2026-01" target="_blank">
+                  <a
+                    href="https://calendly.com/nahidr-awtomatig/30min?month=2026-01"
+                    target="_blank"
+                    onClick={() => {
+                      pushEvent({ event: "cta_click", cta_label: "Start Project" });
+                      pushEvent({ event: "book_call_click", destination: "calendly" });
+                    }}
+                  >
                   <AnimatedButton
                     name="Start Project"
                     width="w-[220px]"

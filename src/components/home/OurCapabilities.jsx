@@ -1,9 +1,11 @@
+"use client";
 import Accordion from "@/components/Accordion";
 import { capabilities } from "@/contants/capabilities";
 import Link from "next/link";
 import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
 import CommonHeading from "../CommonHeading";
+import { pushEvent } from "@/lib/gtm";
 export default function OurCapabilities() {
   return (
     <div className="container">
@@ -18,7 +20,7 @@ export default function OurCapabilities() {
           <CommonHeading title="What we operate" color="text-teal">
             Our operational capabilities
           </CommonHeading>
-          <Link href="/services">
+          <Link href="/services" onClick={() => pushEvent({ event: "cta_click", cta_label: "Work" })}>
             <AnimatedButton name="Work" icon={true} width="w-[140px]" />
           </Link>
         </div>
