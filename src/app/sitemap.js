@@ -5,7 +5,7 @@ const BASE_URL = "https://awtomatig.com";
 export default function sitemap() {
   const caseStudyEntries = caseStudies.map((study) => ({
     url: `${BASE_URL}/case-studies/${study.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date("2026-05-13"),
     changeFrequency: "yearly",
     priority: 0.6,
   }));
@@ -13,39 +13,39 @@ export default function sitemap() {
   return [
     {
       url: BASE_URL,
-      lastModified: new Date(),
+      lastModified: new Date("2026-05-13"),
       changeFrequency: "monthly",
       priority: 1.0,
     },
     {
       url: `${BASE_URL}/about-us`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      lastModified: new Date("2026-05-13"),
+      changeFrequency: "yearly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/services`,
-      lastModified: new Date(),
+      lastModified: new Date("2026-05-13"),
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: `${BASE_URL}/process`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
+      lastModified: new Date("2026-05-13"),
+      changeFrequency: "yearly",
+      priority: 0.7,
     },
     {
       url: `${BASE_URL}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      lastModified: new Date("2026-05-13"),
+      changeFrequency: "yearly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/case-studies`,
-      lastModified: new Date(),
+      lastModified: new Date("2026-05-13"),
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.8,
     },
     ...caseStudyEntries,
   ];

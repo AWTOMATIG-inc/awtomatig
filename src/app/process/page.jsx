@@ -1,12 +1,17 @@
-"use client";
 import awtomatig_logo from "@/assets/logo/awtomatig-logo.png";
-import AnimatedButton from "@/components/AnimatedButton";
 import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import CommonHeading from "@/components/CommonHeading";
 import GlowBall from "@/components/GlowBall";
+import ProcessCTA from "@/components/process/ProcessCTA";
 import Image from "next/image";
-import { pushEvent } from "@/lib/gtm";
+
+export const metadata = {
+  title: "Our Process — How We Deliver Results",
+  description:
+    "A structured 6-step engagement: Connect, Align, Assign, Execute, Deliver, Support. See how Awtomatig integrates with your tools and delivers measurable outcomes from day one.",
+  alternates: { canonical: "https://awtomatig.com/process" },
+};
 const steps = [
   {
     id: 1,
@@ -132,21 +137,7 @@ export default function Process() {
                   We are dedicated to helping businesses scale operations, technology, and execution without the chaos of building everything in-house.
                 </p>
                 <div className="w-fit mx-auto mt-12">
-                  <a
-                    href="https://calendly.com/nahidr-awtomatig/30min?month=2026-01"
-                    target="_blank"
-                    onClick={() => {
-                      pushEvent({ event: "cta_click", cta_label: "Start Project" });
-                      pushEvent({ event: "book_call_click", destination: "calendly" });
-                    }}
-                  >
-                  <AnimatedButton
-                    name="Start Project"
-                    width="w-[220px]"
-                    icon={true}
-                  />
-                  </a>
-                  
+                  <ProcessCTA />
                 </div>
               </div>
             </div>

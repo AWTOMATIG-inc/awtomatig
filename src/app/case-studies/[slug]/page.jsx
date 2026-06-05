@@ -2,6 +2,16 @@ import { caseStudies } from "@/contants/case-studies";
 import Image from "next/image";
 import React from "react";
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const study = caseStudies.find((s) => s.slug === slug);
+  return {
+    title: `${study.name} Website Design — Case Study`,
+    description: study.summary.slice(0, 155),
+    alternates: { canonical: `https://awtomatig.com/case-studies/${slug}` },
+  };
+}
+
 export default async function SingleCaseStudies({ params }) {
   const { slug } = await params;
   const singleCaseStudies = caseStudies.find((item) => item.slug === slug);
@@ -9,9 +19,12 @@ export default async function SingleCaseStudies({ params }) {
     <main className="">
       <section className="container">
         <div className="max-w-[1200px] mx-auto mt-32">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-russo-one text-teal mb-8">
+            {singleCaseStudies.name}
+          </h1>
           <Image
             src={singleCaseStudies.banner}
-            alt={singleCaseStudies.slug}
+            alt={`${singleCaseStudies.name} website design — laptop mockup`}
             className="w-full h-auto lg:h-[500px] xl:h-[750px] object-cover"
           />
         </div>
@@ -19,7 +32,7 @@ export default async function SingleCaseStudies({ params }) {
       <section className="container mt-10 sm:mt-14 lg:mt-20">
         <div className="max-w-[1200px] mx-auto">
           <div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-russo-one text-teal">Overview</h1>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-russo-one text-teal">Overview</h2>
             <p className="font-inter mt-2">About This Project</p>
           </div>
           <hr className="mt-5 mb-8" />
@@ -61,9 +74,9 @@ export default async function SingleCaseStudies({ params }) {
           </div>
           <div className="mt-8">
             <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-russo-one text-teal">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-russo-one text-teal">
                 Style Guideline
-              </h1>
+              </h2>
               <p className="font-inter mt-2">
                 Font using Arial for this project
               </p>
@@ -207,7 +220,7 @@ export default async function SingleCaseStudies({ params }) {
               <div key={cid} className="">
                 <Image
                   src={component}
-                  alt="component"
+                  alt={`${singleCaseStudies.name} UI component ${cid + 1}`}
                   width={297}
                   height={384}
                   className="w-full h-full"

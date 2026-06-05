@@ -49,17 +49,72 @@ const montserrat = Montserrat({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
+const siteUrl = "https://awtomatig.com";
+
 export const metadata = {
-  title: "AWTOMATIG",
-  description: "Operational infrastructure for growing businesses — back-office execution, automation, ERPNext, and high-performance websites. Founder-led, since 2022.",
-  icons: {
-    icon: "/favicon.png",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Awtomatig — Business Automation, Operations & Web Development Agency",
+    template: "%s | Awtomatig",
   },
+  description:
+    "Your extended tech and operations team without the overhead. Custom web platforms, AI workflow automation, ERPNext implementation, and back-office management. Founder-led since 2022.",
+  icons: { icon: "/favicon.png" },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Awtomatig",
+    title: "Awtomatig — Business Automation, Operations & Web Development Agency",
+    description:
+      "Your extended tech and operations team without the overhead. Custom web platforms, AI workflow automation, ERPNext implementation, and back-office management.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Awtomatig — Business Automation, Operations & Web Development Agency",
+    description:
+      "Your extended tech and operations team without the overhead. Custom web platforms, AI workflow automation, ERPNext implementation, and back-office management.",
+    site: "@awtomatig",
+  },
+};
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Awtomatig",
+  url: siteUrl,
+  logo: `${siteUrl}/favicon.png`,
+  foundingDate: "2022",
+  sameAs: [
+    "https://www.linkedin.com/company/awtomatig",
+    "https://x.com/awtomatig",
+    "https://www.instagram.com/awtomatig/",
+    "https://www.facebook.com/awtomatig/",
+    "https://medium.com/@awtomatig",
+    "https://mastodon.social/@AWTOMATIG",
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Awtomatig",
+  url: siteUrl,
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       <body
         className={`${pressStart2P.variable} ${manrope.variable} ${sora.variable} ${silkscreen.variable} ${russoOne.variable} ${inter.variable} ${montserrat.variable} font-manrope bg-black overflow-x-hidden  text-white antialiased`}

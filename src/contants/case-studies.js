@@ -5,6 +5,7 @@ export const caseStudies = [
   {
     id: 1,
     slug: "churassco",
+    name: "Churassco",
     banner: churassco_laptop,
     summary:
       "The project involved creating a dynamic online presence for Churrasco BD that reflects the restaurant's lively dining atmosphere and culinary heritage. The design strategy focused on utilizing sensory-driven visuals to create an immediate emotional connection with hungry potential customers. By blending rustic aesthetics with modern functionality, the website serves as a digital extension of the physical dining experience.",
@@ -102,6 +103,7 @@ export const caseStudies = [
   {
     id: 2,
     slug: "royal-safari",
+    name: "Royal Safari Tours",
     banner: royal_safari_laptop,
     summary:
       "The project involved developing a visually rich digital platform that showcases Royal Safari's unique tour offerings and establishes them as a premium travel provider. The design strategy focused on creating an emotional connection with potential travelers through stunning visuals and an intuitive user interface. By combining adventurous elements with functional design, the website effectively bridges the gap between dreaming and booking.",
@@ -199,6 +201,7 @@ export const caseStudies = [
   {
     id: 3,
     slug: "fabusiness",
+    name: "FA Business",
     banner: fabusiness_laptop,
     summary:
       "The project focused on developing a professional digital platform for faaccountant.com to enhance the firm's online presence and credibility. The primary objective was to create a clean, user-friendly interface that effectively communicates complex accounting services to potential business clients. By prioritizing intuitive navigation and a trustworthy visual aesthetic, the design establishes a strong foundation for client engagement and lead generation.",

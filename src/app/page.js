@@ -1,4 +1,3 @@
-"use client";
 import GridAnimatedBg from "@/components/animation/GridAnimatedBg";
 import BlogTimeline from "@/components/home/BlogTimeline";
 import FutureChanges from "@/components/home/FutureChanges";
@@ -12,6 +11,19 @@ import Testimonials from "@/components/home/Testimonials";
 import WhyUs from "@/components/home/WhyUs";
 import MarqueHighlightText from "@/components/MarqueHighlightText";
 import Sponsor from "@/components/services/Sponsor";
+
+export const metadata = {
+  title: "Business Automation, Operations & Web Development Agency",
+  description:
+    "Your extended tech and operations team without the overhead. We build custom web platforms, automate AI workflows, implement ERPNext, and manage back-office operations. Founder-led since 2022.",
+  alternates: { canonical: "https://awtomatig.com" },
+  openGraph: {
+    url: "https://awtomatig.com",
+    title: "Awtomatig — Business Automation, Operations & Web Development Agency",
+    description:
+      "Your extended tech and operations team without the overhead. Custom web platforms, AI automation, ERPNext, and back-office management.",
+  },
+};
 
 export default function Home() {
   return (

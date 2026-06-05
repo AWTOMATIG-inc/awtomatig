@@ -1,4 +1,3 @@
-"use client"
 import Accordion from "@/components/Accordion";
 import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
@@ -7,17 +6,20 @@ import MarqueHighlightText from "@/components/MarqueHighlightText";
 import Benifits from "@/components/services/Benifits";
 import GetInTouch from "@/components/services/GetInTouch";
 import OurServices from "@/components/services/OurServices";
+import ServicesScrollWrapper from "@/components/services/ServicesScrollWrapper";
 import Sponsor from "@/components/services/Sponsor";
 import { FAQ } from "@/contants/capabilities";
-import { useEffect, useRef } from "react";
+
+export const metadata = {
+  title: "Our Services — Web Dev, Automation, ERPNext & Back-Office Operations",
+  description:
+    "From custom web platform development and AI workflow automation to ERPNext implementation and back-office management — Awtomatig delivers end-to-end operational excellence.",
+  alternates: { canonical: "https://awtomatig.com/services" },
+};
+
 export default function Services() {
-  const servicesRef=useRef(null);
-  useEffect(()=>{
-     const el = servicesRef.current;
-      el?.scrollIntoView({ behavior: "smooth" });
-  },[])
   return (
-    <main ref={servicesRef}>
+    <ServicesScrollWrapper>
       <section className="min-h-[823px] relative">        
         <div className="absolute top-0 left-0 h-full w-full">
           <BackgroundAnimation className="min-h-screen" />
@@ -101,6 +103,6 @@ export default function Services() {
       <section className="my-14 sm:my-16 md:my-20 lg:my-32">
         <GetInTouch />
       </section>
-    </main>
+    </ServicesScrollWrapper>
   );
 }

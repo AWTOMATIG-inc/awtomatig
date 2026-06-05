@@ -3,6 +3,14 @@ import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import CommonHeading from "@/components/CommonHeading";
 import Image from "next/image";
+
+export const metadata = {
+  title: "About Us — Founder-Led Automation & Operations Agency",
+  description:
+    "We help businesses scale operations, technology, and execution without the chaos of building everything in-house. Your partner in sustainable, high-growth digital transformation since 2022.",
+  alternates: { canonical: "https://awtomatig.com/about-us" },
+};
+
 export default function AboutUs() {
   return (
     <main>

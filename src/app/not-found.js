@@ -30,21 +30,21 @@ export default function notFound() {
           </Link>
           <div className="text-center mt-12 ">
             <div className="flex justify-center items-center gap-x-8">
-              <a href="">
+              <a href="https://www.facebook.com/awtomatig/" target="_blank" rel="noopener noreferrer">
                 <Icon icon="ic:baseline-facebook" width="25" height="25" />
               </a>
-              <a href="">
+              <a href="https://x.com/awtomatig" target="_blank" rel="noopener noreferrer">
                 <Icon icon="prime:twitter" width="19" height="19" />
               </a>
-              <a href="">
+              <a href="https://www.linkedin.com/company/awtomatig" target="_blank" rel="noopener noreferrer">
                 <Icon icon="mdi:linkedin" width="25" height="25" />
               </a>
-              <a href="">
-                <Icon icon="mdi:youtube" width="26" height="26" />
+              <a href="https://www.instagram.com/awtomatig/" target="_blank" rel="noopener noreferrer">
+                <Icon icon="mdi:instagram" width="25" height="25" />
               </a>
             </div>
             <p className="mt-8">
-              Copyright @ AWTOMATIG 2025. All Rights Reserved.
+              Copyright @ AWTOMATIG {new Date().getFullYear()}. All Rights Reserved.
             </p>
           </div>
         </div>

@@ -3,6 +3,14 @@ import fabusiness_laptop from "@/assets/case-studies/fa-business-laptop.webp";
 import royal_safari_laptop from "@/assets/case-studies/royal-safari-laptop.webp";
 import Image from "next/image";
 import Link from "next/link";
+
+export const metadata = {
+  title: "Case Studies — Web Design & Development Projects",
+  description:
+    "Explore Awtomatig's select work — restaurant, travel, and professional services websites built to perform. Custom web design and development showcasing our end-to-end process.",
+  alternates: { canonical: "https://awtomatig.com/case-studies" },
+};
+
 export default function CaseStudies() {
   return (
     <main className="overflow-hidden relative">
@@ -24,14 +32,14 @@ export default function CaseStudies() {
         <div className="wrapper">
             <div className="grid sm:grid-cols-2 gap-6 md:gap-10">
           <Link href="/case-studies/churassco">
-            <Image src={churassco_laptop} alt="churassco" className="rounded-sm" />
+            <Image src={churassco_laptop} alt="Churassco restaurant website design — laptop mockup" className="rounded-sm" />
           </Link>
           <Link href="/case-studies/royal-safari">
-            <Image src={royal_safari_laptop} alt="royal_safari" className="rounded-sm" />
+            <Image src={royal_safari_laptop} alt="Royal Safari Tours website design — laptop mockup" className="rounded-sm" />
           </Link>
         </div>
         <Link href="/case-studies/fabusiness" className="mx-auto block w-fit mt-6 md:mt-10">
-          <Image src={fabusiness_laptop} alt="fabusiness" className="rounded-sm sm:w-[400px] md:w-[600px] lg:w-[879px]" />
+          <Image src={fabusiness_laptop} alt="FA Business accounting website design — laptop mockup" className="rounded-sm sm:w-[400px] md:w-[600px] lg:w-[879px]" />
         </Link>
         </div>
         

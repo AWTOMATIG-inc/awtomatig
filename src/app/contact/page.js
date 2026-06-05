@@ -2,6 +2,13 @@ import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import GetInTouch from "@/components/contact/GetInTouch";
 
+export const metadata = {
+  title: "Contact Us — Book a Free Strategy Call",
+  description:
+    "Schedule a call, ask a question, or tell us what you're building. Trusted by startups and growing teams since 2022. We respond with clarity, not sales pressure.",
+  alternates: { canonical: "https://awtomatig.com/contact" },
+};
+
 export default function Contact() {
   return (
     <main>
