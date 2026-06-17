@@ -1,7 +1,4 @@
-import Footer from "@/components/footer/Footer";
 import GTMProvider from "@/components/GTMProvider";
-import Header from "@/components/Header";
-import CookiePopup from "@/components/home/CookiePopup";
 import { GoogleTagManager } from "@next/third-parties/google";
 import {
   Inter,
@@ -120,10 +117,7 @@ export default function RootLayout({ children }) {
         className={`${pressStart2P.variable} ${manrope.variable} ${sora.variable} ${silkscreen.variable} ${russoOne.variable} ${inter.variable} ${montserrat.variable} font-manrope bg-black overflow-x-hidden  text-white antialiased`}
       >
         <GTMProvider />
-        <CookiePopup />
-        <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );
