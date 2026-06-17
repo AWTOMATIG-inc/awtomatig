@@ -20,8 +20,14 @@ export async function PATCH(request, { params }) {
     const db = client.db();
     const collection = db.collection("applications");
 
+    const allowedStatuses = ["active", "approved", "rejected"];
     const update = {};
-    if (body.status) update.status = body.status;
+    if (body.status) {
+      if (!allowedStatuses.includes(body.status)) {
+        return Response.json({ success: false, message: "Invalid status." }, { status: 400 });
+      }
+      update.status = body.status;
+    }
     update.updated_at = new Date();
 
     const result = await collection.updateOne(

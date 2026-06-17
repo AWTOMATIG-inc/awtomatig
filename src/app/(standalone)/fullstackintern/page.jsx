@@ -34,6 +34,7 @@ export default function FullStackInternApplication() {
 
     const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const URL_RE = /^https?:\/\/[^\s]+\.[^\s]+$/i;
+    const BD_PHONE_RE = /^(?:\+?880)?01[3-9]\d{8}$/;
 
     const required = [
       ["fullName", "Full name is required."],
@@ -78,6 +79,12 @@ export default function FullStackInternApplication() {
       if (!firstInvalid) firstInvalid = emailEl;
     }
 
+    const phoneEl = document.getElementById("phone");
+    if (phoneEl?.value && !BD_PHONE_RE.test(phoneEl.value.trim().replace(/[\s-]/g, ""))) {
+      newErrors.phone = "Please enter a valid Bangladeshi phone number (e.g., 01712345678 or +8801712345678).";
+      if (!firstInvalid) firstInvalid = phoneEl;
+    }
+
     ["githubUrl", "portfolioUrl", "linkedinUrl", "deployedUrl", "projectRepoUrl"].forEach((id) => {
       const el = document.getElementById(id);
       if (el?.value && !URL_RE.test(el.value.trim())) {
@@ -111,6 +118,30 @@ export default function FullStackInternApplication() {
     return { errors: newErrors, firstInvalid };
   }
 
+  function calculateCandidatePriority(data) {
+    const freshEnough = ["final_year", "fresh_graduate", "graduated_within_1yr"].includes(data.graduation_status);
+    const experienceOk = ["none", "lt_6m", "6m_1y"].includes(data.experience_level);
+    const hasSomeExperience = ["lt_6m", "6m_1y"].includes(data.experience_level);
+    const isOnSite = data.onsite_availability === "yes";
+    const canCommit = data.commit_3_months === "yes";
+    const hasGithub = Boolean(data.github_url && data.github_url.trim());
+    const hasDeployedProject = Boolean(data.deployed_project_url && data.deployed_project_url.trim());
+    const nextExperienceStrong = ["3_6m", "6_12m", "1y_plus"].includes(data.nextjs_experience);
+
+    const hardReject = !isOnSite || !canCommit || data.experience_level === "gt_1y";
+    if (hardReject) return "low_priority";
+
+    if (freshEnough && experienceOk && isOnSite && canCommit && hasGithub && hasDeployedProject && nextExperienceStrong) {
+      return "high_priority";
+    }
+
+    if (freshEnough && experienceOk && isOnSite && canCommit && hasGithub && (hasDeployedProject || hasSomeExperience)) {
+      return "medium_priority";
+    }
+
+    return "low_priority";
+  }
+
   function collectFormData() {
     const form = formRef.current;
     const fd = new FormData(form);
@@ -125,12 +156,7 @@ export default function FullStackInternApplication() {
     }
 
     data.submitted_at = new Date().toISOString();
-
-    const freshEnough = ["final_year", "fresh_graduate", "graduated_within_1yr"].includes(data.graduation_status);
-    const experienceOk = ["none", "lt_6m", "6m_1y"].includes(data.experience_level);
-    const onsiteOk = data.onsite_availability === "yes";
-    const commitOk = data.commit_3_months === "yes";
-    data.priority = freshEnough && experienceOk && onsiteOk && commitOk ? "high_priority" : "low_priority";
+    data.priority = calculateCandidatePriority(data);
 
     return data;
   }
@@ -319,7 +345,17 @@ export default function FullStackInternApplication() {
                 </div>
                 <div>
                   <label htmlFor="location" className={labelClass} style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Current Location <span className="text-[#E15A72]">*</span></label>
-                  <input type="text" id="location" name="location" required className={inputClass} style={errorBorder("location")} />
+                  <select id="location" name="location" required className={selectClass} style={{ ...errorBorder("location"), backgroundImage: selectBg }}>
+                    <option value="" disabled hidden>Select your division</option>
+                    <option value="Dhaka">Dhaka</option>
+                    <option value="Chattogram">Chattogram</option>
+                    <option value="Rajshahi">Rajshahi</option>
+                    <option value="Khulna">Khulna</option>
+                    <option value="Barishal">Barishal</option>
+                    <option value="Sylhet">Sylhet</option>
+                    <option value="Rangpur">Rangpur</option>
+                    <option value="Mymensingh">Mymensingh</option>
+                  </select>
                   <FieldError name="location" />
                 </div>
                 <div>

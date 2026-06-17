@@ -199,10 +199,10 @@ function LoginScreen({ onLogin }) {
 // ────────────────────────────────────────────────────────────────
 // Candidate Card
 // ────────────────────────────────────────────────────────────────
-function CandidateCard({ application, onReject, onRestore, expanded, onToggle }) {
-  const isRejected = application.status === "rejected";
-
-  const displayFields = Object.keys(FIELD_LABELS);
+function CandidateCard({ application, onStatusChange, expanded, onToggle }) {
+  const status = application.status;
+  const isRejected = status === "rejected";
+  const isApproved = status === "approved";
 
   const linkFields = ["github_url", "portfolio_url", "linkedin_url", "deployed_project_url", "project_repo_url"];
   const shortFields = [
@@ -218,12 +218,24 @@ function CandidateCard({ application, onReject, onRestore, expanded, onToggle })
     "collaboration_experience", "why_awtomatig",
   ];
 
+  const borderClass = isRejected
+    ? "border-[#E15A72]/20 opacity-60"
+    : isApproved
+      ? "border-[#4ADE80]/20"
+      : "border-white/10 hover:border-white/20";
+
+  const avatarClass = isRejected
+    ? "bg-[#E15A72]/20 text-[#E15A72]"
+    : isApproved
+      ? "bg-[#4ADE80]/20 text-[#4ADE80]"
+      : "bg-[#33E6D8]/20 text-[#33E6D8]";
+
   return (
-    <div className={`bg-[#0B0C10] border rounded-2xl overflow-hidden transition-all duration-200 ${isRejected ? "border-[#E15A72]/20 opacity-60" : "border-white/10 hover:border-white/20"}`}>
+    <div className={`bg-[#0B0C10] border rounded-2xl overflow-hidden transition-all duration-200 ${borderClass}`}>
       {/* Card Header */}
       <div className="px-6 py-4 flex items-center justify-between gap-4 cursor-pointer" onClick={onToggle}>
         <div className="flex items-center gap-4 min-w-0">
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${isRejected ? "bg-[#E15A72]/20 text-[#E15A72]" : "bg-[#33E6D8]/20 text-[#33E6D8]"}`}>
+          <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${avatarClass}`}>
             {application.full_name?.charAt(0)?.toUpperCase() || "?"}
           </div>
           <div className="min-w-0">
@@ -235,6 +247,15 @@ function CandidateCard({ application, onReject, onRestore, expanded, onToggle })
         <div className="flex items-center gap-3 shrink-0">
           {application.priority === "high_priority" && (
             <span className="text-[10px] uppercase tracking-wide bg-[#33E6D8]/15 text-[#33E6D8] px-2.5 py-1 rounded-full border border-[#33E6D8]/30" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>High Priority</span>
+          )}
+          {application.priority === "medium_priority" && (
+            <span className="text-[10px] uppercase tracking-wide bg-[#F5A623]/15 text-[#F5A623] px-2.5 py-1 rounded-full border border-[#F5A623]/30" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Medium Priority</span>
+          )}
+          {application.priority === "low_priority" && (
+            <span className="text-[10px] uppercase tracking-wide bg-white/10 text-white/50 px-2.5 py-1 rounded-full border border-white/15" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Low Priority</span>
+          )}
+          {isApproved && (
+            <span className="text-[10px] uppercase tracking-wide bg-[#4ADE80]/15 text-[#4ADE80] px-2.5 py-1 rounded-full border border-[#4ADE80]/30" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Approved</span>
           )}
           {isRejected && (
             <span className="text-[10px] uppercase tracking-wide bg-[#E15A72]/15 text-[#E15A72] px-2.5 py-1 rounded-full border border-[#E15A72]/30" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Rejected</span>
@@ -303,21 +324,31 @@ function CandidateCard({ application, onReject, onRestore, expanded, onToggle })
 
           {/* Actions */}
           <div className="px-6 py-4 bg-[#050507]/50 border-t border-white/5 flex items-center gap-3">
-            {isRejected ? (
+            {status !== "approved" && (
               <button
-                onClick={(e) => { e.stopPropagation(); onRestore(application._id); }}
+                onClick={(e) => { e.stopPropagation(); onStatusChange(application._id, "approved"); }}
+                className="text-[12px] font-semibold uppercase tracking-wide text-[#4ADE80] border border-[#4ADE80]/30 bg-[#4ADE80]/10 px-5 py-2.5 rounded-full hover:bg-[#4ADE80]/20 transition-colors"
+                style={{ fontFamily: '"Space Grotesk", sans-serif' }}
+              >
+                Approve
+              </button>
+            )}
+            {status !== "active" && (
+              <button
+                onClick={(e) => { e.stopPropagation(); onStatusChange(application._id, "active"); }}
                 className="text-[12px] font-semibold uppercase tracking-wide text-[#33E6D8] border border-[#33E6D8]/30 bg-[#33E6D8]/10 px-5 py-2.5 rounded-full hover:bg-[#33E6D8]/20 transition-colors"
                 style={{ fontFamily: '"Space Grotesk", sans-serif' }}
               >
-                Restore Candidate
+                Restore to Active
               </button>
-            ) : (
+            )}
+            {status !== "rejected" && (
               <button
-                onClick={(e) => { e.stopPropagation(); onReject(application._id); }}
+                onClick={(e) => { e.stopPropagation(); onStatusChange(application._id, "rejected"); }}
                 className="text-[12px] font-semibold uppercase tracking-wide text-[#E15A72] border border-[#E15A72]/30 bg-[#E15A72]/10 px-5 py-2.5 rounded-full hover:bg-[#E15A72]/20 transition-colors"
                 style={{ fontFamily: '"Space Grotesk", sans-serif' }}
               >
-                Reject Candidate
+                Reject
               </button>
             )}
           </div>
@@ -330,6 +361,40 @@ function CandidateCard({ application, onReject, onRestore, expanded, onToggle })
 // ────────────────────────────────────────────────────────────────
 // Admin Dashboard
 // ────────────────────────────────────────────────────────────────
+function PrioritySection({ title, color, borderColor, applications, expandedId, setExpandedId, onStatusChange }) {
+  const [collapsed, setCollapsed] = useState(false);
+
+  if (applications.length === 0) return null;
+
+  return (
+    <div className="mb-8">
+      <button
+        onClick={() => setCollapsed(!collapsed)}
+        className="flex items-center gap-3 mb-3 group"
+      >
+        <span className={`w-2.5 h-2.5 rounded-full ${color}`}></span>
+        <span className="text-[12px] uppercase tracking-wider text-white/60" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
+          {title} ({applications.length})
+        </span>
+        <svg className={`w-3.5 h-3.5 text-white/30 transition-transform duration-200 ${collapsed ? "-rotate-90" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+      </button>
+      {!collapsed && (
+        <div className={`space-y-3 border-l-2 ${borderColor} pl-4`}>
+          {applications.map((app) => (
+            <CandidateCard
+              key={app._id}
+              application={app}
+              expanded={expandedId === app._id}
+              onToggle={() => setExpandedId(expandedId === app._id ? null : app._id)}
+              onStatusChange={onStatusChange}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function AdminDashboard({ token, onLogout }) {
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -385,7 +450,12 @@ function AdminDashboard({ token, onLogout }) {
   }
 
   const activeCount = applications.filter((a) => a.status === "active").length;
+  const approvedCount = applications.filter((a) => a.status === "approved").length;
   const rejectedCount = applications.filter((a) => a.status === "rejected").length;
+
+  const highPriority = applications.filter((a) => a.priority === "high_priority");
+  const mediumPriority = applications.filter((a) => a.priority === "medium_priority");
+  const lowPriority = applications.filter((a) => !a.priority || a.priority === "low_priority");
 
   return (
     <div className="min-h-screen bg-[#050507]">
@@ -419,6 +489,7 @@ function AdminDashboard({ token, onLogout }) {
         <div className="flex items-center gap-2 mb-6">
           {[
             ["active", "Active", activeCount],
+            ["approved", "Approved", approvedCount],
             ["rejected", "Rejected", rejectedCount],
             ["all", "All", applications.length],
           ].map(([value, label, count]) => (
@@ -466,17 +537,34 @@ function AdminDashboard({ token, onLogout }) {
         )}
 
         {!loading && !error && applications.length > 0 && (
-          <div className="space-y-3">
-            {applications.map((app) => (
-              <CandidateCard
-                key={app._id}
-                application={app}
-                expanded={expandedId === app._id}
-                onToggle={() => setExpandedId(expandedId === app._id ? null : app._id)}
-                onReject={(id) => updateStatus(id, "rejected")}
-                onRestore={(id) => updateStatus(id, "active")}
-              />
-            ))}
+          <div>
+            <PrioritySection
+              title="High Priority"
+              color="bg-[#33E6D8]"
+              borderColor="border-[#33E6D8]/30"
+              applications={highPriority}
+              expandedId={expandedId}
+              setExpandedId={setExpandedId}
+              onStatusChange={updateStatus}
+            />
+            <PrioritySection
+              title="Medium Priority"
+              color="bg-[#F5A623]"
+              borderColor="border-[#F5A623]/30"
+              applications={mediumPriority}
+              expandedId={expandedId}
+              setExpandedId={setExpandedId}
+              onStatusChange={updateStatus}
+            />
+            <PrioritySection
+              title="Low Priority"
+              color="bg-white/40"
+              borderColor="border-white/10"
+              applications={lowPriority}
+              expandedId={expandedId}
+              setExpandedId={setExpandedId}
+              onStatusChange={updateStatus}
+            />
           </div>
         )}
       </div>
