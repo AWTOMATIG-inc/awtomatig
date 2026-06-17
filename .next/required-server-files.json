@@ -99,7 +99,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\SHIPON ISLAM\\Desktop\\project\\awtomatig",
+    "outputFileTracingRoot": "C:\\Users\\user\\Desktop\\awtomatig",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -289,11 +289,18 @@
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.mjs",
     "turbopack": {
-      "root": "C:\\Users\\SHIPON ISLAM\\Desktop\\project\\awtomatig"
+      "root": "C:\\Users\\user\\Desktop\\awtomatig"
     },
-    "distDirRoot": ".next"
+    "distDirRoot": ".next",
+    "_originalRedirects": [
+      {
+        "source": "/discovery-bc",
+        "destination": "/",
+        "permanent": false
+      }
+    ]
   },
-  "appDir": "C:\\Users\\SHIPON ISLAM\\Desktop\\project\\awtomatig",
+  "appDir": "C:\\Users\\user\\Desktop\\awtomatig",
   "relativeAppDir": "",
   "files": [
     ".next\\routes-manifest.json",

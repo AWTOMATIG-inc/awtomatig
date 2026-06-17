@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Stack Developer Intern Application — AWTOMATIG</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:    '#050507',  // page background — near-black, matches the live site
+          panel:  '#0B0C10',  // card / input background
+          line:   'rgba(255,255,255,0.10)',
+          cyan:   '#33E6D8',  // primary signal accent from the homepage grid + glow cards
+          coral:  '#E15A72',  // warm hero-gradient hue, reused for warnings/errors
+          mauve:  '#8C5DA0',  // cool end of the hero gradient
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', '-apple-system', 'sans-serif'],
+        },
+        maxWidth: { dossier: '960px', wide: '1152px' },
+      }
+    }
+  };
+</script>
+
+<style>
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    * { transition: none !important; }
+  }
+  .dossier-select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%238A8D99' stroke-width='1.4'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.875rem center;
+  }
+</style>
+</head>
+
+<body class="bg-ink text-white font-body text-base leading-relaxed antialiased">
+
+  <!-- progress rail -->
+  <div class="fixed top-0 left-0 right-0 h-[3px] bg-white/10 z-50" aria-hidden="true">
+    <div id="progressFill" class="h-full w-0 bg-cyan shadow-[0_0_10px_1px_rgba(51,230,216,0.6)] transition-[width] duration-150 ease-out"></div>
+  </div>
+
+  <!-- ============ HERO (gradient band — matches Services/Process/Contact subpages) ============ -->
+  <section class="relative" style="background:linear-gradient(135deg,#E15A72 0%,#C2628E 45%,#8C5DA0 100%);">
+    <nav class="max-w-wide mx-auto px-6 sm:px-10 py-6 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-block w-5 h-5 rounded-[5px] bg-gradient-to-br from-cyan to-white rotate-45"></span>
+        <span class="font-display font-bold text-white tracking-[0.04em] text-sm">AWTOMATIG</span>
+      </div>
+      <span class="font-display text-[11px] uppercase tracking-[0.18em] text-white/70">Careers — Application</span>
+    </nav>
+
+    <div class="max-w-wide mx-auto px-6 sm:px-10 pt-4 pb-16 sm:pb-20">
+      <p class="font-display text-xs uppercase tracking-[0.2em] text-white/80 mb-4">[ Careers — Internship Programme ]</p>
+      <h1 class="font-display font-bold text-white text-[clamp(2rem,5vw,3.4rem)] leading-[1.08] mb-5 max-w-3xl">
+        Full&nbsp;Stack Developer<br>Intern Application
+      </h1>
+      <p class="text-white/85 text-[clamp(0.98rem,1.3vw,1.08rem)] max-w-[620px] mb-8">
+        This application form is the first screening step for the AWTOMATIG Full Stack Developer Intern role. Please complete it carefully — incomplete or inaccurate submissions may not be considered.
+      </p>
+
+      <ul class="flex flex-wrap gap-2.5 list-none p-0 m-0">
+        <li class="font-display text-[11px] uppercase tracking-wide text-white border border-white/35 bg-white/10 px-3.5 py-1.5 rounded-full">Paid Internship</li>
+        <li class="font-display text-[11px] uppercase tracking-wide text-white border border-white/35 bg-white/10 px-3.5 py-1.5 rounded-full">On-site</li>
+        <li class="font-display text-[11px] uppercase tracking-wide text-white border border-white/35 bg-white/10 px-3.5 py-1.5 rounded-full">11:00 AM – 7:00 PM</li>
+        <li class="font-display text-[11px] uppercase tracking-wide text-white border border-white/35 bg-white/10 px-3.5 py-1.5 rounded-full">3 Months</li>
+        <li class="font-display text-[11px] uppercase tracking-wide text-white border border-white/35 bg-white/10 px-3.5 py-1.5 rounded-full">Fresh Graduate / Early Career</li>
+      </ul>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ============ ELIGIBILITY ============ -->
+    <section class="bg-ink py-[clamp(40px,6vw,64px)]">
+      <div class="max-w-wide mx-auto px-6 sm:px-10">
+        <p class="font-display text-xs uppercase tracking-[0.2em] text-cyan mb-4">[ Before you begin ]</p>
+        <h2 class="font-display font-bold text-white text-[clamp(1.5rem,3vw,2rem)] mb-3">Who this role is for</h2>
+        <p class="text-white/60 mb-8 max-w-[560px]">This role is designed for fresh graduates and early-career developers.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="bg-panel border border-cyan/30 rounded-2xl shadow-[0_0_28px_-6px_rgba(51,230,216,0.3)] p-6">
+            <p class="font-display text-[11px] uppercase tracking-wider text-white/50 mb-4">Ideal candidates</p>
+            <ul class="m-0 p-0 list-none space-y-2.5 text-[0.94rem] text-white/85">
+              <li class="relative pl-6 before:content-['✓'] before:absolute before:left-0 before:top-0 before:font-display before:text-cyan">Fresh graduates or final-year students</li>
+              <li class="relative pl-6 before:content-['✓'] before:absolute before:left-0 before:top-0 before:font-display before:text-cyan">Maximum 1 year of professional experience</li>
+              <li class="relative pl-6 before:content-['✓'] before:absolute before:left-0 before:top-0 before:font-display before:text-cyan">Recently graduated candidates preferred</li>
+              <li class="relative pl-6 before:content-['✓'] before:absolute before:left-0 before:top-0 before:font-display before:text-cyan">Must have hands-on Next.js project experience</li>
+              <li class="relative pl-6 before:content-['✓'] before:absolute before:left-0 before:top-0 before:font-display before:text-cyan">Must be available on-site from 11:00 AM – 7:00 PM</li>
+              <li class="relative pl-6 before:content-['✓'] before:absolute before:left-0 before:top-0 before:font-display before:text-cyan">Must be able to commit to 3 months</li>
+            </ul>
+          </div>
+          <div class="bg-panel border border-coral/30 rounded-2xl shadow-[0_0_28px_-6px_rgba(225,90,114,0.3)] p-6">
+            <p class="font-display text-[11px] uppercase tracking-wider text-white/50 mb-4">Not ideal for</p>
+            <ul class="m-0 p-0 list-none space-y-2.5 text-[0.94rem] text-white/85">
+              <li class="relative pl-6 before:content-['✕'] before:absolute before:left-0 before:top-0 before:font-display before:text-coral">Candidates with more than 1 year of professional full-time development experience</li>
+              <li class="relative pl-6 before:content-['✕'] before:absolute before:left-0 before:top-0 before:font-display before:text-coral">Candidates who graduated many years ago and are already mid-level</li>
+              <li class="relative pl-6 before:content-['✕'] before:absolute before:left-0 before:top-0 before:font-display before:text-coral">Candidates without GitHub or project work</li>
+              <li class="relative pl-6 before:content-['✕'] before:absolute before:left-0 before:top-0 before:font-display before:text-coral">Candidates looking for remote-only work</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FORM ============ -->
+    <form id="applicationForm" novalidate>
+      <div class="max-w-dossier mx-auto px-6 sm:px-10">
+
+        <!-- SECTION A -->
+        <section class="py-[clamp(36px,6vw,52px)] border-b border-line">
+          <header class="flex items-baseline justify-between gap-4 flex-wrap mb-1">
+            <div class="flex items-baseline gap-3">
+              <span class="font-display text-xs uppercase tracking-[0.18em] text-cyan">[ Section A ]</span>
+              <h2 class="font-display font-bold text-white text-[clamp(1.25rem,2.2vw,1.6rem)] m-0">Basic Information</h2>
+            </div>
+            <span class="font-display text-xs text-white/25">/01</span>
+          </header>
+          <div class="h-px bg-line mt-4 mb-8"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-7 gap-y-6">
+            <div>
+              <label for="fullName" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Full Name <span class="text-coral">*</span></label>
+              <input type="text" id="fullName" name="full_name" required autocomplete="name"
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="fullName"></p>
+            </div>
+
+            <div>
+              <label for="email" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Email Address <span class="text-coral">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email"
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="email"></p>
+            </div>
+
+            <div>
+              <label for="phone" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Phone / WhatsApp Number <span class="text-coral">*</span></label>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel"
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="phone"></p>
+            </div>
+
+            <div>
+              <label for="location" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Current Location <span class="text-coral">*</span></label>
+              <input type="text" id="location" name="location" required
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="location"></p>
+            </div>
+
+            <div>
+              <label for="university" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">University / Institution <span class="text-coral">*</span></label>
+              <input type="text" id="university" name="university" required
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="university"></p>
+            </div>
+
+            <div>
+              <label for="department" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Department / Subject <span class="text-coral">*</span></label>
+              <input type="text" id="department" name="department" required
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="department"></p>
+            </div>
+
+            <div>
+              <label for="gradStatus" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Graduation Status <span class="text-coral">*</span></label>
+              <select id="gradStatus" name="graduation_status" required
+                class="dossier-select appearance-none pr-9 w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+                <option value="" disabled selected class="text-white/40">Select one</option>
+                <option value="final_year">Final-year student</option>
+                <option value="fresh_graduate">Fresh graduate</option>
+                <option value="graduated_within_1yr">Graduated within the last 1 year</option>
+                <option value="graduated_over_1yr">Graduated more than 1 year ago</option>
+              </select>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="gradStatus"></p>
+            </div>
+
+            <div>
+              <label for="gradYear" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Graduation Year <span class="text-coral">*</span></label>
+              <input type="number" id="gradYear" name="graduation_year" min="2000" max="2035" required
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="gradYear"></p>
+            </div>
+
+            <div class="md:col-span-2">
+              <label for="experience" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Total professional development experience <span class="text-coral">*</span></label>
+              <select id="experience" name="experience_level" required
+                class="dossier-select appearance-none pr-9 w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+                <option value="" disabled selected>Select one</option>
+                <option value="none">No professional experience yet</option>
+                <option value="lt_6m">Less than 6 months</option>
+                <option value="6m_1y">6 months to 1 year</option>
+                <option value="gt_1y">More than 1 year</option>
+              </select>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="experience"></p>
+              <p id="experienceWarning" hidden class="font-body text-[12.5px] leading-relaxed text-coral/90 bg-coral/10 border-l-[3px] border-coral px-3.5 py-2.5 mt-3 rounded-md">This internship is mainly for fresh graduates and early-career developers. Candidates with more than 1 year of professional experience may not be prioritized.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION B -->
+        <section class="py-[clamp(36px,6vw,52px)] border-b border-line">
+          <header class="flex items-baseline justify-between gap-4 flex-wrap mb-1">
+            <div class="flex items-baseline gap-3">
+              <span class="font-display text-xs uppercase tracking-[0.18em] text-cyan">[ Section B ]</span>
+              <h2 class="font-display font-bold text-white text-[clamp(1.25rem,2.2vw,1.6rem)] m-0">Availability</h2>
+            </div>
+            <span class="font-display text-xs text-white/25">/02</span>
+          </header>
+          <div class="h-px bg-line mt-4 mb-8"></div>
+
+          <div class="grid grid-cols-1 gap-y-6">
+            <fieldset class="border-0 p-0 m-0">
+              <legend class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Are you available on-site from 11:00 AM – 7:00 PM? <span class="text-coral">*</span></legend>
+              <div class="flex flex-wrap gap-2.5">
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10">
+                  <input type="radio" name="onsite_availability" value="yes" required style="accent-color:#33E6D8"> Yes
+                </label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10">
+                  <input type="radio" name="onsite_availability" value="no" style="accent-color:#33E6D8"> No
+                </label>
+              </div>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="onsite_availability"></p>
+              <p id="onsiteWarning" hidden class="font-body text-[12.5px] leading-relaxed text-coral/90 bg-coral/10 border-l-[3px] border-coral px-3.5 py-2.5 mt-3 rounded-md">This role is currently on-site only.</p>
+            </fieldset>
+
+            <fieldset class="border-0 p-0 m-0">
+              <legend class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Can you commit to a 3-month paid internship? <span class="text-coral">*</span></legend>
+              <div class="flex flex-wrap gap-2.5">
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10">
+                  <input type="radio" name="commit_3_months" value="yes" required style="accent-color:#33E6D8"> Yes
+                </label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10">
+                  <input type="radio" name="commit_3_months" value="no" style="accent-color:#33E6D8"> No
+                </label>
+              </div>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="commit_3_months"></p>
+            </fieldset>
+
+            <div>
+              <label for="joinTimeline" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">When can you join? <span class="text-coral">*</span></label>
+              <select id="joinTimeline" name="join_timeline" required
+                class="dossier-select appearance-none pr-9 w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+                <option value="" disabled selected>Select one</option>
+                <option value="immediately">Immediately</option>
+                <option value="within_7_days">Within 7 days</option>
+                <option value="within_15_days">Within 15 days</option>
+                <option value="later_than_15_days">Later than 15 days</option>
+              </select>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="joinTimeline"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION C -->
+        <section class="py-[clamp(36px,6vw,52px)] border-b border-line">
+          <header class="flex items-baseline justify-between gap-4 flex-wrap mb-1">
+            <div class="flex items-baseline gap-3">
+              <span class="font-display text-xs uppercase tracking-[0.18em] text-cyan">[ Section C ]</span>
+              <h2 class="font-display font-bold text-white text-[clamp(1.25rem,2.2vw,1.6rem)] m-0">Developer Links</h2>
+            </div>
+            <span class="font-display text-xs text-white/25">/03</span>
+          </header>
+          <div class="h-px bg-line mt-4 mb-8"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-7 gap-y-6">
+            <div class="md:col-span-2">
+              <label for="githubUrl" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">GitHub Profile URL <span class="text-coral">*</span></label>
+              <input type="url" id="githubUrl" name="github_url" placeholder="https://github.com/username" required
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="githubUrl"></p>
+            </div>
+
+            <div>
+              <label for="portfolioUrl" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Portfolio Website URL</label>
+              <input type="url" id="portfolioUrl" name="portfolio_url" placeholder="https://yourname.dev"
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="portfolioUrl"></p>
+            </div>
+
+            <div>
+              <label for="linkedinUrl" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">LinkedIn Profile URL</label>
+              <input type="url" id="linkedinUrl" name="linkedin_url" placeholder="https://linkedin.com/in/username"
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="linkedinUrl"></p>
+            </div>
+
+            <div class="md:col-span-2">
+              <label for="deployedUrl" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Best Deployed Project URL <span class="text-coral">*</span></label>
+              <input type="url" id="deployedUrl" name="deployed_project_url" placeholder="https://your-project.vercel.app" required
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="deployedUrl"></p>
+            </div>
+
+            <div class="md:col-span-2">
+              <label for="projectRepoUrl" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Best Project GitHub Repository URL <span class="text-coral">*</span></label>
+              <input type="url" id="projectRepoUrl" name="project_repo_url" placeholder="https://github.com/username/project" required
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="projectRepoUrl"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION D -->
+        <section class="py-[clamp(36px,6vw,52px)] border-b border-line">
+          <header class="flex items-baseline justify-between gap-4 flex-wrap mb-1">
+            <div class="flex items-baseline gap-3">
+              <span class="font-display text-xs uppercase tracking-[0.18em] text-cyan">[ Section D ]</span>
+              <h2 class="font-display font-bold text-white text-[clamp(1.25rem,2.2vw,1.6rem)] m-0">Technical Experience</h2>
+            </div>
+            <span class="font-display text-xs text-white/25">/04</span>
+          </header>
+          <div class="h-px bg-line mt-4 mb-8"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-7 gap-y-6">
+            <div class="md:col-span-2">
+              <label for="nextjsExp" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">How long have you been working with Next.js? <span class="text-coral">*</span></label>
+              <select id="nextjsExp" name="nextjs_experience" required
+                class="dossier-select appearance-none pr-9 w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+                <option value="" disabled selected>Select one</option>
+                <option value="lt_1m">Less than 1 month</option>
+                <option value="1_3m">1–3 months</option>
+                <option value="3_6m">3–6 months</option>
+                <option value="6_12m">6–12 months</option>
+                <option value="1y_plus">1 year+</option>
+              </select>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="nextjsExp"></p>
+            </div>
+
+            <fieldset class="border-0 p-0 m-0 md:col-span-2">
+              <legend class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Which of these have you worked with? <span class="text-coral">*</span></legend>
+              <div id="skillsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="app_router" style="accent-color:#33E6D8"> Next.js App Router</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="react_components" style="accent-color:#33E6D8"> React Components</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="tailwind" style="accent-color:#33E6D8"> Tailwind CSS</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="api_routes" style="accent-color:#33E6D8"> API Routes / Route Handlers</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="server_actions" style="accent-color:#33E6D8"> Server Actions</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="authentication" style="accent-color:#33E6D8"> Authentication</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="rest_apis" style="accent-color:#33E6D8"> REST APIs</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="database_integration" style="accent-color:#33E6D8"> Database Integration</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="mysql" style="accent-color:#33E6D8"> MySQL</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="postgresql" style="accent-color:#33E6D8"> PostgreSQL</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="mongodb" style="accent-color:#33E6D8"> MongoDB</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="firebase" style="accent-color:#33E6D8"> Firebase</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="supabase" style="accent-color:#33E6D8"> Supabase</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="git_github" style="accent-color:#33E6D8"> Git/GitHub</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="vercel" style="accent-color:#33E6D8"> Vercel Deployment</label>
+                <label class="flex items-center gap-2 font-body text-sm text-white/85 bg-panel border border-line rounded-lg px-3.5 py-2.5 cursor-pointer select-none has-[:checked]:border-cyan has-[:checked]:bg-cyan/10"><input type="checkbox" name="skills" value="ai_tools" style="accent-color:#33E6D8"> AI tools (ChatGPT, Claude, Copilot)</label>
+              </div>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="skills"></p>
+            </fieldset>
+
+            <div>
+              <label for="backendRating" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Rate your backend understanding <span class="text-coral">*</span></label>
+              <select id="backendRating" name="backend_rating" required
+                class="dossier-select appearance-none pr-9 w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+                <option value="" disabled selected>Select one</option>
+                <option value="beginner">Beginner</option>
+                <option value="basic">Basic</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="strong">Strong</option>
+              </select>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="backendRating"></p>
+            </div>
+
+            <div>
+              <label for="databaseRating" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Rate your database understanding <span class="text-coral">*</span></label>
+              <select id="databaseRating" name="database_rating" required
+                class="dossier-select appearance-none pr-9 w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+                <option value="" disabled selected>Select one</option>
+                <option value="beginner">Beginner</option>
+                <option value="basic">Basic</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="strong">Strong</option>
+              </select>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="databaseRating"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION E -->
+        <section class="py-[clamp(36px,6vw,52px)] border-b border-line">
+          <header class="flex items-baseline justify-between gap-4 flex-wrap mb-1">
+            <div class="flex items-baseline gap-3">
+              <span class="font-display text-xs uppercase tracking-[0.18em] text-cyan">[ Section E ]</span>
+              <h2 class="font-display font-bold text-white text-[clamp(1.25rem,2.2vw,1.6rem)] m-0">Project Explanation</h2>
+            </div>
+            <span class="font-display text-xs text-white/25">/05</span>
+          </header>
+          <p class="text-white/50 text-[0.92rem] mt-1">Tell us about the single project you're most proud of — ideally the one linked above.</p>
+          <div class="h-px bg-line mt-4 mb-8"></div>
+
+          <div class="grid grid-cols-1 gap-y-6">
+            <div>
+              <label for="projectName" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Project name <span class="text-coral">*</span></label>
+              <input type="text" id="projectName" name="project_name" required
+                class="w-full font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]">
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="projectName"></p>
+            </div>
+
+            <div>
+              <label for="projectWhat" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">What does the project do? <span class="text-coral">*</span></label>
+              <textarea id="projectWhat" name="project_description" rows="3" required
+                class="w-full resize-y min-h-[70px] font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]"></textarea>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="projectWhat"></p>
+            </div>
+
+            <div>
+              <label for="projectTech" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">What technologies did you use? <span class="text-coral">*</span></label>
+              <textarea id="projectTech" name="project_tech" rows="2" required
+                class="w-full resize-y min-h-[70px] font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]"></textarea>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="projectTech"></p>
+            </div>
+
+            <div>
+              <label for="projectRole" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">What was your specific role? <span class="text-coral">*</span></label>
+              <textarea id="projectRole" name="project_role" rows="2" required
+                class="w-full resize-y min-h-[70px] font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]"></textarea>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="projectRole"></p>
+            </div>
+
+            <div>
+              <label for="projectHardest" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">What was the hardest problem you solved? <span class="text-coral">*</span></label>
+              <textarea id="projectHardest" name="project_hardest_problem" rows="3" required
+                class="w-full resize-y min-h-[70px] font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]"></textarea>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="projectHardest"></p>
+            </div>
+
+            <div>
+              <label for="projectImprove" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">What would you improve if you rebuilt it today? <span class="text-coral">*</span></label>
+              <textarea id="projectImprove" name="project_improvement" rows="3" required
+                class="w-full resize-y min-h-[70px] font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]"></textarea>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="projectImprove"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION F -->
+        <section class="py-[clamp(36px,6vw,52px)] border-b border-line">
+          <header class="flex items-baseline justify-between gap-4 flex-wrap mb-1">
+            <div class="flex items-baseline gap-3">
+              <span class="font-display text-xs uppercase tracking-[0.18em] text-cyan">[ Section F ]</span>
+              <h2 class="font-display font-bold text-white text-[clamp(1.25rem,2.2vw,1.6rem)] m-0">Work Style</h2>
+            </div>
+            <span class="font-display text-xs text-white/25">/06</span>
+          </header>
+          <div class="h-px bg-line mt-4 mb-8"></div>
+
+          <div class="grid grid-cols-1 gap-y-6">
+            <div>
+              <label for="cleanCode" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">What does clean code mean to you? <span class="text-coral">*</span></label>
+              <textarea id="cleanCode" name="clean_code_definition" rows="3" required
+                class="w-full resize-y min-h-[70px] font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]"></textarea>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="cleanCode"></p>
+            </div>
+
+            <div>
+              <label for="aiUsage" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">How do you use AI tools while coding? <span class="text-coral">*</span></label>
+              <textarea id="aiUsage" name="ai_tool_usage" rows="3" required
+                class="w-full resize-y min-h-[70px] font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]"></textarea>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="aiUsage"></p>
+            </div>
+
+            <div>
+              <label for="stuckBug" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">If you are stuck on a bug for 2 hours, what do you do? <span class="text-coral">*</span></label>
+              <textarea id="stuckBug" name="stuck_bug_approach" rows="3" required
+                class="w-full resize-y min-h-[70px] font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]"></textarea>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="stuckBug"></p>
+            </div>
+
+            <div>
+              <label for="collab" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Have you worked with another developer on the same codebase before? Explain briefly. <span class="text-coral">*</span></label>
+              <textarea id="collab" name="collaboration_experience" rows="3" required
+                class="w-full resize-y min-h-[70px] font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]"></textarea>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="collab"></p>
+            </div>
+
+            <div>
+              <label for="whyAwtomatig" class="block font-display text-[11px] uppercase tracking-wide text-white/50 mb-2">Why do you want to join AWTOMATIG? <span class="text-coral">*</span></label>
+              <textarea id="whyAwtomatig" name="why_awtomatig" rows="3" required
+                class="w-full resize-y min-h-[70px] font-body text-[0.97rem] text-white bg-panel border border-line rounded-lg px-3.5 py-3 placeholder-white/30 transition-colors duration-150 focus:outline-none focus:border-cyan focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]"></textarea>
+              <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="whyAwtomatig"></p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION G -->
+        <section class="py-[clamp(36px,6vw,52px)]">
+          <header class="flex items-baseline justify-between gap-4 flex-wrap mb-1">
+            <div class="flex items-baseline gap-3">
+              <span class="font-display text-xs uppercase tracking-[0.18em] text-cyan">[ Section G ]</span>
+              <h2 class="font-display font-bold text-white text-[clamp(1.25rem,2.2vw,1.6rem)] m-0">Confirmation</h2>
+            </div>
+            <span class="font-display text-xs text-white/25">/07</span>
+          </header>
+          <div class="h-px bg-line mt-4 mb-8"></div>
+
+          <div>
+            <label class="flex items-start gap-2.5 font-body text-[0.92rem] text-white/85 mb-3.5 cursor-pointer">
+              <input type="checkbox" name="confirm_accurate" value="yes" required class="mt-1" style="accent-color:#33E6D8"> I confirm that the information I provided is accurate.
+            </label>
+            <label class="flex items-start gap-2.5 font-body text-[0.92rem] text-white/85 mb-3.5 cursor-pointer">
+              <input type="checkbox" name="confirm_onsite" value="yes" required class="mt-1" style="accent-color:#33E6D8"> I understand this is an on-site internship.
+            </label>
+            <label class="flex items-start gap-2.5 font-body text-[0.92rem] text-white/85 mb-3.5 cursor-pointer">
+              <input type="checkbox" name="confirm_3_months" value="yes" required class="mt-1" style="accent-color:#33E6D8"> I understand this is a 3-month paid internship.
+            </label>
+            <label class="flex items-start gap-2.5 font-body text-[0.92rem] text-white/85 mb-0 cursor-pointer">
+              <input type="checkbox" name="confirm_technical_task" value="yes" required class="mt-1" style="accent-color:#33E6D8"> I am willing to complete a short technical task if shortlisted.
+            </label>
+            <p class="field-error hidden mt-1.5 font-body text-xs text-coral" data-error-for="confirmations"></p>
+          </div>
+
+          <div class="mt-9 flex flex-col items-start gap-3">
+            <button type="submit" id="submitBtn"
+              class="font-display text-[13px] font-semibold uppercase tracking-wide text-ink bg-cyan px-8 py-4 rounded-full shadow-[0_0_24px_-4px_rgba(51,230,216,0.55)] transition-shadow duration-200 hover:shadow-[0_0_32px_-2px_rgba(51,230,216,0.85)] disabled:opacity-50 disabled:cursor-not-allowed">
+              Submit Application
+            </button>
+            <p class="text-[0.85rem] text-white/40 m-0">By submitting, your responses are reviewed by the AWTOMATIG hiring team.</p>
+            <p id="submitErrorPanel" hidden role="alert" class="w-full font-body text-[12.5px] leading-relaxed text-coral/90 bg-coral/10 border-l-[3px] border-coral px-3.5 py-2.5 mt-1 rounded-md"></p>
+          </div>
+        </section>
+
+      </div>
+    </form>
+
+    <!-- ============ SUCCESS STATE ============ -->
+    <section id="successPanel" hidden class="py-[clamp(64px,12vw,110px)] text-center bg-ink">
+      <div class="max-w-[520px] mx-auto px-6">
+        <span class="inline-flex items-center justify-center w-[56px] h-[56px] rounded-full border-2 border-cyan text-cyan text-[24px] mb-6 shadow-[0_0_24px_-4px_rgba(51,230,216,0.6)]">✓</span>
+        <h2 class="font-display font-bold text-white text-[clamp(1.6rem,3vw,2.1rem)] mb-3.5">Application received</h2>
+        <p class="text-white/60 text-base">Thank you for applying to AWTOMATIG. Your application has been received. Shortlisted candidates will be contacted for the next step.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink border-t border-line">
+    <div class="max-w-wide mx-auto px-6 sm:px-10 py-10 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
+      <p class="font-display font-bold text-white text-xl sm:text-2xl leading-tight m-0">
+        Systems <span class="text-cyan">that work.</span><br>Results <span class="text-cyan">that last.</span>
+      </p>
+      <p class="font-display text-[11px] uppercase tracking-wide text-white/35 m-0">AWTOMATIG · Full Stack Developer Intern · Recruitment Form</p>
+    </div>
+    <div class="max-w-wide mx-auto px-6 sm:px-10 pb-8">
+      <div class="h-px bg-line mb-5"></div>
+      <p class="font-display text-[11px] uppercase tracking-wide text-white/30 m-0">Copyright © AWTOMATIG 2026. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    const form          = document.getElementById('applicationForm');
+    const submitBtn     = document.getElementById('submitBtn');
+    const successPanel  = document.getElementById('successPanel');
+    const progressFill  = document.getElementById('progressFill');
+    const experienceSel = document.getElementById('experience');
+    const experienceWarning = document.getElementById('experienceWarning');
+    const onsiteWarning     = document.getElementById('onsiteWarning');
+    const submitErrorPanel  = document.getElementById('submitErrorPanel');
+
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const URL_RE   = /^https?:\/\/[^\s]+\.[^\s]+$/i;
+    const ERROR_COLOR = '#E15A72';
+
+    function isEmpty(value) {
+      return value === undefined || value === null || String(value).trim() === '';
+    }
+
+    /* ---- conditional warnings ---- */
+    experienceSel.addEventListener('change', () => {
+      experienceWarning.hidden = experienceSel.value !== 'gt_1y';
+    });
+
+    form.addEventListener('change', (event) => {
+      if (event.target.name === 'onsite_availability') {
+        onsiteWarning.hidden = event.target.value !== 'no';
+      }
+    });
+
+    /* ---- scroll progress rail ---- */
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressFill.style.width = percent + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    /* ---- error helpers ---- */
+    function showError(fieldId, message, el) {
+      const errorEl = document.querySelector('[data-error-for="' + fieldId + '"]');
+      if (errorEl) {
+        errorEl.textContent = message;
+        errorEl.classList.remove('hidden');
+      }
+      if (el && ['INPUT', 'SELECT', 'TEXTAREA'].includes(el.tagName)) {
+        el.style.borderColor = ERROR_COLOR;
+      }
+    }
+
+    function clearAllErrors() {
+      document.querySelectorAll('.field-error').forEach((el) => {
+        el.textContent = '';
+        el.classList.add('hidden');
+      });
+      form.querySelectorAll('input, select, textarea').forEach((el) => {
+        el.style.borderColor = '';
+      });
+    }
+
+    function showSubmitError(message) {
+      if (submitErrorPanel) {
+        submitErrorPanel.textContent = message;
+        submitErrorPanel.hidden = false;
+        submitErrorPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        alert(message);
+      }
+    }
+
+    function hideSubmitError() {
+      if (submitErrorPanel) {
+        submitErrorPanel.hidden = true;
+        submitErrorPanel.textContent = '';
+      }
+    }
+
+    /* ---- validation ---- */
+    function validateForm() {
+      clearAllErrors();
+      let isValid = true;
+      let firstInvalidField = null;
+
+      function fail(fieldId, message, el) {
+        showError(fieldId, message, el);
+        isValid = false;
+        if (!firstInvalidField) firstInvalidField = el;
+      }
+
+      const requiredSimpleFields = [
+        ['fullName', 'Full name is required.'],
+        ['email', 'Email address is required.'],
+        ['phone', 'Phone / WhatsApp number is required.'],
+        ['location', 'Current location is required.'],
+        ['university', 'University / institution is required.'],
+        ['department', 'Department / subject is required.'],
+        ['gradStatus', 'Please select your graduation status.'],
+        ['gradYear', 'Graduation year is required.'],
+        ['experience', 'Please select your experience level.'],
+        ['joinTimeline', 'Please select when you can join.'],
+        ['githubUrl', 'GitHub profile URL is required.'],
+        ['deployedUrl', 'Deployed project URL is required.'],
+        ['projectRepoUrl', 'Project repository URL is required.'],
+        ['nextjsExp', 'Please select your Next.js experience.'],
+        ['backendRating', 'Please rate your backend understanding.'],
+        ['databaseRating', 'Please rate your database understanding.'],
+        ['projectName', 'Project name is required.'],
+        ['projectWhat', 'Please describe what the project does.'],
+        ['projectTech', 'Please list the technologies you used.'],
+        ['projectRole', 'Please describe your specific role.'],
+        ['projectHardest', 'Please describe the hardest problem you solved.'],
+        ['projectImprove', 'Please describe what you would improve.'],
+        ['cleanCode', 'Please answer this question.'],
+        ['aiUsage', 'Please answer this question.'],
+        ['stuckBug', 'Please answer this question.'],
+        ['collab', 'Please answer this question.'],
+        ['whyAwtomatig', 'Please tell us why you want to join AWTOMATIG.'],
+      ];
+
+      requiredSimpleFields.forEach(([id, message]) => {
+        const el = document.getElementById(id);
+        if (el && isEmpty(el.value)) fail(id, message, el);
+      });
+
+      const emailEl = document.getElementById('email');
+      if (emailEl.value && !EMAIL_RE.test(emailEl.value.trim())) {
+        fail('email', 'Please enter a valid email address.', emailEl);
+      }
+
+      ['githubUrl', 'portfolioUrl', 'linkedinUrl', 'deployedUrl', 'projectRepoUrl'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el.value && !URL_RE.test(el.value.trim())) {
+          fail(id, 'Please enter a valid URL starting with http:// or https://', el);
+        }
+      });
+
+      if (!form.querySelector('input[name="onsite_availability"]:checked')) {
+        fail('onsite_availability', 'Please select an option.', form.querySelector('input[name="onsite_availability"]'));
+      }
+      if (!form.querySelector('input[name="commit_3_months"]:checked')) {
+        fail('commit_3_months', 'Please select an option.', form.querySelector('input[name="commit_3_months"]'));
+      }
+
+      if (form.querySelectorAll('input[name="skills"]:checked').length === 0) {
+        fail('skills', 'Please select at least one option.', document.getElementById('skillsGrid'));
+      }
+
+      const confirmNames = ['confirm_accurate', 'confirm_onsite', 'confirm_3_months', 'confirm_technical_task'];
+      const allConfirmed = confirmNames.every((name) => form.querySelector('input[name="' + name + '"]').checked);
+      if (!allConfirmed) {
+        fail('confirmations', 'Please check all four confirmations before submitting.', form.querySelector('input[name="confirm_accurate"]'));
+      }
+
+      return { isValid, firstInvalidField };
+    }
+
+    /* ---- data collection ---- */
+    function collectFormData() {
+      const formData = new FormData(form);
+      const data = { skills: [] };
+
+      for (const [key, value] of formData.entries()) {
+        if (key === 'skills') {
+          data.skills.push(value);
+        } else {
+          data[key] = value;
+        }
+      }
+
+      data.submitted_at = new Date().toISOString();
+      data.priority = computePriority(data);
+      return data;
+    }
+
+    // Mirrors the brief's auto-priority filtering rules. Convenience
+    // flag for a hiring dashboard only — backend should re-apply.
+    function computePriority(data) {
+      const freshEnough  = ['final_year', 'fresh_graduate', 'graduated_within_1yr'].includes(data.graduation_status);
+      const experienceOk = ['none', 'lt_6m', '6m_1y'].includes(data.experience_level);
+      const hasGithub    = !isEmpty(data.github_url);
+      const hasDeployed  = !isEmpty(data.deployed_project_url);
+      const hasNextjs    = !isEmpty(data.nextjs_experience);
+      const onsiteOk     = data.onsite_availability === 'yes';
+      const commitOk     = data.commit_3_months === 'yes';
+
+      const meetsAll = freshEnough && experienceOk && hasGithub && hasDeployed && hasNextjs && onsiteOk && commitOk;
+      return meetsAll ? 'high_priority' : 'low_priority';
+    }
+
+    /**
+     * submitApplication — posts to the live recruitment API. The endpoint
+     * always returns JSON with a `success` flag; on failure it also returns
+     * `message` and (for validation errors) a `field`-keyed `errors` array.
+     */
+    function submitApplication(data) {
+      return fetch('/api/recruitment/full-stack-intern', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      }).then(async (response) => {
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || !result.success) {
+          const error = new Error(result.message || 'Application submission failed.');
+          error.errors = result.errors || [];
+          throw error;
+        }
+        return result;
+      });
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      hideSubmitError();
+
+      const { isValid, firstInvalidField } = validateForm();
+
+      if (!isValid) {
+        if (firstInvalidField) {
+          firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+
+      const applicationData = collectFormData();
+
+      console.log('AWTOMATIG — Full Stack Developer Intern application:');
+      console.log(JSON.stringify(applicationData, null, 2));
+
+      submitApplication(applicationData)
+        .then(() => {
+          form.hidden = true;
+          successPanel.hidden = false;
+          successPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        })
+        .catch((error) => {
+          console.error('Submission failed:', error);
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Application';
+          showSubmitError(error.message || 'Something went wrong submitting your application. Please try again.');
+        });
+    });
+  })();
+  </script>
+
+</body>
+</html>

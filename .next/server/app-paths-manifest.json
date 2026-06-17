@@ -1,11 +1,20 @@
 {
+  "/(main)/about-us/page": "app/(main)/about-us/page.js",
+  "/(main)/case-studies/[slug]/page": "app/(main)/case-studies/[slug]/page.js",
+  "/(main)/case-studies/page": "app/(main)/case-studies/page.js",
+  "/(main)/contact/page": "app/(main)/contact/page.js",
+  "/(main)/page": "app/(main)/page.js",
+  "/(main)/process/page": "app/(main)/process/page.js",
+  "/(main)/services/page": "app/(main)/services/page.js",
+  "/(standalone)/aw-admin/page": "app/(standalone)/aw-admin/page.js",
+  "/(standalone)/fullstackintern/page": "app/(standalone)/fullstackintern/page.js",
   "/_global-error/page": "app/_global-error/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/about-us/page": "app/about-us/page.js",
-  "/case-studies/[slug]/page": "app/case-studies/[slug]/page.js",
-  "/case-studies/page": "app/case-studies/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/page": "app/page.js",
-  "/process/page": "app/process/page.js",
-  "/services/page": "app/services/page.js"
+  "/api/admin/applications/[id]/route": "app/api/admin/applications/[id]/route.js",
+  "/api/admin/applications/route": "app/api/admin/applications/route.js",
+  "/api/auth/login/route": "app/api/auth/login/route.js",
+  "/api/contact/route": "app/api/contact/route.js",
+  "/api/recruitment/full-stack-intern/route": "app/api/recruitment/full-stack-intern/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js"
 }
