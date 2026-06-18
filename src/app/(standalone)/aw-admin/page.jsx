@@ -2,7 +2,10 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-const FIELD_LABELS = {
+// ────────────────────────────────────────────────────────────────
+// Field labels per position
+// ────────────────────────────────────────────────────────────────
+const FULLSTACK_FIELD_LABELS = {
   full_name: "Full Name",
   email: "Email",
   phone: "Phone / WhatsApp",
@@ -37,6 +40,34 @@ const FIELD_LABELS = {
   why_awtomatig: "Why AWTOMATIG",
 };
 
+const UIUX_FIELD_LABELS = {
+  full_name: "Full Name",
+  email: "Email",
+  phone: "Phone / WhatsApp",
+  linkedin_url: "LinkedIn",
+  portfolio_url: "Portfolio URL",
+  design_profile_url: "Behance / Dribbble / Figma",
+  experience_level: "Design Experience",
+  tools_used: "Tools Used",
+  design_duration: "Designing For",
+  portfolio_project_count: "Portfolio Projects",
+  project_types: "Project Types",
+  proud_project: "Proudest Project",
+  project_role: "Role in Project",
+  conversion_review_answer: "Conversion Review",
+  rejected_design_answer: "Rejected Design Response",
+  feedback_comfort: "Feedback Comfort",
+  onsite_available: "On-site Available",
+  three_month_commitment: "3-Month Commit",
+  current_status: "Current Status",
+  start_date: "Available Start Date",
+  why_awtomatig: "Why AWTOMATIG",
+  extra_note: "Extra Notes",
+};
+
+// ────────────────────────────────────────────────────────────────
+// Value label maps
+// ────────────────────────────────────────────────────────────────
 const GRADUATION_STATUS_LABELS = {
   final_year: "Final-year student",
   fresh_graduate: "Fresh graduate",
@@ -85,7 +116,83 @@ const SKILL_LABELS = {
   ai_tools: "AI Tools",
 };
 
-function formatValue(key, value) {
+const UIUX_EXPERIENCE_LABELS = {
+  just_starting: "Just getting started",
+  few_personal_projects: "Built a few personal projects",
+  multiple_real_projects: "Designed multiple real projects",
+  freelance_client: "Freelance or client experience",
+};
+
+const DESIGN_DURATION_LABELS = {
+  lt_6m: "Less than 6 months",
+  "6_12m": "6–12 months",
+  "1_2y": "1–2 years",
+  "2y_plus": "2+ years",
+};
+
+const PORTFOLIO_COUNT_LABELS = {
+  "1_2": "1–2",
+  "3_5": "3–5",
+  "6_10": "6–10",
+  "10_plus": "10+",
+};
+
+const UIUX_TOOL_LABELS = {
+  figma: "Figma",
+  adobe_xd: "Adobe XD",
+  photoshop: "Photoshop",
+  illustrator: "Illustrator",
+  canva: "Canva",
+  framer: "Framer",
+  other: "Other",
+};
+
+const PROJECT_TYPE_LABELS = {
+  websites: "Websites",
+  dashboards: "Dashboards",
+  mobile_apps: "Mobile Apps",
+  landing_pages: "Landing Pages",
+  ecommerce: "E-commerce",
+  branding: "Branding",
+  graphics_social: "Graphics / Social Media",
+};
+
+const CONVERSION_LABELS = {
+  colors: "Colors",
+  typography: "Typography",
+  user_flow: "User Flow",
+  images: "Images",
+  not_sure: "Not sure",
+};
+
+const REJECTED_LABELS = {
+  defend_design: "Defend my design",
+  ask_feedback_iterate: "Ask for feedback and iterate",
+  start_over: "Start over completely",
+  wait_instructions: "Wait for instructions",
+};
+
+const FEEDBACK_COMFORT_LABELS = {
+  not_comfortable: "Not comfortable",
+  somewhat_comfortable: "Somewhat comfortable",
+  comfortable: "Comfortable",
+  very_comfortable: "Very comfortable",
+};
+
+const CURRENT_STATUS_LABELS = {
+  fulltime_student: "Full-time student",
+  final_year_student: "Final year student",
+  recent_graduate: "Recent graduate",
+  employed_fulltime: "Employed full-time",
+  employed_parttime: "Employed part-time",
+  freelancing: "Freelancing",
+  other: "Other",
+};
+
+// ────────────────────────────────────────────────────────────────
+// Format helpers
+// ────────────────────────────────────────────────────────────────
+function formatFullstackValue(key, value) {
   if (value === undefined || value === null || value === "") return "—";
   if (key === "graduation_status") return GRADUATION_STATUS_LABELS[value] || value;
   if (key === "experience_level") return EXPERIENCE_LABELS[value] || value;
@@ -103,9 +210,76 @@ function formatValue(key, value) {
   return String(value);
 }
 
-function isUrl(key) {
-  return ["github_url", "portfolio_url", "linkedin_url", "deployed_project_url", "project_repo_url"].includes(key);
+function formatUiuxValue(key, value) {
+  if (value === undefined || value === null || value === "") return "—";
+  if (key === "experience_level") return UIUX_EXPERIENCE_LABELS[value] || value;
+  if (key === "design_duration") return DESIGN_DURATION_LABELS[value] || value;
+  if (key === "portfolio_project_count") return PORTFOLIO_COUNT_LABELS[value] || value;
+  if (key === "tools_used" && Array.isArray(value)) {
+    return value.map((s) => UIUX_TOOL_LABELS[s] || s).join(", ");
+  }
+  if (key === "project_types" && Array.isArray(value)) {
+    return value.map((s) => PROJECT_TYPE_LABELS[s] || s).join(", ");
+  }
+  if (key === "conversion_review_answer") return CONVERSION_LABELS[value] || value;
+  if (key === "rejected_design_answer") return REJECTED_LABELS[value] || value;
+  if (key === "feedback_comfort") return FEEDBACK_COMFORT_LABELS[value] || value;
+  if (key === "current_status") return CURRENT_STATUS_LABELS[value] || value;
+  if (key === "onsite_available" || key === "three_month_commitment") {
+    return value === "yes" ? "Yes" : "No";
+  }
+  return String(value);
 }
+
+// ────────────────────────────────────────────────────────────────
+// Position config
+// ────────────────────────────────────────────────────────────────
+const POSITION_CONFIG = {
+  fullstack_intern: {
+    title: "Full Stack Intern Applications",
+    subtitle: "Manage and review incoming full stack developer applications",
+    fieldLabels: FULLSTACK_FIELD_LABELS,
+    formatValue: formatFullstackValue,
+    shortFields: [
+      "full_name", "email", "phone", "location", "university", "department",
+      "graduation_status", "graduation_year", "experience_level",
+      "onsite_availability", "commit_3_months", "join_timeline",
+      "nextjs_experience", "backend_rating", "database_rating", "project_name",
+    ],
+    linkFields: ["github_url", "portfolio_url", "linkedin_url", "deployed_project_url", "project_repo_url"],
+    tagField: "skills",
+    tagLabels: SKILL_LABELS,
+    tagTitle: "Skills",
+    longFields: [
+      "project_description", "project_tech", "project_role",
+      "project_hardest_problem", "project_improvement",
+      "clean_code_definition", "ai_tool_usage", "stuck_bug_approach",
+      "collaboration_experience", "why_awtomatig",
+    ],
+  },
+  uiux_intern: {
+    title: "UI/UX Design Intern Applications",
+    subtitle: "Manage and review incoming UI/UX design intern applications",
+    fieldLabels: UIUX_FIELD_LABELS,
+    formatValue: formatUiuxValue,
+    shortFields: [
+      "full_name", "email", "phone",
+      "experience_level", "design_duration", "portfolio_project_count",
+      "onsite_available", "three_month_commitment", "current_status", "start_date",
+      "conversion_review_answer", "rejected_design_answer", "feedback_comfort",
+    ],
+    linkFields: ["portfolio_url", "linkedin_url", "design_profile_url"],
+    tagField: "tools_used",
+    tagLabels: UIUX_TOOL_LABELS,
+    tagTitle: "Design Tools",
+    secondTagField: "project_types",
+    secondTagLabels: PROJECT_TYPE_LABELS,
+    secondTagTitle: "Project Types",
+    longFields: [
+      "proud_project", "project_role", "why_awtomatig", "extra_note",
+    ],
+  },
+};
 
 // ────────────────────────────────────────────────────────────────
 // Login Screen
@@ -197,26 +371,86 @@ function LoginScreen({ onLogin }) {
 }
 
 // ────────────────────────────────────────────────────────────────
-// Candidate Card
+// Position Selector
 // ────────────────────────────────────────────────────────────────
-function CandidateCard({ application, onStatusChange, expanded, onToggle }) {
+function PositionSelector({ onSelect, onLogout }) {
+  return (
+    <div className="min-h-screen bg-[#050507]">
+      <nav className="sticky top-0 z-40 bg-[#050507]/95 backdrop-blur border-b border-white/10">
+        <div className="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <span className="inline-block w-5 h-5 rounded-[5px] bg-gradient-to-br from-[#33E6D8] to-white rotate-45"></span>
+            <span className="font-bold text-white tracking-[0.04em] text-sm" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>AWTOMATIG</span>
+            <span className="text-white/30 mx-2">|</span>
+            <span className="text-[11px] uppercase tracking-wide text-white/50" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Admin Panel</span>
+          </div>
+          <button
+            onClick={onLogout}
+            className="text-[11px] uppercase tracking-wide text-white/50 hover:text-white/80 transition-colors"
+            style={{ fontFamily: '"Space Grotesk", sans-serif' }}
+          >
+            Sign Out
+          </button>
+        </div>
+      </nav>
+
+      <div className="max-w-[800px] mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <h1 className="text-2xl font-bold text-white mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Select Position</h1>
+          <p className="text-white/50 text-sm">Choose which intern applications you want to review</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* Full Stack Intern Card */}
+          <button
+            onClick={() => onSelect("fullstack_intern")}
+            className="group bg-[#0B0C10] border border-white/10 rounded-2xl p-8 text-left transition-all duration-200 hover:border-[#33E6D8]/40 hover:shadow-[0_0_32px_-8px_rgba(51,230,216,0.25)]"
+          >
+            <div className="w-12 h-12 rounded-xl bg-[#33E6D8]/15 border border-[#33E6D8]/25 flex items-center justify-center mb-5">
+              <svg className="w-6 h-6 text-[#33E6D8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h2 className="text-lg font-bold text-white mb-2 group-hover:text-[#33E6D8] transition-colors" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Full Stack Intern</h2>
+            <p className="text-white/45 text-sm leading-relaxed">Review full stack developer intern applications, GitHub profiles, and technical assessments</p>
+            <div className="mt-5 flex items-center gap-2 text-[11px] uppercase tracking-wide text-[#33E6D8]/70 group-hover:text-[#33E6D8] transition-colors" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
+              View Applications
+              <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </div>
+          </button>
+
+          {/* UI/UX Intern Card */}
+          <button
+            onClick={() => onSelect("uiux_intern")}
+            className="group bg-[#0B0C10] border border-white/10 rounded-2xl p-8 text-left transition-all duration-200 hover:border-[#8C5DA0]/40 hover:shadow-[0_0_32px_-8px_rgba(140,93,160,0.25)]"
+          >
+            <div className="w-12 h-12 rounded-xl bg-[#8C5DA0]/15 border border-[#8C5DA0]/25 flex items-center justify-center mb-5">
+              <svg className="w-6 h-6 text-[#8C5DA0]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+              </svg>
+            </div>
+            <h2 className="text-lg font-bold text-white mb-2 group-hover:text-[#8C5DA0] transition-colors" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>UI/UX Design Intern</h2>
+            <p className="text-white/45 text-sm leading-relaxed">Review UI/UX design intern applications, portfolios, and design thinking responses</p>
+            <div className="mt-5 flex items-center gap-2 text-[11px] uppercase tracking-wide text-[#8C5DA0]/70 group-hover:text-[#8C5DA0] transition-colors" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
+              View Applications
+              <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ────────────────────────────────────────────────────────────────
+// Candidate Card (generic, driven by position config)
+// ────────────────────────────────────────────────────────────────
+function CandidateCard({ application, config, position, onStatusChange, expanded, onToggle }) {
   const status = application.status;
   const isRejected = status === "rejected";
   const isApproved = status === "approved";
 
-  const linkFields = ["github_url", "portfolio_url", "linkedin_url", "deployed_project_url", "project_repo_url"];
-  const shortFields = [
-    "full_name", "email", "phone", "location", "university", "department",
-    "graduation_status", "graduation_year", "experience_level",
-    "onsite_availability", "commit_3_months", "join_timeline",
-    "nextjs_experience", "backend_rating", "database_rating", "project_name",
-  ];
-  const longFields = [
-    "project_description", "project_tech", "project_role",
-    "project_hardest_problem", "project_improvement",
-    "clean_code_definition", "ai_tool_usage", "stuck_bug_approach",
-    "collaboration_experience", "why_awtomatig",
-  ];
+  const { fieldLabels, formatValue, shortFields, linkFields, tagField, tagLabels, tagTitle, secondTagField, secondTagLabels, secondTagTitle, longFields } = config;
 
   const borderClass = isRejected
     ? "border-[#E15A72]/20 opacity-60"
@@ -240,7 +474,7 @@ function CandidateCard({ application, onStatusChange, expanded, onToggle }) {
           </div>
           <div className="min-w-0">
             <h3 className="text-white font-semibold text-sm truncate">{application.full_name || "Unnamed"}</h3>
-            <p className="text-white/40 text-xs truncate">{application.email} &middot; {application.location || "—"}</p>
+            <p className="text-white/40 text-xs truncate">{application.email} &middot; {application.location || application.current_status ? (formatValue("current_status", application.current_status)) : "—"}</p>
           </div>
         </div>
 
@@ -270,11 +504,11 @@ function CandidateCard({ application, onStatusChange, expanded, onToggle }) {
         <div className="border-t border-white/10">
           {/* Quick Info Grid */}
           <div className="px-6 py-5">
-            <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Basic Info &amp; Links</p>
+            <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Basic Info</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {shortFields.map((key) => (
                 <div key={key} className="bg-[#050507] rounded-lg px-3 py-2.5">
-                  <p className="text-[10px] uppercase tracking-wide text-white/35 mb-0.5">{FIELD_LABELS[key]}</p>
+                  <p className="text-[10px] uppercase tracking-wide text-white/35 mb-0.5">{fieldLabels[key] || key}</p>
                   <p className="text-sm text-white/85 break-words">{formatValue(key, application[key])}</p>
                 </div>
               ))}
@@ -283,11 +517,11 @@ function CandidateCard({ application, onStatusChange, expanded, onToggle }) {
 
           {/* Links */}
           <div className="px-6 pb-5">
-            <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Developer Links</p>
+            <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Links</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {linkFields.map((key) => (
                 <div key={key} className="bg-[#050507] rounded-lg px-3 py-2.5">
-                  <p className="text-[10px] uppercase tracking-wide text-white/35 mb-0.5">{FIELD_LABELS[key]}</p>
+                  <p className="text-[10px] uppercase tracking-wide text-white/35 mb-0.5">{fieldLabels[key] || key}</p>
                   {application[key] ? (
                     <a href={application[key]} target="_blank" rel="noopener noreferrer" className="text-sm text-[#33E6D8] hover:underline break-all">{application[key]}</a>
                   ) : (
@@ -298,16 +532,29 @@ function CandidateCard({ application, onStatusChange, expanded, onToggle }) {
             </div>
           </div>
 
-          {/* Skills */}
+          {/* Tags (skills / tools) */}
           <div className="px-6 pb-5">
-            <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Skills</p>
+            <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>{tagTitle}</p>
             <div className="flex flex-wrap gap-2">
-              {(application.skills || []).map((s) => (
-                <span key={s} className="text-[11px] bg-[#33E6D8]/10 text-[#33E6D8] border border-[#33E6D8]/20 px-2.5 py-1 rounded-full">{SKILL_LABELS[s] || s}</span>
+              {(application[tagField] || []).map((s) => (
+                <span key={s} className="text-[11px] bg-[#33E6D8]/10 text-[#33E6D8] border border-[#33E6D8]/20 px-2.5 py-1 rounded-full">{tagLabels[s] || s}</span>
               ))}
-              {(!application.skills || application.skills.length === 0) && <span className="text-sm text-white/30">—</span>}
+              {(!application[tagField] || application[tagField].length === 0) && <span className="text-sm text-white/30">—</span>}
             </div>
           </div>
+
+          {/* Second tag group (project types for UI/UX) */}
+          {secondTagField && (
+            <div className="px-6 pb-5">
+              <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>{secondTagTitle}</p>
+              <div className="flex flex-wrap gap-2">
+                {(application[secondTagField] || []).map((s) => (
+                  <span key={s} className="text-[11px] bg-[#8C5DA0]/10 text-[#8C5DA0] border border-[#8C5DA0]/20 px-2.5 py-1 rounded-full">{secondTagLabels[s] || s}</span>
+                ))}
+                {(!application[secondTagField] || application[secondTagField].length === 0) && <span className="text-sm text-white/30">—</span>}
+              </div>
+            </div>
+          )}
 
           {/* Long-form Answers */}
           <div className="px-6 pb-5">
@@ -315,7 +562,7 @@ function CandidateCard({ application, onStatusChange, expanded, onToggle }) {
             <div className="space-y-3">
               {longFields.map((key) => (
                 <div key={key} className="bg-[#050507] rounded-lg px-4 py-3">
-                  <p className="text-[10px] uppercase tracking-wide text-white/35 mb-1.5">{FIELD_LABELS[key]}</p>
+                  <p className="text-[10px] uppercase tracking-wide text-white/35 mb-1.5">{fieldLabels[key] || key}</p>
                   <p className="text-sm text-white/80 whitespace-pre-wrap leading-relaxed">{formatValue(key, application[key])}</p>
                 </div>
               ))}
@@ -359,9 +606,9 @@ function CandidateCard({ application, onStatusChange, expanded, onToggle }) {
 }
 
 // ────────────────────────────────────────────────────────────────
-// Admin Dashboard
+// Priority Section
 // ────────────────────────────────────────────────────────────────
-function PrioritySection({ title, color, borderColor, applications, expandedId, setExpandedId, onStatusChange }) {
+function PrioritySection({ title, color, borderColor, applications, config, position, expandedId, setExpandedId, onStatusChange }) {
   const [collapsed, setCollapsed] = useState(false);
 
   if (applications.length === 0) return null;
@@ -384,6 +631,8 @@ function PrioritySection({ title, color, borderColor, applications, expandedId, 
             <CandidateCard
               key={app._id}
               application={app}
+              config={config}
+              position={position}
               expanded={expandedId === app._id}
               onToggle={() => setExpandedId(expandedId === app._id ? null : app._id)}
               onStatusChange={onStatusChange}
@@ -395,18 +644,23 @@ function PrioritySection({ title, color, borderColor, applications, expandedId, 
   );
 }
 
-function AdminDashboard({ token, onLogout }) {
+// ────────────────────────────────────────────────────────────────
+// Admin Dashboard (generic, driven by position)
+// ────────────────────────────────────────────────────────────────
+function AdminDashboard({ token, position, onBack, onLogout }) {
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [filter, setFilter] = useState("active");
   const [expandedId, setExpandedId] = useState(null);
 
+  const config = POSITION_CONFIG[position];
+
   const fetchApplications = useCallback(async () => {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(`/api/admin/applications?status=${filter}`, {
+      const res = await fetch(`/api/admin/applications?status=${filter}&position=${position}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -422,7 +676,7 @@ function AdminDashboard({ token, onLogout }) {
     } finally {
       setLoading(false);
     }
-  }, [token, filter, onLogout]);
+  }, [token, filter, position, onLogout]);
 
   useEffect(() => {
     fetchApplications();
@@ -436,7 +690,7 @@ function AdminDashboard({ token, onLogout }) {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ status }),
+        body: JSON.stringify({ status, position }),
       });
       const data = await res.json();
       if (!res.ok || !data.success) {
@@ -463,7 +717,16 @@ function AdminDashboard({ token, onLogout }) {
       <nav className="sticky top-0 z-40 bg-[#050507]/95 backdrop-blur border-b border-white/10">
         <div className="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <span className="inline-block w-5 h-5 rounded-[5px] bg-gradient-to-br from-[#33E6D8] to-white rotate-45"></span>
+            <button
+              onClick={onBack}
+              className="flex items-center gap-2 text-[11px] uppercase tracking-wide text-white/50 hover:text-white/80 transition-colors mr-3"
+              style={{ fontFamily: '"Space Grotesk", sans-serif' }}
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+              Positions
+            </button>
+            <span className="text-white/15">|</span>
+            <span className="inline-block w-5 h-5 rounded-[5px] bg-gradient-to-br from-[#33E6D8] to-white rotate-45 ml-3"></span>
             <span className="font-bold text-white tracking-[0.04em] text-sm" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>AWTOMATIG</span>
             <span className="text-white/30 mx-2">|</span>
             <span className="text-[11px] uppercase tracking-wide text-white/50" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Admin Panel</span>
@@ -479,10 +742,10 @@ function AdminDashboard({ token, onLogout }) {
       </nav>
 
       <div className="max-w-[1200px] mx-auto px-6 py-8">
-        {/* Header + Stats */}
+        {/* Header */}
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Full Stack Intern Applications</h1>
-          <p className="text-white/50 text-sm">Manage and review incoming applications</p>
+          <h1 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>{config.title}</h1>
+          <p className="text-white/50 text-sm">{config.subtitle}</p>
         </div>
 
         {/* Filter Tabs */}
@@ -543,6 +806,8 @@ function AdminDashboard({ token, onLogout }) {
               color="bg-[#33E6D8]"
               borderColor="border-[#33E6D8]/30"
               applications={highPriority}
+              config={config}
+              position={position}
               expandedId={expandedId}
               setExpandedId={setExpandedId}
               onStatusChange={updateStatus}
@@ -552,6 +817,8 @@ function AdminDashboard({ token, onLogout }) {
               color="bg-[#F5A623]"
               borderColor="border-[#F5A623]/30"
               applications={mediumPriority}
+              config={config}
+              position={position}
               expandedId={expandedId}
               setExpandedId={setExpandedId}
               onStatusChange={updateStatus}
@@ -561,6 +828,8 @@ function AdminDashboard({ token, onLogout }) {
               color="bg-white/40"
               borderColor="border-white/10"
               applications={lowPriority}
+              config={config}
+              position={position}
               expandedId={expandedId}
               setExpandedId={setExpandedId}
               onStatusChange={updateStatus}
@@ -578,6 +847,7 @@ function AdminDashboard({ token, onLogout }) {
 export default function AwAdminPage() {
   const [token, setToken] = useState(null);
   const [ready, setReady] = useState(false);
+  const [selectedPosition, setSelectedPosition] = useState(null);
 
   useEffect(() => {
     const saved = localStorage.getItem("aw_admin_token");
@@ -588,29 +858,36 @@ export default function AwAdminPage() {
   function handleLogout() {
     localStorage.removeItem("aw_admin_token");
     setToken(null);
+    setSelectedPosition(null);
   }
 
   if (!ready) {
     return <div className="min-h-screen bg-[#050507]" />;
   }
 
-  if (!token) {
-    return (
-      <>
-        <style>{`@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');`}</style>
-        <div style={{ fontFamily: 'Inter, -apple-system, sans-serif', color: 'white' }}>
-          <LoginScreen onLogin={setToken} />
-        </div>
-      </>
-    );
-  }
-
-  return (
+  const wrapper = (children) => (
     <>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');`}</style>
       <div style={{ fontFamily: 'Inter, -apple-system, sans-serif', color: 'white' }}>
-        <AdminDashboard token={token} onLogout={handleLogout} />
+        {children}
       </div>
     </>
+  );
+
+  if (!token) {
+    return wrapper(<LoginScreen onLogin={setToken} />);
+  }
+
+  if (!selectedPosition) {
+    return wrapper(<PositionSelector onSelect={setSelectedPosition} onLogout={handleLogout} />);
+  }
+
+  return wrapper(
+    <AdminDashboard
+      token={token}
+      position={selectedPosition}
+      onBack={() => setSelectedPosition(null)}
+      onLogout={handleLogout}
+    />
   );
 }

@@ -1,6 +1,11 @@
 import { authenticateRequest } from "@/lib/auth";
 import clientPromise from "@/lib/mongodb";
 
+const COLLECTION_MAP = {
+  fullstack_intern: "applications",
+  uiux_intern: "uiux_applications",
+};
+
 export async function GET(request) {
   const user = authenticateRequest(request);
   if (!user) {
@@ -10,10 +15,13 @@ export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get("status") || "active";
+    const position = searchParams.get("position") || "fullstack_intern";
+
+    const collectionName = COLLECTION_MAP[position] || "applications";
 
     const client = await clientPromise;
     const db = client.db();
-    const collection = db.collection("applications");
+    const collection = db.collection(collectionName);
 
     const filter = status === "all" ? {} : { status };
     const applications = await collection

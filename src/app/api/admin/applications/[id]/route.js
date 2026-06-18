@@ -2,6 +2,11 @@ import { authenticateRequest } from "@/lib/auth";
 import clientPromise from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
 
+const COLLECTION_MAP = {
+  fullstack_intern: "applications",
+  uiux_intern: "uiux_applications",
+};
+
 export async function PATCH(request, { params }) {
   const user = authenticateRequest(request);
   if (!user) {
@@ -16,9 +21,12 @@ export async function PATCH(request, { params }) {
       return Response.json({ success: false, message: "Invalid ID." }, { status: 400 });
     }
 
+    const position = body.position || "fullstack_intern";
+    const collectionName = COLLECTION_MAP[position] || "applications";
+
     const client = await clientPromise;
     const db = client.db();
-    const collection = db.collection("applications");
+    const collection = db.collection(collectionName);
 
     const allowedStatuses = ["active", "approved", "rejected"];
     const update = {};
