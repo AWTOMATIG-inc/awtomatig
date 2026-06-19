@@ -1,0 +1,989 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Content &amp; SEO Executive — Application | AWTOMATIG</title>
+<meta name="description" content="Apply for the Content & SEO Executive role at AWTOMATIG." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#050507',
+          panel: '#0B0B10',
+          panel2: '#0F0F16',
+          cyan: { DEFAULT: '#33E6D8', dim: '#1C8A81' },
+          coral: { DEFAULT: '#E15A72', dim: '#7A2E3B' },
+          mauve: { DEFAULT: '#8C5DA0', dim: '#4C3354' }
+        },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  };
+</script>
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(140,93,160,0.16), transparent),
+      radial-gradient(ellipse 60% 40% at 90% 10%, rgba(51,230,216,0.08), transparent),
+      #050507;
+    min-height: 100vh;
+  }
+  ::selection { background: #33E6D8; color: #050507; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #0B0B10; }
+  ::-webkit-scrollbar-thumb { background: #1C8A81; border-radius: 999px; }
+
+  :focus-visible { outline: 2px solid #33E6D8; outline-offset: 2px; }
+
+  .bracket-tag {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #33E6D8;
+  }
+  .bracket-tag::before { content: '[ '; color: #1C8A81; }
+  .bracket-tag::after { content: ' ]'; color: #1C8A81; }
+
+  .slash-index {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    color: #33E6D8;
+    letter-spacing: 0.02em;
+  }
+
+  .panel {
+    background: linear-gradient(180deg, #0B0B10 0%, #0A0A0E 100%);
+    border: 1px solid rgba(51,230,216,0.18);
+    border-radius: 14px;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.02) inset, 0 20px 60px -30px rgba(51,230,216,0.25);
+  }
+  .panel-focus-glow:focus-within {
+    border-color: rgba(51,230,216,0.55);
+    box-shadow: 0 0 0 1px rgba(51,230,216,0.15), 0 0 40px -10px rgba(51,230,216,0.35);
+  }
+
+  .field-label { font-family: 'Space Grotesk', sans-serif; font-weight: 500; color: #E7E8EC; }
+  .field-help { color: #8A8D96; font-size: 0.8rem; }
+  .field-required::after { content: ' *'; color: #E15A72; }
+  .field-optional-tag {
+    font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #8C5DA0; border: 1px solid rgba(140,93,160,0.4); border-radius: 999px;
+    padding: 0.1rem 0.5rem; margin-left: 0.5rem; font-family: 'Space Grotesk', sans-serif;
+  }
+
+  input[type=text], input[type=email], input[type=tel], input[type=url], input[type=number], input[type=date], textarea, select {
+    background: #0E0E14;
+    border: 1px solid rgba(255,255,255,0.10);
+    color: #F1F2F5;
+    border-radius: 10px;
+    padding: 0.7rem 0.9rem;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  input[type=date] { color-scheme: dark; }
+  input::placeholder, textarea::placeholder { color: #5C5F68; }
+  input:focus, textarea:focus, select:focus {
+    border-color: #33E6D8;
+    box-shadow: 0 0 0 3px rgba(51,230,216,0.12);
+  }
+  input.field-error, textarea.field-error, select.field-error {
+    border-color: #E15A72;
+    box-shadow: 0 0 0 3px rgba(225,90,114,0.12);
+  }
+  .error-msg { color: #E15A72; font-size: 0.78rem; margin-top: 0.3rem; display: none; }
+  .error-msg.show { display: block; }
+
+  select { appearance: none; height: 2.85rem; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2333E6D8' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 0.8rem center; background-size: 1.1rem; padding-right: 2.4rem; }
+
+  .pill-btn {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    background: #33E6D8;
+    color: #050507;
+    border-radius: 999px;
+    padding: 0.85rem 2rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity .15s ease;
+    box-shadow: 0 0 30px -8px rgba(51,230,216,0.6);
+  }
+  .pill-btn:hover { transform: translateY(-1px); box-shadow: 0 0 40px -6px rgba(51,230,216,0.75); }
+  .pill-btn:active { transform: translateY(0); }
+  .pill-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+  .pill-btn-outline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    background: transparent;
+    color: #33E6D8;
+    border: 1px solid rgba(51,230,216,0.4);
+    border-radius: 999px;
+    padding: 0.85rem 2rem;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .pill-btn-outline:hover { border-color: #33E6D8; background: rgba(51,230,216,0.06); }
+
+  .toggle-option {
+    border: 1px solid rgba(255,255,255,0.12);
+    background: #0E0E14;
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    transition: border-color .15s ease, background .15s ease;
+    font-size: 0.9rem;
+  }
+  .toggle-option:hover { border-color: rgba(51,230,216,0.4); }
+  .toggle-option.selected {
+    border-color: #33E6D8;
+    background: rgba(51,230,216,0.08);
+    box-shadow: 0 0 0 1px rgba(51,230,216,0.25);
+  }
+  .toggle-option.selected .toggle-dot { background: #33E6D8; border-color: #33E6D8; }
+  .toggle-dot {
+    width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid #5C5F68; flex-shrink: 0;
+  }
+
+  .check-option {
+    border: 1px solid rgba(255,255,255,0.12);
+    background: #0E0E14;
+    border-radius: 8px;
+    padding: 0.55rem 0.8rem;
+    cursor: pointer;
+    transition: border-color .15s ease, background .15s ease;
+    font-size: 0.85rem;
+  }
+  .check-option:hover { border-color: rgba(140,93,160,0.5); }
+  .check-option.selected { border-color: #8C5DA0; background: rgba(140,93,160,0.12); }
+  .check-option.selected .check-box { background: #8C5DA0; border-color: #8C5DA0; }
+  .check-box {
+    width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid #5C5F68; flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .check-box svg { width: 10px; height: 10px; opacity: 0; }
+  .check-option.selected .check-box svg { opacity: 1; }
+
+  .progress-track { background: rgba(255,255,255,0.08); border-radius: 999px; height: 4px; overflow: hidden; }
+  .progress-fill { background: linear-gradient(90deg, #33E6D8, #8C5DA0); height: 100%; transition: width .3s ease; }
+
+  .step { display: none; }
+  .step.active { display: block; animation: stepIn .35s ease; }
+  @keyframes stepIn { from { opacity: 0; transform: translateY(8px);} to { opacity: 1; transform: translateY(0);} }
+
+  .upload-zone {
+    border: 1px dashed rgba(51,230,216,0.35);
+    border-radius: 12px;
+    background: rgba(51,230,216,0.03);
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .upload-zone:hover { border-color: rgba(51,230,216,0.6); background: rgba(51,230,216,0.06); }
+  .upload-zone.has-file { border-style: solid; border-color: #33E6D8; }
+
+  .char-counter { font-size: 0.72rem; color: #5C5F68; font-family: 'Space Grotesk', sans-serif; }
+  .char-counter.warn { color: #E15A72; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body class="font-body text-zinc-200">
+
+<!-- API base URL: change this to the deployed backend URL before going live -->
+<script>window.API_BASE_URL = window.API_BASE_URL || 'http://localhost:4000';</script>
+
+<div id="app" class="min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="border-b border-white/5">
+    <div class="max-w-3xl mx-auto px-5 py-5 flex items-center justify-between">
+      <div>
+        <div class="font-display font-bold text-lg tracking-tight text-white">AWTOMATIG</div>
+        <div class="text-[0.7rem] text-zinc-500 tracking-wide">Systems that work. Results that last.</div>
+      </div>
+      <div class="bracket-tag">Careers</div>
+    </div>
+  </header>
+
+  <!-- Intro screen -->
+  <section id="intro-screen" class="flex-1">
+    <div class="max-w-3xl mx-auto px-5 py-16">
+      <div class="bracket-tag mb-4">Open Role</div>
+      <h1 class="font-display text-3xl sm:text-4xl font-bold text-white leading-tight mb-4">Content &amp; SEO Executive</h1>
+      <p class="text-zinc-400 leading-relaxed mb-8 max-w-xl">
+        Full-time, on-site. We're looking for someone with practical content and SEO experience — ideally around
+        a year of real work — who can write for businesses, think in search intent, and use AI tools without
+        leaning on them to think for you.
+      </p>
+
+      <div class="panel p-6 mb-8">
+        <div class="bracket-tag mb-3">Before You Start</div>
+        <ul class="space-y-2.5 text-sm text-zinc-300">
+          <li class="flex gap-3"><span class="text-cyan mt-0.5">—</span>This application takes roughly 30–45 minutes and includes a short writing assessment.</li>
+          <li class="flex gap-3"><span class="text-cyan mt-0.5">—</span>Have links to at least 3 published pieces of writing or content if you can.</li>
+          <li class="flex gap-3"><span class="text-cyan mt-0.5">—</span>This role requires full-time, on-site work — please confirm you can commit to that before applying.</li>
+          <li class="flex gap-3"><span class="text-cyan mt-0.5">—</span>Your progress is not saved between sessions, so set aside time to finish in one sitting.</li>
+        </ul>
+      </div>
+
+      <button id="begin-btn" class="pill-btn">Begin Application →</button>
+    </div>
+  </section>
+
+  <!-- Wizard screen -->
+  <main id="wizard-screen" class="hidden flex-1">
+    <div class="max-w-3xl mx-auto px-5 py-10">
+
+      <!-- Progress -->
+      <div class="mb-8">
+        <div class="flex items-center justify-between mb-2">
+          <div class="bracket-tag" id="progress-section-label">Section A</div>
+          <div class="text-xs text-zinc-500 font-display"><span id="progress-current">01</span> / <span id="progress-total">09</span></div>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:10%"></div></div>
+      </div>
+
+      <form id="application-form" novalidate>
+
+        <!-- STEP 1: Basic Information -->
+        <div class="step active" data-step="1" data-title="Basic Information">
+          <div class="slash-index text-3xl mb-1">/01</div>
+          <h2 class="font-display text-xl font-semibold text-white mb-1">Basic Information</h2>
+          <p class="text-zinc-500 text-sm mb-6">Tell us who you are and where you're at right now.</p>
+
+          <div class="space-y-5">
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="fullName">Full name</label>
+              <input type="text" id="fullName" name="fullName" autocomplete="name" placeholder="Jane Doe" />
+              <div class="error-msg" data-error-for="basicInfo.fullName">Full name is required.</div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="field-label field-required text-sm block mb-1.5" for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="jane@example.com" />
+                <div class="error-msg" data-error-for="basicInfo.email">A valid email address is required.</div>
+              </div>
+              <div>
+                <label class="field-label field-required text-sm block mb-1.5" for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+880 1XXXXXXXXX" />
+                <div class="error-msg" data-error-for="basicInfo.phone">Phone number is required.</div>
+              </div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="location">Current location</label>
+              <input type="text" id="location" name="location" placeholder="City, Country" />
+              <div class="error-msg" data-error-for="basicInfo.location">Current location is required.</div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="field-label text-sm block mb-1.5" for="education">Educational background</label>
+                <input type="text" id="education" name="education" placeholder="e.g. BA in English, XYZ University" />
+              </div>
+              <div>
+                <label class="field-label text-sm block mb-1.5" for="graduationStatus">Graduation status</label>
+                <select id="graduationStatus" name="graduationStatus">
+                  <option value="">Select…</option>
+                  <option>Graduated</option>
+                  <option>Final Year</option>
+                  <option>In Progress</option>
+                  <option>Not Applicable</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="currentRole">Current role</label>
+              <input type="text" id="currentRole" name="currentRole" placeholder="e.g. Content Writer at XYZ Agency, or Student" />
+              <div class="error-msg" data-error-for="basicInfo.currentRole">Current role is required.</div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="field-label field-required text-sm block mb-1.5" for="joinDate">When can you join?</label>
+                <input type="date" id="joinDate" name="joinDate" />
+                <div class="error-msg" data-error-for="basicInfo.joinDate">Please select a join date.</div>
+              </div>
+              <div>
+                <label class="field-label text-sm block mb-1.5" for="linkedin">LinkedIn profile <span class="field-optional-tag">Optional</span></label>
+                <input type="url" id="linkedin" name="linkedin" placeholder="linkedin.com/in/you" />
+              </div>
+            </div>
+            <div>
+              <label class="field-label text-sm block mb-1.5" for="portfolioUrl">Portfolio website or Google Drive link <span class="field-optional-tag">Optional</span></label>
+              <input type="url" id="portfolioUrl" name="portfolioUrl" placeholder="https://…" />
+              <p class="field-help mt-1.5">You'll have a chance to add specific article links later — this can be your general portfolio hub.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 2: Office Availability -->
+        <div class="step" data-step="2" data-title="Office Availability">
+          <div class="slash-index text-3xl mb-1">/02</div>
+          <h2 class="font-display text-xl font-semibold text-white mb-1">Office Availability</h2>
+          <p class="text-zinc-500 text-sm mb-6">This role is full-time and on-site. Be honest here — it saves everyone time.</p>
+
+          <div class="space-y-6">
+            <div>
+              <label class="field-label field-required text-sm block mb-2.5">Can you work full-time from our office?</label>
+              <div class="grid grid-cols-2 gap-3" data-radio-group="officeAvailable">
+                <label class="toggle-option flex items-center gap-2.5" data-value="Yes"><span class="toggle-dot"></span>Yes</label>
+                <label class="toggle-option flex items-center gap-2.5" data-value="No"><span class="toggle-dot"></span>No</label>
+              </div>
+              <div class="error-msg" data-error-for="availability.officeAvailable">Please confirm office availability.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: Experience Level -->
+        <div class="step" data-step="3" data-title="Experience Level">
+          <div class="slash-index text-3xl mb-1">/03</div>
+          <h2 class="font-display text-xl font-semibold text-white mb-1">Experience Level</h2>
+          <p class="text-zinc-500 text-sm mb-6">Total real-world content/SEO experience — not coursework.</p>
+
+          <div>
+            <div class="space-y-3" data-radio-group="totalExperience">
+              <label class="toggle-option flex items-center gap-2.5" data-value="Less than 6 months"><span class="toggle-dot"></span>Less than 6 months</label>
+              <label class="toggle-option flex items-center gap-2.5" data-value="6-12 months"><span class="toggle-dot"></span>6–12 months</label>
+              <label class="toggle-option flex items-center gap-2.5" data-value="1-2 years"><span class="toggle-dot"></span>1–2 years</label>
+              <label class="toggle-option flex items-center gap-2.5" data-value="2-3 years"><span class="toggle-dot"></span>2–3 years</label>
+              <label class="toggle-option flex items-center gap-2.5" data-value="3+ years"><span class="toggle-dot"></span>3+ years</label>
+            </div>
+            <div class="error-msg" data-error-for="basicInfo.totalExperience">Total experience is required.</div>
+          </div>
+        </div>
+
+        <!-- STEP 4: Content Experience -->
+        <div class="step" data-step="4" data-title="Content Experience">
+          <div class="slash-index text-3xl mb-1">/04</div>
+          <h2 class="font-display text-xl font-semibold text-white mb-1">Content Experience</h2>
+          <p class="text-zinc-500 text-sm mb-6">A quick picture of what you've actually written and shipped.</p>
+
+          <div class="space-y-4">
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div data-yesno="writtenForBusinesses" data-label="Written content for real businesses before?"></div>
+              <div data-yesno="workedAgency" data-label="Worked in an agency before?"></div>
+              <div data-yesno="writtenBlogs" data-label="Written blogs/articles before?"></div>
+              <div data-yesno="writtenLandingCopy" data-label="Written landing page copy before?"></div>
+              <div data-yesno="writtenSocialContent" data-label="Written social media content before?"></div>
+              <div data-yesno="publishedWordPress" data-label="Published content in WordPress before?"></div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-5 pt-2">
+              <div>
+                <label class="field-label text-sm block mb-1.5" for="articlesPerMonth">Articles you usually write per month</label>
+                <input type="text" id="articlesPerMonth" name="articlesPerMonth" placeholder="e.g. 8" />
+              </div>
+              <div>
+                <label class="field-label text-sm block mb-1.5" for="industries">Industries you've written for</label>
+                <input type="text" id="industries" name="industries" placeholder="e.g. SaaS, healthcare, ecommerce" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5: SEO Knowledge -->
+        <div class="step" data-step="5" data-title="SEO Knowledge">
+          <div class="slash-index text-3xl mb-1">/05</div>
+          <h2 class="font-display text-xl font-semibold text-white mb-1">SEO Knowledge</h2>
+          <p class="text-zinc-500 text-sm mb-6">Answer in your own words — specificity matters more than length.</p>
+
+          <div class="space-y-5">
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="searchIntent">Explain search intent in your own words.</label>
+              <textarea id="searchIntent" name="searchIntent" rows="3"></textarea>
+              <div class="error-msg" data-error-for="seoAnswers.searchIntent">Please answer the search intent question.</div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="keywordVsTopicVsIntent">What is the difference between keyword, topic, search intent, and conversion intent?</label>
+              <textarea id="keywordVsTopicVsIntent" name="keywordVsTopicVsIntent" rows="3"></textarea>
+              <div class="error-msg" data-error-for="seoAnswers.keywordVsTopicVsIntent">Please answer the keyword/topic/intent question.</div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="optimizeBlogPost">How do you decide which pages on a site should target which keywords?</label>
+              <textarea id="optimizeBlogPost" name="optimizeBlogPost" rows="3"></textarea>
+              <div class="error-msg" data-error-for="seoAnswers.optimizeBlogPost">Please answer the keyword mapping question.</div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="trafficNoLeads">If a blog gets traffic but no leads, what would you change?</label>
+              <textarea id="trafficNoLeads" name="trafficNoLeads" rows="3"></textarea>
+              <div class="error-msg" data-error-for="seoAnswers.trafficNoLeads">Please answer the traffic-without-leads question.</div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="trafficDrop">What's the difference between on-page SEO and off-page SEO? Give an example of each.</label>
+              <textarea id="trafficDrop" name="trafficDrop" rows="3"></textarea>
+              <div class="error-msg" data-error-for="seoAnswers.trafficDrop">Please answer the on-page vs off-page question.</div>
+            </div>
+            <div>
+              <label class="field-label text-sm block mb-2.5">SEO tools you've used</label>
+              <div class="flex flex-wrap gap-2" data-check-group="seoTools">
+                <label class="check-option flex items-center gap-2" data-value="SEMrush"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>SEMrush</label>
+                <label class="check-option flex items-center gap-2" data-value="Ahrefs"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Ahrefs</label>
+                <label class="check-option flex items-center gap-2" data-value="Google Search Console"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Google Search Console</label>
+                <label class="check-option flex items-center gap-2" data-value="Google Analytics"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Google Analytics</label>
+                <label class="check-option flex items-center gap-2" data-value="Screaming Frog"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Screaming Frog</label>
+                <label class="check-option flex items-center gap-2" data-value="Surfer SEO"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Surfer SEO</label>
+                <label class="check-option flex items-center gap-2" data-value="RankMath"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>RankMath</label>
+                <label class="check-option flex items-center gap-2" data-value="Yoast"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Yoast</label>
+                <label class="check-option flex items-center gap-2" data-value="Google Keyword Planner"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Google Keyword Planner</label>
+                <label class="check-option flex items-center gap-2" data-value="WordPress"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>WordPress</label>
+                <label class="check-option flex items-center gap-2" data-value="None"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>None</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 6: AI Workflow -->
+        <div class="step" data-step="6" data-title="AI Workflow Screening">
+          <div class="slash-index text-3xl mb-1">/06</div>
+          <h2 class="font-display text-xl font-semibold text-white mb-1">AI Workflow Screening</h2>
+          <p class="text-zinc-500 text-sm mb-6">We use AI tools daily. We just need someone who uses them with judgement.</p>
+
+          <div class="space-y-5">
+            <div>
+              <label class="field-label text-sm block mb-2.5">Which AI tools do you use weekly?</label>
+              <div class="flex flex-wrap gap-2" data-check-group="aiTools">
+                <label class="check-option flex items-center gap-2" data-value="ChatGPT"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>ChatGPT</label>
+                <label class="check-option flex items-center gap-2" data-value="Claude"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Claude</label>
+                <label class="check-option flex items-center gap-2" data-value="Gemini"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Gemini</label>
+                <label class="check-option flex items-center gap-2" data-value="Perplexity"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Perplexity</label>
+                <label class="check-option flex items-center gap-2" data-value="Jasper"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Jasper</label>
+                <label class="check-option flex items-center gap-2" data-value="Writesonic"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Writesonic</label>
+                <label class="check-option flex items-center gap-2" data-value="Grammarly"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Grammarly</label>
+                <label class="check-option flex items-center gap-2" data-value="Canva"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Canva</label>
+                <label class="check-option flex items-center gap-2" data-value="None"><span class="check-box"><svg viewBox="0 0 24 24" fill="none" stroke="#050507" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>None</label>
+              </div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="blogWorkflow">Describe your exact workflow for writing a blog using AI.</label>
+              <textarea id="blogWorkflow" name="blogWorkflow" rows="4"></textarea>
+              <div class="error-msg" data-error-for="aiAnswers.blogWorkflow">Please describe your AI blog-writing workflow.</div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="avoidGeneric">How do you make sure AI-generated content does not sound generic?</label>
+              <textarea id="avoidGeneric" name="avoidGeneric" rows="3"></textarea>
+              <div class="error-msg" data-error-for="aiAnswers.avoidGeneric">Please answer how you avoid generic AI output.</div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="factCheck">How do you verify facts before publishing content?</label>
+              <textarea id="factCheck" name="factCheck" rows="3"></textarea>
+              <div class="error-msg" data-error-for="aiAnswers.factCheck">Please answer how you fact-check content.</div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="notAutomate">What part of content writing should not be fully automated?</label>
+              <textarea id="notAutomate" name="notAutomate" rows="3"></textarea>
+              <div class="error-msg" data-error-for="aiAnswers.notAutomate">Please answer what should not be fully automated.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 7: Portfolio Validation -->
+        <div class="step" data-step="7" data-title="Portfolio Validation">
+          <div class="slash-index text-3xl mb-1">/07</div>
+          <h2 class="font-display text-xl font-semibold text-white mb-1">Portfolio Validation</h2>
+          <p class="text-zinc-500 text-sm mb-6">Real, published work matters far more than a polished resume here.</p>
+
+          <div class="space-y-5">
+            <div>
+              <label class="field-label text-sm block mb-2.5">Published article/content links <span class="field-optional-tag">Minimum 2 recommended</span></label>
+              <div class="space-y-2.5">
+                <input type="url" id="articleLink1" name="articleLink1" placeholder="Article link 1" />
+                <input type="url" id="articleLink2" name="articleLink2" placeholder="Article link 2" />
+                <input type="url" id="articleLink3" name="articleLink3" placeholder="Article link 3" />
+              </div>
+            </div>
+            <div>
+              <label class="field-label text-sm block mb-1.5" for="bestPieceLink">Your best piece of writing <span class="field-optional-tag">Optional</span></label>
+              <input type="url" id="bestPieceLink" name="bestPieceLink" placeholder="Link to your strongest piece" />
+            </div>
+            <div>
+              <label class="field-label text-sm block mb-1.5" for="bestPieceReason">Why is this your best piece?</label>
+              <textarea id="bestPieceReason" name="bestPieceReason" rows="3"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 8: Writing Assessment -->
+        <div class="step" data-step="8" data-title="Writing Assessment">
+          <div class="slash-index text-3xl mb-1">/08</div>
+          <h2 class="font-display text-xl font-semibold text-white mb-1">Writing Assessment</h2>
+          <p class="text-zinc-500 text-sm mb-6">This is the part that matters most. Take your time.</p>
+
+          <div class="space-y-7">
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="task1Intro">Task 1 — Write a 150-word introduction for: <span class="text-cyan">"Why Businesses Need SEO in 2026"</span></label>
+              <textarea id="task1Intro" name="task1Intro" rows="5"></textarea>
+              <div class="flex justify-between mt-1">
+                <div class="error-msg" data-error-for="writingAssessment.task1Intro">Task 1 (introduction) is required.</div>
+                <span class="char-counter" data-word-counter-for="task1Intro" data-target="150">0 words</span>
+              </div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="task2Rewrite">Task 2 — Rewrite this sentence professionally: <span class="italic text-zinc-400">"We build websites and help businesses grow online."</span></label>
+              <textarea id="task2Rewrite" name="task2Rewrite" rows="2"></textarea>
+              <div class="error-msg" data-error-for="writingAssessment.task2Rewrite">Task 2 (rewrite) is required.</div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="task3LinkedIn">Task 3 — Write a LinkedIn post promoting a commercial cleaning company. Maximum 200 words.</label>
+              <textarea id="task3LinkedIn" name="task3LinkedIn" rows="6"></textarea>
+              <div class="flex justify-between mt-1">
+                <div class="error-msg" data-error-for="writingAssessment.task3LinkedIn">Task 3 (LinkedIn post) is required.</div>
+                <span class="char-counter" data-word-counter-for="task3LinkedIn" data-max="200">0 / 200 words</span>
+              </div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5">Task 4 — Create a meta title and meta description for: <span class="text-cyan">"Best Digital Marketing Agency in London"</span></label>
+              <input type="text" id="task4MetaTitle" name="task4MetaTitle" placeholder="Meta title (~50–60 characters)" class="mb-2" />
+              <div class="flex justify-end mb-2"><span class="char-counter" data-char-counter-for="task4MetaTitle" data-max="60">0 / 60</span></div>
+              <textarea id="task4MetaDescription" name="task4MetaDescription" rows="2" placeholder="Meta description (~150–160 characters)"></textarea>
+              <div class="flex justify-between mt-1">
+                <div class="error-msg" data-error-for="writingAssessment.task4MetaTitle">Task 4 (meta title) is required.</div>
+                <span class="char-counter" data-char-counter-for="task4MetaDescription" data-max="160">0 / 160</span>
+              </div>
+              <div class="error-msg" data-error-for="writingAssessment.task4MetaDescription">Task 4 (meta description) is required.</div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="task5BlogTopics">Task 5 — Create 5 blog topic ideas for a cleaning company targeting NYC businesses.</label>
+              <textarea id="task5BlogTopics" name="task5BlogTopics" rows="5" placeholder="1.&#10;2.&#10;3.&#10;4.&#10;5."></textarea>
+              <div class="error-msg" data-error-for="writingAssessment.task5BlogTopics">Task 5 (blog topic ideas) is required.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 9: Ownership & Accountability -->
+        <div class="step" data-step="9" data-title="Ownership & Accountability">
+          <div class="slash-index text-3xl mb-1">/09</div>
+          <h2 class="font-display text-xl font-semibold text-white mb-1">Ownership &amp; Accountability</h2>
+          <p class="text-zinc-500 text-sm mb-6">Last section. Then you're done.</p>
+
+          <div class="space-y-5">
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="projectOwned">Describe one content project you owned from start to finish.</label>
+              <textarea id="projectOwned" name="projectOwned" rows="4"></textarea>
+              <div class="error-msg" data-error-for="ownershipAnswers.projectOwned">Please describe a project you owned.</div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="mistakeFix">Describe one mistake you made in a content/SEO project and how you fixed it.</label>
+              <textarea id="mistakeFix" name="mistakeFix" rows="4"></textarea>
+              <div class="error-msg" data-error-for="ownershipAnswers.mistakeFix">Please describe a mistake and how you fixed it.</div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="kpiImportance">Which KPI matters most for content: traffic, leads, or revenue? Explain.</label>
+              <textarea id="kpiImportance" name="kpiImportance" rows="3"></textarea>
+              <div class="error-msg" data-error-for="ownershipAnswers.kpiImportance">Please answer the KPI question.</div>
+            </div>
+            <div>
+              <label class="field-label field-required text-sm block mb-1.5" for="whyJoin">Why do you want to join AWTOMATIG?</label>
+              <textarea id="whyJoin" name="whyJoin" rows="3"></textarea>
+              <div class="error-msg" data-error-for="ownershipAnswers.whyJoin">Please tell us why you want to join AWTOMATIG.</div>
+            </div>
+          </div>
+
+          <div class="panel p-4 mt-7 text-xs text-zinc-500">
+            By submitting, you confirm the information and writing in this application are your own.
+          </div>
+        </div>
+
+      </form>
+
+      <!-- Submission-level error -->
+      <div id="submit-error" class="hidden mt-6 panel border-coral/40 p-4 text-coral text-sm"></div>
+
+      <!-- Nav buttons -->
+      <div class="flex items-center justify-between mt-8">
+        <button type="button" id="back-btn" class="pill-btn-outline">← Back</button>
+        <button type="button" id="next-btn" class="pill-btn">Next →</button>
+        <button type="button" id="submit-btn" class="pill-btn hidden">Submit Application</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Confirmation screen -->
+  <section id="confirmation-screen" class="hidden flex-1 flex items-center">
+    <div class="max-w-xl mx-auto px-5 py-20 text-center">
+      <div class="bracket-tag mb-4 justify-center inline-block">Application Received</div>
+      <h1 class="font-display text-2xl sm:text-3xl font-bold text-white mb-4">Thanks — we've got it.</h1>
+      <p class="text-zinc-400 leading-relaxed mb-8">
+        Your application for Content &amp; SEO Executive has been submitted. Our team will review it and reach
+        out if there's a fit.
+      </p>
+      <div class="text-zinc-600 text-xs font-display tracking-wide">Systems that work. Results that last.</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var STEP_TITLES = {
+    1: 'Basic Information', 2: 'Office Availability', 3: 'Experience Level',
+    4: 'Content Experience', 5: 'SEO Knowledge', 6: 'AI Workflow Screening',
+    7: 'Portfolio Validation', 8: 'Writing Assessment',
+    9: 'Ownership & Accountability'
+  };
+  var TOTAL_STEPS = 9;
+  var currentStep = 1;
+
+  var radioState = { officeAvailable: '', totalExperience: '' };
+  var checkState = { seoTools: [], aiTools: [] };
+  var yesNoState = {
+    writtenForBusinesses: null, workedAgency: null, writtenBlogs: null,
+    writtenLandingCopy: null, writtenSocialContent: null, publishedWordPress: null
+  };
+
+  // ---------- Build Yes/No toggle blocks ----------
+  document.querySelectorAll('[data-yesno]').forEach(function (el) {
+    var key = el.getAttribute('data-yesno');
+    var label = el.getAttribute('data-label');
+    el.innerHTML =
+      '<div class="field-label text-sm mb-2">' + label + '</div>' +
+      '<div class="grid grid-cols-2 gap-2" data-yesno-group="' + key + '">' +
+        '<label class="toggle-option flex items-center gap-2 text-sm justify-center" data-value="true"><span class="toggle-dot"></span>Yes</label>' +
+        '<label class="toggle-option flex items-center gap-2 text-sm justify-center" data-value="false"><span class="toggle-dot"></span>No</label>' +
+      '</div>';
+  });
+
+  // ---------- Radio groups (toggle-option look) ----------
+  document.querySelectorAll('[data-radio-group]').forEach(function (group) {
+    var key = group.getAttribute('data-radio-group');
+    group.querySelectorAll('.toggle-option').forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        group.querySelectorAll('.toggle-option').forEach(function (o) { o.classList.remove('selected'); });
+        opt.classList.add('selected');
+        radioState[key] = opt.getAttribute('data-value');
+        clearFieldError(group);
+      });
+    });
+  });
+
+  // ---------- Yes/No groups ----------
+  document.addEventListener('click', function (e) {
+    var opt = e.target.closest('[data-yesno-group] .toggle-option');
+    if (!opt) return;
+    var group = opt.closest('[data-yesno-group]');
+    var key = group.getAttribute('data-yesno-group');
+    group.querySelectorAll('.toggle-option').forEach(function (o) { o.classList.remove('selected'); });
+    opt.classList.add('selected');
+    yesNoState[key] = opt.getAttribute('data-value') === 'true';
+  });
+
+  // ---------- Checkbox groups ----------
+  document.querySelectorAll('[data-check-group]').forEach(function (group) {
+    var key = group.getAttribute('data-check-group');
+    group.querySelectorAll('.check-option').forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        var val = opt.getAttribute('data-value');
+        var idx = checkState[key].indexOf(val);
+        if (idx === -1) {
+          if (val === 'None') {
+            checkState[key] = ['None'];
+            group.querySelectorAll('.check-option').forEach(function (o) { o.classList.remove('selected'); });
+          } else {
+            checkState[key] = checkState[key].filter(function (v) { return v !== 'None'; });
+            group.querySelector('[data-value="None"]') && group.querySelector('[data-value="None"]').classList.remove('selected');
+            checkState[key].push(val);
+          }
+          opt.classList.add('selected');
+        } else {
+          checkState[key].splice(idx, 1);
+          opt.classList.remove('selected');
+        }
+      });
+    });
+  });
+
+  // ---------- Word / char counters ----------
+  function wordCount(text) {
+    return (text || '').trim().split(/\s+/).filter(Boolean).length;
+  }
+  document.querySelectorAll('[data-word-counter-for]').forEach(function (counter) {
+    var id = counter.getAttribute('data-word-counter-for');
+    var input = document.getElementById(id);
+    var max = counter.getAttribute('data-max');
+    var target = counter.getAttribute('data-target');
+    input.addEventListener('input', function () {
+      var n = wordCount(input.value);
+      if (max) {
+        counter.textContent = n + ' / ' + max + ' words';
+        counter.classList.toggle('warn', n > parseInt(max, 10));
+      } else if (target) {
+        counter.textContent = n + ' words (target ~' + target + ')';
+        counter.classList.toggle('warn', n > parseInt(target, 10) * 1.6);
+      } else {
+        counter.textContent = n + ' words';
+      }
+    });
+  });
+  document.querySelectorAll('[data-char-counter-for]').forEach(function (counter) {
+    var id = counter.getAttribute('data-char-counter-for');
+    var input = document.getElementById(id);
+    var max = parseInt(counter.getAttribute('data-max'), 10);
+    input.addEventListener('input', function () {
+      var n = input.value.length;
+      counter.textContent = n + ' / ' + max;
+      counter.classList.toggle('warn', n > max);
+    });
+  });
+
+  // ---------- Step navigation ----------
+  var beginBtn = document.getElementById('begin-btn');
+  var introScreen = document.getElementById('intro-screen');
+  var wizardScreen = document.getElementById('wizard-screen');
+  var confirmationScreen = document.getElementById('confirmation-screen');
+  var backBtn = document.getElementById('back-btn');
+  var nextBtn = document.getElementById('next-btn');
+  var submitBtn = document.getElementById('submit-btn');
+  var progressFill = document.getElementById('progress-fill');
+  var progressCurrent = document.getElementById('progress-current');
+  var progressSectionLabel = document.getElementById('progress-section-label');
+
+  beginBtn.addEventListener('click', function () {
+    introScreen.classList.add('hidden');
+    wizardScreen.classList.remove('hidden');
+    window.scrollTo(0, 0);
+    renderStep();
+  });
+
+  function renderStep() {
+    document.querySelectorAll('.step').forEach(function (s) {
+      s.classList.toggle('active', parseInt(s.getAttribute('data-step'), 10) === currentStep);
+    });
+    progressFill.style.width = Math.round((currentStep / TOTAL_STEPS) * 100) + '%';
+    progressCurrent.textContent = String(currentStep).padStart(2, '0');
+    progressSectionLabel.textContent = STEP_TITLES[currentStep];
+    backBtn.classList.toggle('hidden', currentStep === 1);
+    nextBtn.classList.toggle('hidden', currentStep === TOTAL_STEPS);
+    submitBtn.classList.toggle('hidden', currentStep !== TOTAL_STEPS);
+    document.getElementById('submit-error').classList.add('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  backBtn.addEventListener('click', function () {
+    if (currentStep > 1) { currentStep -= 1; renderStep(); }
+  });
+  nextBtn.addEventListener('click', function () {
+    if (!validateStep(currentStep)) return;
+    if (currentStep < TOTAL_STEPS) { currentStep += 1; renderStep(); }
+  });
+
+  // ---------- Field error helpers ----------
+  function showFieldError(fieldPath) {
+    var el = document.querySelector('[data-error-for="' + fieldPath + '"]');
+    if (el) el.classList.add('show');
+  }
+  function clearFieldErrorByPath(fieldPath) {
+    var el = document.querySelector('[data-error-for="' + fieldPath + '"]');
+    if (el) el.classList.remove('show');
+  }
+  function clearFieldError(nearEl) {
+    var container = nearEl.closest('div');
+    if (container) {
+      var err = container.querySelector('.error-msg');
+      if (err) err.classList.remove('show');
+    }
+  }
+  function clearAllErrorsInStep(stepEl) {
+    stepEl.querySelectorAll('.error-msg').forEach(function (e) { e.classList.remove('show'); });
+    stepEl.querySelectorAll('.field-error').forEach(function (e) { e.classList.remove('field-error'); });
+  }
+
+  // ---------- Per-step client-side validation ----------
+  function validateStep(step) {
+    var stepEl = document.querySelector('.step[data-step="' + step + '"]');
+    clearAllErrorsInStep(stepEl);
+    var valid = true;
+
+    function req(id, fieldPath) {
+      var el = document.getElementById(id);
+      if (!el.value || !el.value.trim()) {
+        el.classList.add('field-error');
+        showFieldError(fieldPath);
+        valid = false;
+      }
+    }
+
+    if (step === 1) {
+      req('fullName', 'basicInfo.fullName');
+      var emailEl = document.getElementById('email');
+      var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailEl.value || !emailRe.test(emailEl.value)) {
+        emailEl.classList.add('field-error'); showFieldError('basicInfo.email'); valid = false;
+      }
+      req('phone', 'basicInfo.phone');
+      req('location', 'basicInfo.location');
+      req('currentRole', 'basicInfo.currentRole');
+      req('joinDate', 'basicInfo.joinDate');
+    } else if (step === 2) {
+      if (!radioState.officeAvailable) { showFieldError('availability.officeAvailable'); valid = false; }
+    } else if (step === 3) {
+      if (!radioState.totalExperience) { showFieldError('basicInfo.totalExperience'); valid = false; }
+    } else if (step === 5) {
+      req('searchIntent', 'seoAnswers.searchIntent');
+      req('keywordVsTopicVsIntent', 'seoAnswers.keywordVsTopicVsIntent');
+      req('optimizeBlogPost', 'seoAnswers.optimizeBlogPost');
+      req('trafficNoLeads', 'seoAnswers.trafficNoLeads');
+      req('trafficDrop', 'seoAnswers.trafficDrop');
+    } else if (step === 6) {
+      req('blogWorkflow', 'aiAnswers.blogWorkflow');
+      req('avoidGeneric', 'aiAnswers.avoidGeneric');
+      req('factCheck', 'aiAnswers.factCheck');
+      req('notAutomate', 'aiAnswers.notAutomate');
+    } else if (step === 8) {
+      req('task1Intro', 'writingAssessment.task1Intro');
+      req('task2Rewrite', 'writingAssessment.task2Rewrite');
+      req('task3LinkedIn', 'writingAssessment.task3LinkedIn');
+      req('task4MetaTitle', 'writingAssessment.task4MetaTitle');
+      req('task4MetaDescription', 'writingAssessment.task4MetaDescription');
+      req('task5BlogTopics', 'writingAssessment.task5BlogTopics');
+    } else if (step === 9) {
+      req('projectOwned', 'ownershipAnswers.projectOwned');
+      req('mistakeFix', 'ownershipAnswers.mistakeFix');
+      req('kpiImportance', 'ownershipAnswers.kpiImportance');
+      req('whyJoin', 'ownershipAnswers.whyJoin');
+    }
+
+    if (!valid) {
+      var firstError = stepEl.querySelector('.error-msg.show, .field-error');
+      if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return valid;
+  }
+
+  function validateAllSteps() {
+    for (var s = 1; s <= TOTAL_STEPS; s++) {
+      if (!validateStep(s)) {
+        currentStep = s;
+        renderStep();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // ---------- Build payload ----------
+  function val(id) {
+    var el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  function buildPayload() {
+    return {
+      basicInfo: {
+        fullName: val('fullName'), email: val('email'), phone: val('phone'),
+        location: val('location'), education: val('education'),
+        graduationStatus: val('graduationStatus'), currentRole: val('currentRole'),
+        totalExperience: radioState.totalExperience,
+        joinDate: val('joinDate'), linkedin: val('linkedin'),
+        portfolioUrl: val('portfolioUrl')
+      },
+      availability: {
+        officeAvailable: radioState.officeAvailable
+      },
+      contentExperience: {
+        writtenForBusinesses: !!yesNoState.writtenForBusinesses,
+        workedAgency: !!yesNoState.workedAgency,
+        writtenBlogs: !!yesNoState.writtenBlogs,
+        writtenLandingCopy: !!yesNoState.writtenLandingCopy,
+        writtenSocialContent: !!yesNoState.writtenSocialContent,
+        publishedWordPress: !!yesNoState.publishedWordPress,
+        articlesPerMonth: val('articlesPerMonth'),
+        industries: val('industries')
+      },
+      seoAnswers: {
+        searchIntent: val('searchIntent'),
+        keywordVsTopicVsIntent: val('keywordVsTopicVsIntent'),
+        optimizeBlogPost: val('optimizeBlogPost'),
+        trafficNoLeads: val('trafficNoLeads'),
+        trafficDrop: val('trafficDrop'),
+        tools: checkState.seoTools
+      },
+      aiAnswers: {
+        toolsUsed: checkState.aiTools,
+        blogWorkflow: val('blogWorkflow'),
+        avoidGeneric: val('avoidGeneric'),
+        factCheck: val('factCheck'),
+        notAutomate: val('notAutomate')
+      },
+      portfolioLinks: {
+        portfolioUrl: val('portfolioUrl'),
+        articleLinks: [val('articleLink1'), val('articleLink2'), val('articleLink3')].filter(Boolean),
+        bestPieceLink: val('bestPieceLink'),
+        bestPieceReason: val('bestPieceReason')
+      },
+      writingAssessment: {
+        task1Intro: val('task1Intro'), task2Rewrite: val('task2Rewrite'),
+        task3LinkedIn: val('task3LinkedIn'), task4MetaTitle: val('task4MetaTitle'),
+        task4MetaDescription: val('task4MetaDescription'), task5BlogTopics: val('task5BlogTopics')
+      },
+      ownershipAnswers: {
+        projectOwned: val('projectOwned'), mistakeFix: val('mistakeFix'),
+        kpiImportance: val('kpiImportance'), whyJoin: val('whyJoin')
+      }
+    };
+  }
+
+  // ---------- Submit ----------
+  submitBtn.addEventListener('click', function () {
+    if (!validateAllSteps()) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+    var errorBox = document.getElementById('submit-error');
+    errorBox.classList.add('hidden');
+
+    var payload = buildPayload();
+
+    fetch(window.API_BASE_URL + '/api/applications', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then(function (res) {
+        return res.json().then(function (json) { return { status: res.status, json: json }; });
+      })
+      .then(function (result) {
+        if (result.status === 201) {
+          wizardScreen.classList.add('hidden');
+          confirmationScreen.classList.remove('hidden');
+          window.scrollTo(0, 0);
+        } else if (result.status === 409) {
+          errorBox.textContent = result.json.error || 'An application with this email or phone already exists.';
+          errorBox.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Application';
+        } else if (result.status === 400 && result.json.fieldErrors) {
+          errorBox.textContent = 'Some required fields are missing or invalid. Please review each section.';
+          errorBox.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Application';
+        } else {
+          errorBox.textContent = result.json.error || 'Something went wrong. Please try again.';
+          errorBox.classList.remove('hidden');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Application';
+        }
+      })
+      .catch(function () {
+        errorBox.textContent = 'Could not reach the server. Please check your connection and try again.';
+        errorBox.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Application';
+      });
+  });
+
+})();
+</script>
+</body>
+</html>

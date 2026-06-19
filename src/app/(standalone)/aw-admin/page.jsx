@@ -40,6 +40,53 @@ const FULLSTACK_FIELD_LABELS = {
   why_awtomatig: "Why AWTOMATIG",
 };
 
+const CONTENT_SEO_FIELD_LABELS = {
+  "basicInfo.fullName": "Full Name",
+  "basicInfo.email": "Email",
+  "basicInfo.phone": "Phone",
+  "basicInfo.location": "Location",
+  "basicInfo.education": "Education",
+  "basicInfo.graduationStatus": "Graduation Status",
+  "basicInfo.currentRole": "Current Role",
+  "basicInfo.totalExperience": "Total Experience",
+  "basicInfo.joinDate": "Can Join",
+  "basicInfo.linkedin": "LinkedIn",
+  "basicInfo.portfolioUrl": "Portfolio URL",
+  "availability.officeAvailable": "Office Available",
+  "contentExperience.writtenForBusinesses": "Written for Businesses",
+  "contentExperience.workedAgency": "Worked in Agency",
+  "contentExperience.writtenBlogs": "Written Blogs",
+  "contentExperience.writtenLandingCopy": "Written Landing Copy",
+  "contentExperience.writtenSocialContent": "Written Social Content",
+  "contentExperience.publishedWordPress": "Published WordPress",
+  "contentExperience.articlesPerMonth": "Articles/Month",
+  "contentExperience.industries": "Industries",
+  "seoAnswers.searchIntent": "Search Intent",
+  "seoAnswers.keywordVsTopicVsIntent": "Keyword vs Topic vs Intent",
+  "seoAnswers.optimizeBlogPost": "Keyword Mapping",
+  "seoAnswers.trafficNoLeads": "Traffic No Leads",
+  "seoAnswers.trafficDrop": "On-page vs Off-page",
+  "seoAnswers.tools": "SEO Tools",
+  "aiAnswers.toolsUsed": "AI Tools",
+  "aiAnswers.blogWorkflow": "AI Blog Workflow",
+  "aiAnswers.avoidGeneric": "Avoid Generic AI",
+  "aiAnswers.factCheck": "Fact-Checking",
+  "aiAnswers.notAutomate": "Should Not Automate",
+  "portfolioLinks.articleLinks": "Article Links",
+  "portfolioLinks.bestPieceLink": "Best Piece Link",
+  "portfolioLinks.bestPieceReason": "Best Piece Reason",
+  "writingAssessment.task1Intro": "Task 1: SEO Intro",
+  "writingAssessment.task2Rewrite": "Task 2: Rewrite",
+  "writingAssessment.task3LinkedIn": "Task 3: LinkedIn Post",
+  "writingAssessment.task4MetaTitle": "Task 4: Meta Title",
+  "writingAssessment.task4MetaDescription": "Task 4: Meta Description",
+  "writingAssessment.task5BlogTopics": "Task 5: Blog Topics",
+  "ownershipAnswers.projectOwned": "Project Owned",
+  "ownershipAnswers.mistakeFix": "Mistake & Fix",
+  "ownershipAnswers.kpiImportance": "KPI Importance",
+  "ownershipAnswers.whyJoin": "Why AWTOMATIG",
+};
+
 const UIUX_FIELD_LABELS = {
   full_name: "Full Name",
   email: "Email",
@@ -231,6 +278,17 @@ function formatUiuxValue(key, value) {
   return String(value);
 }
 
+function getNestedValue(obj, path) {
+  return path.split(".").reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), obj);
+}
+
+function formatContentSeoValue(key, value) {
+  if (value === undefined || value === null || value === "") return "—";
+  if (typeof value === "boolean") return value ? "Yes" : "No";
+  if (Array.isArray(value)) return value.length > 0 ? value.join(", ") : "—";
+  return String(value);
+}
+
 // ────────────────────────────────────────────────────────────────
 // Position config
 // ────────────────────────────────────────────────────────────────
@@ -277,6 +335,45 @@ const POSITION_CONFIG = {
     secondTagTitle: "Project Types",
     longFields: [
       "proud_project", "project_role", "why_awtomatig", "extra_note",
+    ],
+  },
+  content_seo_executive: {
+    title: "Content & SEO Executive Applications",
+    subtitle: "Manage and review incoming content & SEO executive applications",
+    fieldLabels: CONTENT_SEO_FIELD_LABELS,
+    formatValue: formatContentSeoValue,
+    nested: true,
+    shortFields: [
+      "basicInfo.fullName", "basicInfo.email", "basicInfo.phone", "basicInfo.location",
+      "basicInfo.education", "basicInfo.graduationStatus", "basicInfo.currentRole",
+      "basicInfo.totalExperience", "basicInfo.joinDate",
+      "availability.officeAvailable",
+      "contentExperience.writtenForBusinesses", "contentExperience.workedAgency",
+      "contentExperience.writtenBlogs", "contentExperience.writtenLandingCopy",
+      "contentExperience.writtenSocialContent", "contentExperience.publishedWordPress",
+      "contentExperience.articlesPerMonth", "contentExperience.industries",
+    ],
+    linkFields: [
+      "basicInfo.linkedin", "basicInfo.portfolioUrl",
+      "portfolioLinks.bestPieceLink",
+    ],
+    tagField: "seoAnswers.tools",
+    tagLabels: null,
+    tagTitle: "SEO Tools",
+    secondTagField: "aiAnswers.toolsUsed",
+    secondTagLabels: null,
+    secondTagTitle: "AI Tools",
+    articleLinksField: "portfolioLinks.articleLinks",
+    longFields: [
+      "seoAnswers.searchIntent", "seoAnswers.keywordVsTopicVsIntent",
+      "seoAnswers.optimizeBlogPost", "seoAnswers.trafficNoLeads", "seoAnswers.trafficDrop",
+      "aiAnswers.blogWorkflow", "aiAnswers.avoidGeneric", "aiAnswers.factCheck", "aiAnswers.notAutomate",
+      "portfolioLinks.bestPieceReason",
+      "writingAssessment.task1Intro", "writingAssessment.task2Rewrite",
+      "writingAssessment.task3LinkedIn", "writingAssessment.task4MetaTitle",
+      "writingAssessment.task4MetaDescription", "writingAssessment.task5BlogTopics",
+      "ownershipAnswers.projectOwned", "ownershipAnswers.mistakeFix",
+      "ownershipAnswers.kpiImportance", "ownershipAnswers.whyJoin",
     ],
   },
 };
@@ -400,7 +497,7 @@ function PositionSelector({ onSelect, onLogout }) {
           <p className="text-white/50 text-sm">Choose which intern applications you want to review</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Full Stack Intern Card */}
           <button
             onClick={() => onSelect("fullstack_intern")}
@@ -436,6 +533,24 @@ function PositionSelector({ onSelect, onLogout }) {
               <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
             </div>
           </button>
+
+          {/* Content & SEO Executive Card */}
+          <button
+            onClick={() => onSelect("content_seo_executive")}
+            className="group bg-[#0B0C10] border border-white/10 rounded-2xl p-8 text-left transition-all duration-200 hover:border-[#E8A23D]/40 hover:shadow-[0_0_32px_-8px_rgba(232,162,61,0.25)]"
+          >
+            <div className="w-12 h-12 rounded-xl bg-[#E8A23D]/15 border border-[#E8A23D]/25 flex items-center justify-center mb-5">
+              <svg className="w-6 h-6 text-[#E8A23D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+            </div>
+            <h2 className="text-lg font-bold text-white mb-2 group-hover:text-[#E8A23D] transition-colors" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Content & SEO Executive</h2>
+            <p className="text-white/45 text-sm leading-relaxed">Review content & SEO executive applications, writing samples, and SEO knowledge assessments</p>
+            <div className="mt-5 flex items-center gap-2 text-[11px] uppercase tracking-wide text-[#E8A23D]/70 group-hover:text-[#E8A23D] transition-colors" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
+              View Applications
+              <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </div>
+          </button>
         </div>
       </div>
     </div>
@@ -450,7 +565,11 @@ function CandidateCard({ application, config, position, onStatusChange, expanded
   const isRejected = status === "rejected";
   const isApproved = status === "approved";
 
-  const { fieldLabels, formatValue, shortFields, linkFields, tagField, tagLabels, tagTitle, secondTagField, secondTagLabels, secondTagTitle, longFields } = config;
+  const { fieldLabels, formatValue, shortFields, linkFields, tagField, tagLabels, tagTitle, secondTagField, secondTagLabels, secondTagTitle, longFields, nested, articleLinksField } = config;
+
+  function getValue(key) {
+    return nested ? getNestedValue(application, key) : application[key];
+  }
 
   const borderClass = isRejected
     ? "border-[#E15A72]/20 opacity-60"
@@ -470,11 +589,11 @@ function CandidateCard({ application, config, position, onStatusChange, expanded
       <div className="px-6 py-4 flex items-center justify-between gap-4 cursor-pointer" onClick={onToggle}>
         <div className="flex items-center gap-4 min-w-0">
           <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${avatarClass}`}>
-            {application.full_name?.charAt(0)?.toUpperCase() || "?"}
+            {(getValue("full_name") || getValue("basicInfo.fullName") || "?").charAt(0).toUpperCase()}
           </div>
           <div className="min-w-0">
-            <h3 className="text-white font-semibold text-sm truncate">{application.full_name || "Unnamed"}</h3>
-            <p className="text-white/40 text-xs truncate">{application.email} &middot; {application.location || application.current_status ? (formatValue("current_status", application.current_status)) : "—"}</p>
+            <h3 className="text-white font-semibold text-sm truncate">{getValue("full_name") || getValue("basicInfo.fullName") || "Unnamed"}</h3>
+            <p className="text-white/40 text-xs truncate">{getValue("email") || getValue("basicInfo.email")} &middot; {getValue("location") || getValue("basicInfo.location") || (getValue("current_status") ? formatValue("current_status", getValue("current_status")) : getValue("basicInfo.currentRole") || "—")}</p>
           </div>
         </div>
 
@@ -509,7 +628,7 @@ function CandidateCard({ application, config, position, onStatusChange, expanded
               {shortFields.map((key) => (
                 <div key={key} className="bg-[#050507] rounded-lg px-3 py-2.5">
                   <p className="text-[10px] uppercase tracking-wide text-white/35 mb-0.5">{fieldLabels[key] || key}</p>
-                  <p className="text-sm text-white/85 break-words">{formatValue(key, application[key])}</p>
+                  <p className="text-sm text-white/85 break-words">{formatValue(key, getValue(key))}</p>
                 </div>
               ))}
             </div>
@@ -519,39 +638,57 @@ function CandidateCard({ application, config, position, onStatusChange, expanded
           <div className="px-6 pb-5">
             <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Links</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {linkFields.map((key) => (
-                <div key={key} className="bg-[#050507] rounded-lg px-3 py-2.5">
-                  <p className="text-[10px] uppercase tracking-wide text-white/35 mb-0.5">{fieldLabels[key] || key}</p>
-                  {application[key] ? (
-                    <a href={application[key]} target="_blank" rel="noopener noreferrer" className="text-sm text-[#33E6D8] hover:underline break-all">{application[key]}</a>
-                  ) : (
-                    <p className="text-sm text-white/30">—</p>
-                  )}
-                </div>
-              ))}
+              {linkFields.map((key) => {
+                const val = getValue(key);
+                return (
+                  <div key={key} className="bg-[#050507] rounded-lg px-3 py-2.5">
+                    <p className="text-[10px] uppercase tracking-wide text-white/35 mb-0.5">{fieldLabels[key] || key}</p>
+                    {val ? (
+                      <a href={val} target="_blank" rel="noopener noreferrer" className="text-sm text-[#33E6D8] hover:underline break-all">{val}</a>
+                    ) : (
+                      <p className="text-sm text-white/30">—</p>
+                    )}
+                  </div>
+                );
+              })}
             </div>
+
+            {/* Article links for content & SEO */}
+            {articleLinksField && (() => {
+              const links = getValue(articleLinksField) || [];
+              return links.length > 0 ? (
+                <div className="mt-3">
+                  <p className="text-[10px] uppercase tracking-wide text-white/35 mb-2">Article Links</p>
+                  <div className="space-y-1.5">
+                    {links.map((link, i) => (
+                      <a key={i} href={link} target="_blank" rel="noopener noreferrer" className="block text-sm text-[#33E6D8] hover:underline break-all bg-[#050507] rounded-lg px-3 py-2">{link}</a>
+                    ))}
+                  </div>
+                </div>
+              ) : null;
+            })()}
           </div>
 
           {/* Tags (skills / tools) */}
           <div className="px-6 pb-5">
             <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>{tagTitle}</p>
             <div className="flex flex-wrap gap-2">
-              {(application[tagField] || []).map((s) => (
-                <span key={s} className="text-[11px] bg-[#33E6D8]/10 text-[#33E6D8] border border-[#33E6D8]/20 px-2.5 py-1 rounded-full">{tagLabels[s] || s}</span>
+              {(getValue(tagField) || []).map((s) => (
+                <span key={s} className="text-[11px] bg-[#33E6D8]/10 text-[#33E6D8] border border-[#33E6D8]/20 px-2.5 py-1 rounded-full">{(tagLabels && tagLabels[s]) || s}</span>
               ))}
-              {(!application[tagField] || application[tagField].length === 0) && <span className="text-sm text-white/30">—</span>}
+              {(!getValue(tagField) || getValue(tagField).length === 0) && <span className="text-sm text-white/30">—</span>}
             </div>
           </div>
 
-          {/* Second tag group (project types for UI/UX) */}
+          {/* Second tag group */}
           {secondTagField && (
             <div className="px-6 pb-5">
               <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>{secondTagTitle}</p>
               <div className="flex flex-wrap gap-2">
-                {(application[secondTagField] || []).map((s) => (
-                  <span key={s} className="text-[11px] bg-[#8C5DA0]/10 text-[#8C5DA0] border border-[#8C5DA0]/20 px-2.5 py-1 rounded-full">{secondTagLabels[s] || s}</span>
+                {(getValue(secondTagField) || []).map((s) => (
+                  <span key={s} className="text-[11px] bg-[#8C5DA0]/10 text-[#8C5DA0] border border-[#8C5DA0]/20 px-2.5 py-1 rounded-full">{(secondTagLabels && secondTagLabels[s]) || s}</span>
                 ))}
-                {(!application[secondTagField] || application[secondTagField].length === 0) && <span className="text-sm text-white/30">—</span>}
+                {(!getValue(secondTagField) || getValue(secondTagField).length === 0) && <span className="text-sm text-white/30">—</span>}
               </div>
             </div>
           )}
@@ -563,7 +700,7 @@ function CandidateCard({ application, config, position, onStatusChange, expanded
               {longFields.map((key) => (
                 <div key={key} className="bg-[#050507] rounded-lg px-4 py-3">
                   <p className="text-[10px] uppercase tracking-wide text-white/35 mb-1.5">{fieldLabels[key] || key}</p>
-                  <p className="text-sm text-white/80 whitespace-pre-wrap leading-relaxed">{formatValue(key, application[key])}</p>
+                  <p className="text-sm text-white/80 whitespace-pre-wrap leading-relaxed">{formatValue(key, getValue(key))}</p>
                 </div>
               ))}
             </div>

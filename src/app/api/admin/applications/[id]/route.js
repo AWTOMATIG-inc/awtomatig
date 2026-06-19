@@ -5,6 +5,7 @@ import { ObjectId } from "mongodb";
 const COLLECTION_MAP = {
   fullstack_intern: "applications",
   uiux_intern: "uiux_applications",
+  content_seo_executive: "content_seo_applications",
 };
 
 export async function PATCH(request, { params }) {
