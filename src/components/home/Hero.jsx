@@ -20,7 +20,7 @@ export default function Hero() {
             </h1>
             <h3 className="mt-3 sm:mt-6 lg:mt-10 text-xl sm:text-2xl xl:text-5xl bg-[linear-gradient(90deg,#FFFFFF_0%,#02D5E8_100%)] bg-clip-text text-transparent font-medium">
               Your extended tech and operations team <br /> without the
-              overhead
+              overhead.
             </h3>
             {/* <p className=" mt-4 sm:mt-14 lg:mt-24 text-base sm:text-lg md:text-xl xl:text-2xl   text-gray-300">
               We connect your tools, streamline workflows, and ship work that
