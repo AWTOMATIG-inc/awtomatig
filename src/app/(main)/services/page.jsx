@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import Accordion from "@/components/Accordion";
 import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
@@ -5,10 +6,13 @@ import CommonHeading from "@/components/CommonHeading";
 import MarqueHighlightText from "@/components/MarqueHighlightText";
 import Benifits from "@/components/services/Benifits";
 import GetInTouch from "@/components/services/GetInTouch";
-import OurServices from "@/components/services/OurServices";
 import ServicesScrollWrapper from "@/components/services/ServicesScrollWrapper";
 import Sponsor from "@/components/services/Sponsor";
 import { FAQ } from "@/contants/capabilities";
+
+// Below-the-fold gsap/ScrollTrigger section: code-split so gsap isn't part of
+// this route's initial JS (still server-rendered, no content flash).
+const OurServices = dynamic(() => import("@/components/services/OurServices"));
 
 export const metadata = {
   title: "Our Services — Web Dev, Automation, ERPNext & Back-Office Operations",
@@ -22,7 +26,7 @@ export default function Services() {
     <ServicesScrollWrapper>
       <section className="min-h-[823px] relative">        
         <div className="absolute top-0 left-0 h-full w-full">
-          <BackgroundAnimation className="min-h-screen" />
+          <BackgroundAnimation className="min-h-dvh" />
         </div>
         <div className="container relative ">
           <FadeInSection
@@ -31,7 +35,7 @@ export default function Services() {
             scrollBottom={{ opacity: 0, x: -150 }}
             margin="40px 0px -40px 0px"
           >
-            <div className="wrapper flex flex-col justify-center items-center min-h-screen text-center gap-4">
+            <div className="wrapper flex flex-col justify-center items-center min-h-dvh text-center gap-4">
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl uppercase font-russo-one tracking-wider">
                 Better business through smarter technology.
               </h1>

@@ -2,31 +2,7 @@
 
 import Link from "next/link";
 import { Icon } from "@iconify/react";
-import { motion } from "framer-motion";
 import { pushEvent } from "@/lib/gtm";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
 
 const capabilities = [
   {
@@ -50,34 +26,26 @@ export default function Hero() {
   return (
     <section className="relative w-full pt-28 pb-14 sm:pt-36 sm:pb-16 md:pt-40 md:pb-20 lg:pt-44 lg:pb-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col items-center text-center"
-        >
+        <div className="flex flex-col items-center text-center">
           {/* Top Status / Announcement Pill */}
-          <motion.div variants={itemVariants} className="mb-5 sm:mb-7">
+          <div className="mb-5 sm:mb-7">
             <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] backdrop-blur-xl transition-all duration-300 hover:border-[#02d5e8]/40 hover:bg-white/[0.08] shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
               <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-white">
                 Extended Operations Team
               </span>
             </div>
-          </motion.div>
+          </div>
 
           {/* Main Headline */}
-          <motion.h1
-            variants={itemVariants}
-            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[76px] xl:text-[84px] font-sora font-extrabold tracking-[-0.035em] text-white leading-[1.08] max-w-5xl"
-          >
+          <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[76px] xl:text-[84px] font-sora font-extrabold tracking-[-0.035em] text-white leading-[1.08] max-w-5xl">
             We Power Your{" "}
             <span className="bg-gradient-to-r from-white via-[#7eedf8] to-[#02d5e8] bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(2,213,232,0.25)]">
               Growth.
             </span>
-          </motion.h1>
+          </h1>
 
           {/* Subtitle & Value Proposition */}
-          <motion.div variants={itemVariants} className="mt-5 sm:mt-7 max-w-3xl">
+          <div className="mt-5 sm:mt-7 max-w-3xl">
             <h2 className="text-lg sm:text-2xl md:text-3xl font-medium text-neutral-200 tracking-tight leading-snug">
               Your extended tech and operations team{" "}
               <span className="text-white font-semibold">without the overhead.</span>
@@ -85,13 +53,10 @@ export default function Hero() {
             <p className="mt-3 sm:mt-4 text-xs sm:text-base text-neutral-400 font-inter leading-relaxed max-w-2xl mx-auto">
               We engineer custom web platforms, automate workflows with AI, deploy ERPNext, and manage back-office execution so your team can move at maximum velocity.
             </p>
-          </motion.div>
+          </div>
 
           {/* Action CTAs */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-8 sm:mt-10 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none mx-auto"
-          >
+          <div className="mt-8 sm:mt-10 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-sm sm:max-w-none mx-auto">
             {/* Primary Action: Book a Discovery Call */}
             <a
               href="https://calendly.com/nahidr-awtomatig/30min?month=2025-04"
@@ -123,13 +88,10 @@ export default function Hero() {
                 className="w-4 h-4 text-neutral-400 group-hover:text-white transition-all duration-300 group-hover:translate-x-1"
               />
             </Link>
-          </motion.div>
+          </div>
 
           {/* Value Metric / Capability Proof Strip */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-12 sm:mt-16 md:mt-20 pt-8 sm:pt-10 border-t border-white/[0.08] w-full max-w-md sm:max-w-4xl mx-auto"
-          >
+          <div className="mt-12 sm:mt-16 md:mt-20 pt-8 sm:pt-10 border-t border-white/[0.08] w-full max-w-md sm:max-w-4xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
               {capabilities.map((item, idx) => (
                 <div
@@ -150,8 +112,8 @@ export default function Hero() {
                 </div>
               ))}
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

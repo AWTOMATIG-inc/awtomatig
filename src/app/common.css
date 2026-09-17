@@ -159,14 +159,24 @@
 
 /* background */
 .background-container {
-  background: linear-gradient(132deg, #fc415a, #44b6e9, #212335);
-  background-size: 400% 400%;
-  animation: Gradient 15s ease infinite;
+  background: #212335;
   position: relative;
   width: 100%;
   overflow: hidden;
   padding: 0;
   margin: 0px;
+}
+/* Oversized gradient layer animated via transform (compositor-only) instead
+   of background-position (forces a full repaint every frame). */
+.background-container::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(132deg, #fc415a, #44b6e9, #212335);
+  will-change: transform;
+  animation: GradientShift 15s ease infinite;
 }
 .background-container .cube {
   position: absolute;
@@ -209,15 +219,15 @@
 }
 
 /* Animate Background*/
-@keyframes Gradient {
+@keyframes GradientShift {
   0% {
-    background-position: 0% 50%;
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    background-position: 100% 50%;
+    transform: translate3d(-15%, -12%, 0);
   }
   100% {
-    background-position: 0% 50%;
+    transform: translate3d(0, 0, 0);
   }
 }
 @keyframes cube {
@@ -228,6 +238,19 @@
   to {
     transform: scale(20) rotate(960deg) translate(-50%, -50%);
     opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .background-container::before {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .background-container::before,
+  .background-container .cube {
+    animation: none;
   }
 }
 

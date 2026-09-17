@@ -1,5 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
+import { useEffect, useRef, useState } from "react";
 import FadeInSection from "../animation/FadeEffect";
 import CommonHeading from "../CommonHeading";
 import BrandButton from "../BrandButton";
@@ -10,9 +11,35 @@ const ParticleBackground = dynamic(() => import("../ParticleBackground"), {
 });
 
 export default function FutureChanges() {
+  const sectionRef = useRef(null);
+  const [showParticles, setShowParticles] = useState(false);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowParticles(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="relative py-12 sm:py-16 md:py-24 overflow-hidden">
-      <ParticleBackground className="absolute h-full w-full" />
+    <div
+      ref={sectionRef}
+      className="relative py-12 sm:py-16 md:py-24 overflow-hidden"
+    >
+      {showParticles && (
+        <ParticleBackground className="absolute h-full w-full" />
+      )}
       <div className="absolute bg-black/20 backdrop-blur-[1px] h-full w-full"></div>
       <div className="container relative z-10">
         <div className="wrapper max-w-4xl mx-auto text-center">

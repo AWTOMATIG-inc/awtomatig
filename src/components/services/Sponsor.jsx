@@ -53,7 +53,7 @@ export default function Sponsor() {
             {partnerLogos.map((logo, index) => (
               <div
                 key={index}
-                className="group relative mx-3 sm:mx-4 h-[76px] sm:h-[88px] min-w-[190px] sm:min-w-[220px] px-7 sm:px-8 rounded-2xl bg-[#121215]/50 hover:bg-[#181920]/80 border border-white/[0.07] hover:border-[#02D5E8]/45 backdrop-blur-md transition-all duration-300 flex items-center justify-center cursor-pointer shadow-lg hover:shadow-[0_10px_28px_-6px_rgba(2,213,232,0.22)] hover:-translate-y-1 select-none"
+                className="group relative mx-3 sm:mx-4 h-[76px] sm:h-[88px] min-w-[190px] sm:min-w-[220px] px-7 sm:px-8 rounded-2xl bg-[#121215]/80 hover:bg-[#181920]/90 border border-white/[0.07] hover:border-[#02D5E8]/45 transition-all duration-300 flex items-center justify-center cursor-pointer shadow-lg hover:shadow-[0_10px_28px_-6px_rgba(2,213,232,0.22)] hover:-translate-y-1 select-none"
               >
                 {/* Subtle Hover Ambient Top Glow */}
                 <div className="absolute inset-x-4 top-0 h-[1px] bg-gradient-to-r from-transparent via-[#02D5E8]/0 group-hover:via-[#02D5E8]/60 to-transparent transition-all duration-500 pointer-events-none" />

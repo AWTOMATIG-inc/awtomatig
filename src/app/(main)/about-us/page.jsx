@@ -16,7 +16,7 @@ export default function AboutUs() {
     <main>
       <section>
         <div className="absolute top-0 left-0 h-full w-full">
-          <BackgroundAnimation className="min-h-screen" />
+          <BackgroundAnimation className="min-h-dvh" />
         </div>
         <div className="container relative z-10">
           <FadeInSection
@@ -24,7 +24,7 @@ export default function AboutUs() {
             scrollTop={{ opacity: 1, y: 0 }}
             scrollBottom={{ opacity: 0, y: 30 }}
           >
-            <div className="wrapper flex flex-col justify-center items-center min-h-screen text-center gap-4">
+            <div className="wrapper flex flex-col justify-center items-center min-h-dvh text-center gap-4">
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl uppercase font-russo-one tracking-wider leading-24">
                 About AWTOMATIG
               </h1>

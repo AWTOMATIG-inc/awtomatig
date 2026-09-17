@@ -47,7 +47,7 @@ export default function CookiePopup() {
           : "opacity-100 translate-y-0"
       }`}
     >
-      <div className="relative w-full border-t border-white/10 bg-[#07090E]/95 backdrop-blur-2xl shadow-[0_-12px_45px_rgba(0,0,0,0.85)]">
+      <div className="relative w-full border-t border-white/10 bg-[#07090E]/98 shadow-[0_-12px_45px_rgba(0,0,0,0.85)]">
         {/* Subtle top edge gradient highlight with brand colors */}
         <div className="pointer-events-none absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#02D5E8]/50 to-transparent" />
 

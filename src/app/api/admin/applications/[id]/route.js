@@ -25,7 +25,7 @@ export async function PATCH(request, { params }) {
     const position = body.position || "fullstack_intern";
     const collectionName = COLLECTION_MAP[position] || "applications";
 
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
     const collection = db.collection(collectionName);
 

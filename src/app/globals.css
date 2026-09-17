@@ -216,6 +216,21 @@ html[data-scroll-behavior="smooth"] {
   --sidebar-ring: #02d5e8;
 }
 
+/* Global reduced-motion support: collapses every CSS animation/transition
+   (grid flow, gradient cubes, glow buttons, marquees, etc.) to effectively
+   instant when the user has iOS/OS-level "Reduce Motion" enabled, instead of
+   requiring each component's CSS to opt in individually. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 .dark {
   --background: #000000;
   --foreground: #ffffff;

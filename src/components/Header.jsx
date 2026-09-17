@@ -119,9 +119,9 @@ export default function Header() {
           aria-label="Main Navigation"
           className={`pointer-events-auto relative w-full max-w-7xl flex items-center justify-between rounded-full transition-all duration-500 ease-out ${
             scrolled
-              ? "bg-[#09090c]/85 border-white/[0.14] py-2 px-3.5 sm:px-5"
-              : "bg-[#0a0a0e]/70 border-white/[0.1] py-2.5 px-4 sm:px-6"
-          } backdrop-blur-2xl border`}
+              ? "bg-[#09090c]/95 border-white/[0.14] py-2 px-3.5 sm:px-5"
+              : "bg-[#0a0a0e]/90 border-white/[0.1] py-2.5 px-4 sm:px-6"
+          } border`}
         >
           {/* Left: Brand Identity / Logo */}
           <div className="flex items-center gap-3 relative z-10">
@@ -259,7 +259,7 @@ export default function Header() {
 
       {/* Full-Screen Backdrop Overlay */}
       <div
-        className={`lg:hidden fixed inset-0 z-[-2] bg-black/75 backdrop-blur-md transition-opacity duration-400 ease-in-out pointer-events-auto ${
+        className={`lg:hidden fixed inset-0 z-[-2] bg-black/90 transition-opacity duration-400 ease-in-out pointer-events-auto ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         }`}
         onClick={() => setIsOpen(false)}
@@ -267,7 +267,7 @@ export default function Header() {
 
       {/* Mobile Navigation Dropdown Menu (Sliding Down from Top) */}
       <div
-        className={`lg:hidden fixed top-0 left-0 right-0 z-[-1] w-full bg-[#07090e]/95 backdrop-blur-3xl border-b border-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.95)] pt-24 pb-8 px-6 sm:px-8 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-auto transform ${
+        className={`lg:hidden fixed top-0 left-0 right-0 z-[-1] w-full bg-[#07090e]/98 border-b border-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.95)] pt-24 pb-8 px-6 sm:px-8 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-auto transform ${
           isOpen
             ? "translate-y-0 opacity-100 visible"
             : "-translate-y-full opacity-0 invisible pointer-events-none"

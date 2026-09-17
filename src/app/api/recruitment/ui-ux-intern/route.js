@@ -11,7 +11,7 @@ export async function POST(request) {
       );
     }
 
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
     const collection = db.collection("uiux_applications");
 

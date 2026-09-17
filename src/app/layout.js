@@ -8,7 +8,6 @@ import {
   Russo_One,
   Sora,
 } from "next/font/google";
-import "swiper/css";
 import "./animate.css";
 import "./common.css";
 import "./globals.css";
@@ -47,6 +46,10 @@ const montserrat = Montserrat({
 });
 
 const siteUrl = "https://awtomatig.com";
+
+export const viewport = {
+  viewportFit: "cover",
+};
 
 export const metadata = {
   metadataBase: new URL(siteUrl),

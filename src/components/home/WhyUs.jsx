@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useLayoutEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -74,7 +73,7 @@ const capabilitiesData = [
     summary: "Invisible execution, zero follow-ups. We run your back-office so you can build.",
     tags: ["Process Engineering", "Executive Support", "SLA Guarantees", "Zero Follow-ups"],
     bestFor: "High-growth founders & leadership teams",
-    image: "/images/services/office-management.gif",
+    video: "/images/services/office-management.mp4",
     link: "/services",
     accentColor: "#02D5E8",
     cardBg: "from-[#0c141c] via-[#080d14] to-[#05070a]",
@@ -92,7 +91,7 @@ const capabilitiesData = [
     summary: "Replace manual drag with autonomous agents, event pipelines, and zero-touch workflows.",
     tags: ["Make & n8n Workflows", "Custom AI Agents", "API Orchestration", "Zero Data Entry"],
     bestFor: "Scaling teams drowning in repetitive tasks",
-    image: "/images/services/automation.gif",
+    video: "/images/services/automation.mp4",
     link: "/services",
     accentColor: "#44B6E9",
     cardBg: "from-[#0b1626] via-[#080e1a] to-[#050810]",
@@ -110,7 +109,7 @@ const capabilitiesData = [
     summary: "High-performance digital platforms and web architectures built to scale cleanly.",
     tags: ["Next.js & React Core", "High-Speed APIs", "Sub-second Latency", "Headless CMS"],
     bestFor: "Companies ready for custom, robust tech",
-    image: "/images/services/web.gif",
+    video: "/images/services/web.mp4",
     link: "/services",
     accentColor: "#B66DD2",
     cardBg: "from-[#160d24] via-[#0c0816] to-[#06040c]",
@@ -128,7 +127,7 @@ const capabilitiesData = [
     summary: "One synchronized source of truth uniting finance, inventory, CRM, and supply chain.",
     tags: ["Custom Frappe Doctypes", "Real-Time Ledgers", "Multi-Entity Sync", "Legacy Migration"],
     bestFor: "Enterprises seeking centralized control",
-    image: "/images/services/system-support.gif",
+    video: "/images/services/system-support.mp4",
     link: "/services",
     accentColor: "#02D5E8",
     cardBg: "from-[#09171d] via-[#061014] to-[#04090d]",
@@ -146,31 +145,39 @@ export default function WhyUs() {
     if (typeof window === "undefined") return;
     gsap.registerPlugin(ScrollTrigger);
 
-    const cards = cardRefs.current.filter(Boolean);
-    const triggers = [];
+    const mm = gsap.matchMedia();
 
-    cards.forEach((card, index) => {
-      if (index < cards.length - 1) {
-        const st = ScrollTrigger.create({
-          trigger: card,
-          start: "top top",
-          endTrigger: cards[index + 1],
-          end: "top top",
-          pin: true,
-          pinSpacing: false,
-          anticipatePin: 1,
-          id: `whyus-card-pin-${index}`,
-          invalidateOnRefresh: true,
-        });
-        triggers.push(st);
-      }
+    // Card pinning fights iOS Safari's native momentum scrolling, so it's
+    // desktop-only — same pattern as OurServices.jsx.
+    mm.add("(min-width: 1024px)", () => {
+      const cards = cardRefs.current.filter(Boolean);
+      const triggers = [];
+
+      cards.forEach((card, index) => {
+        if (index < cards.length - 1) {
+          const st = ScrollTrigger.create({
+            trigger: card,
+            start: "top top",
+            endTrigger: cards[index + 1],
+            end: "top top",
+            pin: true,
+            pinSpacing: false,
+            anticipatePin: 1,
+            id: `whyus-card-pin-${index}`,
+            invalidateOnRefresh: true,
+          });
+          triggers.push(st);
+        }
+      });
+
+      ScrollTrigger.refresh();
+
+      return () => {
+        triggers.forEach((st) => st.kill());
+      };
     });
 
-    ScrollTrigger.refresh();
-
-    return () => {
-      triggers.forEach((st) => st.kill());
-    };
+    return () => mm.revert();
   }, []);
 
   return (
@@ -198,7 +205,7 @@ export default function WhyUs() {
               style={{
                 zIndex: index + 10,
               }}
-              className="relative h-screen h-[100dvh] w-full flex flex-col justify-start overflow-hidden group"
+              className="relative h-dvh w-full flex flex-col justify-start overflow-hidden group"
             >
               {/* Individual Stack Card (Full Screen Viewport Box) */}
               <div
@@ -275,17 +282,18 @@ export default function WhyUs() {
                     </div>
                   </div>
 
-                  {/* Preview GIF Container */}
+                  {/* Preview Video Container */}
                   <div className="relative flex-1 min-h-0 w-full bg-gradient-to-b from-[#080b12] to-black flex items-center justify-center p-2 sm:p-4 overflow-hidden">
                     <div className="relative w-full h-full min-h-[120px]">
-                      <Image
-                        src={card.image}
-                        alt={`${card.titleMain} Preview`}
-                        fill
-                        unoptimized={true}
-                        loading="lazy"
-                        sizes="(max-width: 640px) 90vw, (max-width: 1024px) 70vw, 800px"
-                        className="object-contain object-center p-1 sm:p-2 transition-transform duration-700 group-hover:scale-[1.02]"
+                      <video
+                        src={card.video}
+                        aria-label={`${card.titleMain} Preview`}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        className="absolute inset-0 w-full h-full object-contain object-center p-1 sm:p-2 transition-transform duration-700 group-hover:scale-[1.02]"
                       />
                     </div>
 

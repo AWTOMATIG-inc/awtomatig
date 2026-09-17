@@ -20,7 +20,7 @@ export async function GET(request) {
 
     const collectionName = COLLECTION_MAP[position] || "applications";
 
-    const client = await clientPromise;
+    const client = await clientPromise();
     const db = client.db();
     const collection = db.collection(collectionName);
 

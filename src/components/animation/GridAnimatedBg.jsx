@@ -8,6 +8,15 @@ export default function GridAnimatedBg({ children }) {
   const rafRef = useRef(null);
 
   useEffect(() => {
+    const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    // No mousemove on touchscreens and no motion when the user opted out —
+    // don't even start the RAF loop.
+    if (isTouchDevice || prefersReducedMotion) return;
+
     function handleMove(evt) {
       const w = window.innerWidth || 1;
       const h = window.innerHeight || 1;
@@ -34,16 +43,31 @@ export default function GridAnimatedBg({ children }) {
       rafRef.current = requestAnimationFrame(animate);
     }
 
-    rafRef.current = requestAnimationFrame(animate);
+    function handleVisibilityChange() {
+      if (document.hidden) {
+        if (rafRef.current) {
+          cancelAnimationFrame(rafRef.current);
+          rafRef.current = null;
+        }
+      } else if (!rafRef.current) {
+        rafRef.current = requestAnimationFrame(animate);
+      }
+    }
+
+    if (!document.hidden) {
+      rafRef.current = requestAnimationFrame(animate);
+    }
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       window.removeEventListener("mousemove", handleMove);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
   return (
-    <section className="relative w-full min-h-[92vh] lg:min-h-screen bg-[#000000] flex flex-col justify-center overflow-hidden">
+    <section className="relative w-full min-h-dvh bg-[#000000] flex flex-col justify-center overflow-hidden">
       {/* Background Ambient Atmosphere */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         {/* Fine cybernetic grid with radial fade mask */}
