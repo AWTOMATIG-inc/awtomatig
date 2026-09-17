@@ -1,31 +1,28 @@
 "use client";
 import Accordion from "@/components/Accordion";
 import { capabilities } from "@/contants/capabilities";
-import Link from "next/link";
-import AnimatedButton from "../AnimatedButton";
 import FadeInSection from "../animation/FadeEffect";
 import CommonHeading from "../CommonHeading";
+import BrandButton from "../BrandButton";
 import { pushEvent } from "@/lib/gtm";
+
 export default function OurCapabilities() {
   return (
     <div className="container">
       <FadeInSection
-        initial={{ opacity: 0, y: -150 }}
+        initial={{ opacity: 0, y: 30 }}
         scrollTop={{ opacity: 1, y: 0 }}
-        scrollBottom={{ opacity: 0, y: -150 }}
+        scrollBottom={{ opacity: 0, y: 30 }}
         margin="40px 0px 0px 0px"
-        className="wrapper"
+        className="wrapper max-w-5xl mx-auto"
       >
-        <div className="flex justify-between items-center">
-          <CommonHeading title="What we operate" color="text-teal">
-            Our operational capabilities
+        <div className="text-center mb-10 sm:mb-14">
+          <CommonHeading title="Capabilities">
+            Our Operational Capabilities
           </CommonHeading>
-          <Link href="/services" onClick={() => pushEvent({ event: "cta_click", cta_label: "Work" })}>
-            <AnimatedButton name="Work" icon={true} width="w-[140px]" />
-          </Link>
         </div>
 
-        <div className="my-10">
+        <div className="my-8 sm:my-10">
           {capabilities.map((capability) => (
             <Accordion
               key={capability.id}
@@ -40,6 +37,18 @@ export default function OurCapabilities() {
               </p>
             </Accordion>
           ))}
+        </div>
+
+        {/* Middle Bottom CTA Button */}
+        <div className="flex justify-center mt-10 sm:mt-14">
+          <BrandButton
+            href="/services"
+            onClick={() =>
+              pushEvent({ event: "cta_click", cta_label: "Capabilities View All" })
+            }
+          >
+            Explore All Capabilities
+          </BrandButton>
         </div>
       </FadeInSection>
     </div>

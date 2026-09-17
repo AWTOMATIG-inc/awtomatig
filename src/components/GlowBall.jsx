@@ -17,19 +17,23 @@ const glowPath = [
   { x: "0%", y: "51%", rotate: 360 },
 ];
 
-export default function GlowBall({ size, duration, delay }) {
+export default function GlowBall({ size = 500, duration = 20, delay = 0 }) {
   return (
     <motion.div
       className="
         absolute bottom-0 left-0
         aspect-square
         rounded-full
-        opacity-60
-        blur-[100px]
+        opacity-50
+        blur-2xl sm:blur-3xl
+        pointer-events-none
         will-change-transform
-        bg-[linear-gradient(259.53deg,#02D5E880,#2B388D80)]
       "
-      style={{ width: `${size}px` }}
+      style={{
+        width: `${Math.min(size, 600)}px`,
+        maxWidth: "90vw",
+        background: "radial-gradient(circle, rgba(2,213,232,0.45) 0%, rgba(43,56,141,0.25) 45%, transparent 70%)",
+      }}
       animate={{
         x: glowPath.map((p) => p.x),
         y: glowPath.map((p) => p.y),

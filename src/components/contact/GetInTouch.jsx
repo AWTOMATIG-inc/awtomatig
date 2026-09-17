@@ -44,10 +44,9 @@ export default function GetInTouch() {
     <div className="container font-sora overflow-hidden lg:overflow-visible">
       <div className="grid lg:grid-cols-[1.3fr_1fr] gap-16 md:gap-20 lg:gap-30 wrapper">
         <FadeInSection
-          initial={{ opacity: 0, x: -150 }}
-          scrollTop={{ opacity: 1, x: 0 }}
-          scrollBottom={{ opacity: 0, x: -150 }}
-          margin="40px 0px -40px 0px"
+          initial={{ opacity: 0, y: 30 }}
+          scrollTop={{ opacity: 1, y: 0 }}
+          scrollBottom={{ opacity: 0, y: 30 }}
         >
           <div>
             <CommonHeading title="get in touch">
@@ -103,10 +102,9 @@ export default function GetInTouch() {
           </div>
         </FadeInSection>
         <FadeInSection
-          initial={{ opacity: 0, x: 150 }}
-          scrollTop={{ opacity: 1, x: 0 }}
-          scrollBottom={{ opacity: 0, x: 150 }}
-          margin="40px 0px -40px 0px"
+          initial={{ opacity: 0, y: 30 }}
+          scrollTop={{ opacity: 1, y: 0 }}
+          scrollBottom={{ opacity: 0, y: 30 }}
         >
           {status === "success" ? (
             <div className="rounded-xl shadow-lg shadow-teal px-8 py-11 bg-[#201F1F78] w-full xl:max-w-[605px] mx-auto lg:ml-auto mb-6 lg:mb-0 flex flex-col items-center justify-center min-h-[400px] text-center gap-6">

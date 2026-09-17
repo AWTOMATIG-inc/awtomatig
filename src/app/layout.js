@@ -4,46 +4,46 @@ import {
   Inter,
   Manrope,
   Montserrat,
-  Press_Start_2P,
+  Newsreader,
   Russo_One,
-  Silkscreen,
   Sora,
 } from "next/font/google";
 import "swiper/css";
+import "./animate.css";
 import "./common.css";
 import "./globals.css";
-const pressStart2P = Press_Start_2P({
-  variable: "--font-press-start-2p",
+
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
-  weight: "400",
+  display: "swap",
+  style: ["normal", "italic"],
 });
 const russoOne = Russo_One({
   variable: "--font-russo-one",
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
 });
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
-});
-const silkscreen = Silkscreen({
-  variable: "--font-silkscreen",
-  subsets: ["latin"],
-  weight: ["400", "700"],
+  display: "swap",
 });
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
+  display: "swap",
 });
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
 const siteUrl = "https://awtomatig.com";
@@ -101,7 +101,7 @@ const websiteSchema = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -112,10 +112,10 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       <body
-        className={`${pressStart2P.variable} ${manrope.variable} ${sora.variable} ${silkscreen.variable} ${russoOne.variable} ${inter.variable} ${montserrat.variable} font-manrope bg-black overflow-x-hidden  text-white antialiased`}
+        className={`${manrope.variable} ${sora.variable} ${russoOne.variable} ${inter.variable} ${montserrat.variable} ${newsreader.variable} font-manrope bg-black overflow-x-clip text-white antialiased`}
       >
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         <GTMProvider />
         {children}
       </body>

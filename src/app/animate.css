@@ -55,12 +55,12 @@ body {
     rotateZ(0deg) scaleY(1.04);
   will-change: transform;
   background-image:
-    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
-    linear-gradient(var(--grid-color) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    linear-gradient(90deg, var(--grid-color, #02d5e8) 1px, transparent 1px),
+    linear-gradient(var(--grid-color, #02d5e8) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color, #02d5e8) 1px, transparent 1px);
   background-size:
-    var(--grid-size) var(--grid-size),
-    var(--grid-size) var(--grid-size);
+    var(--grid-size, 22px) var(--grid-size, 22px),
+    var(--grid-size, 22px) var(--grid-size, 22px);
   background-position:
     0 0,
     0 0;
@@ -81,8 +81,8 @@ body {
   }
   100% {
     background-position:
-      0 calc(var(--grid-size) * 4),
-      0 calc(var(--grid-size) * 4);
+      0 calc(var(--grid-size, 22px) * 4),
+      0 calc(var(--grid-size, 22px) * 4);
   }
 }
 

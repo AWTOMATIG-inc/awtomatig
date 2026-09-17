@@ -18,10 +18,9 @@ export default function Contact() {
         </div>
         <div className="container relative z-10">
           <FadeInSection
-            initial={{ opacity: 0, x: -150 }}
-            scrollTop={{ opacity: 1, x: 0 }}
-            scrollBottom={{ opacity: 0, x: -150 }}
-            margin="40px 0px -40px 0px"
+            initial={{ opacity: 0, y: 30 }}
+            scrollTop={{ opacity: 1, y: 0 }}
+            scrollBottom={{ opacity: 0, y: 30 }}
           >
             <div className="wrapper flex flex-col justify-center items-center min-h-screen text-center gap-4">
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl uppercase font-russo-one tracking-wider leading-24">
@@ -48,10 +47,9 @@ export default function Contact() {
 
       <section className="my-20 container ">
         <FadeInSection
-          initial={{ opacity: 0, y: -150 }}
+          initial={{ opacity: 0, y: 30 }}
           scrollTop={{ opacity: 1, y: 0 }}
-          scrollBottom={{ opacity: 0, y: -150 }}
-          margin="40px 0px 0px 0px"
+          scrollBottom={{ opacity: 0, y: 30 }}
         >
           <div className=" wrapper">
             <iframe
