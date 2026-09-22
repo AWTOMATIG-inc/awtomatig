@@ -8,6 +8,7 @@ import {
   RefreshCw,
   Loader2,
   AlertCircle,
+  ChevronLeft,
 } from "lucide-react";
 
 import { useDebounce } from "./hooks/useDebounce";
@@ -50,6 +51,28 @@ function AdminDashboardContent() {
 
   // Mobile sidebar toggle
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
+  // Desktop sidebar collapse toggle with persistence
+  const [desktopCollapsed, setDesktopCollapsed] = useState(false);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("aw_admin_sidebar_collapsed");
+      if (saved !== null) {
+        setDesktopCollapsed(saved === "true");
+      }
+    } catch {}
+  }, []);
+
+  const handleToggleDesktopCollapse = () => {
+    setDesktopCollapsed((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem("aw_admin_sidebar_collapsed", String(next));
+      } catch {}
+      return next;
+    });
+  };
 
   // Jobs State
   const [jobs, setJobs] = useState([]);
@@ -873,6 +896,8 @@ function AdminDashboardContent() {
         applicationsCount={summary.all || 0}
         jobsCount={jobs.length}
         inquiriesCount={inquiriesSummary.new || 0}
+        isCollapsed={desktopCollapsed}
+        onToggleCollapse={handleToggleDesktopCollapse}
       />
 
       {/* ── MAIN CONTENT AREA ──────────────────────────────────── */}
@@ -880,12 +905,27 @@ function AdminDashboardContent() {
         {/* Top Header Bar */}
         <header className="sticky top-0 z-30 bg-[#090A0E]/90 backdrop-blur-md border-b border-white/[0.08] px-4 sm:px-6 py-3 sm:py-3.5 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+            {/* Mobile Sidebar Toggle */}
             <button
               onClick={() => setMobileSidebarOpen(true)}
               className="md:hidden p-2 bg-white/[0.04] hover:bg-white/[0.08] active:scale-95 border border-white/[0.08] rounded-lg text-white/70 hover:text-white transition-all cursor-pointer shrink-0"
               aria-label="Open Navigation Menu"
             >
               <Menu className="w-4 h-4" />
+            </button>
+
+            {/* Desktop Sidebar Collapse Toggle */}
+            <button
+              onClick={handleToggleDesktopCollapse}
+              className="hidden md:flex items-center justify-center p-2 bg-white/[0.04] hover:bg-white/[0.08] active:scale-95 border border-white/[0.08] hover:border-[#33E6D8]/30 rounded-lg text-white/70 hover:text-[#33E6D8] transition-all cursor-pointer shrink-0"
+              title={desktopCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+              aria-label={desktopCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            >
+              <ChevronLeft
+                className={`w-4 h-4 transition-transform duration-300 ${
+                  desktopCollapsed ? "rotate-180 text-[#33E6D8]" : "text-white/70"
+                }`}
+              />
             </button>
 
             <h1
