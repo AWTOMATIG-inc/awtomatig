@@ -73,7 +73,7 @@ const capabilitiesData = [
     summary: "Invisible execution, zero follow-ups. We run your back-office so you can build.",
     tags: ["Process Engineering", "Executive Support", "SLA Guarantees", "Zero Follow-ups"],
     bestFor: "High-growth founders & leadership teams",
-    video: "/images/services/office-management.mp4",
+    video: "/images/services/office-management.gif",
     link: "/services",
     accentColor: "#02D5E8",
     cardBg: "from-[#0c141c] via-[#080d14] to-[#05070a]",
@@ -91,7 +91,7 @@ const capabilitiesData = [
     summary: "Replace manual drag with autonomous agents, event pipelines, and zero-touch workflows.",
     tags: ["Make & n8n Workflows", "Custom AI Agents", "API Orchestration", "Zero Data Entry"],
     bestFor: "Scaling teams drowning in repetitive tasks",
-    video: "/images/services/automation.mp4",
+    video: "/images/services/automation.gif",
     link: "/services",
     accentColor: "#44B6E9",
     cardBg: "from-[#0b1626] via-[#080e1a] to-[#050810]",
@@ -109,7 +109,7 @@ const capabilitiesData = [
     summary: "High-performance digital platforms and web architectures built to scale cleanly.",
     tags: ["Next.js & React Core", "High-Speed APIs", "Sub-second Latency", "Headless CMS"],
     bestFor: "Companies ready for custom, robust tech",
-    video: "/images/services/web.mp4",
+    video: "/images/services/web.gif",
     link: "/services",
     accentColor: "#B66DD2",
     cardBg: "from-[#160d24] via-[#0c0816] to-[#06040c]",
@@ -127,7 +127,7 @@ const capabilitiesData = [
     summary: "One synchronized source of truth uniting finance, inventory, CRM, and supply chain.",
     tags: ["Custom Frappe Doctypes", "Real-Time Ledgers", "Multi-Entity Sync", "Legacy Migration"],
     bestFor: "Enterprises seeking centralized control",
-    video: "/images/services/system-support.mp4",
+    video: "/images/services/system-support.gif",
     link: "/services",
     accentColor: "#02D5E8",
     cardBg: "from-[#09171d] via-[#061014] to-[#04090d]",
@@ -282,19 +282,28 @@ export default function WhyUs() {
                     </div>
                   </div>
 
-                  {/* Preview Video Container */}
+                  {/* Preview Media Container */}
                   <div className="relative flex-1 min-h-0 w-full bg-gradient-to-b from-[#080b12] to-black flex items-center justify-center p-2 sm:p-4 overflow-hidden">
                     <div className="relative w-full h-full min-h-[120px]">
-                      <video
-                        src={card.video}
-                        aria-label={`${card.titleMain} Preview`}
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                        className="absolute inset-0 w-full h-full object-contain object-center p-1 sm:p-2 transition-transform duration-700 group-hover:scale-[1.02]"
-                      />
+                      {card.video?.endsWith(".mp4") || card.video?.endsWith(".webm") ? (
+                        <video
+                          src={card.video}
+                          aria-label={`${card.titleMain} Preview`}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          className="absolute inset-0 w-full h-full object-contain object-center p-1 sm:p-2 transition-transform duration-700 group-hover:scale-[1.02]"
+                        />
+                      ) : (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img
+                          src={card.video}
+                          alt={`${card.titleMain} Preview`}
+                          className="absolute inset-0 w-full h-full object-contain object-center p-1 sm:p-2 transition-transform duration-700 group-hover:scale-[1.02]"
+                        />
+                      )}
                     </div>
 
                     {/* Subtle Ambient Vignette */}

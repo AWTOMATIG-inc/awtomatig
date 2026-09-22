@@ -7,10 +7,17 @@ import {
   Newsreader,
   Russo_One,
   Sora,
+  Space_Grotesk,
 } from "next/font/google";
 import "./animate.css";
 import "./common.css";
 import "./globals.css";
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const newsreader = Newsreader({
   variable: "--font-newsreader",
@@ -116,7 +123,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${manrope.variable} ${sora.variable} ${russoOne.variable} ${inter.variable} ${montserrat.variable} ${newsreader.variable} font-manrope bg-black overflow-x-clip text-white antialiased`}
+        className={`${spaceGrotesk.variable} ${manrope.variable} ${sora.variable} ${russoOne.variable} ${inter.variable} ${montserrat.variable} ${newsreader.variable} font-manrope bg-black overflow-x-clip text-white antialiased`}
       >
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         <GTMProvider />

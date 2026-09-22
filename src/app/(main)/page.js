@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import GridAnimatedBg from "@/components/animation/GridAnimatedBg";
 import Hero from "@/components/home/Hero";
 
 // Below-the-fold sections: code-split out of the route's initial JS instead
@@ -34,9 +33,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="overflow-x-clip">
-      <GridAnimatedBg>
-        <Hero />
-      </GridAnimatedBg>
+      <Hero />
       
       <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <WhyUs />

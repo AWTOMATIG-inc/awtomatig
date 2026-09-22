@@ -3,39 +3,39 @@
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { pushEvent } from "@/lib/gtm";
-
-const capabilities = [
-  {
-    icon: "solar:shield-check-linear",
-    title: "Zero Follow-Ups",
-    desc: "Invisible execution & SLA guarantees",
-  },
-  {
-    icon: "solar:cpu-bolt-linear",
-    title: "Autonomous AI",
-    desc: "n8n, Make & agentic workflows",
-  },
-  {
-    icon: "solar:layers-minimalistic-linear",
-    title: "Web & ERPNext",
-    desc: "High-speed platforms & unified data",
-  },
-];
+import Lightfall from "@/components/Lightfall";
 
 export default function Hero() {
   return (
-    <section className="relative w-full pt-28 pb-14 sm:pt-36 sm:pb-16 md:pt-40 md:pb-20 lg:pt-44 lg:pb-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col items-center text-center">
-          {/* Top Status / Announcement Pill */}
-          <div className="mb-5 sm:mb-7">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] backdrop-blur-xl transition-all duration-300 hover:border-[#02d5e8]/40 hover:bg-white/[0.08] shadow-[0_2px_16px_rgba(0,0,0,0.4)]">
-              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-white">
-                Extended Operations Team
-              </span>
-            </div>
-          </div>
+    <section className="relative w-full min-h-screen min-h-dvh flex flex-col justify-center items-center overflow-hidden bg-black pt-32 pb-20 sm:pt-36 sm:pb-24 px-4 sm:px-6 lg:px-8">
+      {/* Full Hero Lightfall Canvas Background */}
+      <div className="pointer-events-none absolute inset-0 z-0 w-full h-full overflow-hidden">
+        <Lightfall
+          colors={['#A6C8FF', '#5227FF', '#FF9FFC']}
+          backgroundColor="#000000"
+          speed={0.4}
+          streakCount={2}
+          streakWidth={1}
+          streakLength={1}
+          glow={1}
+          density={0.6}
+          twinkle={1}
+          zoom={3}
+          backgroundGlow={0.5}
+          opacity={1}
+          mouseInteraction={false}
+          mouseStrength={0.5}
+          mouseRadius={1}
+          color1="#06B6D4"
+          color2="#ffffff"
+          color3="#06B6D4"
+        />
+        {/* Seamless bottom fade to pitch black */}
+        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none" />
+      </div>
 
+      <div className="relative z-10 w-full max-w-6xl mx-auto">
+        <div className="flex flex-col items-center text-center">
           {/* Main Headline */}
           <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-[76px] xl:text-[84px] font-sora font-extrabold tracking-[-0.035em] text-white leading-[1.08] max-w-5xl">
             We Power Your{" "}
@@ -46,13 +46,10 @@ export default function Hero() {
 
           {/* Subtitle & Value Proposition */}
           <div className="mt-5 sm:mt-7 max-w-3xl">
-            <h2 className="text-lg sm:text-2xl md:text-3xl font-medium text-neutral-200 tracking-tight leading-snug">
+            <h2 className="text-lg sm:text-xl md:text-2xl font-medium text-neutral-200 tracking-tight leading-snug">
               Your extended tech and operations team{" "}
               <span className="text-white font-semibold">without the overhead.</span>
             </h2>
-            <p className="mt-3 sm:mt-4 text-xs sm:text-base text-neutral-400 font-inter leading-relaxed max-w-2xl mx-auto">
-              We engineer custom web platforms, automate workflows with AI, deploy ERPNext, and manage back-office execution so your team can move at maximum velocity.
-            </p>
           </div>
 
           {/* Action CTAs */}
@@ -88,30 +85,6 @@ export default function Hero() {
                 className="w-4 h-4 text-neutral-400 group-hover:text-white transition-all duration-300 group-hover:translate-x-1"
               />
             </Link>
-          </div>
-
-          {/* Value Metric / Capability Proof Strip */}
-          <div className="mt-12 sm:mt-16 md:mt-20 pt-8 sm:pt-10 border-t border-white/[0.08] w-full max-w-md sm:max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
-              {capabilities.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="group relative flex items-center sm:flex-col sm:items-center gap-3.5 sm:gap-2.5 px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/[0.06] hover:border-[#02d5e8]/30 transition-all duration-300 shadow-sm"
-                >
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#02d5e8]/10 border border-[#02d5e8]/20 flex items-center justify-center text-[#02d5e8] shrink-0 transition-transform duration-300 group-hover:scale-110">
-                    <Icon icon={item.icon} className="w-4 sm:w-5 h-4 sm:h-5" />
-                  </div>
-                  <div className="min-w-0 flex-1 text-left sm:text-center">
-                    <div className="text-xs sm:text-sm font-semibold text-white tracking-tight">
-                      {item.title}
-                    </div>
-                    <div className="text-[11px] sm:text-xs text-neutral-400 mt-0.5 leading-snug">
-                      {item.desc}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>

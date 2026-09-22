@@ -16,7 +16,7 @@ const companyLinks = [
   { name: "About Us", href: "/about-us" },
   { name: "Case Studies", href: "/case-studies" },
   { name: "Contact", href: "/contact" },
-  { name: "Careers", href: "/ui-ux-intern" },
+  { name: "Careers", href: "/careers" },
 ];
 
 const capabilityLinks = [
