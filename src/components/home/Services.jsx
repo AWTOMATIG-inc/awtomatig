@@ -6,16 +6,15 @@ export default function Services() {
   return (
   
       
-      <div className="container">
+      <div className="container max-w-7xl">
         <FadeInSection
-          initial={{ opacity: 0, x: 100 }}
-          scrollTop={{ opacity: 1, x: 0 }}
-          scrollBottom={{ opacity: 0, x: 100 }}
-          margin="40px 0px -40px 0px"
+          initial={{ opacity: 0, y: 30 }}
+          scrollTop={{ opacity: 1, y: 0 }}
+          scrollBottom={{ opacity: 0, y: 30 }}
         >
-          <div className="wrapper mt-20 mb-14  text-center sm:text-left relative z-10">
-            <CommonHeading title="Why teams stay">
-              Because the work feels different
+          <div className="wrapper mt-20 mb-14 text-center relative z-10">
+            <CommonHeading title="Why Teams Stay">
+              Work Feels Different
             </CommonHeading>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12  mt-25">

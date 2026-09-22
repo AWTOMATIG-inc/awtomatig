@@ -1,12 +1,23 @@
 "use client";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 
 const ParticleBackground = ({ className }) => {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    setPrefersReducedMotion(
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }, []);
+
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine); // ✅ FIX
   }, []);
+
+  // Don't start the particle engine at all for users who opted out of motion.
+  if (prefersReducedMotion) return null;
 
   return (
     <Particles

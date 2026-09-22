@@ -1,1030 +1,1076 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import {
+  Menu,
+  Plus,
+  RefreshCw,
+  Loader2,
+  AlertCircle,
+} from "lucide-react";
 
-// ────────────────────────────────────────────────────────────────
-// Field labels per position
-// ────────────────────────────────────────────────────────────────
-const FULLSTACK_FIELD_LABELS = {
-  full_name: "Full Name",
-  email: "Email",
-  phone: "Phone / WhatsApp",
-  location: "Location",
-  university: "University",
-  department: "Department",
-  graduation_status: "Graduation Status",
-  graduation_year: "Graduation Year",
-  experience_level: "Experience",
-  onsite_availability: "On-site Available",
-  commit_3_months: "3-Month Commit",
-  join_timeline: "Can Join",
-  github_url: "GitHub",
-  portfolio_url: "Portfolio",
-  linkedin_url: "LinkedIn",
-  deployed_project_url: "Deployed Project",
-  project_repo_url: "Project Repo",
-  nextjs_experience: "Next.js Experience",
-  skills: "Skills",
-  backend_rating: "Backend Rating",
-  database_rating: "Database Rating",
-  project_name: "Project Name",
-  project_description: "Project Description",
-  project_tech: "Technologies Used",
-  project_role: "Role in Project",
-  project_hardest_problem: "Hardest Problem",
-  project_improvement: "Would Improve",
-  clean_code_definition: "Clean Code",
-  ai_tool_usage: "AI Tool Usage",
-  stuck_bug_approach: "Stuck on Bug",
-  collaboration_experience: "Collaboration",
-  why_awtomatig: "Why AWTOMATIG",
-};
+import { useDebounce } from "./hooks/useDebounce";
+import SidebarNav from "./components/SidebarNav";
+import OverviewSection from "./components/OverviewSection";
+import CandidatePipelineSection from "./components/CandidatePipelineSection";
+import CandidateDrawer from "./components/CandidateDrawer";
+import JobOpeningsSection from "./components/JobOpeningsSection";
+import JobModal from "./components/JobModal";
+import ContactLeadsSection from "./components/ContactLeadsSection";
+import SettingsSection from "./components/SettingsSection";
+import ConfirmModal from "./components/ConfirmModal";
+import ToastContainer from "./components/Toast";
 
-const CONTENT_SEO_FIELD_LABELS = {
-  "basicInfo.fullName": "Full Name",
-  "basicInfo.email": "Email",
-  "basicInfo.phone": "Phone",
-  "basicInfo.location": "Location",
-  "basicInfo.education": "Education",
-  "basicInfo.graduationStatus": "Graduation Status",
-  "basicInfo.currentRole": "Current Role",
-  "basicInfo.totalExperience": "Total Experience",
-  "basicInfo.joinDate": "Can Join",
-  "basicInfo.linkedin": "LinkedIn",
-  "basicInfo.portfolioUrl": "Portfolio URL",
-  "availability.officeAvailable": "Office Available",
-  "contentExperience.writtenForBusinesses": "Written for Businesses",
-  "contentExperience.workedAgency": "Worked in Agency",
-  "contentExperience.writtenBlogs": "Written Blogs",
-  "contentExperience.writtenLandingCopy": "Written Landing Copy",
-  "contentExperience.writtenSocialContent": "Written Social Content",
-  "contentExperience.publishedWordPress": "Published WordPress",
-  "contentExperience.articlesPerMonth": "Articles/Month",
-  "contentExperience.industries": "Industries",
-  "seoAnswers.searchIntent": "Search Intent",
-  "seoAnswers.keywordVsTopicVsIntent": "Keyword vs Topic vs Intent",
-  "seoAnswers.optimizeBlogPost": "Keyword Mapping",
-  "seoAnswers.trafficNoLeads": "Traffic No Leads",
-  "seoAnswers.trafficDrop": "On-page vs Off-page",
-  "seoAnswers.tools": "SEO Tools",
-  "aiAnswers.toolsUsed": "AI Tools",
-  "aiAnswers.blogWorkflow": "AI Blog Workflow",
-  "aiAnswers.avoidGeneric": "Avoid Generic AI",
-  "aiAnswers.factCheck": "Fact-Checking",
-  "aiAnswers.notAutomate": "Should Not Automate",
-  "portfolioLinks.articleLinks": "Article Links",
-  "portfolioLinks.bestPieceLink": "Best Piece Link",
-  "portfolioLinks.bestPieceReason": "Best Piece Reason",
-  "writingAssessment.task1Intro": "Task 1: SEO Intro",
-  "writingAssessment.task2Rewrite": "Task 2: Rewrite",
-  "writingAssessment.task3LinkedIn": "Task 3: LinkedIn Post",
-  "writingAssessment.task4MetaTitle": "Task 4: Meta Title",
-  "writingAssessment.task4MetaDescription": "Task 4: Meta Description",
-  "writingAssessment.task5BlogTopics": "Task 5: Blog Topics",
-  "ownershipAnswers.projectOwned": "Project Owned",
-  "ownershipAnswers.mistakeFix": "Mistake & Fix",
-  "ownershipAnswers.kpiImportance": "KPI Importance",
-  "ownershipAnswers.whyJoin": "Why AWTOMATIG",
-};
+const STAGES = [
+  { key: "APPLIED", label: "Applied", color: "text-blue-400", bg: "bg-blue-500/10", border: "border-blue-500/20" },
+  { key: "SCREENING", label: "Screening", color: "text-purple-400", bg: "bg-purple-500/10", border: "border-purple-500/20" },
+  { key: "INTERVIEW", label: "Interview", color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20" },
+  { key: "OFFER", label: "Offer", color: "text-amber-400", bg: "bg-amber-500/10", border: "border-amber-500/20" },
+  { key: "HIRED", label: "Hired", color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20" },
+  { key: "REJECTED", label: "Rejected", color: "text-rose-400", bg: "bg-rose-500/10", border: "border-rose-500/20" },
+];
 
-const UIUX_FIELD_LABELS = {
-  full_name: "Full Name",
-  email: "Email",
-  phone: "Phone / WhatsApp",
-  linkedin_url: "LinkedIn",
-  portfolio_url: "Portfolio URL",
-  design_profile_url: "Behance / Dribbble / Figma",
-  experience_level: "Design Experience",
-  tools_used: "Tools Used",
-  design_duration: "Designing For",
-  portfolio_project_count: "Portfolio Projects",
-  project_types: "Project Types",
-  proud_project: "Proudest Project",
-  project_role: "Role in Project",
-  conversion_review_answer: "Conversion Review",
-  rejected_design_answer: "Rejected Design Response",
-  feedback_comfort: "Feedback Comfort",
-  onsite_available: "On-site Available",
-  three_month_commitment: "3-Month Commit",
-  current_status: "Current Status",
-  start_date: "Available Start Date",
-  why_awtomatig: "Why AWTOMATIG",
-  extra_note: "Extra Notes",
-};
+function AdminDashboardContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-// ────────────────────────────────────────────────────────────────
-// Value label maps
-// ────────────────────────────────────────────────────────────────
-const GRADUATION_STATUS_LABELS = {
-  final_year: "Final-year student",
-  fresh_graduate: "Fresh graduate",
-  graduated_within_1yr: "Graduated within 1 year",
-  graduated_over_1yr: "Graduated 1+ year ago",
-};
+  // URL parameters synchronization
+  const activeTabParam = searchParams.get("tab") || "pipeline";
+  const candidateParam = searchParams.get("candidate") || null;
 
-const EXPERIENCE_LABELS = {
-  none: "No professional experience",
-  lt_6m: "Less than 6 months",
-  "6m_1y": "6 months to 1 year",
-  gt_1y: "More than 1 year",
-};
+  const [currentUser, setCurrentUser] = useState(null);
+  const [authChecking, setAuthChecking] = useState(true);
 
-const NEXTJS_LABELS = {
-  lt_1m: "Less than 1 month",
-  "1_3m": "1–3 months",
-  "3_6m": "3–6 months",
-  "6_12m": "6–12 months",
-  "1y_plus": "1 year+",
-};
+  // Login form state
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [loginLoading, setLoginLoading] = useState(false);
 
-const JOIN_LABELS = {
-  immediately: "Immediately",
-  within_7_days: "Within 7 days",
-  within_15_days: "Within 15 days",
-  later_than_15_days: "Later than 15 days",
-};
+  // Mobile sidebar toggle
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
-const SKILL_LABELS = {
-  app_router: "Next.js App Router",
-  react_components: "React Components",
-  tailwind: "Tailwind CSS",
-  api_routes: "API Routes",
-  server_actions: "Server Actions",
-  authentication: "Authentication",
-  rest_apis: "REST APIs",
-  database_integration: "Database Integration",
-  mysql: "MySQL",
-  postgresql: "PostgreSQL",
-  mongodb: "MongoDB",
-  firebase: "Firebase",
-  supabase: "Supabase",
-  git_github: "Git/GitHub",
-  vercel: "Vercel Deployment",
-  ai_tools: "AI Tools",
-};
+  // Jobs State
+  const [jobs, setJobs] = useState([]);
+  const [jobsLoading, setJobsLoading] = useState(false);
+  const [selectedJob, setSelectedJob] = useState("all");
 
-const UIUX_EXPERIENCE_LABELS = {
-  just_starting: "Just getting started",
-  few_personal_projects: "Built a few personal projects",
-  multiple_real_projects: "Designed multiple real projects",
-  freelance_client: "Freelance or client experience",
-};
-
-const DESIGN_DURATION_LABELS = {
-  lt_6m: "Less than 6 months",
-  "6_12m": "6–12 months",
-  "1_2y": "1–2 years",
-  "2y_plus": "2+ years",
-};
-
-const PORTFOLIO_COUNT_LABELS = {
-  "1_2": "1–2",
-  "3_5": "3–5",
-  "6_10": "6–10",
-  "10_plus": "10+",
-};
-
-const UIUX_TOOL_LABELS = {
-  figma: "Figma",
-  adobe_xd: "Adobe XD",
-  photoshop: "Photoshop",
-  illustrator: "Illustrator",
-  canva: "Canva",
-  framer: "Framer",
-  other: "Other",
-};
-
-const PROJECT_TYPE_LABELS = {
-  websites: "Websites",
-  dashboards: "Dashboards",
-  mobile_apps: "Mobile Apps",
-  landing_pages: "Landing Pages",
-  ecommerce: "E-commerce",
-  branding: "Branding",
-  graphics_social: "Graphics / Social Media",
-};
-
-const CONVERSION_LABELS = {
-  colors: "Colors",
-  typography: "Typography",
-  user_flow: "User Flow",
-  images: "Images",
-  not_sure: "Not sure",
-};
-
-const REJECTED_LABELS = {
-  defend_design: "Defend my design",
-  ask_feedback_iterate: "Ask for feedback and iterate",
-  start_over: "Start over completely",
-  wait_instructions: "Wait for instructions",
-};
-
-const FEEDBACK_COMFORT_LABELS = {
-  not_comfortable: "Not comfortable",
-  somewhat_comfortable: "Somewhat comfortable",
-  comfortable: "Comfortable",
-  very_comfortable: "Very comfortable",
-};
-
-const CURRENT_STATUS_LABELS = {
-  fulltime_student: "Full-time student",
-  final_year_student: "Final year student",
-  recent_graduate: "Recent graduate",
-  employed_fulltime: "Employed full-time",
-  employed_parttime: "Employed part-time",
-  freelancing: "Freelancing",
-  other: "Other",
-};
-
-// ────────────────────────────────────────────────────────────────
-// Format helpers
-// ────────────────────────────────────────────────────────────────
-function formatFullstackValue(key, value) {
-  if (value === undefined || value === null || value === "") return "—";
-  if (key === "graduation_status") return GRADUATION_STATUS_LABELS[value] || value;
-  if (key === "experience_level") return EXPERIENCE_LABELS[value] || value;
-  if (key === "nextjs_experience") return NEXTJS_LABELS[value] || value;
-  if (key === "join_timeline") return JOIN_LABELS[value] || value;
-  if (key === "skills" && Array.isArray(value)) {
-    return value.map((s) => SKILL_LABELS[s] || s).join(", ");
-  }
-  if (key === "onsite_availability" || key === "commit_3_months") {
-    return value === "yes" ? "Yes" : "No";
-  }
-  if (key === "backend_rating" || key === "database_rating") {
-    return value.charAt(0).toUpperCase() + value.slice(1);
-  }
-  return String(value);
-}
-
-function formatUiuxValue(key, value) {
-  if (value === undefined || value === null || value === "") return "—";
-  if (key === "experience_level") return UIUX_EXPERIENCE_LABELS[value] || value;
-  if (key === "design_duration") return DESIGN_DURATION_LABELS[value] || value;
-  if (key === "portfolio_project_count") return PORTFOLIO_COUNT_LABELS[value] || value;
-  if (key === "tools_used" && Array.isArray(value)) {
-    return value.map((s) => UIUX_TOOL_LABELS[s] || s).join(", ");
-  }
-  if (key === "project_types" && Array.isArray(value)) {
-    return value.map((s) => PROJECT_TYPE_LABELS[s] || s).join(", ");
-  }
-  if (key === "conversion_review_answer") return CONVERSION_LABELS[value] || value;
-  if (key === "rejected_design_answer") return REJECTED_LABELS[value] || value;
-  if (key === "feedback_comfort") return FEEDBACK_COMFORT_LABELS[value] || value;
-  if (key === "current_status") return CURRENT_STATUS_LABELS[value] || value;
-  if (key === "onsite_available" || key === "three_month_commitment") {
-    return value === "yes" ? "Yes" : "No";
-  }
-  return String(value);
-}
-
-function getNestedValue(obj, path) {
-  return path.split(".").reduce((o, k) => (o && o[k] !== undefined ? o[k] : undefined), obj);
-}
-
-function formatContentSeoValue(key, value) {
-  if (value === undefined || value === null || value === "") return "—";
-  if (typeof value === "boolean") return value ? "Yes" : "No";
-  if (Array.isArray(value)) return value.length > 0 ? value.join(", ") : "—";
-  return String(value);
-}
-
-// ────────────────────────────────────────────────────────────────
-// Position config
-// ────────────────────────────────────────────────────────────────
-const POSITION_CONFIG = {
-  fullstack_intern: {
-    title: "Full Stack Intern Applications",
-    subtitle: "Manage and review incoming full stack developer applications",
-    fieldLabels: FULLSTACK_FIELD_LABELS,
-    formatValue: formatFullstackValue,
-    shortFields: [
-      "full_name", "email", "phone", "location", "university", "department",
-      "graduation_status", "graduation_year", "experience_level",
-      "onsite_availability", "commit_3_months", "join_timeline",
-      "nextjs_experience", "backend_rating", "database_rating", "project_name",
-    ],
-    linkFields: ["github_url", "portfolio_url", "linkedin_url", "deployed_project_url", "project_repo_url"],
-    tagField: "skills",
-    tagLabels: SKILL_LABELS,
-    tagTitle: "Skills",
-    longFields: [
-      "project_description", "project_tech", "project_role",
-      "project_hardest_problem", "project_improvement",
-      "clean_code_definition", "ai_tool_usage", "stuck_bug_approach",
-      "collaboration_experience", "why_awtomatig",
-    ],
-  },
-  uiux_intern: {
-    title: "UI/UX Design Intern Applications",
-    subtitle: "Manage and review incoming UI/UX design intern applications",
-    fieldLabels: UIUX_FIELD_LABELS,
-    formatValue: formatUiuxValue,
-    shortFields: [
-      "full_name", "email", "phone",
-      "experience_level", "design_duration", "portfolio_project_count",
-      "onsite_available", "three_month_commitment", "current_status", "start_date",
-      "conversion_review_answer", "rejected_design_answer", "feedback_comfort",
-    ],
-    linkFields: ["portfolio_url", "linkedin_url", "design_profile_url"],
-    tagField: "tools_used",
-    tagLabels: UIUX_TOOL_LABELS,
-    tagTitle: "Design Tools",
-    secondTagField: "project_types",
-    secondTagLabels: PROJECT_TYPE_LABELS,
-    secondTagTitle: "Project Types",
-    longFields: [
-      "proud_project", "project_role", "why_awtomatig", "extra_note",
-    ],
-  },
-  content_seo_executive: {
-    title: "Content & SEO Executive Applications",
-    subtitle: "Manage and review incoming content & SEO executive applications",
-    fieldLabels: CONTENT_SEO_FIELD_LABELS,
-    formatValue: formatContentSeoValue,
-    nested: true,
-    shortFields: [
-      "basicInfo.fullName", "basicInfo.email", "basicInfo.phone", "basicInfo.location",
-      "basicInfo.education", "basicInfo.graduationStatus", "basicInfo.currentRole",
-      "basicInfo.totalExperience", "basicInfo.joinDate",
-      "availability.officeAvailable",
-      "contentExperience.writtenForBusinesses", "contentExperience.workedAgency",
-      "contentExperience.writtenBlogs", "contentExperience.writtenLandingCopy",
-      "contentExperience.writtenSocialContent", "contentExperience.publishedWordPress",
-      "contentExperience.articlesPerMonth", "contentExperience.industries",
-    ],
-    linkFields: [
-      "basicInfo.linkedin", "basicInfo.portfolioUrl",
-      "portfolioLinks.bestPieceLink",
-    ],
-    tagField: "seoAnswers.tools",
-    tagLabels: null,
-    tagTitle: "SEO Tools",
-    secondTagField: "aiAnswers.toolsUsed",
-    secondTagLabels: null,
-    secondTagTitle: "AI Tools",
-    articleLinksField: "portfolioLinks.articleLinks",
-    longFields: [
-      "seoAnswers.searchIntent", "seoAnswers.keywordVsTopicVsIntent",
-      "seoAnswers.optimizeBlogPost", "seoAnswers.trafficNoLeads", "seoAnswers.trafficDrop",
-      "aiAnswers.blogWorkflow", "aiAnswers.avoidGeneric", "aiAnswers.factCheck", "aiAnswers.notAutomate",
-      "portfolioLinks.bestPieceReason",
-      "writingAssessment.task1Intro", "writingAssessment.task2Rewrite",
-      "writingAssessment.task3LinkedIn", "writingAssessment.task4MetaTitle",
-      "writingAssessment.task4MetaDescription", "writingAssessment.task5BlogTopics",
-      "ownershipAnswers.projectOwned", "ownershipAnswers.mistakeFix",
-      "ownershipAnswers.kpiImportance", "ownershipAnswers.whyJoin",
-    ],
-  },
-};
-
-// ────────────────────────────────────────────────────────────────
-// Login Screen
-// ────────────────────────────────────────────────────────────────
-function LoginScreen({ onLogin }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  // Candidate Applications State
+  const [applications, setApplications] = useState([]);
+  const [summary, setSummary] = useState({});
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState("");
+  const debouncedSearch = useDebounce(search, 300);
+  const [priorityFilter, setPriorityFilter] = useState("all");
+  const [stageFilter, setStageFilter] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [totalApplications, setTotalApplications] = useState(0);
 
-  async function handleSubmit(e) {
+  // Candidate Detail Drawer State
+  const [candidateDetail, setCandidateDetail] = useState(null);
+  const [detailLoading, setDetailLoading] = useState(false);
+  const [newNote, setNewNote] = useState("");
+  const [noteSubmitting, setNoteSubmitting] = useState(false);
+
+  // Job Modal State (Create & Edit)
+  const [showJobModal, setShowJobModal] = useState(false);
+  const [jobModalMode, setJobModalMode] = useState("create");
+  const [editingJobId, setEditingJobId] = useState(null);
+  const [jobSubmitting, setJobSubmitting] = useState(false);
+  const [jobForm, setJobForm] = useState({
+    title: "",
+    slug: "",
+    department: "Engineering",
+    type: "FULL_TIME",
+    workMode: "On-site",
+    location: "Dhaka, Bangladesh",
+    salary: "Negotiable",
+    summary: "",
+    descriptionMarkdown: "",
+    requirements: "",
+    benefits: "",
+    status: "PUBLISHED",
+  });
+
+  // Contact Inquiries State
+  const [inquiries, setInquiries] = useState([]);
+  const [inquiriesSummary, setInquiriesSummary] = useState({});
+  const [inquiriesLoading, setInquiriesLoading] = useState(false);
+  const [inquiryStatusFilter, setInquiryStatusFilter] = useState("all");
+  const [inquiryPage, setInquiryPage] = useState(1);
+  const [inquiryTotalPages, setInquiryTotalPages] = useState(1);
+  const [inquiryTotalCount, setInquiryTotalCount] = useState(0);
+
+  // Settings State
+  const [settingsForm, setSettingsForm] = useState({
+    fullName: "",
+    email: "",
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+  const [avatarFile, setAvatarFile] = useState(null);
+  const [avatarPreview, setAvatarPreview] = useState(null);
+  const [removeAvatar, setRemoveAvatar] = useState(false);
+  const [settingsLoading, setSettingsLoading] = useState(false);
+  const [settingsStatus, setSettingsStatus] = useState(null);
+
+  // Styled Confirmation Modal
+  const [confirmModal, setConfirmModal] = useState({
+    isOpen: false,
+    title: "",
+    message: "",
+    onConfirm: null,
+    loading: false,
+  });
+
+  // Cyber-minimal Toast Notifications State
+  const [toasts, setToasts] = useState([]);
+
+  const showToast = useCallback((message, type = "success", title = "") => {
+    const id = `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+    setToasts((prev) => [...prev.slice(-3), { id, message, type, title }]);
+    setTimeout(() => {
+      setToasts((prev) => prev.filter((t) => t.id !== id));
+    }, 4000);
+  }, []);
+
+  const handleDismissToast = useCallback((id) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  }, []);
+
+  // Centralized Session Check
+  const checkAuth = useCallback(async () => {
+    try {
+      const res = await fetch("/api/auth/me");
+      const data = await res.json();
+      if (res.ok && data.success && data.user) {
+        setCurrentUser(data.user);
+      } else {
+        setCurrentUser(null);
+      }
+    } catch {
+      setCurrentUser(null);
+    } finally {
+      setAuthChecking(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
+
+  // Handle 401 Session Expiration
+  const handleAuthError = useCallback(() => {
+    setCurrentUser(null);
+    setLoginError("Your session has expired. Please sign in again.");
+  }, []);
+
+  // Update URL Query Parameters
+  const updateUrlParams = useCallback((paramsObj) => {
+    const current = new URLSearchParams(searchParams.toString());
+    Object.entries(paramsObj).forEach(([k, v]) => {
+      if (v === null || v === undefined) {
+        current.delete(k);
+      } else {
+        current.set(k, v);
+      }
+    });
+    router.push(`/aw-admin?${current.toString()}`, { scroll: false });
+  }, [router, searchParams]);
+
+  // Section Tab Navigation
+  function handleSelectSection(section) {
+    updateUrlParams({ tab: section, candidate: null });
+    setMobileSidebarOpen(false);
+  }
+
+  // Sync settings form when user loads
+  useEffect(() => {
+    if (currentUser) {
+      setSettingsForm((prev) => ({
+        ...prev,
+        fullName: currentUser.fullName || "",
+        email: currentUser.email || "",
+      }));
+    }
+  }, [currentUser]);
+
+  // Handle Login
+  async function handleLogin(e) {
     e.preventDefault();
-    setError("");
-    setLoading(true);
+    setLoginError("");
+    setLoginLoading(true);
 
     try {
       const res = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email: loginEmail, password: loginPassword }),
       });
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        throw new Error(data.message || "Login failed.");
+        throw new Error(data.message || "Invalid credentials.");
       }
 
-      localStorage.setItem("aw_admin_token", data.token);
-      onLogin(data.token);
+      setCurrentUser(data.user);
     } catch (err) {
-      setError(err.message);
+      setLoginError(err.message);
     } finally {
-      setLoading(false);
+      setLoginLoading(false);
     }
   }
 
-  return (
-    <div className="min-h-screen bg-[#050507] flex items-center justify-center px-4">
-      <div className="w-full max-w-md">
-        <div className="text-center mb-10">
-          <div className="flex items-center justify-center gap-2.5 mb-6">
-            <span className="inline-block w-6 h-6 rounded-[6px] bg-gradient-to-br from-[#33E6D8] to-white rotate-45"></span>
-            <span className="font-bold text-white tracking-[0.04em] text-lg" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>AWTOMATIG</span>
-          </div>
-          <h1 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Admin Panel</h1>
-          <p className="text-white/50 text-sm">Sign in to manage intern applications</p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="bg-[#0B0C10] border border-white/10 rounded-2xl p-8">
-          <div className="mb-5">
-            <label className="block text-[11px] uppercase tracking-wide text-white/50 mb-2" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full text-sm text-white bg-[#050507] border border-white/10 rounded-lg px-3.5 py-3 placeholder-white/30 focus:outline-none focus:border-[#33E6D8] focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]"
-              placeholder="admin@awtomatig.com"
-            />
-          </div>
-          <div className="mb-6">
-            <label className="block text-[11px] uppercase tracking-wide text-white/50 mb-2" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full text-sm text-white bg-[#050507] border border-white/10 rounded-lg px-3.5 py-3 placeholder-white/30 focus:outline-none focus:border-[#33E6D8] focus:shadow-[0_0_0_3px_rgba(51,230,216,0.16)]"
-              placeholder="Enter password"
-            />
-          </div>
-
-          {error && (
-            <p className="text-[12.5px] text-[#E15A72]/90 bg-[#E15A72]/10 border-l-[3px] border-[#E15A72] px-3.5 py-2.5 mb-4 rounded-md">{error}</p>
-          )}
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full text-[13px] font-semibold uppercase tracking-wide text-[#050507] bg-[#33E6D8] py-3.5 rounded-full shadow-[0_0_24px_-4px_rgba(51,230,216,0.55)] hover:shadow-[0_0_32px_-2px_rgba(51,230,216,0.85)] transition-shadow duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-            style={{ fontFamily: '"Space Grotesk", sans-serif' }}
-          >
-            {loading ? "Signing in…" : "Sign In"}
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-}
-
-// ────────────────────────────────────────────────────────────────
-// Position Selector
-// ────────────────────────────────────────────────────────────────
-function PositionSelector({ onSelect, onLogout }) {
-  return (
-    <div className="min-h-screen bg-[#050507]">
-      <nav className="sticky top-0 z-40 bg-[#050507]/95 backdrop-blur border-b border-white/10">
-        <div className="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <span className="inline-block w-5 h-5 rounded-[5px] bg-gradient-to-br from-[#33E6D8] to-white rotate-45"></span>
-            <span className="font-bold text-white tracking-[0.04em] text-sm" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>AWTOMATIG</span>
-            <span className="text-white/30 mx-2">|</span>
-            <span className="text-[11px] uppercase tracking-wide text-white/50" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Admin Panel</span>
-          </div>
-          <button
-            onClick={onLogout}
-            className="text-[11px] uppercase tracking-wide text-white/50 hover:text-white/80 transition-colors"
-            style={{ fontFamily: '"Space Grotesk", sans-serif' }}
-          >
-            Sign Out
-          </button>
-        </div>
-      </nav>
-
-      <div className="max-w-[800px] mx-auto px-6 py-16">
-        <div className="text-center mb-12">
-          <h1 className="text-2xl font-bold text-white mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Select Position</h1>
-          <p className="text-white/50 text-sm">Choose which intern applications you want to review</p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Full Stack Intern Card */}
-          <button
-            onClick={() => onSelect("fullstack_intern")}
-            className="group bg-[#0B0C10] border border-white/10 rounded-2xl p-8 text-left transition-all duration-200 hover:border-[#33E6D8]/40 hover:shadow-[0_0_32px_-8px_rgba(51,230,216,0.25)]"
-          >
-            <div className="w-12 h-12 rounded-xl bg-[#33E6D8]/15 border border-[#33E6D8]/25 flex items-center justify-center mb-5">
-              <svg className="w-6 h-6 text-[#33E6D8]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            </div>
-            <h2 className="text-lg font-bold text-white mb-2 group-hover:text-[#33E6D8] transition-colors" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Full Stack Intern</h2>
-            <p className="text-white/45 text-sm leading-relaxed">Review full stack developer intern applications, GitHub profiles, and technical assessments</p>
-            <div className="mt-5 flex items-center gap-2 text-[11px] uppercase tracking-wide text-[#33E6D8]/70 group-hover:text-[#33E6D8] transition-colors" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
-              View Applications
-              <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-            </div>
-          </button>
-
-          {/* UI/UX Intern Card */}
-          <button
-            onClick={() => onSelect("uiux_intern")}
-            className="group bg-[#0B0C10] border border-white/10 rounded-2xl p-8 text-left transition-all duration-200 hover:border-[#8C5DA0]/40 hover:shadow-[0_0_32px_-8px_rgba(140,93,160,0.25)]"
-          >
-            <div className="w-12 h-12 rounded-xl bg-[#8C5DA0]/15 border border-[#8C5DA0]/25 flex items-center justify-center mb-5">
-              <svg className="w-6 h-6 text-[#8C5DA0]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-              </svg>
-            </div>
-            <h2 className="text-lg font-bold text-white mb-2 group-hover:text-[#8C5DA0] transition-colors" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>UI/UX Design Intern</h2>
-            <p className="text-white/45 text-sm leading-relaxed">Review UI/UX design intern applications, portfolios, and design thinking responses</p>
-            <div className="mt-5 flex items-center gap-2 text-[11px] uppercase tracking-wide text-[#8C5DA0]/70 group-hover:text-[#8C5DA0] transition-colors" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
-              View Applications
-              <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-            </div>
-          </button>
-
-          {/* Content & SEO Executive Card */}
-          <button
-            onClick={() => onSelect("content_seo_executive")}
-            className="group bg-[#0B0C10] border border-white/10 rounded-2xl p-8 text-left transition-all duration-200 hover:border-[#E8A23D]/40 hover:shadow-[0_0_32px_-8px_rgba(232,162,61,0.25)]"
-          >
-            <div className="w-12 h-12 rounded-xl bg-[#E8A23D]/15 border border-[#E8A23D]/25 flex items-center justify-center mb-5">
-              <svg className="w-6 h-6 text-[#E8A23D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-              </svg>
-            </div>
-            <h2 className="text-lg font-bold text-white mb-2 group-hover:text-[#E8A23D] transition-colors" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Content & SEO Executive</h2>
-            <p className="text-white/45 text-sm leading-relaxed">Review content & SEO executive applications, writing samples, and SEO knowledge assessments</p>
-            <div className="mt-5 flex items-center gap-2 text-[11px] uppercase tracking-wide text-[#E8A23D]/70 group-hover:text-[#E8A23D] transition-colors" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
-              View Applications
-              <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-            </div>
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ────────────────────────────────────────────────────────────────
-// Candidate Card (generic, driven by position config)
-// ────────────────────────────────────────────────────────────────
-function CandidateCard({ application, config, position, onStatusChange, expanded, onToggle }) {
-  const status = application.status;
-  const isRejected = status === "rejected";
-  const isApproved = status === "approved";
-
-  const { fieldLabels, formatValue, shortFields, linkFields, tagField, tagLabels, tagTitle, secondTagField, secondTagLabels, secondTagTitle, longFields, nested, articleLinksField } = config;
-
-  function getValue(key) {
-    return nested ? getNestedValue(application, key) : application[key];
-  }
-
-  const borderClass = isRejected
-    ? "border-[#E15A72]/20 opacity-60"
-    : isApproved
-      ? "border-[#4ADE80]/20"
-      : "border-white/10 hover:border-white/20";
-
-  const avatarClass = isRejected
-    ? "bg-[#E15A72]/20 text-[#E15A72]"
-    : isApproved
-      ? "bg-[#4ADE80]/20 text-[#4ADE80]"
-      : "bg-[#33E6D8]/20 text-[#33E6D8]";
-
-  return (
-    <div className={`bg-[#0B0C10] border rounded-2xl overflow-hidden transition-all duration-200 ${borderClass}`}>
-      {/* Card Header */}
-      <div className="px-6 py-4 flex items-center justify-between gap-4 cursor-pointer" onClick={onToggle}>
-        <div className="flex items-center gap-4 min-w-0">
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${avatarClass}`}>
-            {(getValue("full_name") || getValue("basicInfo.fullName") || "?").charAt(0).toUpperCase()}
-          </div>
-          <div className="min-w-0">
-            <h3 className="text-white font-semibold text-sm truncate">{getValue("full_name") || getValue("basicInfo.fullName") || "Unnamed"}</h3>
-            <p className="text-white/40 text-xs truncate">{getValue("email") || getValue("basicInfo.email")} &middot; {getValue("location") || getValue("basicInfo.location") || (getValue("current_status") ? formatValue("current_status", getValue("current_status")) : getValue("basicInfo.currentRole") || "—")}</p>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 shrink-0">
-          {application.priority === "high_priority" && (
-            <span className="text-[10px] uppercase tracking-wide bg-[#33E6D8]/15 text-[#33E6D8] px-2.5 py-1 rounded-full border border-[#33E6D8]/30" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>High Priority</span>
-          )}
-          {application.priority === "medium_priority" && (
-            <span className="text-[10px] uppercase tracking-wide bg-[#F5A623]/15 text-[#F5A623] px-2.5 py-1 rounded-full border border-[#F5A623]/30" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Medium Priority</span>
-          )}
-          {application.priority === "low_priority" && (
-            <span className="text-[10px] uppercase tracking-wide bg-white/10 text-white/50 px-2.5 py-1 rounded-full border border-white/15" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Low Priority</span>
-          )}
-          {isApproved && (
-            <span className="text-[10px] uppercase tracking-wide bg-[#4ADE80]/15 text-[#4ADE80] px-2.5 py-1 rounded-full border border-[#4ADE80]/30" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Approved</span>
-          )}
-          {isRejected && (
-            <span className="text-[10px] uppercase tracking-wide bg-[#E15A72]/15 text-[#E15A72] px-2.5 py-1 rounded-full border border-[#E15A72]/30" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Rejected</span>
-          )}
-          <span className="text-white/30 text-xs">{new Date(application.submitted_at || application.created_at).toLocaleDateString()}</span>
-          <svg className={`w-4 h-4 text-white/30 transition-transform duration-200 ${expanded ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-        </div>
-      </div>
-
-      {/* Expanded Content */}
-      {expanded && (
-        <div className="border-t border-white/10">
-          {/* Quick Info Grid */}
-          <div className="px-6 py-5">
-            <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Basic Info</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {shortFields.map((key) => (
-                <div key={key} className="bg-[#050507] rounded-lg px-3 py-2.5">
-                  <p className="text-[10px] uppercase tracking-wide text-white/35 mb-0.5">{fieldLabels[key] || key}</p>
-                  <p className="text-sm text-white/85 break-words">{formatValue(key, getValue(key))}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Links */}
-          <div className="px-6 pb-5">
-            <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Links</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {linkFields.map((key) => {
-                const val = getValue(key);
-                return (
-                  <div key={key} className="bg-[#050507] rounded-lg px-3 py-2.5">
-                    <p className="text-[10px] uppercase tracking-wide text-white/35 mb-0.5">{fieldLabels[key] || key}</p>
-                    {val ? (
-                      <a href={val} target="_blank" rel="noopener noreferrer" className="text-sm text-[#33E6D8] hover:underline break-all">{val}</a>
-                    ) : (
-                      <p className="text-sm text-white/30">—</p>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Article links for content & SEO */}
-            {articleLinksField && (() => {
-              const links = getValue(articleLinksField) || [];
-              return links.length > 0 ? (
-                <div className="mt-3">
-                  <p className="text-[10px] uppercase tracking-wide text-white/35 mb-2">Article Links</p>
-                  <div className="space-y-1.5">
-                    {links.map((link, i) => (
-                      <a key={i} href={link} target="_blank" rel="noopener noreferrer" className="block text-sm text-[#33E6D8] hover:underline break-all bg-[#050507] rounded-lg px-3 py-2">{link}</a>
-                    ))}
-                  </div>
-                </div>
-              ) : null;
-            })()}
-          </div>
-
-          {/* Tags (skills / tools) */}
-          <div className="px-6 pb-5">
-            <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>{tagTitle}</p>
-            <div className="flex flex-wrap gap-2">
-              {(getValue(tagField) || []).map((s) => (
-                <span key={s} className="text-[11px] bg-[#33E6D8]/10 text-[#33E6D8] border border-[#33E6D8]/20 px-2.5 py-1 rounded-full">{(tagLabels && tagLabels[s]) || s}</span>
-              ))}
-              {(!getValue(tagField) || getValue(tagField).length === 0) && <span className="text-sm text-white/30">—</span>}
-            </div>
-          </div>
-
-          {/* Second tag group */}
-          {secondTagField && (
-            <div className="px-6 pb-5">
-              <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>{secondTagTitle}</p>
-              <div className="flex flex-wrap gap-2">
-                {(getValue(secondTagField) || []).map((s) => (
-                  <span key={s} className="text-[11px] bg-[#8C5DA0]/10 text-[#8C5DA0] border border-[#8C5DA0]/20 px-2.5 py-1 rounded-full">{(secondTagLabels && secondTagLabels[s]) || s}</span>
-                ))}
-                {(!getValue(secondTagField) || getValue(secondTagField).length === 0) && <span className="text-sm text-white/30">—</span>}
-              </div>
-            </div>
-          )}
-
-          {/* Long-form Answers */}
-          <div className="px-6 pb-5">
-            <p className="text-[11px] uppercase tracking-wider text-white/40 mb-3" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Detailed Answers</p>
-            <div className="space-y-3">
-              {longFields.map((key) => (
-                <div key={key} className="bg-[#050507] rounded-lg px-4 py-3">
-                  <p className="text-[10px] uppercase tracking-wide text-white/35 mb-1.5">{fieldLabels[key] || key}</p>
-                  <p className="text-sm text-white/80 whitespace-pre-wrap leading-relaxed">{formatValue(key, getValue(key))}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Actions */}
-          <div className="px-6 py-4 bg-[#050507]/50 border-t border-white/5 flex items-center gap-3">
-            {status !== "approved" && (
-              <button
-                onClick={(e) => { e.stopPropagation(); onStatusChange(application._id, "approved"); }}
-                className="text-[12px] font-semibold uppercase tracking-wide text-[#4ADE80] border border-[#4ADE80]/30 bg-[#4ADE80]/10 px-5 py-2.5 rounded-full hover:bg-[#4ADE80]/20 transition-colors"
-                style={{ fontFamily: '"Space Grotesk", sans-serif' }}
-              >
-                Approve
-              </button>
-            )}
-            {status !== "active" && (
-              <button
-                onClick={(e) => { e.stopPropagation(); onStatusChange(application._id, "active"); }}
-                className="text-[12px] font-semibold uppercase tracking-wide text-[#33E6D8] border border-[#33E6D8]/30 bg-[#33E6D8]/10 px-5 py-2.5 rounded-full hover:bg-[#33E6D8]/20 transition-colors"
-                style={{ fontFamily: '"Space Grotesk", sans-serif' }}
-              >
-                Restore to Active
-              </button>
-            )}
-            {status !== "rejected" && (
-              <button
-                onClick={(e) => { e.stopPropagation(); onStatusChange(application._id, "rejected"); }}
-                className="text-[12px] font-semibold uppercase tracking-wide text-[#E15A72] border border-[#E15A72]/30 bg-[#E15A72]/10 px-5 py-2.5 rounded-full hover:bg-[#E15A72]/20 transition-colors"
-                style={{ fontFamily: '"Space Grotesk", sans-serif' }}
-              >
-                Reject
-              </button>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ────────────────────────────────────────────────────────────────
-// Priority Section
-// ────────────────────────────────────────────────────────────────
-function PrioritySection({ title, color, borderColor, applications, config, position, expandedId, setExpandedId, onStatusChange }) {
-  const [collapsed, setCollapsed] = useState(false);
-
-  if (applications.length === 0) return null;
-
-  return (
-    <div className="mb-8">
-      <button
-        onClick={() => setCollapsed(!collapsed)}
-        className="flex items-center gap-3 mb-3 group"
-      >
-        <span className={`w-2.5 h-2.5 rounded-full ${color}`}></span>
-        <span className="text-[12px] uppercase tracking-wider text-white/60" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
-          {title} ({applications.length})
-        </span>
-        <svg className={`w-3.5 h-3.5 text-white/30 transition-transform duration-200 ${collapsed ? "-rotate-90" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
-      </button>
-      {!collapsed && (
-        <div className={`space-y-3 border-l-2 ${borderColor} pl-4`}>
-          {applications.map((app) => (
-            <CandidateCard
-              key={app._id}
-              application={app}
-              config={config}
-              position={position}
-              expanded={expandedId === app._id}
-              onToggle={() => setExpandedId(expandedId === app._id ? null : app._id)}
-              onStatusChange={onStatusChange}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ────────────────────────────────────────────────────────────────
-// Admin Dashboard (generic, driven by position)
-// ────────────────────────────────────────────────────────────────
-function AdminDashboard({ token, position, onBack, onLogout }) {
-  const [applications, setApplications] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [filter, setFilter] = useState("active");
-  const [expandedId, setExpandedId] = useState(null);
-
-  const config = POSITION_CONFIG[position];
-
-  const fetchApplications = useCallback(async () => {
-    setLoading(true);
-    setError("");
+  // Handle Logout
+  async function handleLogout() {
     try {
-      const res = await fetch(`/api/admin/applications?status=${filter}&position=${position}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const data = await res.json();
-
-      if (!res.ok || !data.success) {
-        if (res.status === 401) { onLogout(); return; }
-        throw new Error(data.message || "Failed to load applications.");
-      }
-
-      setApplications(data.applications);
+      await fetch("/api/auth/logout", { method: "POST" });
+      setCurrentUser(null);
     } catch (err) {
-      setError(err.message);
+      console.error("Logout failed:", err);
+    }
+  }
+
+  // Fetch Jobs List
+  const fetchJobs = useCallback(async () => {
+    if (!currentUser) return;
+    setJobsLoading(true);
+    try {
+      const res = await fetch("/api/admin/jobs", { cache: "no-store" });
+      if (res.status === 401) {
+        handleAuthError();
+        return;
+      }
+      const data = await res.json();
+      if (data.success) {
+        setJobs(data.jobs || []);
+      }
+    } catch (err) {
+      console.error("Failed to load jobs:", err);
+    } finally {
+      setJobsLoading(false);
+    }
+  }, [currentUser, handleAuthError]);
+
+  // Fetch Candidate Applications with Debounced Search
+  const fetchApplications = useCallback(async () => {
+    if (!currentUser) return;
+    setLoading(true);
+    try {
+      const query = new URLSearchParams();
+      if (selectedJob !== "all") query.set("jobSlug", selectedJob);
+      if (stageFilter !== "all") query.set("stage", stageFilter);
+      if (priorityFilter !== "all") query.set("priority", priorityFilter);
+      if (debouncedSearch.trim()) query.set("search", debouncedSearch.trim());
+      query.set("page", String(currentPage));
+      query.set("limit", "25");
+
+      const res = await fetch(`/api/admin/applications?${query.toString()}`, { cache: "no-store" });
+      if (res.status === 401) {
+        handleAuthError();
+        return;
+      }
+      const data = await res.json();
+      if (data.success) {
+        setApplications(data.applications || []);
+        if (data.summary) setSummary(data.summary);
+        if (data.pagination) {
+          setTotalPages(data.pagination.totalPages || 1);
+          setTotalApplications(data.pagination.totalCount || 0);
+        }
+      }
+    } catch (err) {
+      console.error("Failed to fetch applications:", err);
     } finally {
       setLoading(false);
     }
-  }, [token, filter, position, onLogout]);
+  }, [currentUser, selectedJob, stageFilter, priorityFilter, debouncedSearch, currentPage, handleAuthError]);
+
+  // Reset page to 1 when filters or debounced search change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedJob, stageFilter, priorityFilter, debouncedSearch]);
+
+  // Fetch Inbound Contact Inquiries
+  const fetchInquiries = useCallback(async () => {
+    if (!currentUser) return;
+    setInquiriesLoading(true);
+    try {
+      const query = new URLSearchParams();
+      if (inquiryStatusFilter !== "all") query.set("status", inquiryStatusFilter);
+      query.set("page", String(inquiryPage));
+      query.set("limit", "25");
+
+      const res = await fetch(`/api/admin/inquiries?${query.toString()}`, { cache: "no-store" });
+      if (res.status === 401) {
+        handleAuthError();
+        return;
+      }
+      const data = await res.json();
+      if (data.success) {
+        setInquiries(data.inquiries || []);
+        if (data.summary) setInquiriesSummary(data.summary);
+        if (data.pagination) {
+          setInquiryTotalPages(data.pagination.totalPages || 1);
+          setInquiryTotalCount(data.pagination.totalCount || 0);
+        }
+      }
+    } catch (err) {
+      console.error("Failed to fetch inquiries:", err);
+    } finally {
+      setInquiriesLoading(false);
+    }
+  }, [currentUser, inquiryStatusFilter, inquiryPage, handleAuthError]);
+
+  // Initial Data Fetching when user logs in
+  useEffect(() => {
+    if (currentUser) {
+      fetchJobs();
+      fetchApplications();
+      fetchInquiries();
+    }
+  }, [currentUser, fetchJobs, fetchApplications, fetchInquiries]);
+
+  // Candidate Detail Loader (Synchronized with URL `candidate` parameter)
+  const loadCandidateDetail = useCallback(async (id) => {
+    if (!id) {
+      setCandidateDetail(null);
+      return;
+    }
+    setDetailLoading(true);
+    try {
+      const res = await fetch(`/api/admin/applications/${id}`);
+      if (res.status === 401) {
+        handleAuthError();
+        return;
+      }
+      const data = await res.json();
+      if (data.success) {
+        setCandidateDetail(data.application);
+      }
+    } catch (err) {
+      console.error("Failed to load candidate:", err);
+    } finally {
+      setDetailLoading(false);
+    }
+  }, [handleAuthError]);
 
   useEffect(() => {
-    fetchApplications();
-  }, [fetchApplications]);
+    if (candidateParam) {
+      loadCandidateDetail(candidateParam);
+    } else {
+      setCandidateDetail(null);
+    }
+  }, [candidateParam, loadCandidateDetail]);
 
-  async function updateStatus(id, status) {
+  // Open Candidate Drawer
+  function handleSelectCandidate(id) {
+    updateUrlParams({ candidate: id });
+  }
+
+  // Close Candidate Drawer
+  function handleCloseCandidate() {
+    updateUrlParams({ candidate: null });
+  }
+
+  // Update Candidate Status / Rating
+  async function handleUpdateCandidate(id, updates) {
     try {
       const res = await fetch(`/api/admin/applications/${id}`, {
         method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ status, position }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updates),
       });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        if (res.status === 401) { onLogout(); return; }
-        throw new Error(data.message);
+      if (res.status === 401) {
+        handleAuthError();
+        return;
       }
-      fetchApplications();
+      const data = await res.json();
+      if (data.success) {
+        setApplications((prev) =>
+          prev.map((app) => (app.id === id ? { ...app, ...updates } : app))
+        );
+        if (candidateDetail?.id === id) {
+          setCandidateDetail((prev) => ({ ...prev, ...updates }));
+        }
+        fetchApplications();
+        showToast(
+          updates.stage
+            ? `Candidate pipeline stage moved to ${updates.stage}.`
+            : updates.rating
+            ? `Candidate rating set to ${updates.rating} stars.`
+            : "Candidate details updated.",
+          "success",
+          "Candidate Updated"
+        );
+      }
     } catch (err) {
-      alert(err.message || "Failed to update.");
+      console.error("Update candidate error:", err);
+      showToast("Failed to update candidate record.", "error", "Error");
     }
   }
 
-  const activeCount = applications.filter((a) => a.status === "active").length;
-  const approvedCount = applications.filter((a) => a.status === "approved").length;
-  const rejectedCount = applications.filter((a) => a.status === "rejected").length;
+  // Add Recruiter Note
+  async function handleAddNote(e) {
+    e.preventDefault();
+    if (!newNote.trim() || !candidateDetail) return;
+    setNoteSubmitting(true);
+    try {
+      const res = await fetch(`/api/admin/applications/${candidateDetail.id}/notes`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: newNote.trim() }),
+      });
+      if (res.status === 401) {
+        handleAuthError();
+        return;
+      }
+      const data = await res.json();
+      if (data.success) {
+        setNewNote("");
+        loadCandidateDetail(candidateDetail.id);
+        showToast("Internal evaluation note added.", "success", "Note Saved");
+      }
+    } catch (err) {
+      console.error("Add note error:", err);
+      showToast("Failed to save evaluation note.", "error", "Error");
+    } finally {
+      setNoteSubmitting(false);
+    }
+  }
 
-  const highPriority = applications.filter((a) => a.priority === "high_priority");
-  const mediumPriority = applications.filter((a) => a.priority === "medium_priority");
-  const lowPriority = applications.filter((a) => !a.priority || a.priority === "low_priority");
+  // Job Opening Create & Edit Handlers
+  function handleOpenCreateJob() {
+    setJobModalMode("create");
+    setEditingJobId(null);
+    setJobForm({
+      title: "",
+      slug: "",
+      department: "Engineering",
+      type: "FULL_TIME",
+      workMode: "On-site",
+      location: "Dhaka, Bangladesh",
+      salary: "Negotiable",
+      summary: "",
+      descriptionMarkdown: "",
+      requirements: "",
+      benefits: "",
+      status: "PUBLISHED",
+      portfolioFields: ["linkedin", "github", "portfolio", "deployed"],
+      screeningQuestions: [],
+    });
+    setShowJobModal(true);
+  }
 
-  return (
-    <div className="min-h-screen bg-[#050507]">
-      {/* Top Nav */}
-      <nav className="sticky top-0 z-40 bg-[#050507]/95 backdrop-blur border-b border-white/10">
-        <div className="max-w-[1200px] mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <button
-              onClick={onBack}
-              className="flex items-center gap-2 text-[11px] uppercase tracking-wide text-white/50 hover:text-white/80 transition-colors mr-3"
-              style={{ fontFamily: '"Space Grotesk", sans-serif' }}
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-              Positions
-            </button>
-            <span className="text-white/15">|</span>
-            <span className="inline-block w-5 h-5 rounded-[5px] bg-gradient-to-br from-[#33E6D8] to-white rotate-45 ml-3"></span>
-            <span className="font-bold text-white tracking-[0.04em] text-sm" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>AWTOMATIG</span>
-            <span className="text-white/30 mx-2">|</span>
-            <span className="text-[11px] uppercase tracking-wide text-white/50" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>Admin Panel</span>
-          </div>
-          <button
-            onClick={onLogout}
-            className="text-[11px] uppercase tracking-wide text-white/50 hover:text-white/80 transition-colors"
-            style={{ fontFamily: '"Space Grotesk", sans-serif' }}
-          >
-            Sign Out
-          </button>
-        </div>
-      </nav>
+  function handleOpenEditJob(job) {
+    setJobModalMode("edit");
+    setEditingJobId(job.id);
 
-      <div className="max-w-[1200px] mx-auto px-6 py-8">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>{config.title}</h1>
-          <p className="text-white/50 text-sm">{config.subtitle}</p>
-        </div>
+    let portfolioFields = ["linkedin", "github", "portfolio", "deployed"];
+    let screeningQuestions = [];
 
-        {/* Filter Tabs */}
-        <div className="flex items-center gap-2 mb-6">
-          {[
-            ["active", "Active", activeCount],
-            ["approved", "Approved", approvedCount],
-            ["rejected", "Rejected", rejectedCount],
-            ["all", "All", applications.length],
-          ].map(([value, label, count]) => (
-            <button
-              key={value}
-              onClick={() => setFilter(value)}
-              className={`text-[12px] uppercase tracking-wide px-4 py-2 rounded-full border transition-colors ${
-                filter === value
-                  ? "bg-[#33E6D8]/15 text-[#33E6D8] border-[#33E6D8]/30"
-                  : "bg-transparent text-white/50 border-white/10 hover:border-white/20"
-              }`}
-              style={{ fontFamily: '"Space Grotesk", sans-serif' }}
-            >
-              {label} {filter === value ? `(${count})` : ""}
-            </button>
-          ))}
+    if (job.customQuestions && typeof job.customQuestions === "object") {
+      if (Array.isArray(job.customQuestions)) {
+        screeningQuestions = job.customQuestions;
+      } else {
+        if (Array.isArray(job.customQuestions.portfolioFields)) {
+          portfolioFields = job.customQuestions.portfolioFields;
+        }
+        if (Array.isArray(job.customQuestions.screeningQuestions)) {
+          screeningQuestions = job.customQuestions.screeningQuestions;
+        }
+      }
+    }
 
-          <button
-            onClick={fetchApplications}
-            className="ml-auto text-[11px] uppercase tracking-wide text-white/40 hover:text-white/70 transition-colors"
-            style={{ fontFamily: '"Space Grotesk", sans-serif' }}
-          >
-            Refresh
-          </button>
-        </div>
+    setJobForm({
+      title: job.title || "",
+      slug: job.slug || "",
+      department: job.department || "Engineering",
+      type: job.type || "FULL_TIME",
+      workMode: job.workMode || "On-site",
+      location: job.location || "Dhaka, Bangladesh",
+      salary: job.salary || "Negotiable",
+      summary: job.summary || "",
+      descriptionMarkdown: job.descriptionMarkdown || "",
+      requirements: Array.isArray(job.requirements) ? job.requirements.join("\n") : "",
+      benefits: Array.isArray(job.benefits) ? job.benefits.join("\n") : "",
+      status: job.status || "PUBLISHED",
+      portfolioFields,
+      screeningQuestions,
+    });
+    setShowJobModal(true);
+  }
 
-        {/* Content */}
-        {loading && (
-          <div className="text-center py-20">
-            <p className="text-white/40 text-sm">Loading applications...</p>
-          </div>
-        )}
+  async function handleSaveJob(e) {
+    e.preventDefault();
+    setJobSubmitting(true);
 
-        {error && (
-          <div className="text-center py-20">
-            <p className="text-[#E15A72] text-sm mb-3">{error}</p>
-            <button onClick={fetchApplications} className="text-[12px] text-[#33E6D8] underline">Retry</button>
-          </div>
-        )}
+    const payload = {
+      title: jobForm.title.trim(),
+      slug: jobForm.slug.trim().toLowerCase().replace(/\s+/g, "-"),
+      department: jobForm.department,
+      type: jobForm.type,
+      workMode: jobForm.workMode,
+      location: jobForm.location.trim(),
+      salary: jobForm.salary.trim(),
+      summary: jobForm.summary.trim(),
+      descriptionMarkdown: jobForm.descriptionMarkdown.trim(),
+      requirements: jobForm.requirements.split("\n").map((r) => r.trim()).filter(Boolean),
+      benefits: jobForm.benefits.split("\n").map((b) => b.trim()).filter(Boolean),
+      status: jobForm.status,
+      customQuestions: {
+        portfolioFields: Array.isArray(jobForm.portfolioFields) && jobForm.portfolioFields.length > 0
+          ? jobForm.portfolioFields
+          : ["linkedin"],
+        screeningQuestions: Array.isArray(jobForm.screeningQuestions)
+          ? jobForm.screeningQuestions
+          : [],
+      },
+    };
 
-        {!loading && !error && applications.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-white/40 text-sm">No applications found for this filter.</p>
-          </div>
-        )}
+    try {
+      const url = jobModalMode === "create" ? "/api/admin/jobs" : `/api/admin/jobs/${editingJobId}`;
+      const method = jobModalMode === "create" ? "POST" : "PATCH";
 
-        {!loading && !error && applications.length > 0 && (
-          <div>
-            <PrioritySection
-              title="High Priority"
-              color="bg-[#33E6D8]"
-              borderColor="border-[#33E6D8]/30"
-              applications={highPriority}
-              config={config}
-              position={position}
-              expandedId={expandedId}
-              setExpandedId={setExpandedId}
-              onStatusChange={updateStatus}
-            />
-            <PrioritySection
-              title="Medium Priority"
-              color="bg-[#F5A623]"
-              borderColor="border-[#F5A623]/30"
-              applications={mediumPriority}
-              config={config}
-              position={position}
-              expandedId={expandedId}
-              setExpandedId={setExpandedId}
-              onStatusChange={updateStatus}
-            />
-            <PrioritySection
-              title="Low Priority"
-              color="bg-white/40"
-              borderColor="border-white/10"
-              applications={lowPriority}
-              config={config}
-              position={position}
-              expandedId={expandedId}
-              setExpandedId={setExpandedId}
-              onStatusChange={updateStatus}
-            />
-          </div>
-        )}
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.status === 401) {
+        handleAuthError();
+        return;
+      }
+
+      const data = await res.json();
+      if (data.success) {
+        setShowJobModal(false);
+        fetchJobs();
+        showToast(
+          jobModalMode === "create"
+            ? `"${payload.title}" Job created and published successfully.`
+            : `"${payload.title}" Job updated successfully.`,
+          "success",
+          jobModalMode === "create" ? "Job Created" : "Job Updated"
+        );
+      } else {
+        showToast(data.message || "Failed to save Job opening.", "error", "Save Failed");
+      }
+    } catch (err) {
+      showToast("Error: " + err.message, "error", "Network Error");
+    } finally {
+      setJobSubmitting(false);
+    }
+  }
+
+  async function handleToggleJobStatus(jobId, currentStatus) {
+    const nextStatus = currentStatus === "PUBLISHED" ? "DRAFT" : "PUBLISHED";
+    try {
+      const res = await fetch(`/api/admin/jobs/${jobId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: nextStatus }),
+      });
+      if (res.status === 401) {
+        handleAuthError();
+        return;
+      }
+      fetchJobs();
+      showToast(
+        nextStatus === "PUBLISHED"
+          ? "Job opening is now live on the public careers page."
+          : "Job opening has been set to Draft (hidden from careers page).",
+        "success",
+        nextStatus === "PUBLISHED" ? "Job Opening Published" : "Job Opening Unpublished"
+      );
+    } catch (err) {
+      console.error("Toggle status error:", err);
+      showToast("Failed to update job opening status.", "error", "Status Update Failed");
+    }
+  }
+
+  function handlePromptDeleteJob(jobId, jobTitle) {
+    setConfirmModal({
+      isOpen: true,
+      title: "Archive Job Opening",
+      message: `Are you sure you want to delete/archive "${jobTitle}"? This will hide the position from public job listings.`,
+      confirmLabel: "Archive Position",
+      confirmVariant: "danger",
+      loading: false,
+      onConfirm: async () => {
+        setConfirmModal((prev) => ({ ...prev, loading: true }));
+        try {
+          const res = await fetch(`/api/admin/jobs/${jobId}`, { method: "DELETE" });
+          if (res.status === 401) {
+            handleAuthError();
+            return;
+          }
+          fetchJobs();
+          setConfirmModal((prev) => ({ ...prev, isOpen: false, loading: false }));
+          showToast(`"${jobTitle}" opening has been archived.`, "info", "Job Archived");
+        } catch (err) {
+          console.error("Delete job error:", err);
+          setConfirmModal((prev) => ({ ...prev, loading: false }));
+          showToast("Failed to archive job opening.", "error", "Archive Error");
+        }
+      },
+    });
+  }
+
+  // Inquiry Status & Delete Handlers
+  async function handleUpdateInquiryStatus(id, newStatus) {
+    try {
+      const res = await fetch(`/api/admin/inquiries/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      if (res.status === 401) {
+        handleAuthError();
+        return;
+      }
+      fetchInquiries();
+      showToast(`Inquiry status updated to ${newStatus}.`, "success", "Lead Status Updated");
+    } catch (err) {
+      console.error("Update inquiry error:", err);
+      showToast("Failed to update inquiry status.", "error", "Update Error");
+    }
+  }
+
+  function handlePromptDeleteInquiry(id) {
+    setConfirmModal({
+      isOpen: true,
+      title: "Delete Contact Inquiry",
+      message: "Are you sure you want to permanently remove this contact message from your records?",
+      confirmLabel: "Delete Inquiry",
+      confirmVariant: "danger",
+      loading: false,
+      onConfirm: async () => {
+        setConfirmModal((prev) => ({ ...prev, loading: true }));
+        try {
+          const res = await fetch(`/api/admin/inquiries/${id}`, { method: "DELETE" });
+          if (res.status === 401) {
+            handleAuthError();
+            return;
+          }
+          fetchInquiries();
+          setConfirmModal((prev) => ({ ...prev, isOpen: false, loading: false }));
+          showToast("Lead inquiry has been permanently removed.", "info", "Lead Deleted");
+        } catch (err) {
+          console.error("Delete inquiry error:", err);
+          setConfirmModal((prev) => ({ ...prev, loading: false }));
+          showToast("Failed to delete lead inquiry.", "error", "Delete Error");
+        }
+      },
+    });
+  }
+
+  // Settings Handlers
+  function handleAvatarSelect(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!["image/png", "image/jpeg", "image/webp"].includes(file.type)) {
+      setSettingsStatus({ type: "error", message: "Please select a raster image (PNG, JPG, WebP). SVG is disabled for security." });
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setSettingsStatus({ type: "error", message: "Image size must be less than 5MB." });
+      return;
+    }
+
+    setAvatarFile(file);
+    setRemoveAvatar(false);
+    setAvatarPreview(URL.createObjectURL(file));
+    setSettingsStatus(null);
+  }
+
+  function handleRemoveAvatar() {
+    setAvatarFile(null);
+    setAvatarPreview(null);
+    setRemoveAvatar(true);
+    setSettingsStatus(null);
+  }
+
+  async function handleSaveSettings(e) {
+    e.preventDefault();
+    setSettingsStatus(null);
+
+    if (settingsForm.newPassword) {
+      if (settingsForm.newPassword.length < 6) {
+        setSettingsStatus({ type: "error", message: "New password must be at least 6 characters long." });
+        return;
+      }
+      if (settingsForm.newPassword !== settingsForm.confirmPassword) {
+        setSettingsStatus({ type: "error", message: "New password and confirmation do not match." });
+        return;
+      }
+      if (!settingsForm.currentPassword) {
+        setSettingsStatus({ type: "error", message: "Please enter your current password to set a new password." });
+        return;
+      }
+    }
+
+    setSettingsLoading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("fullName", settingsForm.fullName);
+      formData.append("email", settingsForm.email);
+
+      if (settingsForm.newPassword) {
+        formData.append("currentPassword", settingsForm.currentPassword);
+        formData.append("newPassword", settingsForm.newPassword);
+      }
+
+      if (avatarFile) {
+        formData.append("avatar", avatarFile);
+      } else if (removeAvatar) {
+        formData.append("removeAvatar", "true");
+      }
+
+      const res = await fetch("/api/admin/settings", {
+        method: "PATCH",
+        body: formData,
+      });
+
+      if (res.status === 401) {
+        handleAuthError();
+        return;
+      }
+
+      const data = await res.json();
+
+      if (data.success && data.user) {
+        setCurrentUser(data.user);
+        setAvatarFile(null);
+        setAvatarPreview(null);
+        setRemoveAvatar(false);
+        setSettingsForm((prev) => ({
+          ...prev,
+          currentPassword: "",
+          newPassword: "",
+          confirmPassword: "",
+        }));
+        setSettingsStatus({ type: "success", message: data.message || "Settings saved successfully!" });
+        showToast(data.message || "Settings saved successfully!", "success", "Settings Saved");
+      } else {
+        setSettingsStatus({ type: "error", message: data.message || "Failed to update settings." });
+        showToast(data.message || "Failed to update settings.", "error", "Settings Failed");
+      }
+    } catch (err) {
+      console.error(err);
+      setSettingsStatus({ type: "error", message: "Network or server error while updating settings." });
+      showToast("Network or server error while updating settings.", "error", "Settings Error");
+    } finally {
+      setSettingsLoading(false);
+    }
+  }
+
+  // Auth Checking Loading State
+  if (authChecking) {
+    return (
+      <div className="min-h-screen bg-[#050507] flex items-center justify-center text-white">
+        <Loader2 className="w-8 h-8 text-[#33E6D8] animate-spin" />
       </div>
+    );
+  }
+
+  // 1. Sleek Modern Enterprise Login Screen
+  if (!currentUser) {
+    return (
+      <div className="min-h-screen bg-[#050608] flex items-center justify-center px-4">
+        <div className="w-full max-w-sm">
+          <div className="text-center mb-6">
+            <div className="flex items-center justify-center gap-2.5 mb-2">
+              <div className="w-8 h-8 rounded-lg bg-white/[0.06] border border-white/10 flex items-center justify-center text-[#33E6D8] font-mono text-sm font-bold">
+                A
+              </div>
+              <span
+                className="font-bold text-white tracking-tight text-lg"
+                style={{ fontFamily: '"Space Grotesk", sans-serif' }}
+              >
+                AWTOMATIG
+              </span>
+            </div>
+            <p className="text-xs text-white/40 font-mono">
+              Administrative Control Console
+            </p>
+          </div>
+
+          <form
+            onSubmit={handleLogin}
+            className="bg-[#090A0E] border border-white/[0.08] rounded-xl p-6 shadow-xl space-y-4"
+          >
+            {loginError && (
+              <div className="p-3 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0" />
+                <span>{loginError}</span>
+              </div>
+            )}
+
+            <div>
+              <label className="block text-[11px] uppercase font-mono text-white/50 mb-1.5">
+                Admin Email
+              </label>
+              <input
+                type="email"
+                required
+                value={loginEmail}
+                onChange={(e) => setLoginEmail(e.target.value)}
+                placeholder="admin@awtomatig.com"
+                className="w-full bg-[#050608] border border-white/[0.08] rounded-lg px-3.5 py-2 text-xs text-white placeholder-white/30 focus:outline-none focus:border-[#33E6D8] transition-colors"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[11px] uppercase font-mono text-white/50 mb-1.5">
+                Password
+              </label>
+              <input
+                type="password"
+                required
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)}
+                placeholder="••••••••••••"
+                className="w-full bg-[#050608] border border-white/[0.08] rounded-lg px-3.5 py-2 text-xs text-white placeholder-white/30 focus:outline-none focus:border-[#33E6D8] transition-colors"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={loginLoading}
+              className="w-full mt-2 bg-[#33E6D8] hover:bg-[#02D5E7] disabled:opacity-50 text-black font-semibold py-2.5 rounded-lg text-xs transition-colors flex items-center justify-center gap-2 cursor-pointer"
+            >
+              {loginLoading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <span>Sign In to Console</span>
+              )}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // 2. Main Company Admin Dashboard Layout
+  return (
+    <div className="min-h-screen bg-[#050608] text-white flex overflow-hidden">
+      {/* ── SIDEBAR NAVIGATION COMPONENT ───────────────────────── */}
+      <SidebarNav
+        activeSection={activeTabParam}
+        onSelectSection={handleSelectSection}
+        mobileOpen={mobileSidebarOpen}
+        onCloseMobile={() => setMobileSidebarOpen(false)}
+        currentUser={currentUser}
+        onLogout={handleLogout}
+        applicationsCount={summary.all || 0}
+        jobsCount={jobs.length}
+        inquiriesCount={inquiriesSummary.new || 0}
+      />
+
+      {/* ── MAIN CONTENT AREA ──────────────────────────────────── */}
+      <div className="flex-1 flex flex-col h-screen overflow-y-auto bg-[#050608]">
+        {/* Top Header Bar */}
+        <header className="sticky top-0 z-30 bg-[#090A0E]/90 backdrop-blur-md border-b border-white/[0.08] px-4 sm:px-6 py-3 sm:py-3.5 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+            <button
+              onClick={() => setMobileSidebarOpen(true)}
+              className="md:hidden p-2 bg-white/[0.04] hover:bg-white/[0.08] active:scale-95 border border-white/[0.08] rounded-lg text-white/70 hover:text-white transition-all cursor-pointer shrink-0"
+              aria-label="Open Navigation Menu"
+            >
+              <Menu className="w-4 h-4" />
+            </button>
+
+            <h1
+              className="text-base sm:text-lg font-bold text-white tracking-tight font-heading truncate"
+              style={{ fontFamily: '"Space Grotesk", sans-serif' }}
+            >
+              {activeTabParam === "overview" && "Overview"}
+              {activeTabParam === "pipeline" && "Candidate Applications"}
+              {activeTabParam === "jobs" && "Job Openings"}
+              {activeTabParam === "inquiries" && "Inquiries"}
+              {activeTabParam === "settings" && "Account Settings"}
+            </h1>
+          </div>
+
+          {/* Top Actions */}
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+            {activeTabParam === "jobs" && (
+              <button
+                onClick={handleOpenCreateJob}
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-[#33E6D8] text-black font-semibold text-xs rounded-lg hover:bg-[#02D5E7] transition-colors cursor-pointer whitespace-nowrap shadow-sm shadow-[#33E6D8]/20 active:scale-95"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>New Opening</span>
+              </button>
+            )}
+
+            <button
+              onClick={() => {
+                fetchJobs();
+                fetchApplications();
+                fetchInquiries();
+              }}
+              className="p-2 bg-white/[0.04] border border-white/[0.08] hover:border-white/[0.15] hover:bg-white/[0.08] rounded-lg text-white/60 hover:text-white transition-colors cursor-pointer shrink-0 active:scale-95"
+              title="Refresh Data"
+              aria-label="Refresh Data"
+            >
+              <RefreshCw
+                className={`w-3.5 h-3.5 ${
+                  loading || jobsLoading || inquiriesLoading
+                    ? "animate-spin text-[#33E6D8]"
+                    : ""
+                }`}
+              />
+            </button>
+          </div>
+        </header>
+
+        {/* Content Container */}
+        <div className="p-3.5 sm:p-5 md:p-6 lg:p-8 flex-1 flex flex-col w-full max-w-full overflow-x-hidden">
+          {/* SECTION 1: OVERVIEW */}
+          {activeTabParam === "overview" && (
+            <OverviewSection
+              jobs={jobs}
+              summary={summary}
+              stages={STAGES}
+              onNavigateTab={handleSelectSection}
+              onOpenEditJob={handleOpenEditJob}
+            />
+          )}
+
+          {/* SECTION 2: CANDIDATE PIPELINE (ATS) */}
+          {activeTabParam === "pipeline" && (
+            <CandidatePipelineSection
+              jobs={jobs}
+              summary={summary}
+              stages={STAGES}
+              applications={applications}
+              selectedJob={selectedJob}
+              onSelectJob={setSelectedJob}
+              search={search}
+              onSearchChange={setSearch}
+              priorityFilter={priorityFilter}
+              onPriorityFilterChange={setPriorityFilter}
+              stageFilter={stageFilter}
+              onStageFilterChange={setStageFilter}
+              currentPage={currentPage}
+              totalPages={totalPages}
+              totalApplications={totalApplications}
+              onPageChange={setCurrentPage}
+              loading={loading}
+              onSelectCandidate={handleSelectCandidate}
+              onUpdateCandidate={handleUpdateCandidate}
+            />
+          )}
+
+          {/* SECTION 3: JOB OPENINGS MANAGER */}
+          {activeTabParam === "jobs" && (
+            <JobOpeningsSection
+              jobs={jobs}
+              loading={jobsLoading}
+              onOpenCreateModal={handleOpenCreateJob}
+              onOpenEditModal={handleOpenEditJob}
+              onToggleStatus={handleToggleJobStatus}
+              onDeleteJob={handlePromptDeleteJob}
+            />
+          )}
+
+          {/* SECTION 4: CONTACT INQUIRIES & LEADS */}
+          {activeTabParam === "inquiries" && (
+            <ContactLeadsSection
+              inquiries={inquiries}
+              summary={inquiriesSummary}
+              statusFilter={inquiryStatusFilter}
+              onStatusFilterChange={setInquiryStatusFilter}
+              currentPage={inquiryPage}
+              totalPages={inquiryTotalPages}
+              totalCount={inquiryTotalCount}
+              onPageChange={setInquiryPage}
+              loading={inquiriesLoading}
+              onUpdateStatus={handleUpdateInquiryStatus}
+              onDeleteInquiry={handlePromptDeleteInquiry}
+            />
+          )}
+
+          {/* SECTION 5: SETTINGS */}
+          {activeTabParam === "settings" && (
+            <SettingsSection
+              currentUser={currentUser}
+              form={settingsForm}
+              onChangeForm={setSettingsForm}
+              avatarPreview={avatarPreview}
+              removeAvatar={removeAvatar}
+              onAvatarSelect={handleAvatarSelect}
+              onRemoveAvatar={handleRemoveAvatar}
+              onSubmit={handleSaveSettings}
+              loading={settingsLoading}
+              status={settingsStatus}
+              onClearStatus={() => setSettingsStatus(null)}
+            />
+          )}
+        </div>
+      </div>
+
+      {/* ── CANDIDATE SLIDE-OVER DRAWER COMPONENT ─────────────── */}
+      <CandidateDrawer
+        candidate={candidateDetail}
+        loading={detailLoading}
+        stages={STAGES}
+        newNote={newNote}
+        onNoteChange={setNewNote}
+        onAddNote={handleAddNote}
+        noteSubmitting={noteSubmitting}
+        onUpdateCandidate={handleUpdateCandidate}
+        onClose={handleCloseCandidate}
+      />
+
+      {/* ── JOB CREATION & EDIT MODAL COMPONENT ────────────────── */}
+      <JobModal
+        isOpen={showJobModal}
+        mode={jobModalMode}
+        form={jobForm}
+        onChange={setJobForm}
+        onSubmit={handleSaveJob}
+        submitting={jobSubmitting}
+        onClose={() => setShowJobModal(false)}
+      />
+
+      {/* ── CYBER-MINIMAL CONFIRMATION MODAL ───────────────────── */}
+      <ConfirmModal
+        isOpen={confirmModal.isOpen}
+        title={confirmModal.title}
+        message={confirmModal.message}
+        confirmLabel={confirmModal.confirmLabel}
+        confirmVariant={confirmModal.confirmVariant}
+        loading={confirmModal.loading}
+        onConfirm={confirmModal.onConfirm}
+        onCancel={() => setConfirmModal((prev) => ({ ...prev, isOpen: false }))}
+      />
+
+      {/* ── CYBER-MINIMAL TOAST NOTIFICATIONS ──────────────────── */}
+      <ToastContainer toasts={toasts} onDismiss={handleDismissToast} />
     </div>
   );
 }
 
-// ────────────────────────────────────────────────────────────────
-// Main Page
-// ────────────────────────────────────────────────────────────────
-export default function AwAdminPage() {
-  const [token, setToken] = useState(null);
-  const [ready, setReady] = useState(false);
-  const [selectedPosition, setSelectedPosition] = useState(null);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("aw_admin_token");
-    if (saved) setToken(saved);
-    setReady(true);
-  }, []);
-
-  function handleLogout() {
-    localStorage.removeItem("aw_admin_token");
-    setToken(null);
-    setSelectedPosition(null);
-  }
-
-  if (!ready) {
-    return <div className="min-h-screen bg-[#050507]" />;
-  }
-
-  const wrapper = (children) => (
-    <>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');`}</style>
-      <div style={{ fontFamily: 'Inter, -apple-system, sans-serif', color: 'white' }}>
-        {children}
-      </div>
-    </>
-  );
-
-  if (!token) {
-    return wrapper(<LoginScreen onLogin={setToken} />);
-  }
-
-  if (!selectedPosition) {
-    return wrapper(<PositionSelector onSelect={setSelectedPosition} onLogout={handleLogout} />);
-  }
-
-  return wrapper(
-    <AdminDashboard
-      token={token}
-      position={selectedPosition}
-      onBack={() => setSelectedPosition(null)}
-      onLogout={handleLogout}
-    />
+export default function CompanyAdminDashboard() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-[#050507] flex items-center justify-center text-white">
+          <Loader2 className="w-8 h-8 text-[#33E6D8] animate-spin" />
+        </div>
+      }
+    >
+      <AdminDashboardContent />
+    </Suspense>
   );
 }

@@ -1,39 +1,72 @@
 "use client";
-import Link from "next/link";
-import AnimatedButton from "../AnimatedButton";
+import dynamic from "next/dynamic";
+import { useEffect, useRef, useState } from "react";
 import FadeInSection from "../animation/FadeEffect";
-import ParticleBackground from "../ParticleBackground";
+import CommonHeading from "../CommonHeading";
+import BrandButton from "../BrandButton";
 import { pushEvent } from "@/lib/gtm";
+
+const ParticleBackground = dynamic(() => import("../ParticleBackground"), {
+  ssr: false,
+});
+
 export default function FutureChanges() {
+  const sectionRef = useRef(null);
+  const [showParticles, setShowParticles] = useState(false);
+
+  useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowParticles(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="relative">
-      <ParticleBackground className="absolute h-full w-full" />
-      <div className="absolute bg-black/10 backdrop-blur-[1px] h-full w-full"></div>
-      <div className="container">
-        <div className="relative h-[300px] md:h-[604px] wrapper">
-          <div className="h-full flex flex-col md:flex-row md:justify-between items-center gap-8 md:gap-4">
-            <FadeInSection
-              initial={{ opacity: 0, x: -150 }}
-              scrollTop={{ opacity: 1, x: 0 }}
-              scrollBottom={{ opacity: 0, x: -150 }}
-              margin="40px 0px -40px 0px"
+    <div
+      ref={sectionRef}
+      className="relative py-12 sm:py-16 md:py-24 overflow-hidden"
+    >
+      {showParticles && (
+        <ParticleBackground className="absolute h-full w-full" />
+      )}
+      <div className="absolute bg-black/20 backdrop-blur-[1px] h-full w-full"></div>
+      <div className="container relative z-10">
+        <div className="wrapper max-w-4xl mx-auto text-center">
+          <FadeInSection
+            initial={{ opacity: 0, y: 30 }}
+            scrollTop={{ opacity: 1, y: 0 }}
+            scrollBottom={{ opacity: 0, y: 30 }}
+            margin="40px 0px -40px 0px"
+          >
+            <CommonHeading
+              title="Case Studies"
+              description="See how engineered workflows, automated systems, and high-performance platforms transform operations."
             >
-              <h1 className="text-center md:text-left text-3xl sm:text-3xl md:text-5xl lg:text-6xl font-russo-one leading-11 sm:leading-14 md:leading-[72px] ">
-                The future is already working. <br />
-                See what changes when systems align.
-              </h1>
-            </FadeInSection>
-            <FadeInSection
-              initial={{ opacity: 0, x: 150 }}
-              scrollTop={{ opacity: 1, x: 0 }}
-              scrollBottom={{ opacity: 0, x: 150 }}
-              margin="40px 0px -40px 0px"
-            >
-              <Link href="/case-studies" onClick={() => pushEvent({ event: "cta_click", cta_label: "Case Studies" })}>
-                <AnimatedButton name="Case Studies" icon={true} />
-              </Link>
-            </FadeInSection>
-          </div>
+              When Systems Align
+            </CommonHeading>
+
+            <div className="flex justify-center mt-8 sm:mt-10">
+              <BrandButton
+                href="/case-studies"
+                onClick={() =>
+                  pushEvent({ event: "cta_click", cta_label: "Case Studies" })
+                }
+              >
+                Explore Case Studies
+              </BrandButton>
+            </div>
+          </FadeInSection>
         </div>
       </div>
     </div>

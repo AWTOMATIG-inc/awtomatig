@@ -30,9 +30,12 @@ export default function Impact() {
   return (
     <section className="container relative z-10">
       <div className="wrapper">
-        <div className="mb-8 sm:mb-10 md:mb-12">
-          <CommonHeading title="Impact">
-            Measured improvements across <br /> operations, systems, and growth
+        <div className="mb-10 sm:mb-14 md:mb-16 text-center">
+          <CommonHeading
+            title="Impact"
+            description="Proven operational improvements across systems, execution, and scale."
+          >
+            Measurable Business Impact
           </CommonHeading>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-4">

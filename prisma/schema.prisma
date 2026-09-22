@@ -1,0 +1,171 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  RECRUITER
+  REVIEWER
+}
+
+enum JobStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  INTERNSHIP
+  CONTRACT
+}
+
+enum Stage {
+  APPLIED
+  SCREENING
+  INTERVIEW
+  OFFER
+  HIRED
+  REJECTED
+}
+
+enum Priority {
+  HIGH_PRIORITY
+  MEDIUM_PRIORITY
+  LOW_PRIORITY
+}
+
+model User {
+  id            String          @id @default(cuid())
+  email         String          @unique
+  passwordHash  String          @map("password_hash")
+  fullName      String          @map("full_name")
+  role          Role            @default(RECRUITER)
+  avatarUrl     String?         @map("avatar_url")
+  createdAt     DateTime        @default(now()) @map("created_at")
+  updatedAt     DateTime        @updatedAt @map("updated_at")
+  notes         CandidateNote[]
+  events        CandidateEvent[]
+
+  @@map("users")
+}
+
+model Job {
+  id                  String         @id @default(cuid())
+  slug                String         @unique
+  title               String
+  department          String
+  location            String         @default("Dhaka, Bangladesh")
+  workMode            String         @default("On-site") @map("work_mode") // "On-site", "Remote", "Hybrid"
+  salary              String?        @default("Negotiable")
+  type                JobType        @default(FULL_TIME)
+  status              JobStatus      @default(DRAFT)
+  summary             String
+  descriptionMarkdown String         @map("description_markdown") @db.Text
+  requirements        String[]       @default([])
+  benefits            String[]       @default([])
+  customQuestions     Json?          @map("custom_questions")
+  scoringRules        Json?          @map("scoring_rules")
+  createdAt           DateTime       @default(now()) @map("created_at")
+  updatedAt           DateTime       @updatedAt @map("updated_at")
+  applications        Application[]
+
+  @@map("jobs")
+}
+
+model Application {
+  id              String           @id @default(cuid())
+  jobId           String           @map("job_id")
+  job             Job              @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  
+  fullName        String           @map("full_name")
+  email           String
+  phone           String
+  location        String?
+  
+  // Professional Links
+  githubUrl       String?          @map("github_url")
+  portfolioUrl    String?          @map("portfolio_url")
+  linkedinUrl     String?          @map("linkedin_url")
+  deployedUrl     String?          @map("deployed_url")
+
+  // Resume File metadata (saved locally on disk)
+  resumeFileName  String?          @map("resume_file_name")
+  resumePath      String?          @map("resume_path")
+  resumeSize      Int?             @map("resume_size")
+
+  // Dynamic answers to custom role-specific questions
+  customAnswers   Json             @default("{}") @map("custom_answers")
+
+  // ATS Evaluation & Workflow
+  stage           Stage            @default(APPLIED)
+  priority        Priority         @default(LOW_PRIORITY)
+  score           Int              @default(0)
+  rating          Int?             // Recruiter 1-5 star rating
+  archived        Boolean          @default(false)
+  
+  createdAt       DateTime         @default(now()) @map("created_at")
+  updatedAt       DateTime         @updatedAt @map("updated_at")
+
+  notes           CandidateNote[]
+  events          CandidateEvent[]
+
+  @@index([jobId])
+  @@index([email])
+  @@index([stage])
+  @@index([priority])
+  @@index([createdAt])
+  @@index([jobId, stage, priority])
+  @@index([stage, score(sort: Desc)])
+  @@map("applications")
+}
+
+model CandidateNote {
+  id            String       @id @default(cuid())
+  applicationId String       @map("application_id")
+  application   Application  @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  userId        String       @map("user_id")
+  author        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  content       String       @db.Text
+  createdAt     DateTime     @default(now()) @map("created_at")
+
+  @@index([applicationId])
+  @@map("candidate_notes")
+}
+
+model CandidateEvent {
+  id            String       @id @default(cuid())
+  applicationId String       @map("application_id")
+  application   Application  @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  userId        String?      @map("user_id")
+  actor         User?        @relation(fields: [userId], references: [id], onDelete: SetNull)
+  eventType     String       @map("event_type")
+  details       Json         @default("{}")
+  createdAt     DateTime     @default(now()) @map("created_at")
+
+  @@index([applicationId])
+  @@map("candidate_events")
+}
+
+model ContactLead {
+  id        String   @id @default(cuid())
+  fullName  String   @map("full_name")
+  email     String
+  subject   String
+  message   String   @db.Text
+  status    String   @default("NEW") // "NEW", "READ", "CONTACTED", "ARCHIVED"
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("contact_leads")
+}

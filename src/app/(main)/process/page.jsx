@@ -1,10 +1,16 @@
+import dynamic from "next/dynamic";
 import awtomatig_logo from "@/assets/logo/awtomatig-logo.png";
 import FadeInSection from "@/components/animation/FadeEffect";
 import BackgroundAnimation from "@/components/BackgroundAnimation";
 import CommonHeading from "@/components/CommonHeading";
-import GlowBall from "@/components/GlowBall";
 import ProcessCTA from "@/components/process/ProcessCTA";
 import Image from "next/image";
+
+// Below-the-fold framer-motion element near the bottom of the page: code-split
+// out of this route's initial JS. (`ssr: false` isn't allowed here since this
+// file is a Server Component, so it's still server-rendered — that's fine,
+// it's the JS bundle weight we're after, not the HTML.)
+const GlowBall = dynamic(() => import("@/components/GlowBall"));
 
 export const metadata = {
   title: "Our Process — How We Deliver Results",
@@ -49,16 +55,15 @@ export default function Process() {
     <main>
       <section className="min-h-[823px] relative">
         <div className="absolute top-0 left-0 h-full w-full">
-          <BackgroundAnimation className="min-h-screen" />
+          <BackgroundAnimation className="min-h-dvh" />
         </div>
         <div className="container relative z-10">
           <FadeInSection
-            initial={{ opacity: 0, x: -150 }}
-            scrollTop={{ opacity: 1, x: 0 }}
-            scrollBottom={{ opacity: 0, x: -150 }}
-            margin="40px 0px -40px 0px"
+            initial={{ opacity: 0, y: 30 }}
+            scrollTop={{ opacity: 1, y: 0 }}
+            scrollBottom={{ opacity: 0, y: 30 }}
           >
-            <div className="wrapper flex flex-col justify-center items-center min-h-screen text-center gap-4">
+            <div className="wrapper flex flex-col justify-center items-center min-h-dvh text-center gap-4">
               <h1 className="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl uppercase font-russo-one tracking-wider">
                 A Structured Process Built for Speed
               </h1>

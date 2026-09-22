@@ -1,16 +1,21 @@
-import GridAnimatedBg from "@/components/animation/GridAnimatedBg";
-import BlogTimeline from "@/components/home/BlogTimeline";
-import FutureChanges from "@/components/home/FutureChanges";
+import dynamic from "next/dynamic";
 import Hero from "@/components/home/Hero";
-import Impact from "@/components/home/Impact";
-import KeepFlyingMarquee from "@/components/home/KeepFlyingMarquee";
-import OurCapabilities from "@/components/home/OurCapabilities";
-import OurProccess from "@/components/home/OurProccess";
-import Services from "@/components/home/Services";
-import Testimonials from "@/components/home/Testimonials";
-import WhyUs from "@/components/home/WhyUs";
-import MarqueHighlightText from "@/components/MarqueHighlightText";
-import Sponsor from "@/components/services/Sponsor";
+
+// Below-the-fold sections: code-split out of the route's initial JS instead
+// of importing eagerly at module top-level (still server-rendered, so
+// there's no content flash or SEO loss) — shrinks the hydration payload the
+// browser has to process on first load (see task.md TASK-13).
+const WhyUs = dynamic(() => import("@/components/home/WhyUs"));
+const MarqueHighlightText = dynamic(() => import("@/components/MarqueHighlightText"));
+const Services = dynamic(() => import("@/components/home/Services"));
+const OurProccess = dynamic(() => import("@/components/home/OurProccess"));
+const Impact = dynamic(() => import("@/components/home/Impact"));
+const KeepFlyingMarquee = dynamic(() => import("@/components/home/KeepFlyingMarquee"));
+const FutureChanges = dynamic(() => import("@/components/home/FutureChanges"));
+const OurCapabilities = dynamic(() => import("@/components/home/OurCapabilities"));
+const Testimonials = dynamic(() => import("@/components/home/Testimonials"));
+const BlogTimeline = dynamic(() => import("@/components/home/BlogTimeline"));
+const Sponsor = dynamic(() => import("@/components/services/Sponsor"));
 
 export const metadata = {
   title: "Business Automation, Operations & Web Development Agency",
@@ -27,10 +32,8 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <main className="overflow-hidden">
-      <GridAnimatedBg>
-        <Hero />
-      </GridAnimatedBg>
+    <main className="overflow-x-clip">
+      <Hero />
       
       <section className="mt-14 sm:mt-16 md:mt-20 lg:mt-32">
         <WhyUs />

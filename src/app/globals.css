@@ -1,9 +1,11 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "./animate.css";
 
 @theme inline {
   /* color list */
   --color-dark: #1f1f1f;
-  --color-dark-1: #171717;
+  --color-dark-1: #2C2C2C;
   --color-dark-2: #676767;
   --color-dark-3: #898484;
   --color-blue-light: #44b6e9;
@@ -12,17 +14,70 @@
   --color-dark-white: #d9d9d9;
   --color-purple: #b66dd2c9;
   /* font list */
-  --font-press-start: var(--font-press-start-2p);
+  --font-press-start: monospace;
   --font-manrope: var(--font-manrope);
   --font-sora: var(--font-sora);
   --font-russo-one: var(--font-russo-one);
   --font-inter: var(--font-inter);
-  --font-silkscreen: var(--font-silkscreen);
+  --font-silkscreen: monospace;
   --font-montserrat: var(--font-montserrat);
+  --font-newsreader: var(--font-newsreader), "Newsreader", Georgia, serif;
+  --font-space-grotesk: var(--font-space-grotesk), sans-serif;
   --animate-spin-slow: "spin 2.5s linear infinite";
+  --font-heading: var(--font-space-grotesk), sans-serif;
+  --font-body: var(--font-manrope), var(--font-inter), sans-serif;
+  --font-sans: var(--font-manrope), var(--font-inter), sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 @utility container {
   @apply mx-auto max-w-none 2xl:max-w-[1800px] px-4 md:!px-10 lg:px-8;
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
 }
 
 @layer components {
@@ -70,6 +125,15 @@
   button {
     @apply hover:cursor-pointer;
   }
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }
 @custom-variant hover (&:hover);
 
@@ -111,5 +175,93 @@
 }
 html,
 body {
+  background-color: #000000;
+  color: #ffffff;
+}
+/* Next.js explicit opt-in flag */
+html[data-scroll-behavior="smooth"] {
   scroll-behavior: smooth;
+}
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #000000;
+  --card-foreground: #ffffff;
+  --popover: #000000;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #111217;
+  --secondary-foreground: #ffffff;
+  --muted: #181920;
+  --muted-foreground: #a1a1aa;
+  --accent: #181920;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #02d5e8;
+  --chart-1: #02d5e8;
+  --chart-2: #44b6e9;
+  --chart-3: #b66dd2;
+  --chart-4: #38bdf8;
+  --chart-5: #a855f7;
+  --radius: 0.625rem;
+  --sidebar: #000000;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #02d5e8;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #181920;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #02d5e8;
+}
+
+/* Global reduced-motion support: collapses every CSS animation/transition
+   (grid flow, gradient cubes, glow buttons, marquees, etc.) to effectively
+   instant when the user has iOS/OS-level "Reduce Motion" enabled, instead of
+   requiring each component's CSS to opt in individually. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #000000;
+  --card-foreground: #ffffff;
+  --popover: #000000;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #111217;
+  --secondary-foreground: #ffffff;
+  --muted: #181920;
+  --muted-foreground: #a1a1aa;
+  --accent: #181920;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #02d5e8;
+  --chart-1: #02d5e8;
+  --chart-2: #44b6e9;
+  --chart-3: #b66dd2;
+  --chart-4: #38bdf8;
+  --chart-5: #a855f7;
+  --sidebar: #000000;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #02d5e8;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #181920;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #02d5e8;
 }
