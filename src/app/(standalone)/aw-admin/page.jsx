@@ -20,6 +20,7 @@ import JobOpeningsSection from "./components/JobOpeningsSection";
 import JobModal from "./components/JobModal";
 import ContactLeadsSection from "./components/ContactLeadsSection";
 import SettingsSection from "./components/SettingsSection";
+import AnalyticsSection from "./components/AnalyticsSection";
 import ConfirmModal from "./components/ConfirmModal";
 import ToastContainer from "./components/Toast";
 
@@ -936,6 +937,7 @@ function AdminDashboardContent() {
               {activeTabParam === "pipeline" && "Candidate Applications"}
               {activeTabParam === "jobs" && "Job Openings"}
               {activeTabParam === "inquiries" && "Inquiries"}
+              {activeTabParam === "analytics" && "Google Analytics"}
               {activeTabParam === "settings" && "Account Settings"}
             </h1>
           </div>
@@ -1040,7 +1042,10 @@ function AdminDashboardContent() {
             />
           )}
 
-          {/* SECTION 5: SETTINGS */}
+          {/* SECTION 5: GOOGLE ANALYTICS */}
+          {activeTabParam === "analytics" && <AnalyticsSection />}
+
+          {/* SECTION 6: SETTINGS */}
           {activeTabParam === "settings" && (
             <SettingsSection
               currentUser={currentUser}

@@ -9,6 +9,7 @@ import {
   LogOut,
   X,
   ChevronLeft,
+  BarChart3,
 } from "lucide-react";
 
 export default function SidebarNav({
@@ -40,7 +41,7 @@ export default function SidebarNav({
       items: [
         {
           id: "pipeline",
-          label: "Candidate Applications",
+          label: "Applications",
           icon: Users,
           count: applicationsCount,
         },
@@ -61,6 +62,16 @@ export default function SidebarNav({
           icon: Mail,
           count: inquiriesCount,
           highlightCount: inquiriesCount > 0,
+        },
+      ],
+    },
+    {
+      label: "ANALYTICS",
+      items: [
+        {
+          id: "analytics",
+          label: "Google Analytics",
+          icon: BarChart3,
         },
       ],
     },
@@ -121,17 +132,7 @@ export default function SidebarNav({
               )}
             </div>
 
-            {/* Desktop Collapse Toggle in Brand Header */}
-            {!isCollapsed && (
-              <button
-                onClick={onToggleCollapse}
-                className="hidden md:flex p-1.5 rounded-lg text-white/40 hover:text-[#33E6D8] hover:bg-white/[0.06] transition-colors cursor-pointer"
-                title="Collapse sidebar"
-                aria-label="Collapse sidebar"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-            )}
+            
 
             {/* Mobile Close Button */}
             <button
